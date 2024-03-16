@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+
+ :root{
+    --primary-color: #00263d;
+    --secondary-color: #006195;
+    --danger-color: #ff1e00;
+    --warn-color: #fbff00;
+    --sucess-color: #2cdf3b;
+    --info-color: #8ef00d;
+    --light-color: #dadada;
+    --geral-text-color : #000; 
+    --text-color : #631010;
+    --background-color: #ffffff;
+    --hover-color: #58542d;
+ }
