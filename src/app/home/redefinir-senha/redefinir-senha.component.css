@@ -1,31 +1,19 @@
 body {
-    /* margin: 0; */
-    /* padding: 0; */
-    background-image: url(/assets/background.svg) !important;
-    background-repeat: no-repeat;
-    box-sizing: initial;
-    background-size: 80%;
-    background-position: -150% -10%;
-    background-color: #D9E4F6;
+    margin: 0;
+    padding: 0;
 }
 
-.main-cadastrar {
+.main-redefinir {
     margin:auto;
     display: flex;
-    justify-content: center;
-    align-items: flex-end;
 }
 
-.left-cadastrar img {
+.left-redefinir img {
     width: 100%;
     height: auto; 
 }
 
-.img-cadastrar {
-    margin-top: auto;
-}
-
-.left-cadastrar {
+.left-redefinir {
     width: 50%;
     height: 100%; 
     background-color: #D9E4F6; 
@@ -33,26 +21,35 @@ body {
     display: flex;
 }
 
-.right-cadastrar {
-    position: absolute; 
-    top: 0; 
-    right: 0; 
-    width: 50%; 
-    height: 100%; 
-    padding: 1% 12% 1% 12%;
-    background-color: white;
-}
-
-.right-cadastrar img{
+.right-redefinir img{
     position: absolute;
     top: 10px;
     right: 20px;
     border-radius: 5px;
 }
 
+.right-redefinir {
+    margin: auto;
+    top: 0; 
+    right: 0; 
+    width: 50%; 
+    height: 100%; 
+    padding: 1% 12% 1% 12%;
+}
 
-.cadastrar {
-    margin-top: 8%;
+.right-redefinir h2 {
+    font-weight:600;
+    text-align: center;
+}
+
+.right-redefinir p {
+    padding-bottom: 5%;
+    justify-content: center;
+    text-align: center;
+}
+
+.redefinir {
+    margin-top: 15%;
     bottom: 10px;
     right: 20px;
     display: flex;
@@ -60,7 +57,7 @@ body {
     align-items:center
 }
 
-.btnCadastrar{
+.btnRedefinir{
     text-align: center;
     width: 380px; 
     font-size: 18px; 

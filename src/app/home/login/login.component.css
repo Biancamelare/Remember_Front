@@ -1,0 +1,144 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh;
+}
+
+.main-login {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    position: relative;   
+}
+
+.left-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.img-login {
+    margin-top: auto;
+}
+
+.right-login img {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    border-radius: 5px;
+}
+
+.center-login {
+    top: 14%; 
+    left: 30%; 
+    position: absolute;
+    width: 70%;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-login {
+    background-color: #D9E4F6;
+    width: 100%;
+    max-width: 600px;
+    padding: 30px 100px ;
+    border-radius: 30px;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3); 
+}
+
+.form-login h1 {
+    font-weight:800;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.btnEntrar {
+    text-align: center;
+    width: 400px; 
+    font-size: 18px; 
+    padding: 10px 30px; 
+    background-color:#5189DD;
+    border-radius: 15px;
+    color:white;
+    border: none;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3); 
+}
+
+.entrar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-login {
+    margin-top: auto; 
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    position: absolute;
+    padding-bottom: 2%;
+    bottom: 0;
+    width: 100%; /* Garante que o rodapé ocupe toda a largura */
+}
+
+.btnCriar {
+    margin-top: -15px;
+    text-align: center;
+    text-decoration: none;
+    width: 130px; 
+    padding: 5px 5px; 
+    background-color:#5189DD;
+    border-radius: 20px;
+    color:white;
+    border: none;
+    margin-left: 30px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3); 
+}
+
+.footer-login p {
+    font-weight: 500;
+}
+
+label {
+    font-weight: 500;
+}
+
+img {
+    max-width: 100%; 
+}
+
+.email {
+    position: relative;
+}
+
+.email #icon {
+    position: absolute;
+    top: 53px;
+    left: 13px;
+    transform: translateY(-50%);
+    fill: #888; /* Cor do ícone */
+}
+
+.senha {
+    position: relative;
+}
+
+.senha #icon {
+    position: absolute;
+    top: 53px;
+    left: 13px;
+    transform: translateY(-50%);
+    fill: #888; /* Cor do ícone */
+}
+
+.senha a {
+    text-decoration: none;
+}
+
+.form-control {
+    border-radius: 15px;
+    background-color: #E9EFF9;
+}

@@ -1,31 +1,23 @@
-body {
-    /* margin: 0; */
-    /* padding: 0; */
-    background-image: url(/assets/background.svg) !important;
-    background-repeat: no-repeat;
-    box-sizing: initial;
-    background-size: 80%;
-    background-position: -150% -10%;
-    background-color: #D9E4F6;
+*{
+    margin: 0;
+    padding: 0;
 }
 
-.main-cadastrar {
+.main-senha {
     margin:auto;
     display: flex;
-    justify-content: center;
-    align-items: flex-end;
 }
 
-.left-cadastrar img {
+.left-senha img {
     width: 100%;
     height: auto; 
 }
 
-.img-cadastrar {
+.img-senha {
     margin-top: auto;
 }
 
-.left-cadastrar {
+.left-senha {
     width: 50%;
     height: 100%; 
     background-color: #D9E4F6; 
@@ -33,26 +25,45 @@ body {
     display: flex;
 }
 
-.right-cadastrar {
-    position: absolute; 
+.right-senha {
+    margin: auto;
     top: 0; 
     right: 0; 
     width: 50%; 
     height: 100%; 
     padding: 1% 12% 1% 12%;
-    background-color: white;
 }
 
-.right-cadastrar img{
+.right-senha h2 {
+    font-weight:600;
+    text-align: center;
+}
+
+.right-senha p {
+    padding-bottom: 5%;
+    justify-content: center;
+    text-align: center;
+}
+
+.right-senha #info {
+    font-size: 13px;
+    text-align: justify;
+}
+
+.right-senha h2 {
+    font-weight:700;
+    text-align: center;
+}
+
+.right-senha img{
     position: absolute;
     top: 10px;
     right: 20px;
     border-radius: 5px;
 }
 
-
-.cadastrar {
-    margin-top: 8%;
+.entrar {
+    margin-top: 15%;
     bottom: 10px;
     right: 20px;
     display: flex;
@@ -60,7 +71,7 @@ body {
     align-items:center
 }
 
-.btnCadastrar{
+.btnEntrar{
     text-align: center;
     width: 380px; 
     font-size: 18px; 
