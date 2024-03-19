@@ -283,7 +283,8 @@ img {
 }
 
 
-@media screen and (min-width: 320px) and (max-width: 420px){
+
+@media screen and (min-width: 350px) and (max-width: 420px){
     body{
         overflow-x: hidden ;
     }
@@ -330,5 +331,40 @@ img {
     .forma img {
         display: none;
      }
+
+    .footer-login p {
+        font-size: 14px;
+    }
+
+    .footer-login a {
+        font-size: 14px;
+        margin-left: 15px;
+    }
+    
+}
+
+@media screen and (max-height: 600px){
+    .form-login {
+        width: 40%;
+    }
+
+     .forma img {
+        display: none;
+     }
+
+    .btnEntrar {
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+
+    .form-control {
+        width: 250px;
+    }
+
+    .right-login img {
+        width: 20%;
+        height: auto;
+
+    }
 
 }
