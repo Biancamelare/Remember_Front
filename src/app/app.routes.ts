@@ -1,8 +1,9 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './home/login/login.component';
-import { CadastroUsuarioComponent } from './home/cadastro-usuario/cadastro-usuario.component';
-import { RedefinirSenhaComponent } from './home/redefinir-senha/redefinir-senha.component';
-import { SenhaComponent } from './home/senha/senha.component';
+import { LoginComponent } from './home/components/login/login.component';
+import { CadastroUsuarioComponent } from './home/components/cadastro-usuario/cadastro-usuario.component';
+import { RedefinirSenhaComponent } from './home/components/redefinir-senha/redefinir-senha.component';
+import { SenhaComponent } from './home/components/senha/senha.component';
+
 
 export const routes: Routes = [
     {
