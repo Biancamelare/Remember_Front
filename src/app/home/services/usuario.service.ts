@@ -10,15 +10,24 @@ export class UsuarioService {
   constructor(private http: HttpClient) { }
 
   getById(id: number) {
-    return this.http.get<UsuarioModel>(`http://localhost:3000/${id}`);
+    return this.http.get<UsuarioModel>(`http://localhost:3000/usuario/${id}`);
   }
   
   salvar(usuario: UsuarioModel) {
-    if (usuario.id) {
+    /*if (usuario.id) {
       return this.http.put<UsuarioModel>(`http://localhost:3000`, usuario);
-    } else {
-      return this.http.post<UsuarioModel>(`http://localhost:3000`, usuario);
+    } else {*/
+    try{
+      return this.http.post(`http://localhost:3000/usuario`,usuario).subscribe((response)=>{
+        console.log(response)
+      });
+    }catch (error){
+      console.log(error)
+      return error
     }
+    
+      
+    
   }
 
   deletar(id: number) {

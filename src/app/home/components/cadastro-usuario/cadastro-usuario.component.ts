@@ -25,12 +25,12 @@ export class CadastroUsuarioComponent implements OnInit{
     private formBuilder: FormBuilder,
   ) {
     this.formUsuario = this.formBuilder.group({
-      id: [{ value: '', disabled: true }],
-      nome: [{ value: '', disabled: true }, Validators.required],
-      email: [{ value: '', disabled: true }, [Validators.required,Validators.email]],
-      data_nasc: [{ value: '', disabled: true }, Validators.required],
-      telefone: [{ value: '', disabled: true }, Validators.required],
-      senha: [{ value: '', disabled: true }, Validators.required],
+      id: [{ value: '', disabled: false }],
+      nome: [{ value: '', disabled: false }, Validators.required],
+      email: [{ value: '', disabled: false }, [Validators.required,Validators.email]],
+      data_nasc: [{ value: '', disabled: false }, Validators.required],
+      telefone: [{ value: '', disabled: false }, Validators.required],
+      senha: [{ value: '', disabled: false }, Validators.required],
     });
   }
 
@@ -68,12 +68,15 @@ export class CadastroUsuarioComponent implements OnInit{
   }
 
   salvar(): void {
-    if (this.formUsuario.valid) {
+
+    this.usuarioService
+    .salvar(this.usuarioSelecionado)
+    /*if (this.formUsuario.valid) {
       this.usuarioService
         .salvar(this.formUsuario.getRawValue())
     } else {
       this.validarTodosCampos(this.formUsuario);
-    }
+    }*/
   }
 
   
