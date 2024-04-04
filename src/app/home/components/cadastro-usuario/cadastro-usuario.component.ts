@@ -64,8 +64,7 @@ export class CadastroUsuarioComponent implements OnInit{
 
   salvar(): void {
 
-    this.usuarioService
-    .salvar(this.formUsuario.getRawValue())
+    this.usuarioService.cadastrarUsuario(this.formUsuario.getRawValue())
     /*if (this.formUsuario.valid) {
       this.usuarioService
         .salvar(this.formUsuario.getRawValue())

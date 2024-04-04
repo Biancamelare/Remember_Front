@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UsuarioModel } from '../models/usuario.model';
+import { UsuarioLoginModel } from '../models/login.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,17 +14,29 @@ export class UsuarioService {
     return this.http.get<UsuarioModel>(`http://localhost:3000/usuario/${id}`);
   }
   
-  salvar(usuario: UsuarioModel) {
+  cadastrarUsuario(usuario: UsuarioModel) {
     /*if (usuario.id) {
       return this.http.put<UsuarioModel>(`http://localhost:3000`, usuario);
     } else {*/
     try{
-      console.log(usuario)
+      console.log("User",usuario)
       return this.http.post(`http://localhost:3000/usuario`,usuario).subscribe((response)=>{
-        console.log(response)
+        console.log("Foi")
       });
     }catch (error){
-      console.log(error)
+      
+      return error
+    }
+  }
+
+  login(usuario: UsuarioLoginModel) {
+    try{
+      console.log("User",usuario)
+      return this.http.post(`http://localhost:3000/auth/login`,usuario).subscribe((response)=>{
+        console.log("Foi")
+      });
+    }catch (error){
+      
       return error
     }
   }
