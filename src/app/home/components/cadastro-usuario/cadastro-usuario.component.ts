@@ -25,7 +25,6 @@ export class CadastroUsuarioComponent implements OnInit{
     private formBuilder: FormBuilder,
   ) {
     this.formUsuario = this.formBuilder.group({
-      id: [{ value: '', disabled: false }],
       nome: [{ value: '', disabled: false }, Validators.required],
       email: [{ value: '', disabled: false }, [Validators.required,Validators.email]],
       data_nasc: [{ value: '', disabled: false }, Validators.required],
@@ -38,15 +37,11 @@ export class CadastroUsuarioComponent implements OnInit{
     
     this.usuarioSelecionado = {} as UsuarioModel;
 
-    if (this.usuarioSelecionado.id != undefined){
-       
-      this.formUsuario.get('id')?.setValue(this.usuarioSelecionado.id);
-      this.formUsuario.get('email')?.setValue(this.usuarioSelecionado.email);
-      this.formUsuario.get('telefone')?.setValue(this.usuarioSelecionado.telefone);
-      this.formUsuario.get('nome')?.setValue(this.usuarioSelecionado.nome);
-      this.formUsuario.get('data_nasc')?.setValue(this.usuarioSelecionado.data_nasc);
-      this.formUsuario.get('senha')?.setValue(this.usuarioSelecionado.senha);
-    }
+    this.formUsuario.get('email')?.setValue(this.usuarioSelecionado.email);
+    this.formUsuario.get('telefone')?.setValue(this.usuarioSelecionado.telefone);
+    this.formUsuario.get('nome')?.setValue(this.usuarioSelecionado.nome);
+    this.formUsuario.get('data_nasc')?.setValue(this.usuarioSelecionado.data_nasc);
+    this.formUsuario.get('senha')?.setValue(this.usuarioSelecionado.senha);    
 }
 
   /*VALIDAÇÕES */
@@ -70,7 +65,7 @@ export class CadastroUsuarioComponent implements OnInit{
   salvar(): void {
 
     this.usuarioService
-    .salvar(this.usuarioSelecionado)
+    .salvar(this.formUsuario.getRawValue())
     /*if (this.formUsuario.valid) {
       this.usuarioService
         .salvar(this.formUsuario.getRawValue())

@@ -18,6 +18,7 @@ export class UsuarioService {
       return this.http.put<UsuarioModel>(`http://localhost:3000`, usuario);
     } else {*/
     try{
+      console.log(usuario)
       return this.http.post(`http://localhost:3000/usuario`,usuario).subscribe((response)=>{
         console.log(response)
       });
@@ -25,9 +26,6 @@ export class UsuarioService {
       console.log(error)
       return error
     }
-    
-      
-    
   }
 
   deletar(id: number) {
