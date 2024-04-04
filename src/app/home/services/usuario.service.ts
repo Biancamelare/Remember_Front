@@ -15,16 +15,10 @@ export class UsuarioService {
   }
   
   cadastrarUsuario(usuario: UsuarioModel) {
-    /*if (usuario.id) {
-      return this.http.put<UsuarioModel>(`http://localhost:3000`, usuario);
-    } else {*/
     try{
-      console.log("User",usuario)
       return this.http.post(`http://localhost:3000/usuario`,usuario).subscribe((response)=>{
-        console.log("Foi")
       });
     }catch (error){
-      
       return error
     }
   }
@@ -36,7 +30,6 @@ export class UsuarioService {
         console.log("Foi")
       });
     }catch (error){
-      
       return error
     }
   }
