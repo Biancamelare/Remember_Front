@@ -20,9 +20,9 @@ header .search-container {
 }
 
 .search-input {
-    padding-right: 30px; 
+    padding-right: 35px; 
     height: 45px;
-    background-color: #B8D8F4;
+    background-color: var(--quaternary-color);
     border-radius: 14px;
 }
 
@@ -31,11 +31,11 @@ header .search-container {
     top: 35px;
     right: 20px;
     transform: translateY(-50%);
-    fill: #FFFFFF; 
+    fill: var(--secondary-color); 
 }
 
 .search-input::placeholder{
-    color: #FFFFFF;
+    color: var(--secondary-color);
     font-weight: 600;
     font-size: 20px;
     padding-left: 20px;
@@ -43,33 +43,53 @@ header .search-container {
 
 div.input-config input{
     padding: 5px;
+    width: 250%;
     color: rgb(150,150,150);
     border: 0;
     border-radius: 0;
     border-bottom: 2px solid rgb(200,200,200);
 }
 
-.configuracao {
+.conta {
     width: 100%;
     max-height: 100vh;
     max-width: 700px;
-    padding: 30px 100px;
+    padding: 25px 120px;
     font-weight: 600;
 }
 
+.perfil {
+    display: flex;
+    align-items:end;
+}
+
+.perfil .icon-user {
+    border: none;
+    padding: 7px;
+    margin-right: 20px;
+}
+
+.bi-pencil{
+    display: flex;
+    transform: translateY(-70%);
+    margin-left: auto;
+    
+}
+
 .center {
-    padding: 3% 25%;
+    padding: 2% 25%;
     position: absolute;
 }
 
 .center h2 {
     font-weight: 700;
-    color: #0C2377;
+    color: var(--font-color);
 }
 
 .center h3 {
-   padding-bottom: 4%;
+    padding: 2% 0%;
     font-weight: 700;
+    color: var(--font-color);
 }
 
 .cores {
@@ -80,34 +100,10 @@ div.input-config input{
 .cor {
     width: 60px; 
     height: 60px; 
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3); 
+    box-shadow: 0px 2px 4px var(--shadown-color); 
     margin-right: 20px; 
     margin-bottom: 10px; 
     cursor: pointer;
-}
-
-#roxo {
-    background-color: #B0B9E8;
-}
-
-#rosa {
-    background-color: #E8B0D8;
-}
-
-#vermelho {
-    background-color: #ED4141;
-}
-
-#verde {
-    background-color: #B7EF9D;
-}
-
-#amarelo {
-    background-color: #EDD493;
-}
-
-#preto{
-    background-color: #000000;
 }
 
 aside {
@@ -122,10 +118,10 @@ aside {
     position: relative;/* Ajuste conforme necessário */
     padding: 10px 20px;
     border-radius: 10px;
-    border: solid 1px rgba(0, 0, 0, 0.3);
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+    border: solid 1px var(--shadown-color);
+    box-shadow: 0px 2px 6px var(--shadown-color);
     width: 250px; /* Largura desejada */
-    height: 150px; /* Altura desejada */
+    height: 200px; /* Altura desejada */
     align-self: flex-end; /* Alinha o aside à direita */
 }
 
@@ -135,8 +131,8 @@ aside {
     width: 70px;
     height: 70px;
     border-radius: 100px;
-    background-color: #E3E8F0;
-    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+    background-color: var(--user-color);
+    box-shadow: 0px 2px 6px var(--shadown-color);
 }
 
 .dropdown {
@@ -144,8 +140,8 @@ aside {
 }
 
 .dropbtn {
-    background-color: #FFFFFF;
-    color: #0C2377;
+    background-color: var(--secondary-color);
+    color: var(--font-color);
     font-weight: 500;
     padding: 10px;
     font-size: 16px;
@@ -157,15 +153,15 @@ aside {
     padding:20px 0px 5px 10px;
     display: none;
     position: absolute;
-    background-color: #B8D8F4;
+    background-color: var(--quaternary-color);
     min-width: 200px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px var(--shadown-color);
     z-index: 1;
     border-radius: 20px;
 }
 
 .dropdown-content a, #xp {
-    color: #0C2377;
+    color: var(--font-color);
     padding: 10px 10px;
     text-decoration: none;
     display: block;
@@ -173,7 +169,7 @@ aside {
 
 #xp {
     align-items: center;
-    background: #D9E4F6;
+    background: var(--tertiary-color);
     width: 70px;
     height: 38px;
     border-radius: 20px;
@@ -191,6 +187,18 @@ aside {
 .position-user {
     display: flex;
     justify-content: flex-end;
+}
+
+.btnSalvar{
+    margin-top: 20%;
+    text-align: center;
+    width: 130px;
+    padding: 5px 5px;
+    background-color: var(--quaternary-color);
+    border-radius: 20px;
+    color: var(--secondary-color);
+    border: none;
+    box-shadow: 0px 2px 4px var(--shadown-color);
 }
 
 

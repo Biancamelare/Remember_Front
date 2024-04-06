@@ -1,15 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 /* @import '~bootstrap/dist/css/bootstrap.min.css'; */
  :root{
-    --primary-color: #00263d;
-    --secondary-color: #006195;
-    --danger-color: #ff1e00;
-    --warn-color: #fbff00;
-    --sucess-color: #2cdf3b;
-    --info-color: #8ef00d;
-    --light-color: #dadada;
-    --geral-text-color : #000; 
-    --text-color : #631010;
-    --background-color: #ffffff;
-    --hover-color: #58542d;
+    --primary-color: #5189DD;
+    --secondary-color: #fff;
+    --tertiary-color: #D9E4F6;
+    --quaternary-color: #B8D8F4;
+    --input-color: #E9EFF9;
+    --font-color: #0C2377;
+    --icon-color: #888;
+    --shadown-color:rgba(0, 0, 0, 0.3);
+    --user-color:#E3E8F0;
  }

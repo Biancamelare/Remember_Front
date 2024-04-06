@@ -19,7 +19,7 @@ body {
 .left-redefinir {
     width: 100%;
     height: 100%; 
-    background-color: #D9E4F6; 
+    background-color: var(--tertiary-color); 
     height: 100vh;
     display: flex;
 }
@@ -30,7 +30,7 @@ body {
     right: 0; 
     width: 50%; 
     padding: 1% 12% 1% 12%;
-    background-color: white;
+    background-color: var(--secondary-color);
     display: flex;
     height: 100vh;
     flex-direction: column;
@@ -70,16 +70,16 @@ body {
     width: 380px; 
     font-size: 18px; 
     padding: 10px 30px; 
-    background-color:#5189DD;
+    background-color: var(--primary-color);
     border-radius: 15px;
-    color:white;
+    color:var(--secondary-color);
     border: none;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3); 
+    box-shadow: 0px 2px 4px var(--shadown-color); 
 }
 
 .form-control {
     border-radius: 15px;
-    background-color: #E9EFF9;
+    background-color: var(--input-color);
 }
 
 .form-label {
@@ -132,7 +132,7 @@ body {
         height: 45px;
         margin: auto;
         justify-content: center; 
-        background-color: #E9EFF9;
+        background-color: var(--input-color);
     }
     
     .right-redefinir img {
