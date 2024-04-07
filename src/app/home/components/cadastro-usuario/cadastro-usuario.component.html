@@ -2,11 +2,16 @@
     
     <div class="left-cadastrar">
         <img src="./assets/cadastrarImg.png" alt="Imagem de decoração">
-    </div>
 
+    </div>
+    <div class="box-voltar">
+        <a href="">
+            <img class="voltar" src="./assets/voltar.png" alt="Voltar">
+        </a>
+    </div>
     <div class="right-cadastrar">
         <img src="./assets/logoRemember.png" alt="logo do site" width="100px" height="80px">
-    
+
         <form [formGroup]="formUsuario" (ngSubmit)="salvar()">
         <div class="mb-1 nome">
             <label class="form-label">Nome</label>
@@ -42,5 +47,6 @@
             <input class="btnCadastrar" type="submit" value="Cadastrar" (click)="salvar()">
         </div>
     </form>
+    
     </div> 
 </div>

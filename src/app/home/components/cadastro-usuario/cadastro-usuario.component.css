@@ -81,11 +81,30 @@ body {
     width: 100%;
 }
 
+.box-voltar {
+    width: 60px;
+    height: 60px;
+    background-color: var(--primary-color);
+    position: absolute;
+    top:20px;
+    left:20px;
+    border-radius: 15px;
+    align-content: center;
+    z-index: 2;
+}
+
+.voltar {
+    margin: 0 auto;
+    display: flex;
+}
+
+
 @media screen and (max-width: 1400px){
     .left-cadastrar img {
         width: 70%; 
         height: auto; 
         object-fit: cover; 
+        transition: 0.2s;
     }
 }
 
@@ -105,6 +124,7 @@ body {
     
     .right-cadastrar {
         width: 100%; 
+        transition: 0.8s;
     } 
 
     .btnCadastrar{
@@ -149,7 +169,6 @@ body {
     .cadastrar {
         padding-bottom: 20px;
     }
-
 }  
 
 @media screen and (max-width: 950px){
@@ -172,14 +191,17 @@ body {
 
     .btnCadastrar{
         width: 60%; 
+        transition: 0.8s;
     }
     
     .form-control {
         width: 60%; 
+        transition: 0.8s;
     }
 
     .form-label {
         left: 20%;
+        transition: 0.8s;
     }
 }    
 
@@ -187,15 +209,17 @@ body {
 
     .btnCadastrar{
         width: 70%; 
-
+        transition: 0.8s;
     }
     
     .form-control {
         width: 70%; 
+        transition: 0.8s;
     }
 
     .form-label {
         left: 15%;
+        transition: 0.8s;
     }
 
 }    
@@ -207,6 +231,7 @@ body {
         height: 40px;
         font-size: 18px;
         border-radius: 7px;
+        transition: 0.8s;
     }
     
     .form-control {
@@ -214,17 +239,20 @@ body {
         height: 40px;
         border-radius: 7px;
         font-size: 15px;
+        transition: 0.8s;
     }
 
     .form-label {
         left: 0;
         margin: 0;
         font-size: 15px;
+        transition: 0.8s;
     }
 
     .right-cadastrar img {
         width: 80px;
         padding-top: 20px;
         padding-bottom: 10px;
+        transition: 0.8s;
     }
 }    
