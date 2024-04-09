@@ -82,7 +82,7 @@ body {
 }
 
 .box-voltar {
-    width: 60px;
+    width: 150px;
     height: 60px;
     background-color: var(--primary-color);
     position: absolute;
@@ -91,11 +91,17 @@ body {
     border-radius: 15px;
     align-content: center;
     z-index: 2;
+    box-shadow: 0px 2px 4px var(--shadown-color); 
 }
 
 .voltar {
+    font-size: 20px;
     margin: 0 auto;
     display: flex;
+    margin-left: 15px;
+    text-decoration: none;
+    color: var(--secondary-color);
+    line-height: 25px;
 }
 
 
@@ -151,7 +157,7 @@ body {
         width: 120px;
         height: auto;
         position: static;
-        padding-top: 60px;
+        padding-top: 20px;
         padding-bottom: 30px;
     }
     
@@ -255,4 +261,14 @@ body {
         padding-bottom: 10px;
         transition: 0.8s;
     }
+
+    /* .box-voltar {
+        width: 40px;
+        height: 40px;
+    }
+
+    .voltar {
+        width: 30px;
+        height: 30px;
+    } */
 }    
