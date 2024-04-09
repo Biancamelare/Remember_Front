@@ -18,6 +18,8 @@ export class CadastroUsuarioComponent implements OnInit{
   formUsuario: FormGroup;
   usuario?: UsuarioModel;
 
+  senhaCoincide: boolean = false;
+
   usuarioSelecionado: UsuarioModel = {} as UsuarioModel;
 
   constructor(
@@ -37,17 +39,15 @@ export class CadastroUsuarioComponent implements OnInit{
   ngOnInit(): void {
     
     this.usuarioSelecionado = {} as UsuarioModel;
+    const telefoneNumerico = this.formUsuario.get('telefone')?.value.replace(/\D/g, ''); 
 
     this.formUsuario.get('email')?.setValue(this.usuarioSelecionado.email);
-    this.formUsuario.get('telefone')?.setValue(this.usuarioSelecionado.telefone);
+    
+    this.formUsuario.get('telefone')?.setValue(telefoneNumerico);
     this.formUsuario.get('nome')?.setValue(this.usuarioSelecionado.nome);
     this.formUsuario.get('data_nasc')?.setValue(this.usuarioSelecionado.data_nasc);
-    if(this.formUsuario.get('senha')?.value != this.formUsuario.get('senhaconfirmada')?.value ){
-      
-      console.log("Digite a mesma senha")
-    }else{
-      this.formUsuario.get('senha')?.setValue(this.usuarioSelecionado.senha); 
-    }
+    this.formUsuario.get('senha')?.setValue(this.usuarioSelecionado.senha); 
+    
        
 }
 
@@ -69,15 +69,28 @@ export class CadastroUsuarioComponent implements OnInit{
     });
   }
 
+  formatarTelefone(event: Event): void {
+    const target = event.target as HTMLInputElement; 
+    if (target && target.value) { 
+      const telefoneNumerico = target.value.replace(/\D/g, ''); 
+      const match = telefoneNumerico.match(/^(\d{2})(\d{5})(\d{4})$/);
+  
+      if (match) {
+        target.value = `(${match[1]}) ${match[2]}-${match[3]}`; 
+      }
+    }
+  }
+  
+
   salvar(): void {
 
-    this.usuarioService.cadastrarUsuario(this.formUsuario.getRawValue())
-    /*if (this.formUsuario.valid) {
-      this.usuarioService
-        .salvar(this.formUsuario.getRawValue())
-    } else {
-      this.validarTodosCampos(this.formUsuario);
-    }*/
+    if (this.formUsuario.valid && this.formUsuario.get('senha')?.value === this.formUsuario.get('senhaconfirmada')?.value) {
+        this.senhaCoincide = true;
+        this.usuarioService.cadastrarUsuario(this.formUsuario.getRawValue());
+      } else {
+        this.senhaCoincide = false;
+        this.validarTodosCampos(this.formUsuario);
+    }
   }
 
   

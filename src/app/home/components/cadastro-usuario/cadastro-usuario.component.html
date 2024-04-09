@@ -31,7 +31,8 @@
 
         <div class="mb-1 telefone">
             <label class="form-label">Telefone</label>
-            <input type="text" class="form-control" placeholder="Digite seu telefone" formControlName="telefone">
+            <input type="text" class="form-control" placeholder="Digite seu telefone"
+            formControlName="telefone" (input)="formatarTelefone($event)">
         </div>
 
         <div class="mb-1 senha">
