@@ -25,9 +25,7 @@ export class UsuarioService {
 
   login(usuario: UsuarioLoginModel) {
     try {
-      console.log("User", usuario)
       return this.http.post(`http://localhost:3000/auth/login`, { email: usuario.email, password: usuario.senha }).subscribe((response) => {
-        console.log("Foi")
       });
     } catch (error) {
       return error

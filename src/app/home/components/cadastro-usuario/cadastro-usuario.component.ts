@@ -30,6 +30,7 @@ export class CadastroUsuarioComponent implements OnInit{
       data_nasc: [{ value: '', disabled: false }, Validators.required],
       telefone: [{ value: '', disabled: false }, Validators.required],
       senha: [{ value: '', disabled: false }, Validators.required],
+      senhaconfirmada: [{ value: '', disabled: false }, Validators.required]
     });
   }
 
@@ -41,7 +42,13 @@ export class CadastroUsuarioComponent implements OnInit{
     this.formUsuario.get('telefone')?.setValue(this.usuarioSelecionado.telefone);
     this.formUsuario.get('nome')?.setValue(this.usuarioSelecionado.nome);
     this.formUsuario.get('data_nasc')?.setValue(this.usuarioSelecionado.data_nasc);
-    this.formUsuario.get('senha')?.setValue(this.usuarioSelecionado.senha);    
+    if(this.formUsuario.get('senha')?.value != this.formUsuario.get('senhaconfirmada')?.value ){
+      
+      console.log("Digite a mesma senha")
+    }else{
+      this.formUsuario.get('senha')?.setValue(this.usuarioSelecionado.senha); 
+    }
+       
 }
 
   /*VALIDAÇÕES */
