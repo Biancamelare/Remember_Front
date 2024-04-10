@@ -1,6 +1,18 @@
-.alert{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
+.alerta {
   
+
+
+}
+
+.alerta-success {
+  background-color: #28a745; /* Verde */
+}
+
+.alerta-warning {
+  background-color: #ffc107; /* Amarelo */
+}
+
+.alerta-danger {
+  background-color: #dc3545; /* Vermelho */
+}
+

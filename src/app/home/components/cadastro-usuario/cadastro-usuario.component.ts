@@ -1,20 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UsuarioModel } from '../../models/usuario.model';
 import { UsuarioService } from '../../services/usuario.service';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import { AlertaService } from '../../../shared/components/alertas/service/alerta.service';
+import { AlertasComponent } from '../../../shared/components/alertas/alertas.component';
 
 @Component({
   selector: 'app-cadastro-usuario',
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule, HttpClientModule],
+  imports: [ReactiveFormsModule, FormsModule, HttpClientModule,CommonModule, AlertasComponent],
   templateUrl: './cadastro-usuario.component.html',
   styleUrl: './cadastro-usuario.component.css'
 })
 
 export class CadastroUsuarioComponent implements OnInit{
-
+  @ViewChild('alertaCadastro', { static: false }) alertaCadastro!: AlertasComponent;
   formUsuario: FormGroup;
   usuario?: UsuarioModel;
 
@@ -24,6 +27,7 @@ export class CadastroUsuarioComponent implements OnInit{
 
   constructor(
     private usuarioService: UsuarioService,
+    private alertaService:AlertaService,
     private formBuilder: FormBuilder,
   ) {
     this.formUsuario = this.formBuilder.group({
@@ -53,11 +57,10 @@ export class CadastroUsuarioComponent implements OnInit{
 
   /*VALIDAÇÕES */
   validarCampo(field: string) {
-    return (
-      !this.formUsuario.get(field)?.valid &&
-      this.formUsuario.get(field)?.touched
-    );
+    const control = this.formUsuario.get(field);
+    return !control?.valid && control?.touched;
   }
+
   validarTodosCampos(formGroup: FormGroup) {
     Object.keys(formGroup.controls).forEach((field) => {
       const control = formGroup.get(field);
@@ -80,18 +83,35 @@ export class CadastroUsuarioComponent implements OnInit{
       }
     }
   }
+
+  mostrarCSS(field: string) {
+    return {
+      'input-erro': this.validarCampo(field),
+    };
+  }
   
 
-  salvar(): void {
+salvar(): void {
+  const senhaCoincide = this.formUsuario.get('senha')?.value === this.formUsuario.get('senhaconfirmada')?.value;
 
-    if (this.formUsuario.valid && this.formUsuario.get('senha')?.value === this.formUsuario.get('senhaconfirmada')?.value) {
-        this.senhaCoincide = true;
-        this.usuarioService.cadastrarUsuario(this.formUsuario.getRawValue());
-      } else {
-        this.senhaCoincide = false;
-        this.validarTodosCampos(this.formUsuario);
-    }
+  if (this.formUsuario.valid && senhaCoincide) {
+    this.usuarioService.cadastrarUsuario(this.formUsuario.getRawValue()).subscribe(
+      response => {
+        console.log('Usuário cadastrado com sucesso!', response);
+        this.alertaService.exibirAlerta('danger', 'Cadastro errado');
+      },
+      error => {
+        console.error('Erro ao cadastrar usuário:', error);
+        this.alertaService.exibirAlerta('danger', 'Cadastro errado');
+      })
+  } else {
+    this.validarTodosCampos(this.formUsuario);
+    console.log("aa")
+    this.alertaService.exibirAlerta('danger', 'Cadastro errado');
   }
+
+  this.senhaCoincide = senhaCoincide;
+}
 
   
 }

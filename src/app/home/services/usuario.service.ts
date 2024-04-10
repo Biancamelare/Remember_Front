@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UsuarioLoginModel } from '../models/login.model';
 import { UsuarioModel } from '../models/usuario.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,13 +15,8 @@ export class UsuarioService {
     return this.http.get<UsuarioModel>(`http://localhost:3000/usuario/${id}`);
   }
 
-  cadastrarUsuario(usuario: UsuarioModel) {
-    try {
-      return this.http.post(`http://localhost:3000/usuario`, usuario).subscribe((response) => {
-      });
-    } catch (error) {
-      return error
-    }
+  cadastrarUsuario(usuario: UsuarioModel): Observable<any> {
+    return this.http.post(`http://localhost:3000/usuario`, usuario);
   }
 
   login(usuario: UsuarioLoginModel) {

@@ -1,15 +1,42 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Alerta } from './model/alerta.model';
-import { AlertasService } from './service/alerta.service';
+import { AlertaService } from './service/alerta.service';
 import { Subject, Subscription, takeUntil } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-alertas',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './alertas.component.html',
   styleUrl: './alertas.component.css'
 })
-export class AlertasComponent {
- 
+export class AlertasComponent{
+  alerta: any = {};
+  isAlertVisible: boolean = false;
+  private alertaSubscription: Subscription;
+
+  constructor(private alertaService: AlertaService) {
+    this.alertaSubscription = this.alertaService.getAlerta().subscribe(alerta => {
+      this.alerta = alerta;
+      this.mostrarAlerta();
+    });
+  }
+
+  mostrarAlerta(): void {
+    this.isAlertVisible = true;
+    setTimeout(() => {
+      this.fecharAlerta();
+    }, 6000); 
+  }
+
+  fecharAlerta(): void {
+    this.isAlertVisible = false;
+  }
+
+  ngOnDestroy(): void {
+    this.alertaSubscription.unsubscribe();
+  }
+  
+
 }

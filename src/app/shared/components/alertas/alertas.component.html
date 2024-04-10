@@ -1,1 +1,7 @@
+<div *ngIf="isAlertVisible" class="alerta" [ngClass]="{ 'alerta-success': alerta.type === 'success', 'alerta-warning': alerta.type === 'warning', 'alerta-danger': alerta.type === 'danger' }" #alertaCadastro>
+    <span>{{ alerta.mensagem }}</span>
+</div>
 
+  
+  
+    

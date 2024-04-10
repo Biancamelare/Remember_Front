@@ -1,28 +1,19 @@
-import { Injectable, OnInit, ViewChild } from '@angular/core';
-import { Subject } from 'rxjs';
-import { Alerta } from '../model/alerta.model';
-
+import { Injectable } from '@angular/core';
+import { Subject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AlertasService {
-
-  public alertaSubject = new Subject<Alerta>();
-  readonly TEMPO_DE_EXIBICAO = 4000;
+export class AlertaService {
+  private alertaSubject = new Subject<any>();
 
   constructor() { }
 
- exibirAlerta(
-    alerta: Alerta,
-    tipoAlerta: 'success' | 'info' | 'warning' | 'danger' | 'primary' | 'secondary' | 'light' | 'dark',
-    mensagem: string
-  ): void {
+  getAlerta(): Observable<any> {
+    return this.alertaSubject.asObservable();
+  }
 
-    alerta.type = tipoAlerta;
-    alerta.mensagem = mensagem;
-    alerta.mostrar = true;
-
-    this.alertaSubject.next(alerta);
+  exibirAlerta(tipo: string, mensagem: string): void {
+    this.alertaSubject.next({ type: tipo, mensagem: mensagem });
   }
 }

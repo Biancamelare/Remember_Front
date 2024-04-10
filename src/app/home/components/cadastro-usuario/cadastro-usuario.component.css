@@ -104,6 +104,11 @@ body {
     line-height: 25px;
 }
 
+.input-erro {
+    border: 2px solid #ff0000;
+    /*box-shadow: inset 0 1px 1px  rgb(255, 0, 0), 0 0 8px  rgb(255, 0, 0);*/
+    box-shadow: none;
+}
 
 @media screen and (max-width: 1400px){
     .left-cadastrar img {
