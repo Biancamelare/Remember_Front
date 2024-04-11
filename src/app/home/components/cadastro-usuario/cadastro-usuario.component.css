@@ -82,8 +82,8 @@ body {
 }
 
 .box-voltar {
-    width: 150px;
-    height: 60px;
+    width: 100px;
+    height: 47px;
     background-color: var(--primary-color);
     position: absolute;
     top:20px;
@@ -98,11 +98,17 @@ body {
     font-size: 20px;
     margin: 0 auto;
     display: flex;
-    margin-left: 15px;
+    margin-left: 2px;
     text-decoration: none;
     color: var(--secondary-color);
-    line-height: 25px;
+    line-height: 35px;
 }
+
+.voltar-img {
+    width: 36px;
+    height: 36px;
+}
+
 
 .input-erro {
     border: 2px solid #ff0000;
