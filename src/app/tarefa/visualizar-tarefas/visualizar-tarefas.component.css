@@ -4,11 +4,25 @@ body {
     min-height: 100vh;
 }
 
+.main-vizualizar {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 100vw;
+}
+
 header {
     padding-top: 1%;
     padding-bottom: 1%;
     display: flex;
     justify-content: center; 
+}
+.main-center {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 header .search-container {
@@ -39,76 +53,6 @@ header .search-container {
     font-weight: 600;
     font-size: 20px;
     padding-left: 20px;
-}
-
-div.input-config input{
-    padding: 5px;
-    width: 250%;
-    color: rgb(150,150,150);
-    border: 0;
-    border-radius: 0;
-    border-bottom: 2px solid rgb(200,200,200);
-}
-
-.conta {
-    width: 100%;
-    max-height: 100vh;
-    max-width: 700px;
-    padding: 25px 120px;
-    font-weight: 600;
-}
-
-.perfil {
-    display: flex;
-    align-items:end;
-}
-
-.perfil .icon-user {
-    border: none;
-    padding: 7px;
-    margin-right: 20px;
-}
-
-.bi-pencil{
-    display: flex;
-    transform: translateY(-70%);
-    margin-left: auto;
-    
-}
-
-.center {
-    padding: 2% 25%;
-    position: absolute;
-}
-
-.center h2 {
-    font-weight: 700;
-    color: var(--font-color);
-}
-
-.center h3 {
-    padding: 2% 0%;
-    font-weight: 700;
-    color: var(--font-color);
-}
-
-aside {
-    display: flex;
-    justify-content: right;
-    align-items: end;
-    padding: 100px;
-}
-
-.aside-content {
-    flex-direction: column;
-    position: relative;/* Ajuste conforme necessário */
-    padding: 10px 20px;
-    border-radius: 10px;
-    border: solid 1px var(--shadown-color);
-    box-shadow: 0px 2px 6px var(--shadown-color);
-    width: 250px; /* Largura desejada */
-    height: 200px; /* Altura desejada */
-    align-self: flex-end; /* Alinha o aside à direita */
 }
 
 .icon-user {
@@ -153,7 +97,6 @@ aside {
     display: block;
 }
 
-
 .dropdown-content a:hover {
     font-weight: 600;
 }
@@ -162,27 +105,53 @@ aside {
     display: block;
 }
 
-
-.position-user {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.btnSalvar{
-    margin-top: 20%;
-    text-align: center;
-    width: 130px;
-    padding: 5px 5px;
-    background-color: var(--quaternary-color);
-    border-radius: 20px;
-    color: var(--secondary-color);
+.boasVindas input {
     border: none;
-    box-shadow: 0px 2px 4px var(--shadown-color);
 }
 
+.boasVindas input::placeholder {
+    color: var(--font-color);
+    font-weight: 700;
+}
 
+.boasVindas {
+    flex-direction: column;
+    display: flex;
+    margin-top: 4%;
+    width: 50%;
+    
+}
 
+.boasVindas h2 {
+    color: var(--font-color);
+    font-weight: 700;
+}
 
+.porcentagem-tarefas {
+    width: 30%;
+    height:200px; 
+    background-color: var(--quaternary-color);
+    margin-top: 2%;
+    border-radius: 20px;
+}
+
+th {
+    background-color: var(--quaternary-color); 
+    color: var(--font-color);
+}
+
+table {
+    border: solid 1px  var(--quaternary-color);
+    width: 15%;
+    margin-top: 3%;
+}
+
+.qtde {
+    display: flex;
+    width: 100%;
+    padding-left: 7%;
+    justify-content: space-evenly;
+}
 
 
 
