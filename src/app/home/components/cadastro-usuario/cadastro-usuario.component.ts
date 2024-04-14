@@ -91,27 +91,29 @@ export class CadastroUsuarioComponent implements OnInit{
   }
   
 
-salvar(): void {
-  const senhaCoincide = this.formUsuario.get('senha')?.value === this.formUsuario.get('senhaconfirmada')?.value;
-
-  if (this.formUsuario.valid && senhaCoincide) {
-    this.usuarioService.cadastrarUsuario(this.formUsuario.getRawValue()).subscribe(
-      response => {
-        console.log('Usuário cadastrado com sucesso!', response);
-        this.alertaService.exibirAlerta('danger', 'Cadastro errado');
-      },
-      error => {
-        console.error('Erro ao cadastrar usuário:', error);
-        this.alertaService.exibirAlerta('danger', 'Cadastro errado');
-      })
-  } else {
-    this.validarTodosCampos(this.formUsuario);
-    console.log("aa")
-    this.alertaService.exibirAlerta('danger', 'Cadastro errado');
+  salvar(): void {
+    const senhaCoincide = this.formUsuario.get('senha')?.value === this.formUsuario.get('senhaconfirmada')?.value;
+  
+    if (this.formUsuario.valid && senhaCoincide) {
+      this.usuarioService.cadastrarUsuario(this.formUsuario.getRawValue()).subscribe(
+        response => {
+          this.alertaService.exibirAlerta('success', 'Usuário cadastrado com sucesso!');
+        },
+        error => {
+          this.alertaService.exibirAlerta('danger','Erro ao cadastrar usuário: ' + error.error.message); // Exibe a mensagem de erro da API
+        })
+    } else {
+      this.validarTodosCampos(this.formUsuario);
+      if (this.formUsuario.get('senha')?.value != null &&  this.formUsuario.get('senhaconfirmada')?.value != null && !senhaCoincide) {
+        this.alertaService.exibirAlerta('danger', 'As senhas não coincidem.');
+      } else {
+        this.alertaService.exibirAlerta('danger', 'Preencha todos os campos corretamente.');
+      }
+    }
+  
+    this.senhaCoincide = senhaCoincide;
   }
-
-  this.senhaCoincide = senhaCoincide;
-}
+  
 
   
 }

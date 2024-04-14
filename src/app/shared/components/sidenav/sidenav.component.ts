@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 })
 
 export class SidenavComponent {
-  var menuItem = document.querySelectorAll('.box-selecao')
+  /*var menuItem = document.querySelectorAll('.box-selecao')
   
   function selectLink() { 
     menuItem.forEach((item)=> 
@@ -26,5 +26,5 @@ export class SidenavComponent {
   
   btnExp.addEventListener('click', function(){
      menuSide.classList.toggle('expandir') 
-  })
+  })*/
 }

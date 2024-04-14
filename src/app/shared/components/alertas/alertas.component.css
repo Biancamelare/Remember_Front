@@ -1,18 +1,9 @@
-.alerta {
-  
-
-
+.alerta{
+  align-self: flex-start;
+  margin-bottom: auto;
 }
-
-.alerta-success {
-  background-color: #28a745; /* Verde */
+ 
+.alerta span{
+ display: flex;
+ justify-content: center;
 }
-
-.alerta-warning {
-  background-color: #ffc107; /* Amarelo */
-}
-
-.alerta-danger {
-  background-color: #dc3545; /* Vermelho */
-}
-
