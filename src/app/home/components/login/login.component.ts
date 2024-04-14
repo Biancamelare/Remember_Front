@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UsuarioLoginModel } from '../../models/login.model';
 import { AlertasComponent } from '../../../shared/components/alertas/alertas.component';
 import { AlertaService } from '../../../shared/components/alertas/service/alerta.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +26,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private usuarioService: UsuarioService,
     private formBuilder: FormBuilder,
-    private alertaService:AlertaService
+    private alertaService:AlertaService,
+    private router: Router
   ) {
     this.formUsuarioLogin = this.formBuilder.group({
       email: [{ value: '', disabled: false }, [Validators.required,Validators.email]],
@@ -68,6 +70,7 @@ mostrarCSS(field: string) {
       this.usuarioService.login(this.formUsuarioLogin.getRawValue()).subscribe(
         response => {
           this.alertaService.exibirAlerta('success', 'Login realizado com sucesso!');
+          this.router.navigate(['/visualizar-tarefas']);
         },
         error => {
           this.alertaService.exibirAlerta('danger','Erro : ' + error.error.message);
