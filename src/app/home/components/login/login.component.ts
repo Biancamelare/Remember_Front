@@ -7,6 +7,8 @@ import { UsuarioLoginModel } from '../../models/login.model';
 import { AlertasComponent } from '../../../shared/components/alertas/alertas.component';
 import { AlertaService } from '../../../shared/components/alertas/service/alerta.service';
 import { Router } from '@angular/router';
+import { AuthServiceService } from '../../../shared/services/auth-service.service';
+import { loginResponseModel } from '../../models/loginResponse.model';
 
 @Component({
   selector: 'app-login',
@@ -20,11 +22,13 @@ export class LoginComponent implements OnInit {
   @ViewChild('alertaCadastro', { static: false }) alertaCadastro!: AlertasComponent;
   formUsuarioLogin: FormGroup;
   usuario?: UsuarioLoginModel;
+  loginResponse ?: loginResponseModel;
 
   usuarioSelecionado: UsuarioLoginModel = {} as UsuarioLoginModel;
 
   constructor(
     private usuarioService: UsuarioService,
+    private authService: AuthServiceService,
     private formBuilder: FormBuilder,
     private alertaService:AlertaService,
     private router: Router
@@ -68,8 +72,9 @@ mostrarCSS(field: string) {
   entrar(){
     if (this.formUsuarioLogin.valid){
       this.usuarioService.login(this.formUsuarioLogin.getRawValue()).subscribe(
-        response => {
-          this.alertaService.exibirAlerta('success', 'Login realizado com sucesso!');
+        (response:loginResponseModel) => {
+          const accessToken = response.accesToken ?? ''
+          this.authService.setToken(accessToken);
           this.router.navigate(['/visualizar-tarefas']);
         },
         error => {

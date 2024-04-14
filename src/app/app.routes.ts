@@ -6,6 +6,7 @@ import { SenhaComponent } from './home/components/senha/senha.component';
 import { ConfiguracoesComponent } from './home/components/configuracoes/configuracoes.component';
 import { VisualizarTarefasComponent } from './tarefa/visualizar-tarefas/visualizar-tarefas.component';
 import { ModalComponent } from './tarefa/modal/modal.component';
+import { AuthGuardService } from './shared/services/auth-guard.service';
 
 
 export const routes: Routes = [
@@ -19,7 +20,8 @@ export const routes: Routes = [
     },
     {
         path: 'configuracoes',
-        component: ConfiguracoesComponent
+        component: ConfiguracoesComponent,
+        canActivate: [AuthGuardService]
     },
     {
         path: 'login',
@@ -35,10 +37,12 @@ export const routes: Routes = [
     },
     {
         path: 'visualizar-tarefas',
-        component: VisualizarTarefasComponent
+        component: VisualizarTarefasComponent,
+        canActivate: [AuthGuardService]
     },
     {
         path: 'modal',
-        component: ModalComponent
+        component: ModalComponent,
+        canActivate: [AuthGuardService]
     }
 ];
