@@ -20,12 +20,9 @@ export class UsuarioService {
   }
 
   login(usuario: UsuarioLoginModel) {
-    try {
-      return this.http.post(`http://localhost:3000/auth/login`, { email: usuario.email, password: usuario.senha }).subscribe((response) => {
-      });
-    } catch (error) {
-      return error
-    }
+
+    return this.http.post(`http://localhost:3000/auth/login`, { email: usuario.email, password: usuario.senha })
+
   }
 
   deletar(id: number) {
