@@ -10,5 +10,5 @@ import { SidenavComponent } from '../../../shared/components/sidenav/sidenav.com
 })
 
 export class ConfiguracoesComponent {
-
+    
 }

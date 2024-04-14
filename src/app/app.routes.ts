@@ -4,9 +4,10 @@ import { CadastroUsuarioComponent } from './home/components/cadastro-usuario/cad
 import { RedefinirSenhaComponent } from './home/components/redefinir-senha/redefinir-senha.component';
 import { SenhaComponent } from './home/components/senha/senha.component';
 import { ConfiguracoesComponent } from './home/components/configuracoes/configuracoes.component';
-import { VisualizarTarefasComponent } from './tarefa/visualizar-tarefas/visualizar-tarefas.component';
-import { ModalComponent } from './tarefa/modal/modal.component';
+import { VisualizarTarefasComponent } from './tarefa/components/visualizar-tarefas/visualizar-tarefas.component';
+import { ModalComponent } from './tarefa/components/modal/modal.component';
 import { AuthGuardService } from './shared/services/auth-guard.service';
+import { HomeComponent } from './tarefa/components/home/home.component';
 
 
 export const routes: Routes = [
@@ -36,9 +37,12 @@ export const routes: Routes = [
         component: SenhaComponent
     },
     {
+        path: 'home',
+        component: HomeComponent
+    },
+    {
         path: 'visualizar-tarefas',
-        component: VisualizarTarefasComponent,
-        canActivate: [AuthGuardService]
+        component: VisualizarTarefasComponent
     },
     {
         path: 'modal',

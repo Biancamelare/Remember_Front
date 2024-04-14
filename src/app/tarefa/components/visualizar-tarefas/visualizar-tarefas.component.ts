@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
-  selector: 'app-modal',
+  selector: 'app-visualizar-tarefas',
   standalone: true,
-  imports: [],
-  templateUrl: './modal.component.html',
-  styleUrl: './modal.component.css'
+  imports: [ModalComponent],
+  templateUrl: './visualizar-tarefas.component.html',
+  styleUrl: './visualizar-tarefas.component.css'
 })
-export class ModalComponent {
+export class VisualizarTarefasComponent {
   openModal() {
     const modalDiv = document.getElementById('exampleModal');
     if(modalDiv!= null) {

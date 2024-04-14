@@ -10,4 +10,11 @@
     --icon-color: #888;
     --shadown-color:rgba(0, 0, 0, 0.3);
     --user-color:#E3E8F0;
+    --gradient1-color:#4393f2;
+    --gradient2-color:#ae5ea7;
+    --borderbottom-color:rgb(200,200,200);
+    --svg-color:#525EDE;
+    --btnAlta-color:rgba(255, 3, 3, 0.3);
+    --btnMedia-color:rgba(228, 193, 10, 0.3);
+    --btnBaixa-color:rgba(56, 230, 73, 0.3);
  }
