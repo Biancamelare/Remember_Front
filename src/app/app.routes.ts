@@ -21,7 +21,7 @@ export const routes: Routes = [
     {
         path: 'configuracoes',
         component: ConfiguracoesComponent,
-        canActivate: [AuthGuardService]
+    
     },
     {
         path: 'login',
@@ -43,6 +43,6 @@ export const routes: Routes = [
     {
         path: 'modal',
         component: ModalComponent,
-        canActivate: [AuthGuardService]
+        
     }
 ];
