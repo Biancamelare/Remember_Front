@@ -1,9 +1,10 @@
 .alerta{
   align-self: flex-start;
   margin-bottom: auto;
+  z-index: 2;
 }
  
 .alerta span{
- display: flex;
-
+  display: flex;
+  justify-content: center;
 }
