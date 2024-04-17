@@ -44,7 +44,7 @@ header .search-container {
 div.input-config input{
     padding: 5px;
     width: 250%;
-    color: rgb(150,150,150);
+    color: #000000;
     border: 0;
     border-radius: 0;
     border-bottom: 2px solid rgb(200,200,200);

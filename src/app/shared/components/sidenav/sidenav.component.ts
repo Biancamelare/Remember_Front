@@ -9,22 +9,23 @@ import { Component } from '@angular/core';
 })
 
 export class SidenavComponent {
-  /*var menuItem = document.querySelectorAll('.box-selecao')
+ /* const menuItem = document.querySelectorAll('.box-selecao')
+  const btnExp = document.querySelector('#btn-exp')
+  const menuSide = document.querySelector('.menu-lateral')
   
-  function selectLink() { 
-    menuItem.forEach((item)=> 
+  selectLink() { 
+    this.menuItem.forEach((item)=> 
       item.classList.remove('ativo') 
     )
-    this.classList.add('ativo') }
+    classList.add('ativo') }
   
-  menuItem.forEach((item)=> 
+  this.menuItem.forEach((item)=> 
     item.addEventListener('click', selectLink) 
   )
   
-  var btnExp = document.querySelector('#btn-exp')
-  var menuSide = document.querySelector('.menu-lateral')
+
   
-  btnExp.addEventListener('click', function(){
-     menuSide.classList.toggle('expandir') 
+  this.btnExp.addEventListener('click', function(){
+     this.menuSide.classList.toggle('expandir') 
   })*/
 }

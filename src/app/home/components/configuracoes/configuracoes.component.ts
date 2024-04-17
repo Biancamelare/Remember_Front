@@ -53,6 +53,41 @@ export class ConfiguracoesComponent {
         (usuario : UsuarioModel) => {
           this.usuarioSelecionado = usuario;
           console.log(this.usuarioSelecionado)
+          this.preencherformulario();
       })
+  }
+
+  preencherformulario(){
+    this.formConfiguracoes.controls['nome'].setValue(this.usuarioSelecionado?.nome);
+    this.formConfiguracoes.controls['data_nasc'].setValue(this.formatarData(String(this.usuarioSelecionado?.data_nasc)));
+    this.formConfiguracoes.controls['email'].setValue(this.usuarioSelecionado?.email);
+    this.formConfiguracoes.controls['telefone'].setValue(this.formatarTelefone(this.usuarioSelecionado?.telefone));
+  }
+
+
+  formatarData(dataISO: string): string {
+    const data = new Date(dataISO);
+    const dia = this.padZero(data.getDate());
+    const mes = this.padZero(data.getMonth() + 1); 
+    const ano = data.getFullYear();
+
+    return `${ano}-${mes}-${dia}`;
+  }
+
+  private padZero(num: number): string {
+    return num < 10 ? `0${num}` : `${num}`;
+  }
+
+  
+  formatarTelefone(telefone: string): string {
+    const telefoneLimpo = telefone.replace(/\D/g, '');
+    if (telefoneLimpo.length !== 11) {
+      return telefone;
     }
+    const parte1 = telefoneLimpo.slice(0, 2); 
+    const parte2 = telefoneLimpo.slice(2, 7); 
+    const parte3 = telefoneLimpo.slice(7); 
+    return `(${parte1})${parte2}-${parte3}`;
+  }
+
   }
