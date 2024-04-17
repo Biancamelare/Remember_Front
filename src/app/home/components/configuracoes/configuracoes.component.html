@@ -2,7 +2,7 @@
 <div class="main-configuracoes">
     <header>
         <div class="search-container">
-                <input type="text" class="form-control search-input" placeholder="Pesquisar" aria-label="Recipient's username" aria-describedby="button-addon2" formControlName="pesquisar">
+                <input type="text" class="form-control search-input" placeholder="Pesquisar" aria-label="Recipient's username" aria-describedby="button-addon2" >
                 <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" id="icon" >
                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
                 </svg>
@@ -44,7 +44,7 @@
 
         <div class="conta">
             <h3>Conta</h3>
-            <!-- <form [formGroup]="formConfiguracoes" (ngSubmit)="salvar()"></form> -->
+            <form [formGroup]="formConfiguracoes" >
             <div class="mb-4 input-config">
 
                 <label class="form-label">Nome de Usuário</label>
@@ -70,14 +70,15 @@
                 <label class="form-label">Telefone</label>
                 <input type="text" class="form-control" placeholder="(15)99999-9999" formControlName="telefone">
             </div>
-
+        </form>
+        
             <h3>Configurações</h3>
 
             <div class="mb-4 input-config">
                 <label class="form-label">Alterar tema</label>
             </div>
 
-            <input type="color" formControlName="corPrimaria" class="form-control form-control-color posicao" id="corPrimaria" title="Escolha uma cor" formControlName="tema">
+            <input type="color"  class="form-control form-control-color posicao" id="corPrimaria" title="Escolha uma cor" >
 
             <input class="btnSalvar" type="submit" value="Salvar">
             <!-- (click)="salvar()" -->

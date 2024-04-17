@@ -7,15 +7,14 @@ import { Observable } from 'rxjs';
 })
 export class AuthServiceService {
 
-  private token: string | null = null;
-  private user: any | null = null;
+ token?: string;
+ user: any | null = null;
+
 
   constructor(private http: HttpClient) { }
 
   setToken(token: string) {
     this.token = token;
-    console.log("Entrei")
-    console.log(token)
     this.decodeToken();
   }
 
@@ -29,6 +28,10 @@ export class AuthServiceService {
 
   getUser() {
     return this.user;
+  }
+
+  getToken(){
+    return this.token;
   }
 
   isLoggedIn() {

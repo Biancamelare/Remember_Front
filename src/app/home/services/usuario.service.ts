@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UsuarioLoginModel } from '../models/login.model';
 import { UsuarioModel } from '../models/usuario.model';
@@ -11,8 +11,11 @@ export class UsuarioService {
 
   constructor(private http: HttpClient) { }
 
-  getById(id: number) {
-    return this.http.get<UsuarioModel>(`http://localhost:3000/usuario/${id}`);
+  getById(id: number, token: string) {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<UsuarioModel>(`http://localhost:3000/usuario/${id}`, {headers });
   }
 
   cadastrarUsuario(usuario: UsuarioModel): Observable<any> {

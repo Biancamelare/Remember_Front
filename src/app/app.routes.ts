@@ -22,6 +22,7 @@ export const routes: Routes = [
     {
         path: 'configuracoes',
         component: ConfiguracoesComponent,
+        //canActivate: [AuthGuardService]
     
     },
     {
