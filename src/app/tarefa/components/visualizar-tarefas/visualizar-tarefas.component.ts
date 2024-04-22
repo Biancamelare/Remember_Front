@@ -4,6 +4,7 @@ import { UsuarioModel } from '../../../home/models/usuario.model';
 import { DOCUMENT } from '@angular/common';
 import { AuthServiceService } from '../../../shared/services/auth-service.service';
 import { UsuarioService } from '../../../home/services/usuario.service';
+import { FuncoesService } from '../../../shared/services/funcoes.service';
 
 @Component({
   selector: 'app-visualizar-tarefas',
@@ -16,11 +17,14 @@ export class VisualizarTarefasComponent {
   currentUser: any;
   currentUserId : any;
   usuarioSelecionado = {} as UsuarioModel;
+  nome?: string;
+
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private authService: AuthServiceService,
-    private usuarioSerive : UsuarioService) {
+    private usuarioSerive : UsuarioService,
+    private funcoesService: FuncoesService) {
   
       const localStorage = document.defaultView?.localStorage;
       if(localStorage){
@@ -39,6 +43,7 @@ export class VisualizarTarefasComponent {
         this.usuarioSerive.getById(this.currentUserId,this.currentUser).subscribe( 
           (usuario : UsuarioModel) => {
             this.usuarioSelecionado = usuario;
+            this.nome = this.funcoesService.formatarNomeCompleto(this.usuarioSelecionado.nome)
         })
     }
 
