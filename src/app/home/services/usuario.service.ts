@@ -24,7 +24,7 @@ export class UsuarioService {
 
   login(usuario: UsuarioLoginModel) {
 
-    return this.http.post(`http://localhost:3000/auth/login`, { email: usuario.email, password: usuario.senha })
+    return this.http.post(`https://rememberapi.onrender.com/auth/login`, { email: usuario.email, password: usuario.senha })
 
   }
 
