@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { SidenavComponent } from '../../../shared/components/sidenav/sidenav.component';
 import { AuthServiceService } from '../../../shared/services/auth-service.service';
 import { DOCUMENT } from '@angular/common';
@@ -15,7 +15,7 @@ import { UsuarioModel } from '../../models/usuario.model';
   styleUrl: './configuracoes.component.css'
 })
 
-export class ConfiguracoesComponent {
+export class ConfiguracoesComponent implements OnInit {
   currentUser: any;
   currentUserId : any;
   formConfiguracoes: FormGroup;
