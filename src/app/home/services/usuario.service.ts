@@ -15,16 +15,16 @@ export class UsuarioService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
-    return this.http.get<UsuarioModel>(`http://localhost:3000/usuario/${id}`, {headers });
+    return this.http.get<UsuarioModel>(`https://rememberapi.onrender.com/usuario/${id}`, {headers });
   }
 
   cadastrarUsuario(usuario: UsuarioModel): Observable<any> {
-    return this.http.post(`http://localhost:3000/usuario`, usuario);
+    return this.http.post(`https://rememberapi.onrender.com/usuario`, usuario);
   }
 
   login(usuario: UsuarioLoginModel) {
 
-    return this.http.post(`http://localhost:3000/auth/login`, { email: usuario.email, password: usuario.senha })
+    return this.http.post(`https://rememberapi.onrender.com/auth/login`, { email: usuario.email, password: usuario.senha })
 
   }
 

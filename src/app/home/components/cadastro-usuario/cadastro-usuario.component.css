@@ -230,6 +230,11 @@ div.alerta.alert.alert-danger {
         left: 20%;
         transition: 0.8s;
     }
+
+    .box-voltar {
+        width: 0;
+    }
+
 }    
 
 @media screen and (max-width: 767px){
@@ -281,6 +286,9 @@ div.alerta.alert.alert-danger {
         padding-top: 20px;
         padding-bottom: 10px;
         transition: 0.8s;
+        justify-content: center;
+        align-content: center;
+        margin: 0;
     }
 
     /* .box-voltar {

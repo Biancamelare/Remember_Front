@@ -22,7 +22,7 @@ export const routes: Routes = [
     {
         path: 'configuracoes',
         component: ConfiguracoesComponent,
-        //canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService]
     
     },
     {
@@ -39,11 +39,13 @@ export const routes: Routes = [
     },
     {
         path: 'home',
-        component: HomeComponent
+        component: HomeComponent,
+        canActivate: [AuthGuardService]
     },
     {
         path: 'visualizar-tarefas',
-        component: VisualizarTarefasComponent
+        component: VisualizarTarefasComponent,
+        canActivate: [AuthGuardService]
     },
     {
         path: 'modal',
