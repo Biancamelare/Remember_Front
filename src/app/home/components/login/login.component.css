@@ -2,18 +2,19 @@ body {
     margin: 0px;
     display: flex;
     min-height: 100vh;
+    
 }
 
 .main-login {
     width: 100vw;
     height: 100vh;
     display: flex;
+    width: 100%;
 }
 
 .alert-container { 
     z-index: 2;
     position: relative;
-
 }
 
 .left-login {
@@ -21,6 +22,8 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    width: 50%;
+    flex:1;
 }
 
 .img-login {
@@ -30,7 +33,7 @@ body {
 .right-login {
     width: 50%;
     position: relative;
-    z-index: 0;
+    flex:1;
 }
 
 .right-login img {
@@ -54,7 +57,7 @@ body {
 .center-login form {
     display: flex;
     justify-content: center;
-    
+    width: 100%;
 }
 
 .form-login {
@@ -93,14 +96,15 @@ body {
 }
 
 .footer-login {
-    margin-top: auto; 
+    width: 100%; 
+    bottom: 0;
+    margin-top: 20px; 
     display: flex;
     align-items: center;
     justify-content: center;  
-    position: absolute;
-    padding-bottom: 45px;
-    bottom: 0;
-    width: 100%; 
+    position: absolute; 
+    padding-bottom: 20px; 
+   
 }
 
 .btnCriar {
@@ -209,11 +213,10 @@ img {
         margin: 0;
         display: flex;
         justify-content: center;
-        
     }
     
     .form-login {
-        width: 75%;
+        width: 500px;
         
     }
 
@@ -228,8 +231,8 @@ img {
     }
 
     .email #icon {
-        left: -12px;
-    }
+         right: 1px;
+    } 
 
     .mb-5.senha {
         display: flex;
@@ -238,12 +241,12 @@ img {
 
     .mb-5.senha a{
         white-space: nowrap;
-        right: 25px;
+        right:2px;
         position: relative;
     }
 
     .senha #icon {
-        left: -12px;
+        right: 1px;
     }
 
     .btnEntrar {
@@ -252,14 +255,57 @@ img {
     }
 
     .form-label {
-        right: 25px;
+        right: 2px;
         position: relative;
     }
 }
 
-@media screen and (min-width: 420px) and (max-width: 480px){
+@media screen and (max-width: 550px){
+    .form-login {
+        width: 400px;
+    }
+
+    .form-label {
+        right: 50px;
+    }
+
+    .mb-5.senha a {
+        white-space: nowrap;
+        right: 50px;
+    }
+
+    .email #icon {
+        left: -33px;
+    }
+
+    .senha #icon {
+        left: -33px;
+    }
+
+}
+
+@media screen and (min-width: 421px) and (max-width: 480px){
+
+
+
+    body{
+        overflow: hidden;
+    }
+        
     .form-login {
         width: 60%;
+    }
+
+    .center-login {
+        width: 100%;
+    }
+
+    .left-login {
+        width: 0;
+    }
+
+    .right-login {
+        width: 100%;
     }
 
     .btnEntrar {
@@ -299,14 +345,32 @@ img {
 
 }
 
-@media screen and (min-width: 350px) and (max-width: 420px){
-    body{
-        overflow-x: hidden ;
+@media screen and (min-width: 320px) and (max-width: 420px){
+
+    .center-login form {
+        width: 100%;
+    }
+    
+    .left-login {
+        width: 0;
+    }
+
+    .right-login {
+        width: 100%;
+        flex: auto;
+    }
+
+    .right-login img {
+        right: 0;
+        margin-top: 60px;
+        margin: 0 auto;
+        position: relative;
     }
 
     .form-login {
-        width: 50%;
+        width: 320px;
     }
+
 
     .btnEntrar {
         padding-left: 100px;
@@ -314,7 +378,7 @@ img {
     }
 
     .form-control {
-        width: 250px;
+        width: 272px;
     }
 
     .mb-5.senha a{
@@ -328,6 +392,7 @@ img {
         display: flex;
         justify-content: center;
         margin-bottom: 20px;
+
     }
 
     .email #icon {
@@ -336,6 +401,7 @@ img {
 
     .senha #icon {
         left: -60px;
+        display: inline-flex
     }
 
     .form-label {
@@ -355,10 +421,85 @@ img {
         font-size: 14px;
         margin-left: 15px;
     }
-    
 }
 
-@media screen and (max-height: 600px){
+@media screen and (max-width: 350px){
+
+    .right-login img { 
+        width: 80px;
+        height: auto;    
+        padding-bottom: 20px;
+        position: relative;
+    }
+
+    .form-control::placeholder {
+        font-size: 15px;
+        padding-left: 10px;
+    }
+
+    .form-login {
+        width: 90%;
+        margin-bottom: 20px;
+        margin-top: 30px;
+        height: 80%;
+        position: relative;
+        top: 15px;
+    } 
+
+    .btnEntrar {
+        padding-left: 100px;
+        padding-right: 100px;
+        bottom: 25px;
+        position: relative;
+    }
+
+    .form-control {
+        width: 250px;
+    }
+
+    .mb-5.senha a{
+        right: 82px;
+    }
+
+    .form-login h1 {
+        margin-bottom: 10px;
+        font-size: 22px;
+    }
+
+    .email #icon {
+        left: -60px;
+    }
+
+    .senha #icon {
+        left: -60px;
+    }
+
+    .form-label {
+        right: 82px;
+        white-space: nowrap;
+    }
+
+    .footer-login p {
+        font-size: 14px;
+    }
+
+    .footer-login a {
+        font-size: 14px;
+        margin-left: 15px;
+    }
+
+    .btnCriar {
+        width: 120px;
+    }
+
+    .footer-login {
+        padding-bottom: 40px;
+    }
+
+
+}
+
+/* @media screen and (max-height: 600px){
     .form-login {
         width: 40%;
     }
@@ -382,4 +523,4 @@ img {
 
     }
 
-}
+} */

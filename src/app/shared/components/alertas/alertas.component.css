@@ -1,10 +1,18 @@
 .alerta{
+  display: flex;
   align-self: flex-start;
+  position: absolute;
   margin-bottom: auto;
   z-index: 2;
+  width: 70%;
+  margin-top: 50px;
+  justify-content: center;
+  left: 15% 
 }
- 
+
 .alerta span{
   display: flex;
   justify-content: center;
 }
+
+
