@@ -1,4 +1,5 @@
 body {
+    width: 100vw;
     margin: 0px;
     display: flex;
     min-height: 100vh;
@@ -51,7 +52,7 @@ div.input-config input{
 }
 
 .conta {
-    width: 100%;
+    width: 60%;
     max-height: 100vh;
     max-width: 700px;
     padding: 25px 120px;
@@ -60,8 +61,9 @@ div.input-config input{
 
 .perfil {
     display: flex;
-    align-items:end;
+    align-items: center;
 }
+
 
 .perfil .icon-user {
     border: none;
@@ -73,10 +75,9 @@ div.input-config input{
     display: flex;
     transform: translateY(-70%);
     margin-left: auto;
-    
 }
-
 .center {
+    width: 100%;
     padding: 2% 25%;
     position: absolute;
 }
@@ -102,13 +103,14 @@ aside {
 .aside-content {
     flex-direction: column;
     position: relative;/* Ajuste conforme necessário */
-    padding: 10px 20px;
+    padding: 5px 10px;
     border-radius: 10px;
     border: solid 1px var(--shadown-color);
     box-shadow: 0px 2px 6px var(--shadown-color);
-    width: 250px; /* Largura desejada */
-    height: 200px; /* Altura desejada */
+    width: 300px; /* Largura desejada */
+    height: 250px; /* Altura desejada */
     align-self: flex-end; /* Alinha o aside à direita */
+    font-size: 14px;
 }
 
 .icon-user {
@@ -169,9 +171,10 @@ aside {
 }
 
 .btnSalvar{
-    margin-top: 20%;
+    margin-top: 5%;
+    margin-bottom: 20%;
     text-align: center;
-    width: 130px;
+    width: 100px;
     padding: 5px 5px;
     background-color: var(--quaternary-color);
     border-radius: 20px;
@@ -181,8 +184,18 @@ aside {
 }
 
 
+.editar {
+    padding-left: 30%;
+}
 
-
-
-
+#btnEditar {
+    text-align: center;
+    width: 100px;
+    padding: 5px 5px;
+    background-color: var(--quaternary-color);
+    border-radius: 20px;
+    color: var(--secondary-color);
+    border: none;
+    box-shadow: 0px 2px 4px var(--shadown-color);
+}
 

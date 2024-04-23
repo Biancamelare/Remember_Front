@@ -1,0 +1,47 @@
+.modal-dialog{
+    max-width: 60%;
+    border: 10rem solid  var(--modal-color);
+}
+
+.modal-content{
+    background: linear-gradient(120deg, var(--gradient1-color) 40%, var(--gradient2-color));
+    border:none;
+    border-radius: 20px;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+h1 {
+    color: var(--secondary-color);
+}
+
+.modal-body {
+    background-color: var(--secondary-color);
+    border-radius: 20px;
+}
+
+form {
+    border-radius: 20px;
+}
+
+.modal {
+    padding: 5%;
+}
+
+.modal-footer {
+    padding: 3%;
+    border-top: none;
+}
+
+.modal-header{
+    border-bottom: none;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+.flip-horizontal {
+    transform: scaleX(-1);
+}
+
