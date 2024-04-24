@@ -1,0 +1,157 @@
+body {
+    margin: 0px;
+    display: flex;
+    min-height: 100vh;
+}
+
+.main-vizualizar {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 100vw;
+}
+
+header {
+    padding-top: 1%;
+    padding-bottom: 1%;
+    display: flex;
+    justify-content: center; 
+}
+.main-center {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+header .search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    width: 40vw;
+}
+
+.search-input {
+    padding-right: 35px; 
+    height: 45px;
+    background-color: var(--quaternary-color);
+    border-radius: 14px;
+}
+
+#icon {
+    position: absolute;
+    top: 35px;
+    right: 20px;
+    transform: translateY(-50%);
+    fill: var(--secondary-color); 
+}
+
+.search-input::placeholder{
+    color: var(--secondary-color);
+    font-weight: 600;
+    font-size: 20px;
+    padding-left: 20px;
+}
+
+.icon-user {
+    margin-left: 30px;
+    padding: 8px 0px 0px 14px;
+    width: 70px;
+    height: 70px;
+    border-radius: 100px;
+    background-color: var(--user-color);
+    box-shadow: 0px 2px 6px var(--shadown-color);
+}
+
+.dropdown {
+    padding: 12px;
+}
+
+.dropbtn {
+    background-color: var(--secondary-color);
+    color: var(--font-color);
+    font-weight: 500;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    padding:20px 0px 5px 10px;
+    display: none;
+    position: absolute;
+    background-color: var(--quaternary-color);
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px var(--shadown-color);
+    z-index: 1;
+    border-radius: 20px;
+}
+
+.dropdown-content a {
+    color: var(--font-color);
+    padding: 10px 10px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    font-weight: 600;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.boasVindas input {
+    border: none;
+}
+
+.boasVindas input::placeholder {
+    color: var(--font-color);
+    font-weight: 700;
+}
+
+.boasVindas {
+    flex-direction: column;
+    display: flex;
+    margin-top: 4%;
+    width: 50%;
+    
+}
+
+.boasVindas h2 {
+    color: var(--font-color);
+    font-weight: 700;
+}
+
+.porcentagem-tarefas {
+    width: 30%;
+    height:200px; 
+    background-color: var(--quaternary-color);
+    margin-top: 2%;
+    border-radius: 20px;
+}
+
+th {
+    background-color: var(--quaternary-color); 
+    color: var(--font-color);
+}
+
+table {
+    border: solid 1px  var(--quaternary-color);
+    width: 15%;
+    margin-top: 3%;
+}
+
+.qtde {
+    display: flex;
+    width: 100%;
+    padding-left: 7%;
+    justify-content: space-evenly;
+}
+
+
+

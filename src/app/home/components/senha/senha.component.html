@@ -1,0 +1,26 @@
+<div class="main-senha">
+
+    <div class="left-senha">
+        <img src="/assets/cadastrarImg.png" alt="Imagem padão" >    
+    </div>
+    
+    <div class="right-senha">
+        <img src="assets/logoRemember.png" alt="logo do site" width="100px" height="80px">  
+        <form>
+             <!-- [formGroup]="formSenha" (ngSubmit)="salvar()"     -->
+        <h2>Redefinir Senha</h2>
+        <p class="texto">Preencha o dado abaixo para solicitar a recuperação de senha.</p>
+
+        <div class="mb-4 email">
+            <label class="form-label">E-mail</label>
+            <input type="password" class="form-control" placeholder="Digite seu e-mail" formControlName="email">
+        </div>
+        <p id="info">Você irá receber um e-mail no endereço informado acima contendo o procedimento para criar uma nova senha para esse usuário</p>
+        <div class="enviar">
+            <input class="btnEnviar" type="submit" value="Enviar">
+        </div>
+        <!-- (click)="salvar()" -->
+        </form>
+    </div> 
+</div>
+

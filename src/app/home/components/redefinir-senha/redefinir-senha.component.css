@@ -1,0 +1,239 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.main-redefinir {
+    margin:auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.left-redefinir img {
+    height: auto; 
+    max-width: 100%;
+    object-fit: contain;
+}
+
+.left-redefinir {
+    width: 100%;
+    height: 100%; 
+    background-color: var(--tertiary-color); 
+    height: 100vh;
+    display: flex;
+}
+
+.right-redefinir {
+    position: absolute;
+    top: 0; 
+    right: 0; 
+    width: 50%; 
+    padding: 1% 12% 1% 12%;
+    background-color: var(--secondary-color);
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.right-redefinir img{
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    border-radius: 5px;
+}
+
+.right-redefinir h2 {
+    font-weight:700;
+    text-align: center;
+}
+
+.right-redefinir p {
+    padding-bottom: 5%;
+    justify-content: center;
+    text-align: center;
+}
+
+.redefinir {
+    margin-top: 15%;
+    bottom: 10px;
+    right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items:center
+}
+
+.btnRedefinir{
+    text-align: center;
+    width: 380px; 
+    font-size: 18px; 
+    padding: 10px 30px; 
+    background-color: var(--primary-color);
+    border-radius: 15px;
+    color:var(--secondary-color);
+    border: none;
+    box-shadow: 0px 2px 4px var(--shadown-color); 
+}
+
+.form-control {
+    border-radius: 15px;
+    background-color: var(--input-color);
+}
+
+.form-label {
+    font-weight:500;
+}
+
+
+@media screen and (max-width: 1400px){
+    .left-redefinir img {
+        width: 70%; 
+        height: auto; 
+        object-fit: cover; 
+    }
+}
+
+ @media screen and (max-width: 1200px){
+    .left-redefinir img {
+        width: 69%;
+    }
+}  
+
+@media screen and (max-width: 1150px){
+    .left-redefinir img {
+        width: 68%;
+    }
+}  
+
+@media screen and (max-width: 1100px){
+    
+    .right-redefinir {
+        width: 100%; 
+        align-items: normal;
+        
+    } 
+
+    .btnRedefinir{
+        width: 50%; 
+        font-size: 20px;
+        font-weight: 600; 
+        height: 65px;
+        padding-top: 0; 
+        border-radius: 10px;    
+        bottom: 20%;
+        position: relative;
+    }
+    
+    .form-control {
+        border-radius: 10px;
+        width: 50%; 
+        height: 45px;
+        margin: auto;
+        justify-content: center; 
+        background-color: var(--input-color);
+    }
+    
+    .right-redefinir img {
+        width: 120px;
+        height: auto;
+        position: static;
+        padding-top: 20px;
+        padding-bottom: 30px;
+        align-self: center;
+    }
+    
+    .form-label {
+        margin: auto;
+        left: 25%;
+        position: relative;
+        margin-top: 5px;
+    }
+    
+    .right-redefinir {
+        flex-direction: column;
+    }
+
+    .redefinir {
+        padding-bottom: 20px;
+    }
+
+}  
+
+@media screen and (max-width: 950px){
+
+    .btnRedefinir{
+        width: 50%; 
+    }
+    
+    .form-control {
+        width: 50%; 
+    }
+
+    .form-label {
+        left: 25%;
+    }
+
+}    
+
+@media screen and (max-width: 850px){
+
+    .btnRedefinir{
+        width: 60%; 
+    }
+    
+    .form-control {
+        width: 60%; 
+    }
+
+    .form-label {
+        left: 20%;
+    }
+}    
+
+@media screen and (max-width: 767px){
+
+    .btnRedefinir{
+        width: 70%; 
+
+    }
+    
+    .form-control {
+        width: 70%; 
+    }
+
+    .form-label {
+        left: 15%;
+    }
+
+}    
+
+@media screen and (min-width: 320px) and (max-width: 480px){
+
+    .btnRedefinir{
+        width: 100%; 
+        height: 40px;
+        font-size: 18px;
+        border-radius: 7px;
+    }
+    
+    .form-control {
+        width: 100%; 
+        height: 40px;
+        border-radius: 7px;
+        font-size: 15px;
+    }
+
+    .form-label {
+        left: 0;
+        margin: 0;
+        font-size: 15px;
+    }
+
+    .right-redefinir img {
+        width: 80px;
+        padding-top: 20px;
+        padding-bottom: 10px;
+    }
+}    

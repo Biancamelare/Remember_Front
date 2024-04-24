@@ -1,0 +1,30 @@
+<div class="main-redefinir">
+
+    <div class="left-redefinir">
+        <img src="/assets/cadastrarImg.png" alt="Imagem padão" >    
+    </div>
+    
+    <div class="right-redefinir">
+        <img src="assets/logoRemember.png" alt="logo do site" width="100px" height="80px">  
+
+        <h2>Redefinir Senha</h2>
+        <p>Informe a nova senha. </p>
+        <form> 
+            <!-- [formGroup]="formRedefinirSenha" (ngSubmit)="salvar()"        -->
+        <div class="mb-4 senha">
+            <label class="form-label">Senha</label>
+            <input type="password" class="form-control" placeholder="Digite sua senha" formControlName="novaSenha">
+        </div>
+
+        <div class="mb-4 senha">
+            <label class="form-label">Confirmar senha</label>
+            <input type="password" class="form-control" placeholder="Confirme sua senha" formControlName="confirmarSenha">
+        </div>
+
+        <div class="redefinir">
+            <input class="btnRedefinir" type="submit" value="Redefinir Senha">
+        </div>
+        <!-- (click)="salvar()" -->
+        </form>
+    </div> 
+</div>

@@ -1,0 +1,47 @@
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" (click)="openModal()" data-bs-target="#exampleModal">
+    Trocar Icon
+</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Visualizar Avatar</h1>
+          <button type="button" class="btn-close" (click)="closeModal()" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form> 
+              <!-- [formGroup]="formModal" -->
+                <div class="icons">
+                    <button class="select">
+                        <div id="icon1">
+                            <img src="assets/Icon-Rogerinho.png" alt="">
+                        </div>
+                        <div class="xp">
+                            100xp
+                        </div>
+                    </button>
+
+                    <button class="select">
+                        <div id="icon2">
+                            <img src="assets/Icon-Rogerinho.png" alt="">
+                        </div>
+                        <div class="xp">
+                            200xp
+                        </div>
+                    </button>
+                   
+                </div>
+            </form>
+
+              <hr>
+
+              <button type="button" class="btn btn-primary botao">Salvar</button>
+              <!-- (click)="salvar()" -->
+        </div>
+        <div class="modal-footer custom-modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+

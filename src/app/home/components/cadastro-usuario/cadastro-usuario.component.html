@@ -1,0 +1,61 @@
+<div class="alert-container">
+    <app-alertas #alertaCadastro></app-alertas>
+</div>
+<div class="main-cadastrar">
+ 
+    <div class="left-cadastrar">
+        <img src="./assets/cadastrarImg.png" alt="Imagem de decoração">
+
+    </div>
+    <div class="box-voltar">
+        <a class="voltar" href="">
+            <img class="voltar-img" src="./assets/voltar_branco.png" alt="Seta de voltar">
+            Login
+        </a>
+    </div>
+    <div class="right-cadastrar">
+   
+        <a href="">
+            <img src="./assets/logoRemember.png" alt="logo do site" width="100px" height="80px">
+        </a>
+        <form [formGroup]="formUsuario" >
+        <div class="mb-1 nome">
+            <label class="form-label">Nome</label>
+            <input type="text" name="nome" class="form-control" placeholder="Digite seu nome" formControlName="nome"  pattern="[a-zA-Z].{0,}" [ngClass]="mostrarCSS('nome')">
+        </div>
+
+        <div class="mb-1 email">
+            <label class="form-label">E-mail</label>
+            <input type="email" class="form-control" placeholder="Digite seu e-mail" formControlName="email" [ngClass]="mostrarCSS('email')">
+        </div>
+
+        <div class="mb-1 dataNasc">
+            <label class="form-label">Data de nascimento</label>
+            <input type="date" class="form-control" placeholder="Digite sua data de nascimento" formControlName="data_nasc" [ngClass]="mostrarCSS('data_nasc')">
+        </div>
+
+        <div class="mb-1 telefone">
+            <label class="form-label">Telefone</label>
+            <input type="text" class="form-control" placeholder="Digite seu telefone"
+            formControlName="telefone" (input)="formatarTelefone($event)" pattern=".{9,}" [ngClass]="mostrarCSS('telefone')">
+        </div>
+
+        <div class="mb-1 senha">
+            <label class="form-label">Senha</label>
+            <input type="password" class="form-control" placeholder="Digite sua senha" formControlName="senha" [ngClass]="mostrarCSS('senha')" minlength="5">
+        </div>
+
+        <div class="mb-1 senha">
+            <label class="form-label">Confirmar senha</label>
+            <input type="password" class="form-control" placeholder="Confirme sua senha" formControlName="senhaconfirmada" [ngClass]="mostrarCSS('senhaconfirmada')" minlength="5">
+        </div>
+        
+        <div class="cadastrar">
+            <input class="btnCadastrar" type="submit" value="Cadastrar" (click)="salvar()">
+        </div>
+      
+    </form>
+    
+    
+    </div> 
+</div>

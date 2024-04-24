@@ -1,0 +1,201 @@
+body {
+    width: 100vw;
+    margin: 0px;
+    display: flex;
+    min-height: 100vh;
+}
+
+header {
+    padding-top: 1%;
+    padding-bottom: 1%;
+    display: flex;
+    justify-content: center; 
+}
+
+header .search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    width: 40vw;
+}
+
+.search-input {
+    padding-right: 35px; 
+    height: 45px;
+    background-color: var(--quaternary-color);
+    border-radius: 14px;
+}
+
+#icon {
+    position: absolute;
+    top: 35px;
+    right: 20px;
+    transform: translateY(-50%);
+    fill: var(--secondary-color); 
+}
+
+.search-input::placeholder{
+    color: var(--secondary-color);
+    font-weight: 600;
+    font-size: 20px;
+    padding-left: 20px;
+}
+
+div.input-config input{
+    padding: 5px;
+    width: 250%;
+    color: #000000;
+    border: 0;
+    border-radius: 0;
+    border-bottom: 2px solid rgb(200,200,200);
+}
+
+.conta {
+    width: 60%;
+    max-height: 100vh;
+    max-width: 700px;
+    padding: 25px 120px;
+    font-weight: 600;
+}
+
+.perfil {
+    display: flex;
+    align-items: center;
+}
+
+
+.perfil .icon-user {
+    border: none;
+    padding: 7px;
+    margin-right: 20px;
+}
+
+.bi-pencil{
+    display: flex;
+    transform: translateY(-70%);
+    margin-left: auto;
+}
+.center {
+    width: 100%;
+    padding: 2% 25%;
+    position: absolute;
+}
+
+.center h2 {
+    font-weight: 700;
+    color: var(--font-color);
+}
+
+.center h3 {
+    padding: 2% 0%;
+    font-weight: 700;
+    color: var(--font-color);
+}
+
+aside {
+    display: flex;
+    justify-content: right;
+    align-items: end;
+    padding: 100px;
+}
+
+.aside-content {
+    flex-direction: column;
+    position: relative;/* Ajuste conforme necessário */
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: solid 1px var(--shadown-color);
+    box-shadow: 0px 2px 6px var(--shadown-color);
+    width: 300px; /* Largura desejada */
+    height: 250px; /* Altura desejada */
+    align-self: flex-end; /* Alinha o aside à direita */
+    font-size: 14px;
+}
+
+.icon-user {
+    margin-left: 30px;
+    padding: 8px 0px 0px 14px;
+    width: 70px;
+    height: 70px;
+    border-radius: 100px;
+    background-color: var(--user-color);
+    box-shadow: 0px 2px 6px var(--shadown-color);
+}
+
+.dropdown {
+    padding: 12px;
+}
+
+.dropbtn {
+    background-color: var(--secondary-color);
+    color: var(--font-color);
+    font-weight: 500;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    padding:20px 0px 5px 10px;
+    display: none;
+    position: absolute;
+    background-color: var(--quaternary-color);
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px var(--shadown-color);
+    z-index: 1;
+    border-radius: 20px;
+}
+
+.dropdown-content a {
+    color: var(--font-color);
+    padding: 10px 10px;
+    text-decoration: none;
+    display: block;
+}
+
+
+.dropdown-content a:hover {
+    font-weight: 600;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+.position-user {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btnSalvar{
+    margin-top: 5%;
+    margin-bottom: 20%;
+    text-align: center;
+    width: 100px;
+    padding: 5px 5px;
+    background-color: var(--quaternary-color);
+    border-radius: 20px;
+    color: var(--secondary-color);
+    border: none;
+    box-shadow: 0px 2px 4px var(--shadown-color);
+}
+
+
+.editar {
+    padding-left: 30%;
+}
+
+#btnEditar {
+    text-align: center;
+    width: 100px;
+    padding: 5px 5px;
+    background-color: var(--quaternary-color);
+    border-radius: 20px;
+    color: var(--secondary-color);
+    border: none;
+    box-shadow: 0px 2px 4px var(--shadown-color);
+}
+

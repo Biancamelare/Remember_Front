@@ -1,0 +1,526 @@
+body {
+    margin: 0px;
+    display: flex;
+    min-height: 100vh;
+    
+}
+
+.main-login {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    width: 100%;
+}
+
+.alert-container { 
+    z-index: 2;
+    position: relative;
+}
+
+.left-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 50%;
+    flex:1;
+}
+
+.img-login {
+    margin-top: auto;
+}
+
+.right-login {
+    width: 50%;
+    position: relative;
+    flex:1;
+}
+
+.right-login img {
+    display: flex;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    border-radius: 5px;
+}
+
+.center-login {
+    position: absolute;
+    width: 100%;
+    align-self: center;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+}
+
+.center-login form {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.form-login {
+    background-color: var(--tertiary-color);
+    width: 100%;
+    max-width: 600px;
+    padding: 30px 100px;
+    border-radius: 30px;
+    box-sizing: border-box;
+    box-shadow: 0px 2px 4px var(--shadown-color);     
+}
+
+.form-login h1 {
+    font-weight:800;
+    margin-bottom: 30px;
+    text-align: center;
+    white-space: nowrap
+}
+
+.btnEntrar {
+    text-align: center;
+    width: 400px; 
+    font-size: 18px; 
+    padding: 10px 30px; 
+    background-color: var(--primary-color);
+    border-radius: 15px;
+    color:var(--secondary-color);
+    border: none;
+    box-shadow: 0px 2px 4px var(--shadown-color); 
+}
+
+.entrar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-login {
+    width: 100%; 
+    bottom: 0;
+    margin-top: 20px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    position: absolute; 
+    padding-bottom: 20px; 
+   
+}
+
+.btnCriar {
+    margin-top: -15px;
+    text-align: center;
+    text-decoration: none;
+    width: 130px; 
+    padding: 5px 5px; 
+    background-color: var(--primary-color);
+    border-radius: 20px;
+    color: var(--secondary-color);
+    border: none;
+    margin-left: 30px;
+    box-shadow: 0px 2px 4px var(--shadown-color); 
+}
+
+.footer-login p {
+    font-weight: 500;
+}
+
+label {
+    font-weight: 500;
+}
+
+img {
+    max-width: 100%; 
+}
+
+.email {
+    position: relative;
+}
+
+.email #icon {
+    position: absolute;
+    top: 52px;
+    left: 13px;
+    transform: translateY(-50%);
+    fill: var(--icon-color); 
+}
+
+.senha {
+    position: relative;
+}
+
+.senha #icon {
+    position: absolute;
+    top: 51px;
+    left: 13px;
+    transform: translateY(-50%);
+    fill: var(--icon-color); 
+}
+
+.senha a {
+    text-decoration: none;
+}
+
+.form-control {
+    border-radius: 15px;
+    background-color: var(--input-color);
+    padding-left: 0;
+    padding-left: 40px;
+}
+
+.form-control::placeholder {
+    right: 22px;
+    position: relative;
+}
+
+
+
+
+
+@media screen and (max-width: 1200px){
+    .forma img {
+        max-width: 90%;
+        height: 80%;
+    }
+    
+    .img-login img {
+        max-width: 90%;
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 950px){  
+    .img-login img {
+        max-width: 80%;    
+    }
+}
+
+@media screen and (max-width: 800px){
+    .img-login img {
+        max-width: 70%;
+    }
+}
+
+@media screen and (max-width: 800px){
+    .img-login img {
+        max-width: 0;
+    }
+}
+
+@media screen and (max-width: 650px){
+    .center-login {
+        align-self: center;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .form-login {
+        width: 500px;
+        
+    }
+
+    .form-control {
+        width: 300px;
+        align-self: center;
+    }
+
+    .mb-4.email {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .email #icon {
+         right: 1px;
+    } 
+
+    .mb-5.senha {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .mb-5.senha a{
+        white-space: nowrap;
+        right:2px;
+        position: relative;
+    }
+
+    .senha #icon {
+        right: 1px;
+    }
+
+    .btnEntrar {
+        padding-left: 125px;
+        padding-right: 125px;
+    }
+
+    .form-label {
+        right: 2px;
+        position: relative;
+    }
+}
+
+@media screen and (max-width: 550px){
+    .form-login {
+        width: 400px;
+    }
+
+    .form-label {
+        right: 50px;
+    }
+
+    .mb-5.senha a {
+        white-space: nowrap;
+        right: 50px;
+    }
+
+    .email #icon {
+        left: -33px;
+    }
+
+    .senha #icon {
+        left: -33px;
+    }
+
+}
+
+@media screen and (min-width: 421px) and (max-width: 480px){
+
+
+
+    body{
+        overflow: hidden;
+    }
+        
+    .form-login {
+        width: 60%;
+    }
+
+    .center-login {
+        width: 100%;
+    }
+
+    .left-login {
+        width: 0;
+    }
+
+    .right-login {
+        width: 100%;
+    }
+
+    .btnEntrar {
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+
+    .form-control {
+        width: 250px;
+    }
+
+    .mb-5.senha a{
+        white-space: nowrap;
+        right: 40px;
+    }
+
+    .form-login h1 {
+        align-self: center;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .form-label {
+        right: 45px;
+        position: relative;
+    }
+
+    .email #icon {
+        left: -30px;
+    }
+
+    .senha #icon {
+        left: -30px;
+    }
+
+}
+
+@media screen and (min-width: 320px) and (max-width: 420px){
+
+    .center-login form {
+        width: 100%;
+    }
+    
+    .left-login {
+        width: 0;
+    }
+
+    .right-login {
+        width: 100%;
+        flex: auto;
+    }
+
+    .right-login img {
+        right: 0;
+        margin-top: 60px;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    .form-login {
+        width: 320px;
+    }
+
+
+    .btnEntrar {
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+
+    .form-control {
+        width: 272px;
+    }
+
+    .mb-5.senha a{
+        white-space: nowrap;
+        right: 75px;
+    }
+
+    .form-login h1 {
+        align-self: center;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+
+    }
+
+    .email #icon {
+        left: -60px;
+    }
+
+    .senha #icon {
+        left: -60px;
+        display: inline-flex
+    }
+
+    .form-label {
+        right: 75px;
+        position: relative;
+    }
+
+    .forma img {
+        display: none;
+     }
+
+    .footer-login p {
+        font-size: 14px;
+    }
+
+    .footer-login a {
+        font-size: 14px;
+        margin-left: 15px;
+    }
+}
+
+@media screen and (max-width: 350px){
+
+    .right-login img { 
+        width: 80px;
+        height: auto;    
+        padding-bottom: 20px;
+        position: relative;
+    }
+
+    .form-control::placeholder {
+        font-size: 15px;
+        padding-left: 10px;
+    }
+
+    .form-login {
+        width: 90%;
+        margin-bottom: 20px;
+        margin-top: 30px;
+        height: 80%;
+        position: relative;
+        top: 15px;
+    } 
+
+    .btnEntrar {
+        padding-left: 100px;
+        padding-right: 100px;
+        bottom: 25px;
+        position: relative;
+    }
+
+    .form-control {
+        width: 250px;
+    }
+
+    .mb-5.senha a{
+        right: 82px;
+    }
+
+    .form-login h1 {
+        margin-bottom: 10px;
+        font-size: 22px;
+    }
+
+    .email #icon {
+        left: -60px;
+    }
+
+    .senha #icon {
+        left: -60px;
+    }
+
+    .form-label {
+        right: 82px;
+        white-space: nowrap;
+    }
+
+    .footer-login p {
+        font-size: 14px;
+    }
+
+    .footer-login a {
+        font-size: 14px;
+        margin-left: 15px;
+    }
+
+    .btnCriar {
+        width: 120px;
+    }
+
+    .footer-login {
+        padding-bottom: 40px;
+    }
+
+
+}
+
+/* @media screen and (max-height: 600px){
+    .form-login {
+        width: 40%;
+    }
+
+     .forma img {
+        display: none;
+     }
+
+    .btnEntrar {
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+
+    .form-control {
+        width: 250px;
+    }
+
+    .right-login img {
+        width: 20%;
+        height: auto;
+
+    }
+
+} */
