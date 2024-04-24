@@ -125,3 +125,8 @@ label#anexo {
     border-radius: 0;
     box-shadow: none;
 }
+
+.input-erro {
+    border: 2px solid #ff000080; 
+    box-shadow: 0 0 2px rgba(255, 0, 0, 0.3);
+}
