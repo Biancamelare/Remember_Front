@@ -50,7 +50,6 @@ div.input-config input{
     border-radius: 0;
     border-bottom: 2px solid rgb(200,200,200);
 }
-
 .conta {
     width: 60%;
     max-height: 100vh;
@@ -176,26 +175,42 @@ aside {
     text-align: center;
     width: 100px;
     padding: 5px 5px;
-    background-color: var(--quaternary-color);
+    background-color: var(--primary-color);
     border-radius: 20px;
     color: var(--secondary-color);
     border: none;
     box-shadow: 0px 2px 4px var(--shadown-color);
 }
 
+.btnCancelar{
+    margin-left: 5%;
+    margin-top: 5%;
+    margin-bottom: 20%;
+    text-align: center;
+    width: 100px;
+    padding: 5px 5px;
+    border-radius: 20px;
+    color: #fff;
+    border: none;
+    box-shadow: 0px 2px 4px var(--shadown-color);
+}
 
 .editar {
-    padding-left: 30%;
+    display: flex;
+    align-items: center;
+    
 }
 
 #btnEditar {
     text-align: center;
     width: 100px;
     padding: 5px 5px;
-    background-color: var(--quaternary-color);
+    background-color: var(--primary-color);
     border-radius: 20px;
     color: var(--secondary-color);
     border: none;
     box-shadow: 0px 2px 4px var(--shadown-color);
+    margin-left:20%
+
 }
 

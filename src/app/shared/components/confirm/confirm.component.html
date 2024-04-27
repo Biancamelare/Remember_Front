@@ -1,0 +1,5 @@
+<div *ngIf="isConfirmacaoVisible" class="confirmacao alert" #confirmacaoModal>
+    <span>{{ confirmacao.mensagem }}</span>
+    <button (click)="confirmarAcao()" class="btn btn-success">Confirmar</button>
+    <button (click)="cancelarAcao()" class="btn btn-danger">Cancelar</button>
+  </div>

@@ -22,6 +22,13 @@ export class UsuarioService {
     return this.http.post(`https://rememberapi.onrender.com/usuario`, usuario);
   }
 
+  ediatrUsuario(usuario: UsuarioModel, id:number, token: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.put(`https://rememberapi.onrender.com/usuario/${id}`, usuario, {headers });
+  }
+
   login(usuario: UsuarioLoginModel) {
 
     return this.http.post(`https://rememberapi.onrender.com/auth/login`, { email: usuario.email, password: usuario.senha })

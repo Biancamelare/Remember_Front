@@ -1,4 +1,8 @@
 <app-sidenav></app-sidenav>
+<div class="alert-container">
+    <app-alertas #alertaCadastro></app-alertas>
+</div>
+<app-confirm #confirmacaoModal></app-confirm>
 <div class="main-configuracoes">
     <header>
         <div class="search-container">
@@ -40,46 +44,46 @@
            
                 <h2>Meu Perfil</h2> 
 
-                <div class="editar">
-                    <input id="btnEditar" type="submit" value="Editar">
-                    <!-- (click)="editar()" -->
-                </div>
             
-
         </div>
 
         <div class="conta">
-            <h3>Conta</h3>
+            <div class="editar">
+                <h3>Conta</h3>
+                <input id="btnEditar" type="submit" value="Editar" (click)="editar()">
+                
+            </div>
+           
             <form [formGroup]="formConfiguracoes" >
             <div class="mb-4 input-config">
 
                 <label class="form-label">Nome de Usuário</label>
-                <input type="text" class="form-control" placeholder="Rogerinho" formControlName="nome" readonly>
+                <input type="text" class="form-control"  formControlName="nome" >
 
             </div>
 
             <div class="mb-4 input-config">
         
                 <label class="form-label">Data de nascimento</label>
-                <input type="date" class="form-control" placeholder="02 de abril de 1981" formControlName="data_nasc" readonly>
+                <input type="date" class="form-control"  formControlName="data_nasc" >
 
             </div>
             
             <div class="mb-4 input-config">
 
                 <label class="form-label">E-mail</label>
-                <input type="email" class="form-control" placeholder="rogerinho@gmail.com" formControlName="email" readonly>
+                <input type="email" class="form-control"  formControlName="email" >
 
             </div>
 
             <div class="mb-4 input-config">
                 <label class="form-label">Telefone</label>
-                <input type="text" class="form-control" placeholder="(15)99999-9999" formControlName="telefone" readonly>
+                <input type="text" class="form-control"  formControlName="telefone" (input)="formatarTelefone($event)" pattern=".{9,}">
             </div>
 
             
-            <input class="btnSalvar" type="submit" value="Salvar">
-            <!-- (click)="salvar()" -->
+            <input class="btnSalvar" type="submit" value="Salvar" (click)="salvar()" *ngIf="salvarhabilitado">
+            <input class="btnCancelar bg-danger" type="submit" value="Cancelar" (click)="cancelar()" *ngIf="cancelarhabilitado" >
 
         </form>
         
