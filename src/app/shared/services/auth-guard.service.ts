@@ -16,10 +16,10 @@ export class AuthGuardService {
   private usuarioSerive : UsuarioService,
   private router: Router) {
 
-    const localStorage = document.defaultView?.localStorage;
-    if(localStorage){
-      this.currentUser = localStorage.getItem('user_logged.token')
-      this.currentUserId = localStorage.getItem('user_logged.id')
+    const sessionStorage = document.defaultView?.sessionStorage;
+    if(sessionStorage){
+      this.currentUser = sessionStorage.getItem('user_logged.token')
+      this.currentUserId = sessionStorage.getItem('user_logged.id')
       authService.setToken(this.currentUser)
     } 
   }

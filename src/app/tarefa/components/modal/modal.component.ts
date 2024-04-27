@@ -113,6 +113,7 @@ export class ModalComponent implements OnInit {
       this.tarefaService.cadastrarTarefa(this.formTarefa.getRawValue(),this.currentUser).subscribe(
         response => {
           this.alertaService.exibirAlerta('success', 'Tarefa cadastrado com sucesso!');
+          
         },
         error => {
           console.log(this.formTarefa.getRawValue())
@@ -136,6 +137,7 @@ export class ModalComponent implements OnInit {
     const modalDiv = document.getElementById('exampleModal');
     if(modalDiv!= null) {
       modalDiv.style.display = 'none';
+      this.formTarefa.reset();
     }
   }
 

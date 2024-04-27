@@ -76,8 +76,8 @@ mostrarCSS(field: string) {
           const accessToken = response.accesToken ?? ''
           const id = JSON.stringify(response.usuario?.id ?? '')
           this.authService.setToken(accessToken);
-          localStorage.setItem('user_logged.token', accessToken);
-          localStorage.setItem('user_logged.id', id);
+          sessionStorage.setItem('user_logged.token', accessToken);
+          sessionStorage.setItem('user_logged.id', id);
           this.router.navigate(['/visualizar-tarefas']);
         },
         error => {

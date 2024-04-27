@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { DOCUMENT } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -9,9 +10,16 @@ export class AuthServiceService {
 
  token?: string;
  user: any | null = null;
+ currentUser: any;
+ currentUserId : any;
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+  @Inject(DOCUMENT) private document: Document,
+  ) {
+    const sessionStorage = document.defaultView?.sessionStorage;
+
+   }
 
   setToken(token: string) {
     this.token = token;
@@ -37,5 +45,18 @@ export class AuthServiceService {
   isLoggedIn() {
     return !!this.token;
   }
+
+  logout(){
+    if(sessionStorage){
+      this.currentUser = undefined
+      this.currentUserId = undefined
+      this.token = undefined
+      sessionStorage.removeItem('user_logged.token')
+      sessionStorage.removeItem('user_logged.id')
+      sessionStorage.removeItem('user_logged')
+    } 
+  }
+
+ 
 
 }

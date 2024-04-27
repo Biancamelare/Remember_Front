@@ -30,10 +30,10 @@ export class ConfiguracoesComponent implements OnInit {
   private usuarioSerive : UsuarioService,
   private funcoesService: FuncoesService) {
 
-    const localStorage = document.defaultView?.localStorage;
-    if(localStorage){
-      this.currentUser = localStorage.getItem('user_logged.token')
-      this.currentUserId = localStorage.getItem('user_logged.id')
+    const sessionStorage = document.defaultView?.sessionStorage;
+    if(sessionStorage){
+      this.currentUser = sessionStorage.getItem('user_logged.token')
+      this.currentUserId = sessionStorage.getItem('user_logged.id')
       authService.setToken(this.currentUser)
     }
     this.formConfiguracoes = this.formBuilder.group({
@@ -51,20 +51,26 @@ export class ConfiguracoesComponent implements OnInit {
     
   }
 
+
   buscarUsuario(){
-      this.usuarioSerive.getById(this.currentUserId,this.currentUser).subscribe( 
-        (usuario : UsuarioModel) => {
-          this.usuarioSelecionado = usuario;
-          this.nome = this.funcoesService.formatarNomeCompleto(this.usuarioSelecionado.nome)
-          this.preencherformulario();
-      })
-  }
+    this.usuarioSerive.getById(this.currentUserId,this.currentUser).subscribe( 
+      (usuario : UsuarioModel) => {
+        this.usuarioSelecionado = usuario;
+        this.nome = this.funcoesService.formatarNomeCompleto(this.usuarioSelecionado.nome)
+        this.preencherformulario();
+    })
+}
+
 
   preencherformulario(){
     this.formConfiguracoes.controls['nome'].setValue(this.usuarioSelecionado?.nome);
     this.formConfiguracoes.controls['data_nasc'].setValue(this.funcoesService.formatarData(String(this.usuarioSelecionado?.data_nasc)));
     this.formConfiguracoes.controls['email'].setValue(this.usuarioSelecionado?.email);
     this.formConfiguracoes.controls['telefone'].setValue(this.funcoesService.formatarTelefone(this.usuarioSelecionado?.telefone));
+  }
+
+  logout(){
+    this.authService.logout();
   }
 
   }
