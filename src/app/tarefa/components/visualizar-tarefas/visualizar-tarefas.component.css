@@ -18,11 +18,12 @@ header {
     justify-content: center; 
 }
 .main-center {
-    flex: 1;
+    /* flex: 1;
     display: flex;
+    justify-content: space-evenly; 
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: column;  */
 }
 
 header .search-container {
@@ -103,4 +104,80 @@ header .search-container {
 
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+.resultado {
+    display: flex;
+    margin: auto;
+    width: 50vw;
+    height: 7vh;
+    background-color: var(--quaternary-color);
+    border-radius: 4px;
+}
+
+.resultado input {
+    background: none;
+    box-shadow: none;
+}
+
+#info {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#tarefas {
+    padding-top: 2%;
+    width: 50vw;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    
+}
+
+.tarefa {
+    width: 50vw;
+    height: 15vh;
+    background-color: var(--user-color);
+    border-radius: 20px;
+    margin-bottom: 2%;
+    display: flex;
+    align-items: center;
+}
+
+.btn.prioridade {
+    border-radius: 20px;
+    margin-right: 1rem;
+    width: 80px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.btn.prioridade#alta {
+    background-color: var(--btnAlta-color);
+}
+
+.form-check-input{
+    margin: 4% 6%;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+
+.statusPrioridade {
+    padding-left: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.nomeCateg {
+    display: flex;
+    flex-direction: column;
+}
+
+#status {
+    border-radius: 20px;
+    border: none;
+    padding: 2px;
 }

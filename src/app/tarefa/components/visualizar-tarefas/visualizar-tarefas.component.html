@@ -29,9 +29,53 @@
     <app-modal></app-modal>
 
     <div class="main-center">
-       <h2>Lista de Tarefas</h2>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" (click)="openModal()" data-bs-target="#exampleModal">
-        Adicionar Tarefa
-        </button>
+        <div id="info">
+            <h2>Lista de Tarefas</h2>
+            <button type="button" class="btn adicionar" data-bs-toggle="modal" (click)="openModal()" data-bs-target="#exampleModal">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                </svg> Adicionar Tarefa
+            </button>
+        </div>
+
+        <div class="resultado">
+        <!-- resultado do filtro  -->
+        <input type="text" class="form-control" placeholder="Listado por: Data - 23/02/2024 a 23/02/2024" aria-label="Recipient's username" aria-describedby="button-addon2" disabled formControlName="filtrar">
+        </div>
+
+        <div id="tarefas">
+
+            <div class="tarefa">
+
+                <input class="form-check-input" type="checkbox" formControlName="concluido" value="" id="flexCheckDefault">
+
+                <div class="nomeCateg">
+                    <label for="">Abastecer o carro</label>
+                    <label for="">Geral</label>
+                </div>
+                
+                <div id="statusPrioridade">
+                    <select id="status">
+                        <option value="volvo">A fazer</option>
+                        <option value="saab">Em progresso</option>
+                        <option value="mercedes">Concluído</option>
+                    </select>
+                    <label class="btn prioridade" id="alta" for="btn-check">Alta</label>
+                </div>
+            </div>
+            <div class="tarefa">
+                <input class="form-check-input" type="checkbox" formControlName="concluido" value="" id="flexCheckDefault">
+            </div>
+            <div class="tarefa">
+                <input class="form-check-input" type="checkbox" formControlName="concluido" value="" id="flexCheckDefault">
+
+            </div>
+            <div class="tarefa">
+                <input class="form-check-input" type="checkbox" formControlName="concluido" value="" id="flexCheckDefault">
+            </div>
+
+        </div>
+
+
     </div>
 </div>
