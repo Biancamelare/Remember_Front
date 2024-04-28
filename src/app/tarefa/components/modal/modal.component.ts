@@ -31,6 +31,8 @@ export class ModalComponent implements OnInit {
 
   categorias: CategoriaModel[] = [] as CategoriaModel[];
   categoria: CategoriaModel[] = [];
+  hora_conclusao?: string
+  data_conclusao ?: string
 
   constructor(
     private tarefaService: TarefaServiceService,
@@ -41,10 +43,10 @@ export class ModalComponent implements OnInit {
     private usuarioSerive : UsuarioService,
   ) {
 
-    const localStorage = document.defaultView?.localStorage;
-    if(localStorage){
-      this.currentUser = localStorage.getItem('user_logged.token')
-      this.currentUserId = localStorage.getItem('user_logged.id')
+    const sessionStorage = document.defaultView?.sessionStorage;
+    if(sessionStorage){
+      this.currentUser = sessionStorage.getItem('user_logged.token')
+      this.currentUserId = sessionStorage.getItem('user_logged.id')
       authService.setToken(this.currentUser)
     }
 
@@ -55,7 +57,6 @@ export class ModalComponent implements OnInit {
       id_status: [{ value: '2', disabled: false }],
       id_prioridade: [{ value: '1', disabled: false }],
       data_vencimento: [{ value: '', disabled: false },Validators.required],
-      //hora_conclusao: [{ value: '', disabled: false }],
       //anexo: [{ value: '', disabled: false }],
       anotacao: [{ value: '', disabled: false }],
     });
@@ -70,12 +71,10 @@ export class ModalComponent implements OnInit {
     this.formTarefa.get('nome')?.setValue(this.tarefaSelecionado.nome);
     this.formTarefa.get('descricao')?.setValue(this.tarefaSelecionado.descricao);
     this.formTarefa.get('id_categoria')?.setValue(Number(this.tarefaSelecionado.id_categoria));
-    this.formTarefa.get('data_conclusao')?.setValue(this.tarefaSelecionado.data_vencimento);
-   // this.formTarefa.get('hora_conclusao')?.setValue(this.tarefaSelecionado.data_vencimento);
     this.formTarefa.get('anotacao')?.setValue(this.tarefaSelecionado.anotacao);
     this.formTarefa.controls['id_prioridade'].setValue(2);
     this.formTarefa.controls['id_status'].setValue(1);
-       
+   
 }
 
   /*VALIDAÇÕES */
@@ -108,6 +107,14 @@ export class ModalComponent implements OnInit {
   
 
   salvar(): void {
+   const html_dataconclusao = this.document.querySelector('#data_conclusao') as HTMLInputElement
+   const html_horaconclusao = this.document.querySelector('#hora_conclusao') as HTMLInputElement
+
+   this.data_conclusao = html_dataconclusao.value
+   this.hora_conclusao = html_horaconclusao.value
+   const dataHoraConclusao = `${this.data_conclusao}T${this.hora_conclusao}:00.000Z`;
+   this.formTarefa.controls['data_vencimento'].setValue(dataHoraConclusao);
+
     if (this.formTarefa.valid ) {
       console.log(this.formTarefa.getRawValue())
       this.tarefaService.cadastrarTarefa(this.formTarefa.getRawValue(),this.currentUser).subscribe(
