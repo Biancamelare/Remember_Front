@@ -62,21 +62,25 @@ svg {
     transform: scaleX(-1);
 }
 
+.btn-check:checked + .btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check) + .btn:active{
+    border-color: var(--font-color);
+}
+
 .btn.prioridade {
     border-radius: 20px;
     padding: 0.2% 3%;
     margin-right: 1rem;
 }
 
-.btn.prioridade#alta {
+.btn.prioridade#Alta {
     background-color: var(--btnAlta-color);
 }
 
-.btn.prioridade#media {
+.btn.prioridade#Média {
     background-color: var(--btnMedia-color);
 }
 
-.btn.prioridade#baixa {
+.btn.prioridade#Baixa {
     background-color: var(--btnBaixa-color);
 }
 

@@ -10,6 +10,7 @@ import { CategoriaModel } from '../../models/categoria.model';
 import { UsuarioModel } from '../../../home/models/usuario.model';
 import { AuthServiceService } from '../../../shared/services/auth-service.service';
 import { UsuarioService } from '../../../home/services/usuario.service';
+import { PrioridadeModel } from '../../models/prioridade.model';
 
 @Component({
   selector: 'app-modal',
@@ -31,8 +32,14 @@ export class ModalComponent implements OnInit {
 
   categorias: CategoriaModel[] = [] as CategoriaModel[];
   categoria: CategoriaModel[] = [];
+
+  prioridades: PrioridadeModel[] = [] as PrioridadeModel[];
+  prioridade: PrioridadeModel[] = [];
+
   hora_conclusao?: string
   data_conclusao ?: string
+
+  modalTarget: string = '';
 
   constructor(
     private tarefaService: TarefaServiceService,
@@ -55,7 +62,7 @@ export class ModalComponent implements OnInit {
       descricao: [{ value: '', disabled: false }],
       id_categoria: [{ value: '1', disabled: false }, Validators.required],
       id_status: [{ value: '2', disabled: false }],
-      id_prioridade: [{ value: '1', disabled: false }],
+      id_prioridade: [{ value: '', disabled: false },Validators.required],
       data_vencimento: [{ value: '', disabled: false },Validators.required],
       //anexo: [{ value: '', disabled: false }],
       anotacao: [{ value: '', disabled: false }],
@@ -65,15 +72,20 @@ export class ModalComponent implements OnInit {
   ngOnInit(): void {
     
     this.listarCampos();
-
+    this.listarPrioridade()
+   
     this.tarefaSelecionado = {} as TarefaModel;
 
     this.formTarefa.get('nome')?.setValue(this.tarefaSelecionado.nome);
     this.formTarefa.get('descricao')?.setValue(this.tarefaSelecionado.descricao);
     this.formTarefa.get('id_categoria')?.setValue(Number(this.tarefaSelecionado.id_categoria));
     this.formTarefa.get('anotacao')?.setValue(this.tarefaSelecionado.anotacao);
-    this.formTarefa.controls['id_prioridade'].setValue(2);
+    this.formTarefa.get('id_prioridade')?.setValue(Number(this.tarefaSelecionado.id_prioridade));
     this.formTarefa.controls['id_status'].setValue(1);
+
+    if(this.formTarefa.valid){
+      this.modalTarget = 'modal'
+    }
    
 }
 
@@ -102,7 +114,15 @@ export class ModalComponent implements OnInit {
 
   listarCampos(){
     this.tarefaService.getCategorias(this.currentUser).subscribe(
-      (categorias: CategoriaModel[]) => (this.categorias = categorias));
+      (categorias: CategoriaModel[]) => {this.categorias = categorias; console.log(this.categorias)})
+
+    
+  }
+
+  listarPrioridade(){
+    this.tarefaService.getPrioridades(this.currentUser).subscribe(
+      (prioridades: PrioridadeModel[]) => {this.prioridades = prioridades; console.log(this.prioridades)})
+
   }
   
 
@@ -116,11 +136,11 @@ export class ModalComponent implements OnInit {
    this.formTarefa.controls['data_vencimento'].setValue(dataHoraConclusao);
 
     if (this.formTarefa.valid ) {
-      console.log(this.formTarefa.getRawValue())
+      this.modalTarget = 'modal'
       this.tarefaService.cadastrarTarefa(this.formTarefa.getRawValue(),this.currentUser).subscribe(
         response => {
           this.alertaService.exibirAlerta('success', 'Tarefa cadastrado com sucesso!');
-          
+          this.formTarefa.disable()
         },
         error => {
           console.log(this.formTarefa.getRawValue())
