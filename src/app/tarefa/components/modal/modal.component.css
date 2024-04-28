@@ -131,6 +131,11 @@ label#anexo {
 }
 
 .input-erro {
-    border: 2px solid #ff000080; 
+    border: 2px solid #ff000080!important; 
     box-shadow: 0 0 2px rgba(255, 0, 0, 0.3);
+}
+
+#categoria{
+    margin-left:2%;
+    margin-right:2%;
 }

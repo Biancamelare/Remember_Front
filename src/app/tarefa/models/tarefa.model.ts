@@ -6,7 +6,7 @@ export interface TarefaModel {
 	id_prioridade: number,
 	nome: string,
 	descricao: string,
-	anotacao: string,
+	anotacao?: string,
 	data_criacao: Date,
 	data_vencimento: Date,
 	criado_em: Date,

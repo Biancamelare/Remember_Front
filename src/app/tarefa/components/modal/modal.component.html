@@ -6,23 +6,24 @@
     <div class="modal-dialog modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Adicionar Tarefa</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Tarefa</h1>
           <button type="button" class="btn-close" (click)="closeModal()" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
             <form [formGroup]="formTarefa"> 
                 <div class="mb-3 input-linha">
-                  <input type="text" class="form-control" id="name" formControlName="nome" placeholder="Nome da tarefa">
+                  <input type="text" class="form-control" id="name" formControlName="nome" placeholder="Nome da tarefa" [ngClass]="mostrarCSS('nome')">
                 </div>
 
                 <div class="mb-3 linha form-floating">
-                  <textarea name="descricao" class="form-control" id="floatingTextarea" formControlName="descricao"></textarea>
+                  <textarea name="descricao" class="form-control" id="floatingTextarea" formControlName="descricao" [ngClass]="mostrarCSS('descricao')"></textarea>
                   <label for="floatingTextarea">Descrição da tarefa</label>
                 </div>
                   
                 <div class="d-flex mb-3">
                   <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" margin-right="0.5rem" fill="currentColor" class="bi bi-tag-fill flip-horizontal" viewBox="0 0 16 16"><path d="M2 1a1 1 0 0 0-1 1v4.586a1 1 0 0 0 .293.707l7 7a1 1 0 0 0 1.414 0l4.586-4.586a1 1 0 0 0 0-1.414l-7-7A1 1 0 0 0 6.586 1zm4 3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/></svg> 
-                  <select name="categoria" class="form-select campoSelect" formControlName="id_categoria">
+                  <label id="categoria">Categoria</label>
+                  <select name="categoria" class="form-select campoSelect" formControlName="id_categoria" [ngClass]="mostrarCSS('id_categoria')" >
                     <option value="" disabled selected>Selecione uma categoria</option>
                     <ng-container *ngFor="let categoria of categorias">
                       <option [ngValue]="categoria.id">{{categoria.nome }}</option>
@@ -51,8 +52,8 @@
                   <label for="message-text" class="col-form-label"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16"><path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5m.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/></svg>  Prioridade:</label> <br>
       
                  <ng-container *ngFor="let prioridade of prioridades">
-                    <input class="btn-check" type="radio" [id]="prioridade.id" [value]="prioridade.id" class="btn-check" formControlName="id_prioridade" [ngClass]="{'prioridade': true, 'btn': true}" [checked]="prioridade.id === formTarefa.get('id_prioridade')?.value">
-                    <label class="btn prioridade"  [id]="prioridade.nome" [for]="prioridade.id" class="btn prioridade">{{ prioridade.nome }}</label>
+                    <input class="btn-check" type="radio" [id]="prioridade.id" [value]="prioridade.id" class="btn-check" formControlName="id_prioridade" [ngClass]="{'prioridade': true, 'btn': true}" [checked]="prioridade.id === formTarefa.get('id_prioridade')?.value" [ngClass]="mostrarCSS('id_prioridade')">
+                    <label class="btn prioridade"  [id]="prioridade.nome" [for]="prioridade.id" class="btn prioridade" [ngClass]="mostrarCSS('id_prioridade')">{{ prioridade.nome }} </label>
                   </ng-container>
                 </div>
 
@@ -61,10 +62,10 @@
                 <div class="mb-3 row">
                   <label for="message-text" class="col-sm-6 col-form-label"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16"><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/></svg>  Data e hora de conclusão:</label>
                   <div class="col-sm-3">
-                      <input type="date" class="form-control" id="data_conclusao" >
+                      <input type="date" class="form-control" id="data_conclusao" [ngClass]="mostrarCSS('data_conclusao')" >
                   </div>
                   <div class="col-sm-3">
-                      <input type="time" class="form-control" id="hora_conclusao" >
+                      <input type="time" class="form-control" id="hora_conclusao" [ngClass]="mostrarCSS('hora_conclusao')" >
                   </div>
               </div>
               
@@ -83,7 +84,7 @@
                 <div class="mb-3">
                   <label for="message-text" class="col-form-label"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16"><path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>
                   </svg>  Anotações</label>
-                  <textarea class="form-control" id="anotacoes" formControlName="anotacao" placeholder="Adicione anotações"></textarea>
+                  <textarea class="form-control" id="anotacoes" formControlName="anotacao" placeholder="Adicione anotações" [ngClass]="mostrarCSS('anotacao')"></textarea>
                 </div>
               </form>
 

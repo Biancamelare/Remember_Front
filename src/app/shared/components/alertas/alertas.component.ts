@@ -27,7 +27,7 @@ export class AlertasComponent{
     this.isAlertVisible = true;
     setTimeout(() => {
       this.fecharAlerta();
-    }, 5000); 
+    }, 6000); 
   }
 
   fecharAlerta(): void {
