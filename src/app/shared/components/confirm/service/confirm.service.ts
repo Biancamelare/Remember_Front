@@ -19,7 +19,4 @@ export class ConfirmacaoService {
     });
   }
 
-  executarAcaoConfirmada(){
-    return true;
-  }
 }
