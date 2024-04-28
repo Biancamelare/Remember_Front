@@ -22,7 +22,7 @@ export class UsuarioService {
     return this.http.post(`https://rememberapi.onrender.com/usuario`, usuario);
   }
 
-  ediatrUsuario(usuario: UsuarioModel, id:number, token: string): Observable<any> {
+  editarUsuario(usuario: UsuarioModel, id:number, token: string): Observable<any> {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
