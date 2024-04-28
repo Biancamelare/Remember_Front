@@ -70,6 +70,8 @@ export class ModalComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.formTarefa.enable()
     
     this.listarCampos();
     this.listarPrioridade()
