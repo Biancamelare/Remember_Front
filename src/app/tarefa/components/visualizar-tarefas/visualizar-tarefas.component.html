@@ -41,21 +41,21 @@
 
         <div id="tarefas">
             <form>
-                <div class="tarefa">
+                <div class="tarefa" *ngFor="let tarefa of tarefas">
                     <input class="form-check-input" type="checkbox" formControlName="status" id="flexCheckDefault">
 
                     <div class="nomeCateg">
-                        <label id="nome">Abastecer o carro</label>
-                        <label id="nomeCateg">Geral</label>
+                        <label id="nome">{{tarefa.nome}}</label>
+                        <label id="nomeCateg">{{tarefa.id_categoria}}</label>
                     </div>
                     
                     <div id="statusPrioridade">
                         <select name="status" id="status" formControlName="status">
-                            <option value="aFazer">A fazer</option>
+                            <option value="aFazer">{{tarefa.id_status}}</option>
                             <option value="emProgresso">Em progresso</option>
                             <option value="concluida">Concluída</option>
                         </select>
-                        <label class="prioridade" id="alta">Alta</label>
+                        <label class="prioridade" id="alta">{{tarefa.id_prioridade}}</label>
                     </div>
                 </div>
             </form>

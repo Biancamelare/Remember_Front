@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { SidenavComponent } from '../../../shared/components/sidenav/sidenav.component';
 import { AuthServiceService } from '../../../shared/services/auth-service.service';
 import { CommonModule, DOCUMENT } from '@angular/common';
@@ -23,7 +23,8 @@ import { ConfirmComponent } from '../../../shared/components/confirm/confirm.com
 export class ConfiguracoesComponent implements OnInit {
 
   @ViewChild('alertaCadastro', { static: false }) alertaCadastro!: AlertasComponent;
-  @ViewChild('confirmacaoModel', { static: false }) confirmacaoModal!: ConfirmComponent;
+  @ViewChild('confirmModal', { static: false }) confirmModal!: ConfirmComponent;
+
   currentUser: any;
   currentUserId : any;
   formConfiguracoes: FormGroup;
@@ -31,6 +32,7 @@ export class ConfiguracoesComponent implements OnInit {
   nome?: string;
   salvarhabilitado: boolean = false;
   cancelarhabilitado: boolean = false;
+  modalTarget:string = '';
 
   constructor(
   @Inject(DOCUMENT) private document: Document,
@@ -48,10 +50,10 @@ export class ConfiguracoesComponent implements OnInit {
       authService.setToken(this.currentUser)
     }
     this.formConfiguracoes = this.formBuilder.group({
-      nome: [{ value: '', disabled: true }],
-      email: [{ value: '', disabled: true }, [Validators.email]],
-      data_nasc: [{ value: '', disabled: true }],
-      telefone: [{ value: '', disabled: true }],
+      nome: [{ value: '', disabled: true }, [Validators.required]],
+      email: [{ value: '', disabled: true }, [Validators.email,Validators.required]],
+      data_nasc: [{ value: '', disabled: true }, [Validators.required]],
+      telefone: [{ value: '', disabled: true }, [Validators.required]],
     });
   }
 
@@ -59,7 +61,6 @@ export class ConfiguracoesComponent implements OnInit {
   ngOnInit(): void {
    console.log(this.currentUser)
    this.buscarUsuario();
-    
   }
 
 
@@ -104,20 +105,32 @@ export class ConfiguracoesComponent implements OnInit {
     this.formConfiguracoes.get('nome')?.setValue(this.usuarioSelecionado.nome);
     this.formConfiguracoes.get('data_nasc')?.setValue(this.funcoesService.formatarData(String(this.usuarioSelecionado?.data_nasc)));
     if (this.formConfiguracoes.valid ) {
-      const resposta = await this.confirmacaoService.exibirConfirmacao('Deseja realmente salvar?');
-      console.log(resposta)
+      const resposta = await this.confirmacaoService.exibirConfirmacao('Deseja realmente alterar?');
       if(resposta){
-        this.usuarioSerive.ediatrUsuario(this.formConfiguracoes.getRawValue(), this.currentUserId, this.currentUser).subscribe(
+        this.usuarioSerive.editarUsuario(this.formConfiguracoes.getRawValue(), this.currentUserId, this.currentUser).subscribe(
           response => {
             this.alertaService.exibirAlerta('success', 'Usuário editado com sucesso!');
+            this.salvarhabilitado = false
+            this.cancelarhabilitado = false
+            this.formConfiguracoes.disable();
+            this.preencherformulario()
           },
           error => {
-            this.alertaService.exibirAlerta('danger','Erro ao editar o usuário: ' + error.error.message); // Exibe a mensagem de erro da API
+            this.alertaService.exibirAlerta('danger','Erro ao editar o usuário: ' + error.error.message); 
+            this.salvarhabilitado = false
+            this.cancelarhabilitado = false
+            this.formConfiguracoes.disable();
+            this.preencherformulario()
           })
+      }else{
+        this.salvarhabilitado = false
+        this.cancelarhabilitado = false
+        this.formConfiguracoes.disable();
+        this.preencherformulario()
       }
     } else {
       this.validarTodosCampos(this.formConfiguracoes);
-        this.alertaService.exibirAlerta('danger', 'Preencha todos os campos corretamente.');
+      this.alertaService.exibirAlerta('danger', 'Preencha todos os campos corretamente.');
     }
   }
 

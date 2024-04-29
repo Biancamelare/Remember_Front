@@ -94,6 +94,39 @@ body {
     font-weight:500;
 }
 
+
+.box-voltar {
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 100px;
+    height: 47px;
+    background-color: var(--primary-color);
+    position: absolute;
+    border-radius: 15px;
+    align-content: center;
+    z-index: 2;
+    box-shadow: 0px 2px 4px var(--shadown-color);
+    left: 0;
+    top:0;
+    
+}
+
+.voltar {
+    font-size: 20px;
+    margin: 0 auto;
+    display: flex;
+    margin-left: 2px;
+    text-decoration: none;
+    color: var(--secondary-color);
+    line-height: 35px;
+}
+
+.voltar-img {
+    width: 36px;
+    height: 36px;
+}
+
+
 @media screen and (max-width: 1400px){
     .left-senha img {
         width: 70%; 
@@ -128,11 +161,12 @@ body {
         width: 50%; 
         font-size: 20px;
         font-weight: 600; 
-        height: 55px;
+        height: 50px;
         padding-top: 0; 
         border-radius: 10px;    
         bottom: 20%;
         position: relative;
+        line-height: 50px;
     }
     
     .form-control {
@@ -176,6 +210,24 @@ body {
 
     .email {
         padding-bottom: 20px;
+    }
+
+    .voltar {
+        font-size: 16px;
+        line-height: 35px;
+    }
+    
+    .voltar-img {
+        width: 30px;
+        height: 30px;
+        position: relative;
+        top:2px;
+
+    }
+
+    .box-voltar {
+        width: 85px;
+        height: 40px;
     }
 
 }  
@@ -254,7 +306,7 @@ body {
 @media screen and (min-width: 320px) and (max-width: 480px){
 
     h2 {
-        padding-top: 30px;
+        padding-top: 20px;
     }
 
     .btnEnviar{
@@ -262,6 +314,7 @@ body {
         height: 40px;
         font-size: 18px;
         border-radius: 7px;
+        line-height: 40px;
     }
 
     .texto{ 
@@ -289,8 +342,12 @@ body {
     }
 
     .right-senha img {
-        width: 80px;
-        padding-top: 20px;
+        width: 90px;
+        padding-top: 60px;
         padding-bottom: 10px;
+    }
+
+    .box-voltar {
+        width: 0;
     }
 }    

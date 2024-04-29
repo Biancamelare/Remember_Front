@@ -62,21 +62,25 @@ svg {
     transform: scaleX(-1);
 }
 
+.btn-check:checked + .btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check) + .btn:active{
+    border-color: var(--font-color);
+}
+
 .btn.prioridade {
     border-radius: 20px;
     padding: 0.2% 3%;
     margin-right: 1rem;
 }
 
-.btn.prioridade#alta {
+.btn.prioridade#Alta {
     background-color: var(--btnAlta-color);
 }
 
-.btn.prioridade#media {
+.btn.prioridade#Média {
     background-color: var(--btnMedia-color);
 }
 
-.btn.prioridade#baixa {
+.btn.prioridade#Baixa {
     background-color: var(--btnBaixa-color);
 }
 
@@ -127,6 +131,11 @@ label#anexo {
 }
 
 .input-erro {
-    border: 2px solid #ff000080; 
+    border: 2px solid #ff000080!important; 
     box-shadow: 0 0 2px rgba(255, 0, 0, 0.3);
+}
+
+#categoria{
+    margin-left:2%;
+    margin-right:2%;
 }

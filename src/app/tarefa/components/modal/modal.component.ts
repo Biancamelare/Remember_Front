@@ -10,6 +10,7 @@ import { CategoriaModel } from '../../models/categoria.model';
 import { UsuarioModel } from '../../../home/models/usuario.model';
 import { AuthServiceService } from '../../../shared/services/auth-service.service';
 import { UsuarioService } from '../../../home/services/usuario.service';
+import { PrioridadeModel } from '../../models/prioridade.model';
 
 @Component({
   selector: 'app-modal',
@@ -31,6 +32,15 @@ export class ModalComponent implements OnInit {
 
   categorias: CategoriaModel[] = [] as CategoriaModel[];
   categoria: CategoriaModel[] = [];
+  categoriaSelecionada: any;
+
+  prioridades: PrioridadeModel[] = [] as PrioridadeModel[];
+  prioridade: PrioridadeModel[] = [];
+
+  hora_conclusao: string = '00:00'
+  data_conclusao ?: string
+
+  modalTarget: string = '';
 
   constructor(
     private tarefaService: TarefaServiceService,
@@ -41,21 +51,20 @@ export class ModalComponent implements OnInit {
     private usuarioSerive : UsuarioService,
   ) {
 
-    const localStorage = document.defaultView?.localStorage;
-    if(localStorage){
-      this.currentUser = localStorage.getItem('user_logged.token')
-      this.currentUserId = localStorage.getItem('user_logged.id')
+    const sessionStorage = document.defaultView?.sessionStorage;
+    if(sessionStorage){
+      this.currentUser = sessionStorage.getItem('user_logged.token')
+      this.currentUserId = sessionStorage.getItem('user_logged.id')
       authService.setToken(this.currentUser)
     }
-
+   
     this.formTarefa = this.formBuilder.group({
       nome: [{ value: '', disabled: false }, Validators.required],
-      descricao: [{ value: '', disabled: false }],
-      id_categoria: [{ value: '1', disabled: false }, Validators.required],
+      descricao: [{ value: '1', disabled: false }],
+      id_categoria: [{ value: '', disabled: false }, Validators.required],
       id_status: [{ value: '2', disabled: false }],
-      id_prioridade: [{ value: '1', disabled: false }],
+      id_prioridade: [{ value: '', disabled: false },Validators.required],
       data_vencimento: [{ value: '', disabled: false },Validators.required],
-      //hora_conclusao: [{ value: '', disabled: false }],
       //anexo: [{ value: '', disabled: false }],
       anotacao: [{ value: '', disabled: false }],
     });
@@ -64,18 +73,22 @@ export class ModalComponent implements OnInit {
   ngOnInit(): void {
     
     this.listarCampos();
-
+    this.listarPrioridade()
+   
     this.tarefaSelecionado = {} as TarefaModel;
 
     this.formTarefa.get('nome')?.setValue(this.tarefaSelecionado.nome);
     this.formTarefa.get('descricao')?.setValue(this.tarefaSelecionado.descricao);
-    this.formTarefa.get('id_categoria')?.setValue(Number(this.tarefaSelecionado.id_categoria));
-    this.formTarefa.get('data_conclusao')?.setValue(this.tarefaSelecionado.data_vencimento);
-   // this.formTarefa.get('hora_conclusao')?.setValue(this.tarefaSelecionado.data_vencimento);
     this.formTarefa.get('anotacao')?.setValue(this.tarefaSelecionado.anotacao);
-    this.formTarefa.controls['id_prioridade'].setValue(2);
+    this.formTarefa.get('id_prioridade')?.setValue(Number(this.tarefaSelecionado.id_prioridade));
     this.formTarefa.controls['id_status'].setValue(1);
-       
+    this.formTarefa.get('id_categoria')?.setValue(Number(this.tarefaSelecionado.id_categoria));
+    
+
+    if(this.formTarefa.valid){
+      this.modalTarget = 'modal'
+    }
+   
 }
 
   /*VALIDAÇÕES */
@@ -103,20 +116,37 @@ export class ModalComponent implements OnInit {
 
   listarCampos(){
     this.tarefaService.getCategorias(this.currentUser).subscribe(
-      (categorias: CategoriaModel[]) => (this.categorias = categorias));
+      (categorias: CategoriaModel[]) => {this.categorias = categorias; console.log(this.categorias)})
+
+    
+  }
+
+  listarPrioridade(){
+    this.tarefaService.getPrioridades(this.currentUser).subscribe(
+      (prioridades: PrioridadeModel[]) => {this.prioridades = prioridades; console.log(this.prioridades)})
   }
   
 
   salvar(): void {
+   const html_dataconclusao = this.document.querySelector('#data_conclusao') as HTMLInputElement
+   const html_horaconclusao = this.document.querySelector('#hora_conclusao') as HTMLInputElement
+
+   this.data_conclusao = html_dataconclusao.value
+   if(html_horaconclusao.value != ''){
+    this.hora_conclusao = html_horaconclusao.value
+   }
+   const dataHoraConclusao = `${this.data_conclusao}T${this.hora_conclusao}:00.000Z`;
+   this.formTarefa.controls['data_vencimento'].setValue(dataHoraConclusao);
+
     if (this.formTarefa.valid ) {
       console.log(this.formTarefa.getRawValue())
+      this.modalTarget = 'modal'
       this.tarefaService.cadastrarTarefa(this.formTarefa.getRawValue(),this.currentUser).subscribe(
         response => {
           this.alertaService.exibirAlerta('success', 'Tarefa cadastrado com sucesso!');
-          
+          this.closeModal()
         },
         error => {
-          console.log(this.formTarefa.getRawValue())
           this.alertaService.exibirAlerta('danger','Erro ao cadastrar tarefa: ' + error.error.message); // Exibe a mensagem de erro da API
         })
     } else {
@@ -128,17 +158,20 @@ export class ModalComponent implements OnInit {
 
   /*Modal*/
   openModal() {
+    this.formTarefa.enable()
     const modalDiv = document.getElementById('exampleModal');
     if(modalDiv!= null) {
       modalDiv.style.display = 'block';
     }
   }
   closeModal() {
-    const modalDiv = document.getElementById('exampleModal');
-    if(modalDiv!= null) {
-      modalDiv.style.display = 'none';
       this.formTarefa.reset();
-    }
+      this.formTarefa.enable()
+      const html_dataconclusao = this.document.querySelector('#data_conclusao') as HTMLInputElement
+      const html_horaconclusao = this.document.querySelector('#hora_conclusao') as HTMLInputElement
+
+      html_dataconclusao.value = ''
+      html_horaconclusao.value = ''
   }
 
 }

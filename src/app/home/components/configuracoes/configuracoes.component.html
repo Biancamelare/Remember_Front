@@ -2,7 +2,7 @@
 <div class="alert-container">
     <app-alertas #alertaCadastro></app-alertas>
 </div>
-<app-confirm #confirmacaoModal></app-confirm>
+<app-confirm #confirmModal></app-confirm>
 <div class="main-configuracoes">
     <header>
         <div class="search-container">
@@ -58,30 +58,29 @@
             <div class="mb-4 input-config">
 
                 <label class="form-label">Nome de Usuário</label>
-                <input type="text" class="form-control"  formControlName="nome" >
+                <input type="text" class="form-control"  formControlName="nome" pattern="[a-zA-Z].{0,}" [ngClass]="mostrarCSS('nome')">
 
             </div>
 
             <div class="mb-4 input-config">
         
                 <label class="form-label">Data de nascimento</label>
-                <input type="date" class="form-control"  formControlName="data_nasc" >
+                <input type="date" class="form-control"  formControlName="data_nasc"  [ngClass]="mostrarCSS('data_nasc')" >
 
             </div>
             
             <div class="mb-4 input-config">
 
                 <label class="form-label">E-mail</label>
-                <input type="email" class="form-control"  formControlName="email" >
+                <input type="email" class="form-control"  formControlName="email" [ngClass]="mostrarCSS('email')" >
 
             </div>
 
             <div class="mb-4 input-config">
                 <label class="form-label">Telefone</label>
-                <input type="text" class="form-control"  formControlName="telefone" (input)="formatarTelefone($event)" pattern=".{9,}">
+                <input type="text" class="form-control"  formControlName="telefone" (input)="formatarTelefone($event)" pattern=".{9,}" [ngClass]="mostrarCSS('telefone')">
             </div>
 
-            
             <input class="btnSalvar" type="submit" value="Salvar" (click)="salvar()" *ngIf="salvarhabilitado">
             <input class="btnCancelar bg-danger" type="submit" value="Cancelar" (click)="cancelar()" *ngIf="cancelarhabilitado" >
 
@@ -93,7 +92,7 @@
                 <label class="form-label">Alterar tema</label>
             </div>
 
-            <input type="color"  class="form-control form-control-color posicao" id="corPrimaria" title="Escolha uma cor" >
+            <input type="color" class="form-control form-control-color posicao" id="corPrimaria" title="Escolha uma cor" >
         </div>
     </div>
 

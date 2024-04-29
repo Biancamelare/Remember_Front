@@ -19,29 +19,26 @@ export class ConfirmComponent implements OnDestroy {
   constructor(private confirmacaoService: ConfirmacaoService) {
     this.confirmacaoSubscription = this.confirmacaoService.getConfirmacao().subscribe(confirmacao => {
       this.confirmacao = confirmacao;
-      this.mostrarConfirmacao();
+      this.openModal();
     });
   }
 
   ngOnDestroy(): void {
     this.confirmacaoSubscription.unsubscribe();
   }
-
-  mostrarConfirmacao(): void {
-    this.isConfirmacaoVisible = true;
-  }
-
   confirmarAcao(): void {
     this.confirmacao.resolve(true);
-    this.fecharConfirmacao();
+    this.closeModal()
   }
 
   cancelarAcao(): void {
     this.confirmacao.resolve(false);
-    this.fecharConfirmacao();
+    this.closeModal()
   }
 
-  fecharConfirmacao(): void {
-    this.isConfirmacaoVisible = false;
+  openModal() {
+    this.isConfirmacaoVisible = true;
   }
-}
+  closeModal() {
+    this.isConfirmacaoVisible = false;
+}}
