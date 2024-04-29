@@ -1,3 +1,5 @@
+import { ListaTarefa } from "./listaTarefa.model";
+
 export interface TarefaModel {
     id: number,
 	id_usuario: number,
@@ -12,5 +14,5 @@ export interface TarefaModel {
 	criado_em: Date,
 	editado_em:Date,
 	excluido_em:Date,
-	//lista_tarefa: 
+	lista_tarefa?: ListaTarefa[]
 }

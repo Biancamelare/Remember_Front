@@ -124,7 +124,6 @@ export class ModalComponent implements OnInit {
   listarPrioridade(){
     this.tarefaService.getPrioridades(this.currentUser).subscribe(
       (prioridades: PrioridadeModel[]) => {this.prioridades = prioridades; console.log(this.prioridades)})
-
   }
   
 

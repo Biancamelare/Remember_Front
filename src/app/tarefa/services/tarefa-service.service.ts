@@ -6,6 +6,7 @@ import { TarefaModel } from '../models/tarefa.model';
 import { CategoriaModel } from '../models/categoria.model';
 import { StatusModel } from '../models/status.model';
 import { PrioridadeModel } from '../models/prioridade.model';
+import { PageTarefaModel } from '../models/pageTarefas.model';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,13 @@ export class TarefaServiceService {
       'Authorization': `Bearer ${token}`
     });
     return this.http.post(`https://rememberapi.onrender.com/tarefas`, tarefa,{headers });
+  }
+
+  getTarefas(token: string){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<PageTarefaModel>(`https://rememberapi.onrender.com/tarefas`, {headers });
   }
 
   getCategorias(token: string) {
