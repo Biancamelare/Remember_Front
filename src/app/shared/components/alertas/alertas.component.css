@@ -16,3 +16,23 @@
 }
 
 
+@media screen and (max-width: 421px){
+
+  .alerta{
+    height: 50px; 
+    margin-top: 60px;
+  } 
+
+  .alerta span{
+    font-size: 13px;
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 400px){
+  .alerta{
+    height: 50px; 
+    margin-top: 70px;
+    line-height: 10px;
+  } 
+}
