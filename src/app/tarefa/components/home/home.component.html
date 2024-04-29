@@ -28,41 +28,107 @@
 
     <div class="main-center">
         <div class="boasVindas">
-        <h2>
-                Bem-vindo
-                <input type="text" placeholder="Rogerinho" readonly>
-            </h2>
+            <h2> Bem-vindo <label for=""> Rogerinho </label></h2>
         </div>
 
         <div class="qtde">
+            <div class="porcentagemTabela">
+                <div class="porcentagem-tarefas">
+                    <div id="texto">
+                        <p>Suas tarefas diárias estão quase concluídas!</p>
+                    </div>
+                    <label for="">75%</label>
+                </div>
+                <table class="table">
+                    
+                    <div class="th">Minhas Tarefas</div>
 
-        
-            <div class="porcentagem-tarefas"></div>
-
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">Minhas Tarefas</th>
-                    <th scope="col">Qtde</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>Em progresso</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>A fazer</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>Atrasadas</td>
-                    <td>5</td>
-                </tr>
-                </tbody>
-            </table>
+                    <tbody>
+                    <tr>
+                        <td>Em progresso</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>A fazer</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>Atrasadas</td>
+                        <td>5</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div id="grafico">
+                <div class="table">
+                    <div class="th">Conclusão de tarefas semanal</div>
+                    <div class="td"></div>
+                </div>
+            </div>
         </div>
 
-        <h2>Tarefas do dia</h2>
+        <div class="tarefasDia">
+            <div id="titulo">
+                <h3>Tarefas do dia</h3>
+                <label for="">3 tarefas</label>
+            </div>
+    
+            <div id="tarefas">
+                <form>
+                    <div class="tarefa">
+                        <input class="form-check-input" type="checkbox" formControlName="status" id="flexCheckDefault">
+    
+                        <div class="nomeCateg">
+                            <label id="nome">Abastecer o carro</label>
+                            <label id="nomeCateg">Geral</label>
+                        </div>
+                        
+                        <div id="statusPrioridade">
+                            <select name="status" id="status" formControlName="status">
+                                <option value="aFazer">A fazer</option>
+                                <option value="emProgresso">Em progresso</option>
+                                <option value="concluida">Concluída</option>
+                            </select>
+                            <label class="prioridade" id="alta">Alta</label>
+                        </div>
+                    </div>
+                    <div class="tarefa">
+                        <input class="form-check-input" type="checkbox" formControlName="status" id="flexCheckDefault">
+    
+                        <div class="nomeCateg">
+                            <label id="nome">Abastecer o carro</label>
+                            <label id="nomeCateg">Geral</label>
+                        </div>
+                        
+                        <div id="statusPrioridade">
+                            <select name="status" id="status" formControlName="status">
+                                <option value="aFazer">A fazer</option>
+                                <option value="emProgresso">Em progresso</option>
+                                <option value="concluida">Concluída</option>
+                            </select>
+                            <label class="prioridade" id="alta">Alta</label>
+                        </div>
+                    </div>
+                    <div class="tarefa">
+                        <input class="form-check-input" type="checkbox" formControlName="status" id="flexCheckDefault">
+    
+                        <div class="nomeCateg">
+                            <label id="nome">Abastecer o carro</label>
+                            <label id="nomeCateg">Geral</label>
+                        </div>
+                        
+                        <div id="statusPrioridade">
+                            <select name="status" id="status" formControlName="status">
+                                <option value="aFazer">A fazer</option>
+                                <option value="emProgresso">Em progresso</option>
+                                <option value="concluida">Concluída</option>
+                            </select>
+                            <label class="prioridade" id="alta">Alta</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </div>

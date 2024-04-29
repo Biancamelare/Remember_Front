@@ -101,7 +101,7 @@ hr {
     margin-right: 2%;
 }
 
-.btn-danger.botao svg {
+.botao svg {
     color: var(--secondary-color);
 }
 
