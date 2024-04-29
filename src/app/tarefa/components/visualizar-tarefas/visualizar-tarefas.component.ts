@@ -10,6 +10,8 @@ import { TarefaServiceService } from '../../services/tarefa-service.service';
 import { PageTarefaModel } from '../../models/pageTarefas.model';
 import { AlertasComponent } from '../../../shared/components/alertas/alertas.component';
 import { AlertaService } from '../../../shared/components/alertas/service/alerta.service';
+import { CategoriaModel } from '../../models/categoria.model';
+import { PrioridadeModel } from '../../models/prioridade.model';
 
 @Component({
   selector: 'app-visualizar-tarefas',
@@ -28,6 +30,13 @@ export class VisualizarTarefasComponent implements OnInit {
   tarefaPage?:PageTarefaModel
   tarefa: TarefaModel[] = [];
   tarefas?: TarefaModel[]
+
+  categorias: CategoriaModel[] = [] as CategoriaModel[];
+  categoria: CategoriaModel[] = [];
+
+  prioridades: PrioridadeModel[] = [] as PrioridadeModel[];
+  prioridade: PrioridadeModel[] = [];
+
 
 
   constructor(
@@ -88,4 +97,15 @@ export class VisualizarTarefasComponent implements OnInit {
       }
     );
   }
+
+  listarCampos(){
+    this.tarefaService.getCategorias(this.currentUser).subscribe(
+      (categorias: CategoriaModel[]) => {this.categorias = categorias; console.log(this.categorias)})
+  }
+
+  listarPrioridade(){
+    this.tarefaService.getPrioridades(this.currentUser).subscribe(
+      (prioridades: PrioridadeModel[]) => {this.prioridades = prioridades; console.log(this.prioridades)})
+  }
+  
 }
