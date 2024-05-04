@@ -108,4 +108,7 @@ export class VisualizarTarefasComponent implements OnInit {
       (prioridades: PrioridadeModel[]) => {this.prioridades = prioridades; console.log(this.prioridades)})
   }
   
+  recarregarTarefas(): void {
+    this.buscarTarefas();
+  }
 }

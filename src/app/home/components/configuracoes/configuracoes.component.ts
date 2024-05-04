@@ -59,8 +59,11 @@ export class ConfiguracoesComponent implements OnInit {
 
 
   ngOnInit(): void {
-   console.log(this.currentUser)
    this.buscarUsuario();
+
+   this.formConfiguracoes.get('email')?.setValue(this.usuarioSelecionado.email);
+   this.formConfiguracoes.get('nome')?.setValue(this.usuarioSelecionado.nome);
+   this.formConfiguracoes.get('data_nasc')?.setValue(this.funcoesService.formatarData(String(this.usuarioSelecionado?.data_nasc)));
   }
 
 
@@ -100,10 +103,7 @@ export class ConfiguracoesComponent implements OnInit {
 
   async salvar(){
     const telefoneNumerico = this.formConfiguracoes.get('telefone')?.value.replace(/\D/g, ''); 
-    this.formConfiguracoes.get('email')?.setValue(this.usuarioSelecionado.email);
     this.formConfiguracoes.get('telefone')?.setValue(telefoneNumerico);
-    this.formConfiguracoes.get('nome')?.setValue(this.usuarioSelecionado.nome);
-    this.formConfiguracoes.get('data_nasc')?.setValue(this.funcoesService.formatarData(String(this.usuarioSelecionado?.data_nasc)));
     if (this.formConfiguracoes.valid ) {
       const resposta = await this.confirmacaoService.exibirConfirmacao('Deseja realmente alterar?');
       if(resposta){
@@ -113,23 +113,22 @@ export class ConfiguracoesComponent implements OnInit {
             this.salvarhabilitado = false
             this.cancelarhabilitado = false
             this.formConfiguracoes.disable();
-            this.preencherformulario()
+            this.buscarUsuario();
           },
           error => {
             this.alertaService.exibirAlerta('danger','Erro ao editar o usuário: ' + error.error.message); 
             this.salvarhabilitado = false
             this.cancelarhabilitado = false
             this.formConfiguracoes.disable();
-            this.preencherformulario()
+            this.buscarUsuario();
           })
       }else{
         this.salvarhabilitado = false
         this.cancelarhabilitado = false
         this.formConfiguracoes.disable();
-        this.preencherformulario()
+        this.buscarUsuario();
       }
     } else {
-      this.validarTodosCampos(this.formConfiguracoes);
       this.alertaService.exibirAlerta('danger', 'Preencha todos os campos corretamente.');
     }
   }

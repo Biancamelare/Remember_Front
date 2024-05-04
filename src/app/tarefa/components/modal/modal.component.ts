@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output, ViewChild } from '@angular/core';
 import { AlertasComponent } from '../../../shared/components/alertas/alertas.component';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -21,6 +21,7 @@ import { PrioridadeModel } from '../../models/prioridade.model';
 })
 export class ModalComponent implements OnInit {
   @ViewChild('alertaCadastro', { static: false }) alertaCadastro!: AlertasComponent;
+  @Output() tarefaSalva: EventEmitter<any> = new EventEmitter<any>();
   formTarefa: FormGroup;
   tarefa?: TarefaModel;
 
@@ -144,6 +145,7 @@ export class ModalComponent implements OnInit {
       this.tarefaService.cadastrarTarefa(this.formTarefa.getRawValue(),this.currentUser).subscribe(
         response => {
           this.alertaService.exibirAlerta('success', 'Tarefa cadastrado com sucesso!');
+          this.tarefaSalva.emit();
           this.closeModal()
         },
         error => {
