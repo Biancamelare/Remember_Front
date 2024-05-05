@@ -25,7 +25,7 @@ form {
 }
 
 .modal {
-    padding: 5%;
+    padding: 5% 10%;
 }
 
 .modal-footer {
@@ -43,5 +43,59 @@ body {
 
 .flip-horizontal {
     transform: scaleX(-1);
+}
+
+.icon {
+    width: 100px;
+    height: 100px;
+}
+
+img {
+    width: 70px;
+    height: 80px;
+}
+
+.xp {
+    background: var(--tertiary-color);
+    border-radius: 20px;
+    width: 90px;
+    padding: 2px 5px;
+}
+
+button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: none;
+    padding: 2%;
+}
+
+
+.opcao {
+    margin-left: 10px;
+    background: none;
+}
+
+.icons {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os itens se quebrem para a próxima linha */
+    justify-content: center;
+}
+
+h4 {
+    color: var(--font-color);
+    font-weight: 700;
+}
+
+.bloqueado {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #D9D9D9;
+    border-radius: 10px;
+    margin-left: 15px;
+    margin-bottom: 5%;
 }
 

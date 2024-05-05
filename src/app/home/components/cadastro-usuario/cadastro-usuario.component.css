@@ -13,7 +13,7 @@ body {
 
 .left-cadastrar img {
     position: absolute;
-    top: 120px;
+    /* top: 120px; */
     max-width: 950px;
     height: auto;
     object-fit: contain;
@@ -44,8 +44,8 @@ body {
 .right-cadastrar img{
     display: flex;
     position: absolute;
-    top: 20px;
-    right: 30px;
+    top: 10px;
+    right: 20px;
     border-radius: 5px;
 }
 
@@ -128,14 +128,14 @@ body {
         height: auto; 
         object-fit: cover; 
         transition: 0.2s;
-        top: 220px;
+        /* top: 220px; */
     }
 }
 
  @media screen and (max-width: 1200px){
     .left-cadastrar img {
         max-width: 700px; 
-        top: 370px;
+        /* top: 370px; */
     }
 }  
 

@@ -104,7 +104,7 @@ header .search-container {
 .resultado {
     display: flex;
     margin: auto;
-    width: 40vw;
+    width: 44vw;
     height: 6vh;
     background-color: var(--quaternary-color);
     border-radius: 5px;
@@ -129,7 +129,7 @@ header .search-container {
 }
 
 #tarefas {
-    width: 40vw;
+    width: 44vw;
     display: flex;
     margin: auto;
     flex-direction: column;
@@ -140,7 +140,7 @@ header .search-container {
 }
 
 .tarefa {
-    width: 38vw;
+    width: 42vw;
     background-color: var(--user-color);
     border-radius: 20px;
     margin: 2% 0 1% 0;
@@ -198,9 +198,8 @@ header .search-container {
 .filtrar {
     position: fixed;
     border-radius: 20px;
-    top: 23%;
+    top: 28%;
     right: 10%;
-    width: 300px; 
     height: 38vh; 
     background-color:  var(--user-color); 
     padding: 1.5% 1%;
@@ -240,7 +239,7 @@ input[type="date"] {
 }
 
 h2 {
-    padding-left: 7%;
+    padding-left: 3%;
     color: var(--font-color);
     font-weight: 700;
 }

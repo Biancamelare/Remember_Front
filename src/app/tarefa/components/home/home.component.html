@@ -39,31 +39,37 @@
                     </div>
                     <label for="">75%</label>
                 </div>
-                <table class="table">
+                <div class="table1">
                     
-                    <div class="th">Minhas Tarefas</div>
+                    <div class="th"> 
+                        <h5>Minhas tarefas</h5>
+                    </div>
 
-                    <tbody>
-                    <tr>
-                        <td>Em progresso</td>
-                        <td>5</td>
-                    </tr>
-                    <tr>
-                        <td>A fazer</td>
-                        <td>5</td>
-                    </tr>
-                    <tr>
-                        <td>Atrasadas</td>
-                        <td>5</td>
-                    </tr>
-                    </tbody>
-                </table>
+                    <div class="conteudo">
+                        <div class="linha">
+                            <label class="tabelaStatus" for="">Em progresso</label>
+                            <label class="qtde" for="">5</label>
+                        </div>
+                        <div class="linha">
+                            <label class="tabelaStatus" for="">A fazer</label>
+                            <label class="qtde" for="">5</label>
+                        </div>
+                        <div class="linha">
+                            <label class="tabelaStatus" for="">Atrasadas</label>
+                            <label  class="qtde" for="">5</label>
+                        </div>
+                    </div>
+                </div>
             </div>
             
             <div id="grafico">
                 <div class="table">
-                    <div class="th">Conclusão de tarefas semanal</div>
-                    <div class="td"></div>
+                    <div class="th">
+                        <h5>Conclusão de tarefas semanal</h5>
+                    </div>
+                    <div class="td">
+                       <!-- gráfico -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -107,7 +113,7 @@
                                 <option value="emProgresso">Em progresso</option>
                                 <option value="concluida">Concluída</option>
                             </select>
-                            <label class="prioridade" id="alta">Alta</label>
+                            <label class="prioridade" id="baixa">Baixa</label>
                         </div>
                     </div>
                     <div class="tarefa">
@@ -124,7 +130,7 @@
                                 <option value="emProgresso">Em progresso</option>
                                 <option value="concluida">Concluída</option>
                             </select>
-                            <label class="prioridade" id="alta">Alta</label>
+                            <label class="prioridade" id="media">Media</label>
                         </div>
                     </div>
                 </form>

@@ -110,7 +110,7 @@ header .search-container {
     flex-direction: column;
     display: flex;
     margin-top: 2%;
-    width: 50%;
+    width: 67%;
 }
 
 h2, h3 {
@@ -119,12 +119,12 @@ h2, h3 {
 }
 
 .porcentagem-tarefas {
-    height:80px; 
+    height: 110px;
     background-color: var(--quaternary-color);
-    margin-top: 2%;
     border-radius: 20px;
     padding: 4%;
     display: flex;
+    align-items: center;
 }
 
 #texto {
@@ -133,6 +133,7 @@ h2, h3 {
     text-align: center;
     color:var(--font-color);
     font-weight: 600;
+    font-size: 18px;
 }
 
 .porcentagem-tarefas label {
@@ -151,13 +152,15 @@ h2, h3 {
 .porcentagemTabela {
     display: flex;
     flex-direction: column;
-    width: 22%;
+    width: 30%;
+    margin-top: 1%;
+    height: 100%;
 }
+
 
 .th {
     background-color: var(--quaternary-color); 
     color: var(--font-color);
-    font-weight: 700;
     border-radius: 18px;
     padding: 4%;
     text-align: center;
@@ -170,11 +173,11 @@ h2, h3 {
     padding-bottom: 2%;
 }
 
-.tr {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    border-bottom: solid 1px var(--quaternary-color);
+.table1 {
+    border: solid 2px var(--quaternary-color);
+    margin-top: 6%;
+    border-radius: 20px;
+    padding-bottom: 2%;
 }
 
 #grafico {
@@ -182,11 +185,12 @@ h2, h3 {
     display: flex;
     color: var(--font-color);
     margin-left: 3%;
-    width: 25%;
+    width: 35%;
+    height: 400px;
 }
 
 #titulo {
-    width: 50%;
+    width: 67%;
     display: flex;
     flex-direction: column;
 }
@@ -207,7 +211,7 @@ h2, h3 {
 }
 
 .tarefa {
-    width: 50vw;
+    width: 67vw;
     background-color: var(--user-color);
     border-radius: 20px;
     margin: 2% 0 1% 0;
@@ -227,6 +231,14 @@ h2, h3 {
 
 .prioridade#alta {
     background-color: var(--btnAlta-color);
+}
+
+.prioridade#media {
+    background-color: var(--btnMedia-color);
+}
+
+.prioridade#baixa {
+    background-color: var(--btnBaixa-color);
 }
 
 .form-check-input{
@@ -261,3 +273,22 @@ h2, h3 {
     font-size: 20px;
 }
 
+.conteudo {
+    width: 100%;
+    padding: 2%  4% 2% 4%;
+    font-size: 18px;
+}
+
+.linha {
+    display: flex;
+    flex-direction: row;
+    padding: 2%; 
+}
+
+.linha:not(:last-child) {
+    border-bottom: solid 1px var(--font-color);
+}
+
+.tabelaStatus {
+    width: 80%
+}
