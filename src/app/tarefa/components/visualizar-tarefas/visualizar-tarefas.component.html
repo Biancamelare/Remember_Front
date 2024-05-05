@@ -44,18 +44,21 @@
                 <div class="tarefa" *ngFor="let tarefa of tarefas">
                     <input class="form-check-input" type="checkbox" formControlName="status" id="flexCheckDefault">
 
-                    <div class="nomeCateg">
+                    <div data-bs-toggle="modal" data-bs-target="#exampleModal" class="nomeCateg" (click)="selecionarTarefa(tarefa)">
                         <label id="nome">{{tarefa.nome}}</label>
                         <label id="nomeCateg">{{tarefa.id_categoria}}</label>
                     </div>
                     
                     <div id="statusPrioridade">
                         <select name="status" id="status" formControlName="status">
-                            <option value="aFazer">{{tarefa.id_status}}</option>
+                            <!--<option value="aFazer">{{tarefa.id_status}}</option>
                             <option value="emProgresso">Em progresso</option>
-                            <option value="concluida">Concluída</option>
+                            <option value="concluida">Concluída</option>-->
+                            <ng-container *ngFor="let status of statusList">
+                                <option [value]="status.id">{{status.nome }}</option>
+                              </ng-container>
                         </select>
-                        <label class="prioridade" id="alta">{{tarefa.id_prioridade}}</label>
+                        <label class="prioridade" [id]="'P'+tarefa.id_prioridade">{{tarefa.id_prioridade}}</label>
                     </div>
                 </div>
             </form>

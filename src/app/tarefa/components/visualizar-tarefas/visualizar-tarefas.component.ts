@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output, ViewChild } from '@angular/core';
 import { ModalComponent } from '../modal/modal.component';
 import { UsuarioModel } from '../../../home/models/usuario.model';
 import { CommonModule, DOCUMENT } from '@angular/common';
@@ -12,6 +12,7 @@ import { AlertasComponent } from '../../../shared/components/alertas/alertas.com
 import { AlertaService } from '../../../shared/components/alertas/service/alerta.service';
 import { CategoriaModel } from '../../models/categoria.model';
 import { PrioridadeModel } from '../../models/prioridade.model';
+import { StatusModel } from '../../models/status.model';
 
 @Component({
   selector: 'app-visualizar-tarefas',
@@ -22,6 +23,7 @@ import { PrioridadeModel } from '../../models/prioridade.model';
 })
 export class VisualizarTarefasComponent implements OnInit {
   @ViewChild('alertaCadastro', { static: false }) alertaCadastro!: AlertasComponent;
+  @Output() tarefaSelecionada = new EventEmitter<any>();
   currentUser: any;
   currentUserId : any;
   usuarioSelecionado = {} as UsuarioModel;
@@ -37,6 +39,9 @@ export class VisualizarTarefasComponent implements OnInit {
   prioridades: PrioridadeModel[] = [] as PrioridadeModel[];
   prioridade: PrioridadeModel[] = [];
 
+  statusList: StatusModel[] = [] as StatusModel[];
+  status: StatusModel[] = [];
+
 
 
   constructor(
@@ -45,7 +50,8 @@ export class VisualizarTarefasComponent implements OnInit {
     private usuarioSerive : UsuarioService,
     private funcoesService: FuncoesService,
     private tarefaService: TarefaServiceService,
-    private alertaService:AlertaService) {
+    private alertaService:AlertaService,
+) {
   
       const sessionStorage = document.defaultView?.sessionStorage;
       if(sessionStorage){
@@ -58,6 +64,7 @@ export class VisualizarTarefasComponent implements OnInit {
   ngOnInit(): void {
     this.buscarUsuario();
     this.buscarTarefas()
+    this.listarStatus()
      
    }
 
@@ -98,16 +105,25 @@ export class VisualizarTarefasComponent implements OnInit {
     );
   }
 
-  listarCampos(){
+  listarCategoria(){
     this.tarefaService.getCategorias(this.currentUser).subscribe(
-      (categorias: CategoriaModel[]) => {this.categorias = categorias; console.log(this.categorias)})
+      (categorias: CategoriaModel[]) => {this.categorias = categorias;})
   }
 
   listarPrioridade(){
     this.tarefaService.getPrioridades(this.currentUser).subscribe(
-      (prioridades: PrioridadeModel[]) => {this.prioridades = prioridades; console.log(this.prioridades)})
+      (prioridades: PrioridadeModel[]) => {this.prioridades = prioridades; })
   }
-  
+
+  listarStatus(){
+    this.tarefaService.getStatus(this.currentUser).subscribe(
+      (status: StatusModel[]) => {this.statusList = status;})
+  }
+
+  selecionarTarefa(tarefa: any) {
+    this.tarefaSelecionada.emit(tarefa);
+  }
+
   recarregarTarefas(): void {
     this.buscarTarefas();
   }

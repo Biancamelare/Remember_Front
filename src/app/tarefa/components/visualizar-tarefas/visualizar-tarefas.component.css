@@ -159,8 +159,14 @@ header .search-container {
     padding: 2px;
 }
 
-.prioridade#alta {
+.prioridade#P1 {
     background-color: var(--btnAlta-color);
+}
+.prioridade#P2 {
+    background-color: var(--btnMedia-color);
+}
+.prioridade#P3 {
+    background-color: var(--btnBaixa-color);
 }
 
 .form-check-input{

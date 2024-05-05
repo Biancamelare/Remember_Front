@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Inject, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { AlertasComponent } from '../../../shared/components/alertas/alertas.component';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -22,9 +22,11 @@ import { PrioridadeModel } from '../../models/prioridade.model';
 export class ModalComponent implements OnInit {
   @ViewChild('alertaCadastro', { static: false }) alertaCadastro!: AlertasComponent;
   @Output() tarefaSalva: EventEmitter<any> = new EventEmitter<any>();
+  @Input() tarefaSelecionada: any;
   formTarefa: FormGroup;
   tarefa?: TarefaModel;
 
+  
   currentUser: any;
   currentUserId : any;
   usuarioSelecionado = {} as UsuarioModel;
@@ -73,7 +75,8 @@ export class ModalComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.listarCampos();
+    console.log(this.tarefaSelecionada)
+    this.listarCategoria();
     this.listarPrioridade()
    
     this.tarefaSelecionado = {} as TarefaModel;
@@ -115,20 +118,21 @@ export class ModalComponent implements OnInit {
     };
   }
 
-  listarCampos(){
+  listarCategoria(){
     this.tarefaService.getCategorias(this.currentUser).subscribe(
-      (categorias: CategoriaModel[]) => {this.categorias = categorias; console.log(this.categorias)})
+      (categorias: CategoriaModel[]) => {this.categorias = categorias; })
 
     
   }
 
   listarPrioridade(){
     this.tarefaService.getPrioridades(this.currentUser).subscribe(
-      (prioridades: PrioridadeModel[]) => {this.prioridades = prioridades; console.log(this.prioridades)})
+      (prioridades: PrioridadeModel[]) => {this.prioridades = prioridades; })
   }
   
 
   salvar(): void {
+    console.log(this.tarefaSelecionada)
    const html_dataconclusao = this.document.querySelector('#data_conclusao') as HTMLInputElement
    const html_horaconclusao = this.document.querySelector('#hora_conclusao') as HTMLInputElement
 
@@ -175,5 +179,8 @@ export class ModalComponent implements OnInit {
       html_dataconclusao.value = ''
       html_horaconclusao.value = ''
   }
+
+
+
 
 }
