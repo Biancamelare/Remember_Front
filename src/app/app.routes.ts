@@ -8,6 +8,7 @@ import { VisualizarTarefasComponent } from './tarefa/components/visualizar-taref
 import { ModalComponent } from './tarefa/components/modal/modal.component';
 import { AuthGuardService } from './shared/services/auth-guard.service';
 import { HomeComponent } from './tarefa/components/home/home.component';
+import { ModalIconComponent } from './shared/components/modal-icon/modal-icon.component';
 
 
 export const routes: Routes = [
@@ -50,6 +51,12 @@ export const routes: Routes = [
     {
         path: 'modal',
         component: ModalComponent,
+        canActivate: [AuthGuardService]
+        
+    },
+    {
+        path: 'modal-icon',
+        component: ModalIconComponent,
         canActivate: [AuthGuardService]
         
     }

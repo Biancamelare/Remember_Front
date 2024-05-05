@@ -11,13 +11,14 @@ import { AlertasComponent } from '../../../shared/components/alertas/alertas.com
 import { AlertaService } from '../../../shared/components/alertas/service/alerta.service';
 import { ConfirmacaoService } from '../../../shared/components/confirm/service/confirm.service';
 import { ConfirmComponent } from '../../../shared/components/confirm/confirm.component';
+import { ModalIconComponent } from "../../../shared/components/modal-icon/modal-icon.component";
 
 @Component({
-  selector: 'app-configuracoes',
-  standalone: true,
-  imports: [SidenavComponent,ReactiveFormsModule, FormsModule, CommonModule, AlertasComponent, ConfirmComponent],
-  templateUrl: './configuracoes.component.html',
-  styleUrl: './configuracoes.component.css'
+    selector: 'app-configuracoes',
+    standalone: true,
+    templateUrl: './configuracoes.component.html',
+    styleUrl: './configuracoes.component.css',
+    imports: [SidenavComponent, ReactiveFormsModule, FormsModule, CommonModule, AlertasComponent, ConfirmComponent, ModalIconComponent]
 })
 
 export class ConfiguracoesComponent implements OnInit {
@@ -165,5 +166,16 @@ export class ConfiguracoesComponent implements OnInit {
       'input-erro': this.validarCampo(field),
     };
   }
-
+  openModal() {
+    const modalDiv = document.getElementById('exampleModal');
+    if(modalDiv!= null) {
+      modalDiv.style.display = 'block';
+    }
+  }
+  closeModal() {
+    const modalDiv = document.getElementById('exampleModal');
+    if(modalDiv!= null) {
+      modalDiv.style.display = 'none';
+    }
+  }
   }
