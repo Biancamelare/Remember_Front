@@ -87,6 +87,37 @@ body {
 }
 
 
+.box-voltar {
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 100px;
+    height: 47px;
+    background-color: var(--primary-color);
+    position: absolute;
+    border-radius: 15px;
+    align-content: center;
+    z-index: 2;
+    box-shadow: 0px 2px 4px var(--shadown-color);
+    left: 0;
+    top: 0;
+}
+
+.voltar {
+    font-size: 20px;
+    margin: 0 auto;
+    display: flex;
+    margin-left: 2px;
+    text-decoration: none;
+    color: var(--secondary-color);
+    line-height: 35px;
+}
+
+.voltar-img {
+    width: 36px;
+    height: 36px;
+}
+
+
 @media screen and (max-width: 1400px){
     .left-redefinir img {
         width: 70%; 
@@ -172,6 +203,25 @@ body {
 
     .redefinir {
         padding-bottom: 20px;
+    }
+
+    .voltar {
+        font-size: 16px;
+        line-height: 35px;
+    }
+    
+    .voltar-img {
+        width: 30px;
+        height: 30px;
+        position: relative;
+        top:2px;
+
+    }
+
+    .box-voltar {
+        width: 85px;
+        height: 40px;
+
     }
 
 }  
@@ -262,5 +312,9 @@ body {
 
     .form-control::placeholder {
         font-size: 14px;
+    }
+
+    .box-voltar {
+        width: 0;
     }
 }    
