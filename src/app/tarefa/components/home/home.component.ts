@@ -4,11 +4,12 @@ import { DOCUMENT } from '@angular/common';
 import { AuthServiceService } from '../../../shared/services/auth-service.service';
 import { UsuarioService } from '../../../home/services/usuario.service';
 import { FuncoesService } from '../../../shared/services/funcoes.service';
+import { SidenavComponent } from '../../../shared/components/sidenav/sidenav.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [SidenavComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

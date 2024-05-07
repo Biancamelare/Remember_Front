@@ -13,11 +13,12 @@ import { AlertaService } from '../../../shared/components/alertas/service/alerta
 import { CategoriaModel } from '../../models/categoria.model';
 import { PrioridadeModel } from '../../models/prioridade.model';
 import { StatusModel } from '../../models/status.model';
+import { SidenavComponent } from '../../../shared/components/sidenav/sidenav.component';
 
 @Component({
   selector: 'app-visualizar-tarefas',
   standalone: true,
-  imports: [ModalComponent,  AlertasComponent, CommonModule],
+  imports: [ModalComponent,  AlertasComponent, CommonModule, SidenavComponent],
   templateUrl: './visualizar-tarefas.component.html',
   styleUrl: './visualizar-tarefas.component.css'
 })
