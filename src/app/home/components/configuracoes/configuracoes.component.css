@@ -3,13 +3,13 @@ body {
     margin: 0px;
     display: flex;
     min-height: 100vh;
+    overflow-x: hidden; 
 }
 
 header {
-    padding-top: 1%;
-    padding-bottom: 1%;
     display: flex;
-    justify-content: center; 
+    justify-content: end;
+    padding: 1% 10% 1% 0;
 }
 
 header .search-container {
@@ -122,6 +122,10 @@ aside {
     box-shadow: 0px 2px 6px var(--shadown-color);
 }
 
+.userDrop{
+    display: flex;
+}
+
 .dropdown {
     padding: 12px;
 }
@@ -218,3 +222,37 @@ aside {
     box-shadow: 0 0 2px rgba(255, 0, 0, 0.3)!important;
 }
 
+.posicao{
+    display:block;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.espaco{
+    margin-top: 20px;
+}
+
+.divLogo{
+    width: 20%;
+   
+}
+
+#tabelaCores{
+   text-align: center;
+}
+#tabelaCores td{
+    padding: 10px;
+    border: 1px solid var(--light-color);
+    width: 8%;
+}
+
+.btnTema{
+    margin-right:10px;
+    border-radius: 10px;
+    background-color: var(--primary-color);
+    border: 1px var(--primary-color);
+    color:#ffffff;
+    padding:10px;
+}
