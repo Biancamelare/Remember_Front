@@ -26,6 +26,8 @@ export class ModalComponent implements OnInit {
   formTarefa: FormGroup;
   tarefa?: TarefaModel;
 
+  editar: boolean = false;
+
   
   currentUser: any;
   currentUserId : any;
