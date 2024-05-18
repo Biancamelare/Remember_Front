@@ -297,3 +297,56 @@ h2 {
 hr{
     margin: 0;
 }
+
+@media screen and (max-width: 1300px) { 
+/* 
+    .main-center {
+        display: flex;
+        flex-wrap: wrap ;
+    } */
+
+    #tarefas {
+        transition: 0.2s;
+        margin-left: 15%;
+        width: 48vw;
+    }
+
+    .tarefa {
+        width: 46vw;
+    }
+
+    .resultado {
+        transition: 0.2s;
+        margin-left: 15%;
+        width: 48vw;
+    }
+
+    #info{
+        margin-left: 15%;
+        width:60%;
+
+    }
+
+    h2 {
+        padding: 0;
+    }
+
+    /* .btn.adicionar {
+        margin-left: 18%;
+    } */
+}
+
+@media screen and (max-width: 1100px) { 
+    .main-center {
+        display: flex;
+        flex-wrap: wrap ;
+    }
+
+    #tarefas {
+        margin-left: 15%;
+    }
+
+    .resultado {
+        margin-left:15%;
+    }
+}
