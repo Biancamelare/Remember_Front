@@ -29,6 +29,7 @@ export class VisualizarTarefasComponent implements OnInit {
   currentUserId : any;
   usuarioSelecionado = {} as UsuarioModel;
   nome?: string;
+  xp?: number;
 
   tarefaPage?:PageTarefaModel
   tarefa: TarefaModel[] = [];
@@ -73,6 +74,7 @@ export class VisualizarTarefasComponent implements OnInit {
         this.usuarioSerive.getById(this.currentUserId,this.currentUser).subscribe( 
           (usuario : UsuarioModel) => {
             this.usuarioSelecionado = usuario;
+            this.xp = this.usuarioSelecionado.xp
             this.nome = this.funcoesService.formatarNomeCompleto(this.usuarioSelecionado.nome)
         })
     }

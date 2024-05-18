@@ -18,6 +18,7 @@ export class HomeComponent {
   currentUserId : any;
   usuarioSelecionado = {} as UsuarioModel;
   nome?: string;
+  xp?: number;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
@@ -42,7 +43,8 @@ export class HomeComponent {
           (usuario : UsuarioModel) => {
             this.usuarioSelecionado = usuario;
             this.nome = this.funcoesService.formatarNomeCompleto(this.usuarioSelecionado.nome)
-            console.log(this.nome)
+            this.xp = this.usuarioSelecionado.xp
+            
         })
     }
 

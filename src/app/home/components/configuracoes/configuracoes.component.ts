@@ -31,6 +31,7 @@ export class ConfiguracoesComponent implements OnInit {
   formConfiguracoes: FormGroup;
   usuarioSelecionado = {} as UsuarioModel;
   nome?: string;
+  xp?: number;
   salvarhabilitado: boolean = false;
   cancelarhabilitado: boolean = false;
   modalTarget:string = '';
@@ -73,6 +74,7 @@ export class ConfiguracoesComponent implements OnInit {
       (usuario : UsuarioModel) => {
         this.usuarioSelecionado = usuario;
         this.nome = this.funcoesService.formatarNomeCompleto(this.usuarioSelecionado.nome)
+        this.xp = this.usuarioSelecionado.xp
         this.preencherformulario();
     })
 }
