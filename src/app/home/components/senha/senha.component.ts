@@ -60,6 +60,7 @@ export class SenhaComponent implements OnInit {
       this.usuarioService.esquecersenha(this.email).subscribe(
         response => {
           this.alertaService.exibirAlerta('success', 'Email enviado com sucesso!');
+          this.formSenha.reset();
         },
         error => {
           this.alertaService.exibirAlerta('danger','Erro ao enviar email: ' + error.error.message); // Exibe a mensagem de erro da API
