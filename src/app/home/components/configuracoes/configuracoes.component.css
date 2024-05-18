@@ -305,6 +305,19 @@ hr{
     font-weight: 500;
    
 }
+
+.xp2 {
+    background: var(--tertiary-color);
+    border-radius: 20px;
+    padding: 2px 5px;
+    margin-top: 10px;
+    width: 70px;
+    text-align: center;
+    margin-bottom: 3%;
+    margin-left: 10px;
+    font-weight: 500;
+    font-size: 18px;
+}
 .nome{
     color: var(--font-color);
     font-weight: 500;
