@@ -19,39 +19,39 @@ export class TarefaServiceService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
-    return this.http.get<TarefaModel>(`https://rememberapi.onrender.com/tarefas/${id}`, {headers });
+    return this.http.get<TarefaModel>(`http://localhost:3000/tarefas/${id}`, {headers });
   }
 
   cadastrarTarefa(tarefa: TarefaModel, token:string): Observable<any> {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
-    return this.http.post(`https://rememberapi.onrender.com/tarefas`, tarefa,{headers });
+    return this.http.post(`http://localhost:3000/tarefas`, tarefa,{headers });
   }
 
   getTarefas(token: string){
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
-    return this.http.get<PageTarefaModel>(`https://rememberapi.onrender.com/tarefas`, {headers });
+    return this.http.get<PageTarefaModel>(`http://localhost:3000/tarefas`, {headers });
   }
 
   getCategorias(token: string) {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
-    return this.http.get<CategoriaModel[]>(`https://rememberapi.onrender.com/tarefas/categorias`, {headers });
+    return this.http.get<CategoriaModel[]>(`http://localhost:3000/tarefas/categorias`, {headers });
   }
   getStatus(token: string) {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
-    return this.http.get<StatusModel[]>(`https://rememberapi.onrender.com/tarefas/status`, {headers });
+    return this.http.get<StatusModel[]>(`http://localhost:3000/tarefas/status`, {headers });
   }
   getPrioridades(token: string) {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
-    return this.http.get<PrioridadeModel[]>(`https://rememberapi.onrender.com/tarefas/prioridade`, {headers });
+    return this.http.get<PrioridadeModel[]>(`http://localhost:3000/tarefas/prioridade`, {headers });
   }
 }
