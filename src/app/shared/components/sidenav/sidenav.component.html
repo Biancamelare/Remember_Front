@@ -1,3 +1,4 @@
+<app-modal></app-modal>
 <nav class="menu-lateral">
     <div class="btn-expandir">
         <img class="icone-aba" id="btn-exp" src="./assets/menu.svg" alt="Ícone menu">
@@ -15,11 +16,11 @@
         </li>
 
         <li class="item-menu">
-            <a href="modal">
+            <a>
                 <div class="box-selecao">
-                    <span class="icon"><img src="./assets/adicionar.svg" alt="Ícone adicionar tarefas"></span>
+                    <span data-bs-toggle="modal" data-bs-target="#exampleModal" class="icon"><img src="./assets/adicionar.svg" alt="Ícone adicionar tarefas"></span>
                 </div>
-                <span class="txt-link">Adicionar tarefa</span>
+                <span data-bs-toggle="modal" data-bs-target="#exampleModal"  class="txt-link">Adicionar tarefa</span>
             </a>
 
         </li>
@@ -70,7 +71,7 @@
             </li>
 
             <li class="item-menu" id="desconectar">
-                <a href="">
+                <a href="" (click)="this.logout()">
                     <div class="box-selecao">
                         <span class="icon"><img src="./assets/desconectar.svg" alt="Ícone membros"></span>
                     </div>

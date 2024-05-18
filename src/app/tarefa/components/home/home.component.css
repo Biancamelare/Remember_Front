@@ -89,7 +89,7 @@ header .search-container {
 }
 
 .dropdown-content {
-    padding:20px 0px 5px 10px;
+    padding: 5%;
     display: none;
     position: absolute;
     background-color: var(--quaternary-color);
@@ -112,6 +112,34 @@ header .search-container {
 
 .dropdown:hover .dropdown-content {
     display: block;
+}
+.userDrop{
+    display: flex;
+}
+hr{
+    margin: 0;
+}
+
+.xp {
+    background: var(--tertiary-color);
+    border-radius: 20px;
+    padding: 2px 5px;
+    margin-top: 10px;
+    width: 70px;
+    text-align: center;
+    margin-bottom: 3%;
+    margin-left: 10px;
+    font-weight: 500;
+   
+}
+.nome{
+    color: var(--font-color);
+    font-weight: 500;
+    margin-left: 5px;
+}
+
+.xpmenu{
+    margin-bottom: 5px;
 }
 
 

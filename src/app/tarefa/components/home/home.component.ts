@@ -25,17 +25,16 @@ export class HomeComponent {
     private usuarioSerive : UsuarioService,
     private funcoesService: FuncoesService) {
   
-      const localStorage = document.defaultView?.localStorage;
-      if(localStorage){
-        this.currentUser = localStorage.getItem('user_logged.token')
-        this.currentUserId = localStorage.getItem('user_logged.id')
+      const sessionStorage = document.defaultView?.sessionStorage;
+      if(sessionStorage){
+        this.currentUser = sessionStorage.getItem('user_logged.token')
+        this.currentUserId = sessionStorage.getItem('user_logged.id')
         authService.setToken(this.currentUser)
       }}
 
       
   ngOnInit(): void {
     this.buscarUsuario();
-     
    }
 
   buscarUsuario(){
@@ -43,7 +42,13 @@ export class HomeComponent {
           (usuario : UsuarioModel) => {
             this.usuarioSelecionado = usuario;
             this.nome = this.funcoesService.formatarNomeCompleto(this.usuarioSelecionado.nome)
+            console.log(this.nome)
         })
     }
+
+    logout(){
+      this.authService.logout();
+    }
+  
 
 }

@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalComponent } from '../../../tarefa/components/modal/modal.component';
+import { AuthServiceService } from '../../services/auth-service.service';
 
 @Component({
   selector: 'app-sidenav',
   standalone: true,
-  imports: [],
+  imports: [ModalComponent],
   templateUrl: './sidenav.component.html',
   styleUrl: './sidenav.component.css'
 })
 
 export class SidenavComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthServiceService) { }
 
   ngOnInit(): void {
     const menuItem = document.querySelectorAll('.box-selecao');
@@ -34,5 +36,8 @@ export class SidenavComponent implements OnInit {
       element.classList.remove('ativo');
     });
     item.classList.add('ativo');
+  }
+  logout(){
+    this.authService.logout();
   }
 }

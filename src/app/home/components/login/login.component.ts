@@ -78,7 +78,7 @@ mostrarCSS(field: string) {
           this.authService.setToken(accessToken);
           sessionStorage.setItem('user_logged.token', accessToken);
           sessionStorage.setItem('user_logged.id', id);
-          this.router.navigate(['/visualizar-tarefas']);
+          this.router.navigate(['/home']);
         },
         error => {
           this.alertaService.exibirAlerta('danger','Erro : ' + error.error.message);
