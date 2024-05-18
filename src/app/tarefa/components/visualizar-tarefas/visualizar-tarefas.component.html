@@ -3,7 +3,7 @@
 <div class="main-vizualizar">
     <header>
         <div class="search-container">
-            <input type="text" class="form-control search-input" placeholder="Pesquisar" aria-label="Recipient's username" aria-describedby="button-addon2" formControlName="pesquisar">
+            <input type="text" class="form-control search-input" placeholder="Pesquisar" aria-label="Recipient's username" aria-describedby="button-addon2" >
                 <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" id="icon">
                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
                 </svg>
@@ -48,30 +48,28 @@
     <div class="main-center">
 
         <div class="resultado">
-        <!-- resultado do filtro  -->
-            <input type="text" class="form-control" placeholder="Listado por: Data - 23/02/2024 a 23/02/2024" aria-label="Recipient's username" aria-describedby="button-addon2" disabled formControlName="filtrar">
+            <input type="text" class="form-control" placeholder="Listado por: Data - 23/02/2024 a 23/02/2024" aria-label="Recipient's username" aria-describedby="button-addon2" disabled >
         </div>
 
         <div id="tarefas">
-            <form>
+            <form [formGroup]="formTarefas">
                 <div class="tarefa" *ngFor="let tarefa of tarefas">
                     <input class="form-check-input" type="checkbox" formControlName="status" id="flexCheckDefault">
 
                     <div class="nomeCateg" (click)="selecionarTarefa(tarefa)">
                         <label id="nome">{{tarefa.nome}}</label>
-                        <label id="nomeCateg">{{tarefa.id_categoria}}</label>
+                        <label id="nomeCateg">{{tarefa.nome_categoria}}</label>
                     </div>
                     
                     <div id="statusPrioridade">
-                        <select name="status" id="status" formControlName="status">
-                            <!--<option value="aFazer">{{tarefa.id_status}}</option>
-                            <option value="emProgresso">Em progresso</option>
-                            <option value="concluida">Concluída</option>-->
-                            <ng-container *ngFor="let status of statusList">
-                                <option [value]="status.id">{{status.nome }}</option>
-                              </ng-container>
+                        <select name="status" class="status" [id]="'S'+tarefa.id_status" >
+                           <!--<option value="2">A fazer</option>
+                            <option value="1">Em progresso</option>
+                            <option value="4">Concluída</option>-->
+                            <option *ngFor="let status of statusList" [hidden]="status.id === 3" [value]="status.id" [selected]="status.id === tarefa.id_status" style="background-color: #fff; ">{{ status.nome }}</option>
                         </select>
-                        <label class="prioridade" [id]="'P'+tarefa.id_prioridade">{{tarefa.id_prioridade}}</label>
+                        
+                        <label class="prioridade" [id]="'P'+tarefa.id_prioridade" >{{tarefa.nome_prioridade}}</label>
                     </div>
                 </div>
             </form>
@@ -83,11 +81,11 @@
             <h5>Filtar por...</h5>
 
             <div id="filtroData">
-                <input type="date" formControlName="dataFiltro">
-                <input type="date" formControlName="dataFiltro">
+                <input type="date">
+                <input type="date">
             </div>
 
-            <select name="filtoStatus" formControlName="filtoStatus" class="filtros" id="statusfilto">
+            <select name="filtoStatus" class="filtros" id="statusfilto">
                 <option value="status" disabled selected>Status</option>
                 <option value="aFazer">A fazer</option>
                 <option value="emProgresso">Em progresso</option>
@@ -95,14 +93,14 @@
                 <option value="atrasada">Atrasada</option>
             </select>
 
-                <select name="filtoCategoria" formControlName="filtoCategoria" class="filtros" id="categoria">
+                <select name="filtoCategoria"  class="filtros" id="categoria">
                     <option value="categoria" disabled selected>Categoria</option>
                     <option value="estudo">Estudo</option>
                     <option value="geral">Geral</option>
                     <option value="medico">Médico</option>
                 </select>
 
-                <select name="filtoPrioridade" formControlName="filtoPrioridade" class="filtros" id="prioridade">
+                <select name="filtoPrioridade"  class="filtros" id="prioridade">
                     <option value="prioridade" disabled selected>Prioridade</option>
                     <option value="alta">Alta</option>
                     <option value="media">Média</option>

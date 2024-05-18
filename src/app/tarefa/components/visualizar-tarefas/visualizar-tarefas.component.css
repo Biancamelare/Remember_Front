@@ -215,7 +215,7 @@ header .search-container {
     font-weight: 500;
 }
 
-#status {
+.status {
     border-radius: 20px;
     border: none;
     padding: 2px;
@@ -297,6 +297,11 @@ h2 {
 hr{
     margin: 0;
 }
+
+#S3{
+    background-color: var(--btnAlta-color);
+}
+
 
 @media screen and (max-width: 1300px) { 
 /* 

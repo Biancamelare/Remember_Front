@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Inject, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Inject, OnInit, Output, ViewChild } from '@angular/core';
 import { ModalComponent } from '../modal/modal.component';
 import { UsuarioModel } from '../../../home/models/usuario.model';
 import { CommonModule, DOCUMENT } from '@angular/common';
@@ -14,11 +14,12 @@ import { CategoriaModel } from '../../models/categoria.model';
 import { PrioridadeModel } from '../../models/prioridade.model';
 import { StatusModel } from '../../models/status.model';
 import { SidenavComponent } from '../../../shared/components/sidenav/sidenav.component';
+import { ReactiveFormsModule, FormsModule, FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-visualizar-tarefas',
   standalone: true,
-  imports: [ModalComponent,  AlertasComponent, CommonModule, SidenavComponent],
+  imports: [ModalComponent,  AlertasComponent, CommonModule, SidenavComponent, ReactiveFormsModule, FormsModule],
   templateUrl: './visualizar-tarefas.component.html',
   styleUrl: './visualizar-tarefas.component.css'
 })
@@ -37,12 +38,15 @@ export class VisualizarTarefasComponent implements OnInit {
 
   categorias: CategoriaModel[] = [] as CategoriaModel[];
   categoria: CategoriaModel[] = [];
+  categoriaId?: number;
 
   prioridades: PrioridadeModel[] = [] as PrioridadeModel[];
   prioridade: PrioridadeModel[] = [];
 
   statusList: StatusModel[] = [] as StatusModel[];
   status: StatusModel[] = [];
+
+  formTarefas: FormGroup;
 
 
 
@@ -52,6 +56,7 @@ export class VisualizarTarefasComponent implements OnInit {
     private usuarioSerive : UsuarioService,
     private funcoesService: FuncoesService,
     private tarefaService: TarefaServiceService,
+    private formBuilder: FormBuilder,
     private alertaService:AlertaService,
 ) {
   
@@ -60,14 +65,20 @@ export class VisualizarTarefasComponent implements OnInit {
         this.currentUser = sessionStorage.getItem('user_logged.token')
         this.currentUserId = sessionStorage.getItem('user_logged.id')
         authService.setToken(this.currentUser)
-      }}
+      }
+      this.formTarefas = this.formBuilder.group({
+        status: [{ value: '', disabled: false}, [Validators.required]],
+      });
+    
+    }
 
       
   ngOnInit(): void {
     this.buscarUsuario();
     this.buscarTarefas()
     this.listarStatus()
-     
+    this.listarPrioridade();
+    this.listarCategoria();
    }
 
   buscarUsuario(){
@@ -96,16 +107,33 @@ export class VisualizarTarefasComponent implements OnInit {
     }
   }
 
- buscarTarefas(): void {
+  buscarTarefas(): void {
     this.tarefaService.getTarefas(this.currentUser).subscribe(
       (tarefas: PageTarefaModel) => {
-        this.tarefaPage = tarefas;
-        this.tarefas = tarefas.data
+        this.tarefas = tarefas.data || [];
+        this.associarDados();
       },
       (error) => {
-        this.alertaService.exibirAlerta('danger','Erro ao buscar tarefas: ' + error.error.message);
+        this.alertaService.exibirAlerta('danger', 'Erro ao buscar tarefas: ' + error.error.message);
       }
     );
+  }
+
+  associarDados(): void {
+    if (this.tarefas && this.categorias && this.prioridades && this.statusList) {
+      this.tarefas.forEach(tarefa => {
+        const categoria = this.categorias.find(c => c.id === tarefa.id_categoria);
+        if (categoria) {
+          tarefa.nome_categoria = categoria.nome;
+        }
+  
+        const prioridade = this.prioridades.find(p => p.id === tarefa.id_prioridade);
+        if (prioridade) {
+          tarefa.nome_prioridade = prioridade.nome;
+        }
+
+      });
+    }
   }
 
   listarCategoria(){

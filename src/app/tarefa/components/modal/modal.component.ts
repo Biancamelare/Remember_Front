@@ -77,7 +77,6 @@ export class ModalComponent implements OnInit {
 
   ngOnInit(): void {
     
-    console.log(this.tarefaSelecionada)
     this.listarCategoria();
     this.listarPrioridade()
    
@@ -87,7 +86,7 @@ export class ModalComponent implements OnInit {
     this.formTarefa.get('descricao')?.setValue(this.tarefaSelecionado.descricao);
     this.formTarefa.get('anotacao')?.setValue(this.tarefaSelecionado.anotacao);
     this.formTarefa.get('id_prioridade')?.setValue(Number(this.tarefaSelecionado.id_prioridade));
-    this.formTarefa.controls['id_status'].setValue(1);
+    this.formTarefa.controls['id_status'].setValue(2);
     this.formTarefa.get('id_categoria')?.setValue(Number(this.tarefaSelecionado.id_categoria));
     
 
@@ -134,7 +133,6 @@ export class ModalComponent implements OnInit {
   
 
   salvar(): void {
-    console.log(this.tarefaSelecionada)
    const html_dataconclusao = this.document.querySelector('#data_conclusao') as HTMLInputElement
    const html_horaconclusao = this.document.querySelector('#hora_conclusao') as HTMLInputElement
 
