@@ -39,4 +39,8 @@ export class UsuarioService {
     return this.http.delete<UsuarioModel>(`http://localhost:3000/${id}`);
   }
 
+  esquecersenha(email:string){
+    return this.http.post(`http://localhost:3000/usuario/esqueci-a-senha`, {to: email})
+  }
+
 }
