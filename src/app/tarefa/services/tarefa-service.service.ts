@@ -29,6 +29,13 @@ export class TarefaServiceService {
     return this.http.post(`http://localhost:3000/tarefas`, tarefa,{headers });
   }
 
+  editarStatus(id:number, status:number, token:string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.put(`http://localhost:3000/tarefas/${id}`, {id_status: status},{headers });
+  }
+
   getTarefas(token: string){
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`

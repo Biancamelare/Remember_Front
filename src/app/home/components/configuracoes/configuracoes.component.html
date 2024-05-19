@@ -97,11 +97,11 @@
                 <label class="form-label">Alterar tema</label>
             </div>
             <div class="mb-4 ">
-            <input class="btnTema" type="submit" value="Tema Padrão">
-            <input class="btnTema" type="submit" value="Tema Escuro" >
+            <input class="btnTema" type="submit" value="Tema Padrão" (click)="habilitarCores()">
+            <input class="btnTema" type="submit" value="Tema Escuro" (click)="habilitarCores()">
             </div>
             <form>
-                <div class="col espaco" >
+                <div class="col espaco" *ngIf="coreshabilitado" >
                   <h5> Cores </h5>
                   <table id="tabelaCores" cellspacing="1" class="espaço">
                     <tr>
@@ -134,6 +134,7 @@
                       </td>
                     </tr>
                   </table>
+                  <input class="btnSalvar" type="submit" value="Salvar" (click)="mudarTema()">
                 </div>
               </form>
 

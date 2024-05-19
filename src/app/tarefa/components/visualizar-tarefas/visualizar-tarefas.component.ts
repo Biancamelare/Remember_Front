@@ -79,7 +79,9 @@ export class VisualizarTarefasComponent implements OnInit {
     this.listarStatus()
     this.listarPrioridade();
     this.listarCategoria();
+
    }
+
 
   buscarUsuario(){
         this.usuarioSerive.getById(this.currentUserId,this.currentUser).subscribe( 
@@ -157,5 +159,29 @@ export class VisualizarTarefasComponent implements OnInit {
 
   recarregarTarefas(): void {
     this.buscarTarefas();
+  }
+
+  onChangeStatus(event: any, tarefa: TarefaModel): void {
+    const novoStatusId = event.target.value;  
+    this.editarTarefa(tarefa, novoStatusId); 
+  }
+
+  onChangeCheckbox(event: any, tarefa: TarefaModel): void {
+    const novoStatusId = event.target.checked ? '4' : '1'; 
+
+    this.editarTarefa(tarefa, novoStatusId); 
+  }
+
+  editarTarefa(tarefa: TarefaModel, novoStatusId: string){
+    this.tarefaService.editarStatus(tarefa.id, Number(novoStatusId), this.currentUser)
+    .subscribe(
+      (response) => {
+        this.buscarTarefas(); 
+      },
+      (error) => {
+        console.error('Erro ao editar a tarefa:', error);
+        this.alertaService.exibirAlerta('danger', 'Erro ao editar a tarefa: ' + error.error.message);
+      }
+    );
   }
 }

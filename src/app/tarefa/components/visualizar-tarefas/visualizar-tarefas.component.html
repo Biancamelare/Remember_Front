@@ -54,7 +54,7 @@
         <div id="tarefas">
             <form [formGroup]="formTarefas">
                 <div class="tarefa" *ngFor="let tarefa of tarefas">
-                    <input class="form-check-input" type="checkbox" formControlName="status" id="flexCheckDefault">
+                    <input class="form-check-input" type="checkbox" id="flexCheckDefault" (change)="onChangeCheckbox($event, tarefa)" [checked]="tarefa.id_status === 4">
 
                     <div class="nomeCateg" (click)="selecionarTarefa(tarefa)">
                         <label id="nome">{{tarefa.nome}}</label>
@@ -62,7 +62,7 @@
                     </div>
                     
                     <div id="statusPrioridade">
-                        <select name="status" class="status" [id]="'S'+tarefa.id_status" >
+                        <select name="status" class="status" [id]="'S'+tarefa.id_status" (change)="onChangeStatus($event, tarefa)" >
                            <!--<option value="2">A fazer</option>
                             <option value="1">Em progresso</option>
                             <option value="4">Concluída</option>-->

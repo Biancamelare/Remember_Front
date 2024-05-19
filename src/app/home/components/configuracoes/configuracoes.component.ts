@@ -35,6 +35,7 @@ export class ConfiguracoesComponent implements OnInit {
   salvarhabilitado: boolean = false;
   cancelarhabilitado: boolean = false;
   modalTarget:string = '';
+  coreshabilitado:boolean = false;
 
   constructor(
   @Inject(DOCUMENT) private document: Document,
@@ -179,5 +180,13 @@ export class ConfiguracoesComponent implements OnInit {
     if(modalDiv!= null) {
       modalDiv.style.display = 'none';
     }
+  }
+
+  habilitarCores(){
+    this.coreshabilitado = true;
+  }
+
+  mudarTema(){
+    this.coreshabilitado = false;
   }
   }
