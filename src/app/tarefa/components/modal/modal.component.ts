@@ -47,6 +47,8 @@ export class ModalComponent implements OnInit {
 
   modalTarget: string = '';
 
+  minDate: Date = new Date(); 
+
   constructor(
     private tarefaService: TarefaServiceService,
     private alertaService:AlertaService,
