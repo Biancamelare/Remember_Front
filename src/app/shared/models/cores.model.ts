@@ -1,0 +1,21 @@
+export interface CoresModel {
+    id: number,
+	nome: string,
+	primaryColor: string,
+	secondaryColor: string,
+	tertiaryColor: string,
+	quaternaryColor: string,
+	inputColor: string,
+	fontColor: string,
+	iconColor: string,
+	shadowColor: string,
+	userColor: string,
+	gradient1Color: string,
+	gradient2Color: string,
+	borderBottomColor: string,
+	svgColor: string,
+	btnAltaColor: string,
+	btnMediaColor: string,
+	btnBaixaColor: string,
+	ativo: false
+ }

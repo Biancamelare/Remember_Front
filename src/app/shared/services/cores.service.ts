@@ -1,5 +1,6 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { CoresModel } from "../models/cores.model";
 
 @Injectable({
     providedIn: 'root'
@@ -7,7 +8,11 @@ import { Injectable } from "@angular/core";
   export class CoresService {
   
 
-    constructor() { }
+    constructor(private http: HttpClient) { }
+
+    getById(id: number) {
+     return this.http.get<CoresModel>(`http://localhost:3000/usuario/temas/${id}`);
+    }
   
    
   }

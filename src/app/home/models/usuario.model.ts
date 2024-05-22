@@ -6,6 +6,7 @@ export interface UsuarioModel {
    telefone : string,
    senha : string,
    xp ?: number,
+   id_tema ?: number,
    criado_em ?: Date,
    editado_em ?: Date,
    excluido_em ?: Date
