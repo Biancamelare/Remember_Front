@@ -12,6 +12,8 @@ import { AlertaService } from '../../../shared/components/alertas/service/alerta
 import { ConfirmacaoService } from '../../../shared/components/confirm/service/confirm.service';
 import { ConfirmComponent } from '../../../shared/components/confirm/confirm.component';
 import { ModalIconComponent } from "../../../shared/components/modal-icon/modal-icon.component";
+import { CoresService } from '../../../shared/services/cores.service';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
     selector: 'app-configuracoes',
@@ -29,6 +31,7 @@ export class ConfiguracoesComponent implements OnInit {
   currentUser: any;
   currentUserId : any;
   formConfiguracoes: FormGroup;
+  formCores: FormGroup;
   usuarioSelecionado = {} as UsuarioModel;
   nome?: string;
   xp?: number;
@@ -37,10 +40,24 @@ export class ConfiguracoesComponent implements OnInit {
   modalTarget:string = '';
   coreshabilitado:boolean = false;
 
+  idTema?:number;
+  primaryColor:any
+  secondaryColor:any
+  tertiaryColor:any
+  quaternaryColor:any
+  inputColor:any
+  fontColor:any
+  iconColor:any
+  shadowColor:any
+  userColor:any
+  gradient1Color:any
+  gradient2Color:any
+
   constructor(
   @Inject(DOCUMENT) private document: Document,
   private authService: AuthServiceService,
   private formBuilder: FormBuilder,
+  private coresService: CoresService,
   private usuarioSerive : UsuarioService,
   private funcoesService: FuncoesService,
   private alertaService:AlertaService,
@@ -58,12 +75,19 @@ export class ConfiguracoesComponent implements OnInit {
       data_nasc: [{ value: '', disabled: true }, [Validators.required]],
       telefone: [{ value: '', disabled: true }, [Validators.required]],
     });
+    this.formCores = this.formBuilder.group({
+      quaternaryColor: [{ value: '', disabled: true }],
+      fontColor: [{ value: '', disabled: true }],
+      gradient1Color: [{ value: '', disabled: true }],
+      gradient2Color: [{ value: '', disabled: true }],
+
+    });
   }
 
 
   ngOnInit(): void {
    this.buscarUsuario();
-
+   
    this.formConfiguracoes.get('email')?.setValue(this.usuarioSelecionado.email);
    this.formConfiguracoes.get('nome')?.setValue(this.usuarioSelecionado.nome);
    this.formConfiguracoes.get('data_nasc')?.setValue(this.funcoesService.formatarData(String(this.usuarioSelecionado?.data_nasc)));
@@ -85,6 +109,11 @@ export class ConfiguracoesComponent implements OnInit {
     this.formConfiguracoes.controls['data_nasc'].setValue(this.funcoesService.formatarData(String(this.usuarioSelecionado?.data_nasc)));
     this.formConfiguracoes.controls['email'].setValue(this.usuarioSelecionado?.email);
     this.formConfiguracoes.controls['telefone'].setValue(this.funcoesService.formatarTelefone(this.usuarioSelecionado?.telefone));
+
+    this.formCores.controls['quaternaryColor'].setValue(this.quaternaryColor);
+    this.formCores.controls['fontColor'].setValue(this.fontColor);
+    this.formCores.controls['gradient1Color'].setValue(this.gradient1Color);
+    this.formCores.controls['gradient2Color'].setValue(this.gradient2Color);
   }
 
   logout(){
@@ -183,10 +212,46 @@ export class ConfiguracoesComponent implements OnInit {
   }
 
   habilitarCores(){
+    this.idTema = 1
+    this.buscarUrl();
     this.coreshabilitado = true;
   }
 
   mudarTema(){
     this.coreshabilitado = false;
   }
+
+  async buscarUrl() {
+
+    if(this.idTema){
+     const {
+       primaryColor,
+       secondaryColor,
+       tertiaryColor,
+       quaternaryColor,
+       inputColor,
+       fontColor,
+       iconColor,
+       shadowColor,
+       userColor,
+       gradient1Color,
+       gradient2Color,
+     } = await firstValueFrom(this.coresService.getById(this.idTema));
+      
+     
+     this.primaryColor = primaryColor;
+     this.secondaryColor = secondaryColor;
+     this.tertiaryColor = tertiaryColor;
+     this.quaternaryColor = quaternaryColor;
+     this.inputColor = inputColor;
+     this.fontColor = fontColor;
+     this.iconColor = iconColor;
+     this.shadowColor = shadowColor;
+     this.userColor = userColor;
+     this.gradient1Color = gradient1Color;
+     this.gradient2Color = gradient2Color;
+
+     this.preencherformulario();
+   }
   }
+}
