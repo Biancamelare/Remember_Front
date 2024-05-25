@@ -29,6 +29,14 @@ export class UsuarioService {
     return this.http.put(`http://localhost:3000/usuario/${id}`, usuario, {headers });
   }
 
+  editarTema(idTema:number, id:number, token: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.put(`http://localhost:3000/usuario/${id}`, { id_tema: idTema}, {headers });
+  }
+
+
   login(usuario: UsuarioLoginModel) {
 
     return this.http.post(`http://localhost:3000/auth/login`, { email: usuario.email, password: usuario.senha })

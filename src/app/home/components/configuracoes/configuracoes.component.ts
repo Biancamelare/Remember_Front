@@ -98,6 +98,7 @@ export class ConfiguracoesComponent implements OnInit {
     this.usuarioSerive.getById(this.currentUserId,this.currentUser).subscribe( 
       (usuario : UsuarioModel) => {
         this.usuarioSelecionado = usuario;
+        console.log(usuario)
         this.nome = this.funcoesService.formatarNomeCompleto(this.usuarioSelecionado.nome)
         this.xp = this.usuarioSelecionado.xp
         this.preencherformulario();
@@ -211,8 +212,8 @@ export class ConfiguracoesComponent implements OnInit {
     }
   }
 
-  habilitarCores(){
-    this.idTema = 1
+  habilitarCores(idTema:number){
+    this.idTema = idTema
     this.buscarUrl();
     this.coreshabilitado = true;
   }
@@ -220,6 +221,27 @@ export class ConfiguracoesComponent implements OnInit {
   mudarTema(){
     this.coreshabilitado = false;
   }
+
+  async salvarTema(){
+    if(this.idTema){
+      const resposta = await this.confirmacaoService.exibirConfirmacao('Deseja realmente alterar o tema?');
+      if(resposta){
+        console.log(this.idTema)
+        this.usuarioSerive.editarTema(this.idTema, this.currentUserId, this.currentUser).subscribe(
+          response => {
+            this.alertaService.exibirAlerta('success', 'Tema alterado com sucesso!');
+            this.coreshabilitado = false;
+            this.buscarUsuario()
+          },
+          error => {
+            this.alertaService.exibirAlerta('danger','Erro ao alterar o usuário: ' + error.error.message); 
+            this.coreshabilitado = false;
+          })
+      }else{
+        this.coreshabilitado = false;
+      }}
+  }
+
 
   async buscarUrl() {
 
