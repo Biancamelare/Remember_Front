@@ -12,7 +12,7 @@ body {
 nav.menu-lateral {
     width: 90px;
     height: 100%;
-    background-image: linear-gradient(120deg, #4393f2 40%, #ae5ea7);
+    background-image: linear-gradient(120deg, var(--gradient1-color) 40%, var(--gradient2-color));
     padding: 40px 0  40px 20px;
     border-radius: 0 30px 30px 0;
     position: fixed;
@@ -64,7 +64,7 @@ ul {
 }
 
 ul li.item-menu a {
-    color: #ffffff;
+    color: var(--secondary-color);
     text-decoration: none;
     font-size: 22px;
     padding: 20px 4%;
@@ -129,7 +129,7 @@ nav.menu-lateral.expandir ul li.item-menu img {
 }
 
 .bi.bi-list.icone-aba {                     
-    fill: white;
+    fill: var(--secondary-color);
     width: 50px;
     height: 50px;
 }
@@ -279,7 +279,7 @@ nav.menu-lateral.expandir ul li.item-menu img {
     }
 
     .bi.bi-list.icone-aba {                     
-        fill: black;
+        fill: var(--base-color);
         width: 40px;
         height: 40px;
     }
@@ -331,7 +331,7 @@ nav.menu-lateral.expandir ul li.item-menu img {
     }
     
     ul li.item-menu a {
-        color: #ffffff;
+        color: var(--secondary-color);
         text-decoration: none;
         font-size: 22px;
         padding: 20px 4%;
