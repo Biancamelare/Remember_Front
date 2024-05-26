@@ -2,7 +2,7 @@ import { Component, EventEmitter, Inject, Input, OnChanges, OnInit, Output, Simp
 import { AlertasComponent } from '../../../shared/components/alertas/alertas.component';
 import { CommonModule, DOCUMENT, DatePipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule, FormsModule, FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule, FormGroup, FormBuilder, Validators, FormControl, FormArray, AbstractControl } from '@angular/forms';
 import { TarefaModel } from '../../models/tarefa.model';
 import { TarefaServiceService } from '../../services/tarefa-service.service';
 import { AlertaService } from '../../../shared/components/alertas/service/alerta.service';
@@ -119,6 +119,12 @@ export class ModalComponent implements OnInit,OnChanges {
         console.log(horaFormatada)
         this.hora_conclusao = horaFormatada;
       }
+      this.inicializarLista();
+      if (this.tarefa.lista_tarefa) {
+        this.tarefa.lista_tarefa.forEach(item => {
+          this.adicionarItem(item.descricao, item.status);
+        });
+      }
       this.formTarefa.patchValue(this.tarefa);
       
     }
@@ -139,6 +145,13 @@ export class ModalComponent implements OnInit,OnChanges {
         this.validarTodosCampos(control);
       }
     });
+  }
+
+  isInvalid(control: AbstractControl | null, controlName?: string): boolean {
+    if (controlName && control instanceof FormGroup) {
+      control = control.get(controlName);
+    }
+    return control ? control.invalid && (control.dirty || control.touched) : false;
   }
 
   mostrarCSS(field: string) {
@@ -165,14 +178,15 @@ export class ModalComponent implements OnInit,OnChanges {
 
    const itensListaVerificacaoControls = this.getItensListaVerificacaoControls();
    itensListaVerificacaoControls.forEach(control => {
-    const descricao = control.value.trim(); 
-    if (descricao !== '') {
-      listaVerificacao.push({
-        descricao: descricao,
-        status: false
-      });
-    }
-  });
+     const descricao = control.get('descricao')?.value.trim();
+     const status = control.get('status')?.value;
+     if (descricao !== '') {
+       listaVerificacao.push({
+         descricao: descricao,
+         status: status
+       });
+     }
+   });
 
 
    this.data_conclusao = html_dataconclusao.value
@@ -227,21 +241,15 @@ export class ModalComponent implements OnInit,OnChanges {
   }
 
   //Lista
-  adicionarItem(): void {
-    const novoItem = this.formBuilder.control('', Validators.required);
+  adicionarItem(descricao: string = '', status: boolean = false): void {
+    const novoItem = this.formBuilder.group({
+      descricao: [descricao, Validators.required],
+      status: [status]
+    });
     (this.formTarefa.get('lista_tarefa') as FormArray).push(novoItem);
   }
-
     getItensListaVerificacaoControls() {
       return (this.formTarefa.get('lista_tarefa') as FormArray).controls;
-    }
-
-    getCheckboxControl(index: number): FormControl {
-      return (this.formTarefa.get('lista_tarefa') as FormArray).at(index) as FormControl;
-    }
-
-    getTextControl(index: number): FormControl {
-      return (this.formTarefa.get('lista_tarefa') as FormArray).at(index) as FormControl;
     }
 
     inicializarLista(): void {

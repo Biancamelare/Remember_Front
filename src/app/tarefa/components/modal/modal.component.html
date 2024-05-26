@@ -41,16 +41,18 @@
                   </svg>  Lista de verificação</label>
                 </div> 
 
-                <div class="mb-3 check item-container" formArrayName="lista_tarefa" *ngFor="let item of getItensListaVerificacaoControls(); let i = index">
-                      <input class="form-check-input readonly-checkbox" type="checkbox" [id]="'item_' + i" [formControl]="getCheckboxControl(i)"  [class.readonly-checkbox]="isEditing">
-                      <input type="text" id="item" class="form-control" [formControl]="getTextControl(i)" placeholder="Adicionar um item" [class.input-erro]="getTextControl(i).invalid && getTextControl(i).touched">
+                <div formArrayName="lista_tarefa" *ngFor="let item of getItensListaVerificacaoControls(); let i = index">
+                  <div [formGroupName]="i" class="mb-3 check item-container" >
+                      <input class="form-check-input readonly-checkbox" type="checkbox" [id]="'item_' + i"  [class.readonly-checkbox]="isEditing" formControlName="status">
+                      <input type="text" id="item" class="form-control"  placeholder="Adicionar um item"  formControlName="descricao"   [ngClass]="{'input-erro': isInvalid(item.get('descricao'))}">
                       <span class="delete-icon" (click)="removerItem(i)" >
                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#dc3545" class="bi bi-trash-fill" viewBox="0 0 16 16">
                           <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/>
                         </svg>
                       </span>
+                    </div>
                 </div>
-                <button type="button" class="btn adicionar" (click)="adicionarItem()">Adicionar Item</button>
+                <button type="button" class="btn adicionar" (click)="adicionarItem('',false)">Adicionar Item</button>
               
                 <hr>
 
@@ -58,7 +60,7 @@
                   <label for="message-text" class="col-form-label"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16"><path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5m.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/></svg>  Prioridade:</label> <br>
       
                  <ng-container *ngFor="let prioridade of prioridades">
-                    <input class="btn-check" type="radio" [id]="prioridade.id" [value]="prioridade.id" class="btn-check" formControlName="id_prioridade" [ngClass]="{'prioridade': true, 'btn': true}" [checked]="prioridade.id === formTarefa.get('id_prioridade')?.value" [ngClass]="mostrarCSS('id_prioridade')">
+                    <input class="btn-check" type="radio" [id]="prioridade.id" [value]="prioridade.id" class="btn-check" formControlName="id_prioridade" [ngClass]="{'prioridade': true, 'btn': true}" [checked]="prioridade.id === formTarefa.get('id_prioridade')?.value" >
                     <label class="btn prioridade"  [id]="prioridade.nome" [for]="prioridade.id" class="btn prioridade" [ngClass]="mostrarCSS('id_prioridade')">{{ prioridade.nome }} </label>
                   </ng-container>
                 </div>
@@ -68,7 +70,7 @@
                 <div class="mb-3 row">
                   <label for="message-text" class="col-sm-6 col-form-label"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16"><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/></svg>  Data e hora de conclusão:</label>
                   <div class="col-sm-3">
-                      <input type="date" class="form-control" id="data_conclusao" [ngClass]="mostrarCSS('data_conclusao')" min="{{minDate | date:'yyyy-MM-dd'}}" [value]="data_conclusao">
+                      <input type="date" class="form-control" id="data_conclusao" min="{{minDate | date:'yyyy-MM-dd'}}" [value]="data_conclusao"   >
                   </div>
                   <div class="col-sm-3">
                       <input type="time" class="form-control" id="hora_conclusao" [value]="hora_conclusao" >
