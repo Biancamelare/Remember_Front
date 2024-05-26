@@ -62,9 +62,6 @@
                     
                     <div id="statusPrioridade">
                         <select name="status" class="status" [id]="'S'+tarefa.id_status" (change)="onChangeStatus($event, tarefa)" >
-                           <!--<option value="2">A fazer</option>
-                            <option value="1">Em progresso</option>
-                            <option value="4">Concluída</option>-->
                             <option *ngFor="let status of statusList" [hidden]="status.id === 3" [value]="status.id" [selected]="status.id === tarefa.id_status" style="background-color: #fff; ">{{ status.nome }}</option>
                         </select>
                         
