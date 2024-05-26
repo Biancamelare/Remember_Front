@@ -125,9 +125,13 @@ label#anexo {
 }
 
 .check input#item {
-    border: 0;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    border-bottom: 2px solid var(--tertiary-color);
     border-radius: 0;
     box-shadow: none;
+    margin-left: 2%;
 }
 
 .input-erro {
@@ -139,3 +143,39 @@ label#anexo {
     margin-left:2%;
     margin-right:2%;
 }
+
+.readonly-checkbox {
+    pointer-events: none; 
+    opacity: 0.6; 
+}
+
+.item-container {
+    position: relative;
+  }
+  
+  .input-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .delete-icon {
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .item-container:hover .delete-icon {
+    display: inline;
+  }
+
+  .adicionar{
+    padding: 5px;
+    width: 150px;
+    color: var(--secondary-color);
+    font-weight: 500;
+    background-color: var(--font-color);
+  }

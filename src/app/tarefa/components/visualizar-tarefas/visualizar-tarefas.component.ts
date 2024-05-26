@@ -113,6 +113,7 @@ export class VisualizarTarefasComponent implements OnInit {
     this.tarefaService.getTarefas(this.currentUser).subscribe(
       (tarefas: PageTarefaModel) => {
         this.tarefas = tarefas.data || [];
+        console.log(this.tarefas)
         this.associarDados();
       },
       (error) => {

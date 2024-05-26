@@ -41,11 +41,17 @@
                   </svg>  Lista de verificação</label>
                 </div> 
 
-                <div class="mb-3 check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <input type="text" class="form-control" id="item" placeholder="Adicionar um item">
+                <div class="mb-3 check item-container" formArrayName="lista_tarefa" *ngFor="let item of getItensListaVerificacaoControls(); let i = index">
+                      <input class="form-check-input readonly-checkbox" type="checkbox" [id]="'item_' + i" [formControl]="getCheckboxControl(i)"  [class.readonly-checkbox]="isEditing">
+                      <input type="text" id="item" class="form-control" [formControl]="getTextControl(i)" placeholder="Adicionar um item" [class.input-erro]="getTextControl(i).invalid && getTextControl(i).touched">
+                      <span class="delete-icon" (click)="removerItem(i)" >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#dc3545" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                          <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/>
+                        </svg>
+                      </span>
                 </div>
-                
+                <button type="button" class="btn adicionar" (click)="adicionarItem()">Adicionar Item</button>
+              
                 <hr>
 
                 <div class="mb-3">

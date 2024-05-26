@@ -234,7 +234,7 @@ export class ConfiguracoesComponent implements OnInit {
             this.buscarUsuario()
           },
           error => {
-            this.alertaService.exibirAlerta('danger','Erro ao alterar o usuário: ' + error.error.message); 
+            this.alertaService.exibirAlerta('danger','Erro ao alterar o tema: ' + error.error.message); 
             this.coreshabilitado = false;
           })
       }else{

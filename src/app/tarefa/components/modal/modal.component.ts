@@ -2,7 +2,7 @@ import { Component, EventEmitter, Inject, Input, OnInit, Output, ViewChild } fro
 import { AlertasComponent } from '../../../shared/components/alertas/alertas.component';
 import { CommonModule, DOCUMENT } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule, FormsModule, FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule, FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@angular/forms';
 import { TarefaModel } from '../../models/tarefa.model';
 import { TarefaServiceService } from '../../services/tarefa-service.service';
 import { AlertaService } from '../../../shared/components/alertas/service/alerta.service';
@@ -11,6 +11,7 @@ import { UsuarioModel } from '../../../home/models/usuario.model';
 import { AuthServiceService } from '../../../shared/services/auth-service.service';
 import { UsuarioService } from '../../../home/services/usuario.service';
 import { PrioridadeModel } from '../../models/prioridade.model';
+
 
 @Component({
   selector: 'app-modal',
@@ -49,6 +50,11 @@ export class ModalComponent implements OnInit {
 
   minDate: Date = new Date(); 
 
+  itensListaVerificacao: string[] = [];
+
+  isEditing: boolean = true;
+
+
   constructor(
     private tarefaService: TarefaServiceService,
     private alertaService:AlertaService,
@@ -72,8 +78,8 @@ export class ModalComponent implements OnInit {
       id_status: [{ value: '2', disabled: false }],
       id_prioridade: [{ value: '', disabled: false },Validators.required],
       data_vencimento: [{ value: '', disabled: false },Validators.required],
-      //anexo: [{ value: '', disabled: false }],
       anotacao: [{ value: '', disabled: false }],
+      lista_tarefa: this.formBuilder.array([])
     });
   }
 
@@ -95,6 +101,8 @@ export class ModalComponent implements OnInit {
     if(this.formTarefa.valid){
       this.modalTarget = 'modal'
     }
+
+    this.inicializarLista();
    
 }
 
@@ -124,8 +132,6 @@ export class ModalComponent implements OnInit {
   listarCategoria(){
     this.tarefaService.getCategorias(this.currentUser).subscribe(
       (categorias: CategoriaModel[]) => {this.categorias = categorias; })
-
-    
   }
 
   listarPrioridade(){
@@ -135,8 +141,21 @@ export class ModalComponent implements OnInit {
   
 
   salvar(): void {
+   const listaVerificacao: { descricao: string, status: boolean }[] = [];
    const html_dataconclusao = this.document.querySelector('#data_conclusao') as HTMLInputElement
    const html_horaconclusao = this.document.querySelector('#hora_conclusao') as HTMLInputElement
+
+   const itensListaVerificacaoControls = this.getItensListaVerificacaoControls();
+   itensListaVerificacaoControls.forEach(control => {
+    const descricao = control.value.trim(); 
+    if (descricao !== '') {
+      listaVerificacao.push({
+        descricao: descricao,
+        status: false
+      });
+    }
+  });
+
 
    this.data_conclusao = html_dataconclusao.value
    if(html_horaconclusao.value != ''){
@@ -145,10 +164,14 @@ export class ModalComponent implements OnInit {
    const dataHoraConclusao = `${this.data_conclusao}T${this.hora_conclusao}:00.000Z`;
    this.formTarefa.controls['data_vencimento'].setValue(dataHoraConclusao);
 
-    if (this.formTarefa.valid ) {
-      console.log(this.formTarefa.getRawValue())
+    if (this.formTarefa.valid) {
+      const dadosTarefa = {
+        ...this.formTarefa.getRawValue(), 
+        lista_tarefa: listaVerificacao 
+    };
+    
       this.modalTarget = 'modal'
-      this.tarefaService.cadastrarTarefa(this.formTarefa.getRawValue(),this.currentUser).subscribe(
+      this.tarefaService.cadastrarTarefa(dadosTarefa,this.currentUser).subscribe(
         response => {
           this.alertaService.exibirAlerta('success', 'Tarefa cadastrado com sucesso!');
           this.tarefaSalva.emit();
@@ -174,13 +197,41 @@ export class ModalComponent implements OnInit {
   }
   closeModal() {
       this.formTarefa.reset();
-      this.formTarefa.enable()
+      this.formTarefa.enable();
+      this.inicializarLista();
       const html_dataconclusao = this.document.querySelector('#data_conclusao') as HTMLInputElement
       const html_horaconclusao = this.document.querySelector('#hora_conclusao') as HTMLInputElement
 
       html_dataconclusao.value = ''
       html_horaconclusao.value = ''
   }
+
+  //Lista
+  adicionarItem(): void {
+    const novoItem = this.formBuilder.control('', Validators.required);
+    (this.formTarefa.get('lista_tarefa') as FormArray).push(novoItem);
+  }
+
+    getItensListaVerificacaoControls() {
+      return (this.formTarefa.get('lista_tarefa') as FormArray).controls;
+    }
+
+    getCheckboxControl(index: number): FormControl {
+      return (this.formTarefa.get('lista_tarefa') as FormArray).at(index) as FormControl;
+    }
+
+    getTextControl(index: number): FormControl {
+      return (this.formTarefa.get('lista_tarefa') as FormArray).at(index) as FormControl;
+    }
+
+    inicializarLista(): void {
+      (this.formTarefa.get('lista_tarefa') as FormArray).clear();
+   
+    }
+
+    removerItem(index: number): void {
+      (this.formTarefa.get('lista_tarefa') as FormArray).removeAt(index);
+    }
 
 
 
