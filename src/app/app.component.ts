@@ -68,7 +68,6 @@ buscarUsuario(){
     (usuario : UsuarioModel) => {
       this.usuarioSelecionado = usuario;
       this.idTema = this.usuarioSelecionado.id_tema
-      console.log(this.idTema)
       this.buscarUrl();
   })
 }

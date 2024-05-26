@@ -11,12 +11,14 @@ import { UsuarioModel } from '../../../home/models/usuario.model';
 import { AuthServiceService } from '../../../shared/services/auth-service.service';
 import { UsuarioService } from '../../../home/services/usuario.service';
 import { PrioridadeModel } from '../../models/prioridade.model';
+import { ConfirmacaoService } from '../../../shared/components/confirm/service/confirm.service';
+import { ConfirmComponent } from '../../../shared/components/confirm/confirm.component';
 
 
 @Component({
   selector: 'app-modal',
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule, HttpClientModule,CommonModule, AlertasComponent],
+  imports: [ReactiveFormsModule, FormsModule, HttpClientModule,CommonModule, AlertasComponent, ConfirmComponent],
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.css',
   providers: [DatePipe]
@@ -62,7 +64,8 @@ export class ModalComponent implements OnInit,OnChanges {
     @Inject(DOCUMENT) private document: Document,
     private authService: AuthServiceService,
     private usuarioSerive : UsuarioService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private confirmacaoService: ConfirmacaoService
   ) {
 
     const sessionStorage = document.defaultView?.sessionStorage;
@@ -85,6 +88,8 @@ export class ModalComponent implements OnInit,OnChanges {
   }
 
   ngOnInit(): void {
+
+    this.editar = false;
     
     this.listarCategoria();
     this.listarPrioridade()
@@ -104,11 +109,13 @@ export class ModalComponent implements OnInit,OnChanges {
     }
 
     this.inicializarLista();
+
+ 
 }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['tarefa'] && this.tarefa) {
-      console.log(this.tarefa)
+      this.editar = true;
       const dataFormatada = this.datePipe.transform(this.tarefa.data_vencimento, 'yyyy-MM-dd');
       if (dataFormatada) {
         this.data_conclusao = dataFormatada;
@@ -198,6 +205,7 @@ export class ModalComponent implements OnInit,OnChanges {
    this.formTarefa.controls['id_status'].setValue(2);
 
     if (this.formTarefa.valid) {
+      this.modalTarget = 'modal'
       const dadosTarefa = {
         ...this.formTarefa.getRawValue(), 
         lista_tarefa: listaVerificacao 
@@ -219,6 +227,23 @@ export class ModalComponent implements OnInit,OnChanges {
       this.alertaService.exibirAlerta('danger', 'Preencha todos os campos corretamente.')
     }
   
+  }
+
+  async excluir(){
+    if(this.tarefa){
+      const resposta = await this.confirmacaoService.exibirConfirmacao('Deseja realmente excluir a tarefa?');
+      if(resposta){
+        this.tarefaService.excluirTarefa(this.tarefa.id, this.currentUser).subscribe(
+          response => {
+            this.alertaService.exibirAlerta('success', 'Tarefa excluída com sucesso!');
+            this.tarefaSalva.emit();
+            this.closeModal()
+          },
+          error => {
+            this.alertaService.exibirAlerta('danger','Erro ao excluir tarefa: ' + error.error.message); 
+          })
+      }
+    }
   }
 
   /*Modal*/

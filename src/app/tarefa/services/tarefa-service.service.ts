@@ -61,4 +61,12 @@ export class TarefaServiceService {
     });
     return this.http.get<PrioridadeModel[]>(`http://localhost:3000/tarefas/prioridade`, {headers });
   }
+
+  excluirTarefa(id: number, token: string) {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.delete(`http://localhost:3000/tarefas/${id}`, {headers });
+  }
+
 }
