@@ -52,10 +52,10 @@
 
         <div id="tarefas">
             <form [formGroup]="formTarefas">
-                <div class="tarefa" *ngFor="let tarefa of tarefas" data-bs-toggle="modal"  data-bs-target="#exampleModal" >
+                <div class="tarefa" *ngFor="let tarefa of tarefas"  >
                     <input class="form-check-input" type="checkbox" id="flexCheckDefault" (change)="onChangeCheckbox($event, tarefa)" [checked]="tarefa.id_status === 4">
 
-                    <div class="nomeCateg" (click)="selecionarTarefa(tarefa)">
+                    <div class="nomeCateg" (click)="selecionarTarefa(tarefa)" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <label id="nome">{{tarefa.nome}}</label>
                         <label id="nomeCateg">{{tarefa.nome_categoria}}</label>
                     </div>
