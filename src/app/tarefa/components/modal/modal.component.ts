@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Inject, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { AlertasComponent } from '../../../shared/components/alertas/alertas.component';
-import { CommonModule, DOCUMENT } from '@angular/common';
+import { CommonModule, DOCUMENT, DatePipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule, FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@angular/forms';
 import { TarefaModel } from '../../models/tarefa.model';
@@ -18,14 +18,14 @@ import { PrioridadeModel } from '../../models/prioridade.model';
   standalone: true,
   imports: [ReactiveFormsModule, FormsModule, HttpClientModule,CommonModule, AlertasComponent],
   templateUrl: './modal.component.html',
-  styleUrl: './modal.component.css'
+  styleUrl: './modal.component.css',
+  providers: [DatePipe]
 })
-export class ModalComponent implements OnInit {
+export class ModalComponent implements OnInit,OnChanges {
   @ViewChild('alertaCadastro', { static: false }) alertaCadastro!: AlertasComponent;
   @Output() tarefaSalva: EventEmitter<any> = new EventEmitter<any>();
-  @Input() tarefaSelecionada: any;
+  @Input() tarefa: TarefaModel | undefined;
   formTarefa: FormGroup;
-  tarefa?: TarefaModel;
 
   editar: boolean = false;
 
@@ -62,6 +62,7 @@ export class ModalComponent implements OnInit {
     @Inject(DOCUMENT) private document: Document,
     private authService: AuthServiceService,
     private usuarioSerive : UsuarioService,
+    private datePipe: DatePipe
   ) {
 
     const sessionStorage = document.defaultView?.sessionStorage;
@@ -103,8 +104,25 @@ export class ModalComponent implements OnInit {
     }
 
     this.inicializarLista();
-   
 }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['tarefa'] && this.tarefa) {
+      console.log(this.tarefa)
+      const dataFormatada = this.datePipe.transform(this.tarefa.data_vencimento, 'yyyy-MM-dd');
+      if (dataFormatada) {
+        this.data_conclusao = dataFormatada;
+      }
+      const horaFormatada = this.datePipe.transform(this.tarefa.data_vencimento, 'HH:mm','UTC');
+      if (horaFormatada) {
+        console.log(this.tarefa.data_vencimento)
+        console.log(horaFormatada)
+        this.hora_conclusao = horaFormatada;
+      }
+      this.formTarefa.patchValue(this.tarefa);
+      
+    }
+  }
 
   /*VALIDAÇÕES */
   validarCampo(field: string) {
@@ -163,12 +181,14 @@ export class ModalComponent implements OnInit {
    }
    const dataHoraConclusao = `${this.data_conclusao}T${this.hora_conclusao}:00.000Z`;
    this.formTarefa.controls['data_vencimento'].setValue(dataHoraConclusao);
+   this.formTarefa.controls['id_status'].setValue(2);
 
     if (this.formTarefa.valid) {
       const dadosTarefa = {
         ...this.formTarefa.getRawValue(), 
         lista_tarefa: listaVerificacao 
     };
+    console.log(dadosTarefa)
     
       this.modalTarget = 'modal'
       this.tarefaService.cadastrarTarefa(dadosTarefa,this.currentUser).subscribe(

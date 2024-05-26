@@ -1,4 +1,4 @@
-<app-modal (tarefaSalva)="recarregarTarefas()"></app-modal>
+<app-modal (tarefaSalva)="recarregarTarefas()"  [tarefa]="tarefaSelecionada"></app-modal>
 <app-sidenav></app-sidenav>
 <div class="main-vizualizar">
     <header>
@@ -34,7 +34,6 @@
             </div>
         </div>
     </header>
-
     
 
     <div id="info">
@@ -53,7 +52,7 @@
 
         <div id="tarefas">
             <form [formGroup]="formTarefas">
-                <div class="tarefa" *ngFor="let tarefa of tarefas">
+                <div class="tarefa" *ngFor="let tarefa of tarefas" data-bs-toggle="modal"  data-bs-target="#exampleModal" >
                     <input class="form-check-input" type="checkbox" id="flexCheckDefault" (change)="onChangeCheckbox($event, tarefa)" [checked]="tarefa.id_status === 4">
 
                     <div class="nomeCateg" (click)="selecionarTarefa(tarefa)">

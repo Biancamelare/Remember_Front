@@ -68,10 +68,10 @@
                 <div class="mb-3 row">
                   <label for="message-text" class="col-sm-6 col-form-label"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16"><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/></svg>  Data e hora de conclusão:</label>
                   <div class="col-sm-3">
-                      <input type="date" class="form-control" id="data_conclusao" [ngClass]="mostrarCSS('data_conclusao')" min="{{minDate | date:'yyyy-MM-dd'}}">
+                      <input type="date" class="form-control" id="data_conclusao" [ngClass]="mostrarCSS('data_conclusao')" min="{{minDate | date:'yyyy-MM-dd'}}" [value]="data_conclusao">
                   </div>
                   <div class="col-sm-3">
-                      <input type="time" class="form-control" id="hora_conclusao" >
+                      <input type="time" class="form-control" id="hora_conclusao" [value]="hora_conclusao" >
                   </div>
               </div>
               

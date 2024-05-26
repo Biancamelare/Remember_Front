@@ -25,7 +25,7 @@ import { ReactiveFormsModule, FormsModule, FormGroup, Validators, FormBuilder } 
 })
 export class VisualizarTarefasComponent implements OnInit {
   @ViewChild('alertaCadastro', { static: false }) alertaCadastro!: AlertasComponent;
-  @Output() tarefaSelecionada = new EventEmitter<any>();
+  @ViewChild(ModalComponent) modalComponent!: ModalComponent;
   currentUser: any;
   currentUserId : any;
   usuarioSelecionado = {} as UsuarioModel;
@@ -47,6 +47,8 @@ export class VisualizarTarefasComponent implements OnInit {
   status: StatusModel[] = [];
 
   formTarefas: FormGroup;
+
+  tarefaSelecionada: TarefaModel | undefined;
 
 
 
@@ -154,8 +156,9 @@ export class VisualizarTarefasComponent implements OnInit {
       (status: StatusModel[]) => {this.statusList = status;})
   }
 
-  selecionarTarefa(tarefa: any) {
-    this.tarefaSelecionada.emit(tarefa);
+  selecionarTarefa(tarefa: TarefaModel) { 
+    this.tarefaSelecionada = tarefa;
+    this.modalComponent.openModal();
   }
 
   recarregarTarefas(): void {
