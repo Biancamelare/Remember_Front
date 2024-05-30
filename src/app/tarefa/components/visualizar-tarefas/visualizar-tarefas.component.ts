@@ -50,6 +50,13 @@ export class VisualizarTarefasComponent implements OnInit {
 
   tarefaSelecionada: TarefaModel | undefined;
 
+  
+  dataInicio: string | undefined;
+  dataFim: string | undefined;
+  statusFiltro: number | undefined = 0;
+  categoriaFiltro: number | undefined = 0;
+  prioridadeFiltro: number | undefined = 0;
+
 
 
   constructor(
@@ -188,5 +195,55 @@ export class VisualizarTarefasComponent implements OnInit {
         this.alertaService.exibirAlerta('danger', 'Erro ao editar a tarefa: ' + error.error.message);
       }
     );
+  }
+
+
+  filtrarTarefas() {
+    const params: any = {};
+    if (this.dataInicio) params.data_vencimento = this.dataInicio;
+    if (this.dataFim) params.data_vencimento = this.dataFim;
+    if (this.statusFiltro) params.id_status = this.statusFiltro;
+    if (this.categoriaFiltro) params.id_categoria = this.categoriaFiltro;
+    if (this.prioridadeFiltro) params.id_prioridade = this.prioridadeFiltro;
+
+    this.tarefaService.filtrarTarefas(params, this.currentUser).subscribe(
+      (tarefas: PageTarefaModel) => {
+        this.tarefas = tarefas.data || [];
+        this.associarDados();
+      },
+      (error) => {
+        this.alertaService.exibirAlerta('danger', 'Erro ao filtrar tarefas: ' + error.error.message);
+      }
+    );
+  }
+
+  limparFiltros() {
+    this.dataInicio = undefined;
+    this.dataFim = undefined;
+    this.statusFiltro = 0;
+    this.categoriaFiltro = 0;
+    this.prioridadeFiltro = 0;
+    this.buscarTarefas();
+  }
+
+  limparFiltro(filtro: string) {
+    switch (filtro) {
+      case 'dataInicio':
+        this.dataInicio = undefined;
+        break;
+      case 'dataFim':
+        this.dataFim = undefined;
+        break;
+      case 'statusFiltro':
+        this.statusFiltro = 0;
+        break;
+      case 'categoriaFiltro':
+        this.categoriaFiltro = 0;
+        break;
+      case 'prioridadeFiltro':
+        this.prioridadeFiltro = 0;
+        break;
+    }
+    this.filtrarTarefas();
   }
 }

@@ -47,7 +47,7 @@
     <div class="main-center">
 
         <div class="resultado">
-            <input type="text" class="form-control" placeholder="Listado por: Data - 23/02/2024 a 23/02/2024" aria-label="Recipient's username" aria-describedby="button-addon2" disabled >
+            <label>Listado por Data: {{dataInicio}} - {{dataFim}}</label>
         </div>
 
         <div id="tarefas">
@@ -86,33 +86,51 @@
             <h5>Filtar por...</h5>
 
             <div id="filtroData">
-                <input type="date">
-                <input type="date">
+                <input type="date" [(ngModel)]="dataInicio" name="dataInicio">
+                <input type="date"  [(ngModel)]="dataFim" name="dataFim">
             </div>
 
-            <select name="filtoStatus" class="filtros" id="statusfilto">
-                <option value="status" disabled selected>Status</option>
-                <option value="aFazer">A fazer</option>
-                <option value="emProgresso">Em progresso</option>
-                <option value="concluida">Concluída</option>
-                <option value="atrasada">Atrasada</option>
+            <div class="filtro-container" >
+            <select name="filtoStatus" class="filtros" id="statusfilto" [(ngModel)]="statusFiltro">
+                <option [ngValue]="0" disabled selected>Status</option>
+                <ng-container *ngFor="let status of statusList">
+                    <option [ngValue]="status.id">{{ status.nome }} </option>
+                 </ng-container>
             </select>
-
-                <select name="filtoCategoria"  class="filtros" id="categoria">
-                    <option value="categoria" disabled selected>Categoria</option>
-                    <option value="estudo">Estudo</option>
-                    <option value="geral">Geral</option>
-                    <option value="medico">Médico</option>
+            <span (click)="limparFiltro('statusFiltro')" class="limpar clear-button"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="rgba(255, 3, 3, 0.7)" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/>
+            </svg></span>
+          </div>
+<div class="filtro-container">
+                <select name="filtoCategoria"  class="filtros" id="categoria" [(ngModel)]="categoriaFiltro" >
+                    <option [ngValue]="0" disabled selected>Categoria</option>
+                    <ng-container *ngFor="let categoria of categorias">
+                        <option [ngValue]="categoria.id">{{ categoria.nome }} </option>
+                     </ng-container>
                 </select>
-
-                <select name="filtoPrioridade"  class="filtros" id="prioridade">
-                    <option value="prioridade" disabled selected>Prioridade</option>
-                    <option value="alta">Alta</option>
-                    <option value="media">Média</option>
-                    <option value="baixa">Baixa</option>
+                <span (click)="limparFiltro('categoriaFiltro')"class="limpar clear-button"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="rgba(255, 3, 3, 0.7)" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                    <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/>
+                </svg></span>
+            </div>
+            <div class="filtro-container">
+                <select name="filtoPrioridade"  class="filtros" id="prioridade" [(ngModel)]="prioridadeFiltro">
+                    <option [ngValue]="0" disabled selected>Prioridade</option>
+                    <ng-container *ngFor="let prioridade of prioridades">
+                        <option [ngValue]="prioridade.id">{{ prioridade.nome }} </option>
+                      </ng-container>
                 </select>
+                <span (click)="limparFiltro('prioridadeFiltro')" class="limpar clear-button"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="rgba(255, 3, 3, 0.7)" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                    <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/>
+                </svg></span>
+            </div>
 
-                <button type="button" class="btn filtro">  Filtrar
-                </button>
+              
+
+                <button type="button" class="btn filtro" (click)="filtrarTarefas()">  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-funnel-fill" viewBox="0 0 16 16">
+                    <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5z"/>
+                  </svg>Filtrar </button>
+                <button type="button" class="btn filtro limparFiltro" (click)="limparFiltros()"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                    <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/>
+                </svg>Limpar Filtros</button>
     </aside>
 </div>

@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UsuarioModel } from '../../home/models/usuario.model';
 import { Observable } from 'rxjs';
@@ -67,6 +67,18 @@ export class TarefaServiceService {
       'Authorization': `Bearer ${token}`
     });
     return this.http.delete(`http://localhost:3000/tarefas/${id}`, {headers });
+  }
+
+  
+  filtrarTarefas(params: any, token: string): Observable<PageTarefaModel> {
+    const headers = { 'Authorization': `Bearer ${token}` };
+    let queryParams = new HttpParams();
+    for (let key in params) {
+      if (params[key]) {
+        queryParams = queryParams.append(key, params[key]);
+      }
+    }
+    return this.http.get<PageTarefaModel>(`http://localhost:3000/tarefas`, { headers, params: queryParams });
   }
 
 }

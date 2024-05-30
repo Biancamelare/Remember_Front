@@ -136,16 +136,19 @@ header .search-container {
     background-color: var(--quaternary-color);
     border-radius: 5px;
     margin-right: 35%;
+    margin-bottom: 1%!important;
 }
 
-.resultado input {
+.resultado label {
     background: none;
     box-shadow: none;
 }
 
-.resultado input::placeholder {
+.resultado label{
     color: var(--font-color);
-    font-weight: 500;
+    font-weight: 600;
+    margin-left: 2rem;
+    margin-top: 1rem;
 }
 
 #info {
@@ -280,6 +283,13 @@ h2 {
     color: var(--secondary-color);
 }
 
+.filtro svg {
+    color: var(--secondary-color);
+    margin-right: 10px;
+    margin-bottom: 3px;
+}
+
+
 .adicionar {
     padding: 0;
     width: 180px;
@@ -314,6 +324,33 @@ hr{
 
 .riscado {
     text-decoration: line-through var(--primary-color);
+}
+
+#limpar{
+    margin-left:8px;
+    margin-bottom: 5px;
+}
+
+.clear-button {
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: none;
+    font-size: 16px;
+}
+
+.filtro-container:hover .clear-button {
+    display: inline;
+}
+
+.limparFiltro{
+    background-color: var(--btnAlta-color);
+    color:black;
+}
+
+.limparFiltro svg{
+    color:rgba(255, 3, 3, 0.7)
 }
 
 
