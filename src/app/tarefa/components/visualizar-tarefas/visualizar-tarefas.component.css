@@ -249,6 +249,7 @@ header .search-container {
     align-self: flex-start; 
     padding-bottom: 10%;
     font-weight: 700;
+    color:var(--font-color)
 }
 
 .filtros,
@@ -264,15 +265,21 @@ input[type="date"] {
     text-align: center;
 }
 
-#filtroData{
+.filtroData{
     display: flex;
     align-items: center;
     width: 260px;
     height: 20px;
-    background: var(--secondary-color);
     justify-content: space-evenly;
     margin-bottom: 10px;
     border-radius: 5px;
+}
+
+.filtroData label{
+    text-align: center;
+    font-weight: 500;
+    justify-content: center;
+    margin-bottom: 12px;
 }
 
 h2 {

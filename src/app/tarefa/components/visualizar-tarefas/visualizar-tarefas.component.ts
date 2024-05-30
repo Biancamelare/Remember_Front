@@ -59,6 +59,8 @@ export class VisualizarTarefasComponent implements OnInit {
   prioridadeFiltro: number | undefined = 0;
   tarefaFiltro?: string;
 
+  filtrosAplicados: string = 'Listado por - Sem filtros aplicados.';
+
 
 
   constructor(
@@ -214,6 +216,7 @@ export class VisualizarTarefasComponent implements OnInit {
       (tarefas: PageTarefaModel) => {
         this.tarefas = tarefas.data || [];
         this.associarDados();
+        this.atualizarFiltrosAplicados();
       },
       (error) => {
         this.alertaService.exibirAlerta('danger', 'Erro ao filtrar tarefas: ' + error.error.message);
@@ -229,6 +232,7 @@ export class VisualizarTarefasComponent implements OnInit {
     this.prioridadeFiltro = 0;
     this.tarefaFiltro = undefined
     this.buscarTarefas();
+    this.filtrosAplicados = 'Listado por - Sem filtros aplicados.'
   }
 
   limparFiltro(filtro: string) {
@@ -252,6 +256,7 @@ export class VisualizarTarefasComponent implements OnInit {
         this.tarefaFiltro = undefined;
         break;
     }
+    this.atualizarFiltrosAplicados();
     this.filtrarTarefas();
   }
 
@@ -265,5 +270,27 @@ export class VisualizarTarefasComponent implements OnInit {
     }else{
       this.filtrarTarefas()
     }
+  }
+
+  atualizarFiltrosAplicados() {
+    const filtros: string[] = [];
+    if (this.dataInicio) {
+      const dataInicio = this.dataInicio ? this.formatarData(this.dataInicio) : '';
+      filtros.push(`Data: ${dataInicio}`);
+    }
+    if (this.statusFiltro) {
+      const status = this.statusList.find(s => s.id === this.statusFiltro)?.nome;
+      if (status) filtros.push(`Status: ${status}`);
+    }
+    if (this.categoriaFiltro) {
+      const categoria = this.categorias.find(c => c.id === this.categoriaFiltro)?.nome;
+      if (categoria) filtros.push(`Categoria: ${categoria}`);
+    }
+    if (this.prioridadeFiltro) {
+      const prioridade = this.prioridades.find(p => p.id === this.prioridadeFiltro)?.nome;
+      if (prioridade) filtros.push(`Prioridade: ${prioridade}`);
+    }
+
+    this.filtrosAplicados = `Listado por - ${filtros.join('; ')}`;
   }
 }

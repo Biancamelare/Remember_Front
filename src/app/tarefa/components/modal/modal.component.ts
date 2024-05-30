@@ -113,7 +113,7 @@ export class ModalComponent implements OnInit,OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['tarefa'] && this.tarefa) {
       this.editar = true;
-      const dataFormatada = this.datePipe.transform(this.tarefa.data_vencimento, 'yyyy-MM-dd');
+      const dataFormatada = this.datePipe.transform(this.tarefa.data_vencimento, 'yyyy-MM-dd', 'UTC');
       if (dataFormatada) {
         this.data_conclusao = dataFormatada;
       }

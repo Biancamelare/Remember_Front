@@ -49,7 +49,7 @@
     <div class="main-center">
 
         <div class="resultado">
-            <label>Listado por Data: {{formatarData(dataInicio)}} - {{formatarData(dataFim)}}</label>
+            <label>{{filtrosAplicados}}</label>
         </div>
 
         <div id="tarefas">
@@ -87,9 +87,9 @@
     <aside class="filtrar">
             <h5>Filtar por...</h5>
 
-            <div id="filtroData">
+            <div class="filtroData">
+                <label>Data </label>
                 <input type="date" [(ngModel)]="dataInicio" name="dataInicio">
-                <input type="date"  [(ngModel)]="dataFim" name="dataFim">
             </div>
 
             <div class="filtro-container" >
