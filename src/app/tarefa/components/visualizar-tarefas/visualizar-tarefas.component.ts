@@ -57,6 +57,7 @@ export class VisualizarTarefasComponent implements OnInit {
   statusFiltro: number | undefined = 0;
   categoriaFiltro: number | undefined = 0;
   prioridadeFiltro: number | undefined = 0;
+  tarefaFiltro?: string;
 
 
 
@@ -207,6 +208,7 @@ export class VisualizarTarefasComponent implements OnInit {
     if (this.statusFiltro) params.id_status = this.statusFiltro;
     if (this.categoriaFiltro) params.id_categoria = this.categoriaFiltro;
     if (this.prioridadeFiltro) params.id_prioridade = this.prioridadeFiltro;
+    if (this.tarefaFiltro) params.nome = this.tarefaFiltro;
 
     this.tarefaService.filtrarTarefas(params, this.currentUser).subscribe(
       (tarefas: PageTarefaModel) => {
@@ -225,6 +227,7 @@ export class VisualizarTarefasComponent implements OnInit {
     this.statusFiltro = 0;
     this.categoriaFiltro = 0;
     this.prioridadeFiltro = 0;
+    this.tarefaFiltro = undefined
     this.buscarTarefas();
   }
 
@@ -245,11 +248,22 @@ export class VisualizarTarefasComponent implements OnInit {
       case 'prioridadeFiltro':
         this.prioridadeFiltro = 0;
         break;
+      case 'tarefaFiltro':
+        this.tarefaFiltro = undefined;
+        break;
     }
     this.filtrarTarefas();
   }
 
   formatarData(data: string | undefined): string {
     return this.datePipe.transform(data, 'dd/MM/yyyy') || '';
+  }
+
+  tarefaChange() {
+    if (!this.tarefaFiltro) {
+      this.limparFiltro('tarefaFiltro');
+    }else{
+      this.filtrarTarefas()
+    }
   }
 }

@@ -56,12 +56,18 @@ header .search-container {
     width: 40vw;
 }
 
+.search-container span svg {
+    fill: var(--font-color) !important;
+}
+
 .search-input {
     padding-right: 35px; 
     height: 45px;
     background-color: var(--quaternary-color);
     border-radius: 14px;
+    color: var(--font-color);
 }
+
 
 #icon {
     position: absolute;
@@ -72,9 +78,9 @@ header .search-container {
 }
 
 .search-input::placeholder{
-    color: var(--secondary-color);
+    color: var(--font-color);
     font-weight: 600;
-    font-size: 20px;
+    font-size: 18px;
     padding-left: 20px;
 }
 
@@ -283,8 +289,7 @@ h2 {
     color: var(--secondary-color);
 }
 
-.filtro svg {
-    color: var(--secondary-color);
+.filtro svg, .filtroLimpar svg {
     margin-right: 10px;
     margin-bottom: 3px;
 }
@@ -303,6 +308,12 @@ h2 {
     color: var(--secondary-color);
     font-weight: 500;
     background-color: var(--font-color);
+    margin-top: 5%;
+}
+
+.filtroLimpar {
+    padding: 5px;
+    width: 180px;
     margin-top: 5%;
 }
 
