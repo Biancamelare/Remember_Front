@@ -1,7 +1,7 @@
 import { Component, ElementRef, EventEmitter, Inject, OnInit, Output, ViewChild } from '@angular/core';
 import { ModalComponent } from '../modal/modal.component';
 import { UsuarioModel } from '../../../home/models/usuario.model';
-import { CommonModule, DOCUMENT } from '@angular/common';
+import { CommonModule, DOCUMENT, DatePipe } from '@angular/common';
 import { AuthServiceService } from '../../../shared/services/auth-service.service';
 import { UsuarioService } from '../../../home/services/usuario.service';
 import { FuncoesService } from '../../../shared/services/funcoes.service';
@@ -21,7 +21,8 @@ import { ReactiveFormsModule, FormsModule, FormGroup, Validators, FormBuilder } 
   standalone: true,
   imports: [ModalComponent,  AlertasComponent, CommonModule, SidenavComponent, ReactiveFormsModule, FormsModule],
   templateUrl: './visualizar-tarefas.component.html',
-  styleUrl: './visualizar-tarefas.component.css'
+  styleUrl: './visualizar-tarefas.component.css',
+  providers: [DatePipe]
 })
 export class VisualizarTarefasComponent implements OnInit {
   @ViewChild('alertaCadastro', { static: false }) alertaCadastro!: AlertasComponent;
@@ -67,6 +68,7 @@ export class VisualizarTarefasComponent implements OnInit {
     private tarefaService: TarefaServiceService,
     private formBuilder: FormBuilder,
     private alertaService:AlertaService,
+    private datePipe: DatePipe
 ) {
   
       const sessionStorage = document.defaultView?.sessionStorage;
@@ -245,5 +247,9 @@ export class VisualizarTarefasComponent implements OnInit {
         break;
     }
     this.filtrarTarefas();
+  }
+
+  formatarData(data: string | undefined): string {
+    return this.datePipe.transform(data, 'dd/MM/yyyy') || '';
   }
 }
