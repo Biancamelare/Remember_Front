@@ -36,6 +36,7 @@ export class HomeComponent {
   tarefaPage?:PageTarefaModel
   tarefa: TarefaModel[] = [];
   tarefas?: TarefaModel[]
+  tarefasAnalise?: TarefaModel[]
 
   categorias: CategoriaModel[] = [] as CategoriaModel[];
   categoria: CategoriaModel[] = [];
@@ -56,6 +57,14 @@ export class HomeComponent {
   dataHoje: Date = new Date();
   quantTarefasHoje?: number;
   fraseQuantTarefas?: string;
+
+  totalTarefas: number = 0;
+  tarefasConcluidas: number = 0;
+  progresso: number = 0;
+  emProgresso: number = 0;
+  aFazer: number = 0;
+  atrasadas: number = 0;
+  concluida: number = 0;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
@@ -81,8 +90,10 @@ export class HomeComponent {
 
       
   ngOnInit(): void {
+    this.dataHoje = new Date();
     this.buscarUsuario();
-    this.buscarTarefas()
+    this.filtrarTarefas();
+    this.buscarTarefas();
     this.listarStatus()
     this.listarPrioridade();
     this.listarCategoria();
@@ -99,18 +110,13 @@ export class HomeComponent {
         })
     }
     buscarTarefas(): void {
-      const params: any = {};
-      if (this.dataHoje) params.data_vencimento = this.datePipe.transform(this.dataHoje, 'yyyy-MM-dd');
-
-      this.tarefaService.filtrarTarefas(params, this.currentUser).subscribe(
+      this.tarefaService.getTarefas(this.currentUser).subscribe(
         (tarefas: PageTarefaModel) => {
-          this.tarefas = tarefas.data || [];
-          this.quantTarefasHoje = tarefas.total;
-          this.atualizarFrase();
-          this.associarDados();
+          this.tarefasAnalise = tarefas.data || [];
+          this.analise();
         },
         (error) => {
-          this.alertaService.exibirAlerta('danger', 'Erro ao filtrar tarefas: ' + error.error.message);
+          this.alertaService.exibirAlerta('danger', 'Erro ao buscar tarefas: ' + error.error.message);
         }
       );
     }
@@ -129,6 +135,29 @@ export class HomeComponent {
   
         });
       }
+    }
+    analise(){
+      if (this.tarefasAnalise && this.categorias && this.prioridades && this.statusList) {
+        this.tarefasAnalise.forEach(tarefa => {
+            const categoria = this.categorias.find(c => c.id === tarefa.id_categoria);
+            if (categoria) {
+                tarefa.nome_categoria = categoria.nome;
+            }
+  
+            const prioridade = this.prioridades.find(p => p.id === tarefa.id_prioridade);
+            if (prioridade) {
+                tarefa.nome_prioridade = prioridade.nome;
+            }
+        });
+
+        this.totalTarefas = this.tarefasAnalise.length;
+        this.tarefasConcluidas = this.tarefasAnalise.filter(tarefa => tarefa.id_status === 4).length;
+        this.emProgresso = this.tarefasAnalise.filter(tarefa => tarefa.id_status === 1).length;
+        this.aFazer = this.tarefasAnalise.filter(tarefa => tarefa.id_status === 2).length;
+        this.atrasadas = this.tarefasAnalise.filter(tarefa => tarefa.id_status === 3).length;
+        this.concluida = this.tarefasAnalise.filter(tarefa => tarefa.id_status === 4).length;
+        this.progresso = (this.tarefasConcluidas / this.totalTarefas) * 100;
+    }
     }
 
     listarCategoria(){
@@ -153,7 +182,7 @@ export class HomeComponent {
     }
   
     recarregarTarefas(): void {
-      this.buscarTarefas();
+      this.filtrarTarefas();
       this.atualizarFrase();
     }
 
@@ -172,7 +201,7 @@ export class HomeComponent {
       this.tarefaService.editarStatus(tarefa.id, Number(novoStatusId), this.currentUser)
       .subscribe(
         (response) => {
-          this.buscarTarefas(); 
+          this.filtrarTarefas(); 
           this.buscarUsuario();
         },
         (error) => {
@@ -201,12 +230,14 @@ export class HomeComponent {
 
     filtrarTarefas() {
       const params: any = {};
-      if (this.dataHoje) params.data_vencimento = this.datePipe.transform(this.dataHoje, 'yyyy-MM-dd');
+      params.data_vencimento = this.datePipe.transform(this.dataHoje, 'yyyy-MM-dd');
       if (this.tarefaFiltro) params.nome = this.tarefaFiltro;
   
       this.tarefaService.filtrarTarefas(params, this.currentUser).subscribe(
         (tarefas: PageTarefaModel) => {
           this.tarefas = tarefas.data || [];
+          this.quantTarefasHoje = tarefas.total
+          this.atualizarFrase();
           this.associarDados();
         },
         (error) => {

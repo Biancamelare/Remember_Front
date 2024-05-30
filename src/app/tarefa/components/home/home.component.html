@@ -48,7 +48,7 @@
                     <div id="texto">
                         <p>Suas tarefas diárias estão quase concluídas!</p>
                     </div>
-                    <label for="">75%</label>
+                    <span>{{progresso}}%</span>
                 </div>
                 <div class="table1">
                     
@@ -58,16 +58,20 @@
 
                     <div class="conteudo">
                         <div class="linha">
-                            <label class="tabelaStatus" for="">Em progresso</label>
-                            <label class="qtde" for="">5</label>
+                            <label class="tabelaStatus" for="">A fazer</label>
+                            <label class="qtde" for="">{{aFazer}}</label>
                         </div>
                         <div class="linha">
-                            <label class="tabelaStatus" for="">A fazer</label>
-                            <label class="qtde" for="">5</label>
+                            <label class="tabelaStatus" for="">Em progresso</label>
+                            <label class="qtde">{{emProgresso}}</label>
                         </div>
                         <div class="linha">
                             <label class="tabelaStatus" for="">Atrasadas</label>
-                            <label  class="qtde" for="">5</label>
+                            <label  class="qtde atrasada" for="">{{atrasadas}}</label>
+                        </div>
+                        <div class="linha">
+                            <label class="tabelaStatus" for="">Concluída</label>
+                            <label  class="qtde concluida">{{concluida}}</label>
                         </div>
                     </div>
                 </div>

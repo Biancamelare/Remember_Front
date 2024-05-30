@@ -344,3 +344,12 @@ h2, h3 {
     margin-bottom: 3px;
     color: red; 
 }
+
+.atrasada{
+    color:red;
+    font-weight: 500;
+}
+.concluida{
+    color:green;
+    font-weight: 500;
+}
