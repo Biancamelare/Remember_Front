@@ -1,11 +1,14 @@
+<app-modal (tarefaSalva)="recarregarTarefas()"  [tarefa]="tarefaSelecionada"></app-modal>
 <app-sidenav></app-sidenav>
 <div class="main-vizualizar">
     <header>
         <div class="search-container">
-                <input type="text" class="form-control search-input" placeholder="Pesquisar" aria-label="Recipient's username" aria-describedby="button-addon2" formControlName="pesquisar">
-                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" id="icon" >
-                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-                </svg>
+            <input type="text" class="form-control search-input" placeholder="Pesquisar Tarefa" aria-label="Recipient's username" aria-describedby="button-addon2" [(ngModel)]="tarefaFiltro" (input)="tarefaChange()" >
+            <span (click)="filtrarTarefas()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" id="icon">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+            </svg></span>
+
         </div>
 
         <div class="userDrop">
@@ -85,60 +88,34 @@
         <div class="tarefasDia">
             <div id="titulo">
                 <h3>Tarefas do dia</h3>
-                <label for="">3 tarefas</label>
+                <label >{{fraseQuantTarefas}}</label>
             </div>
     
             <div id="tarefas">
-                <form>
-                    <div class="tarefa">
-                        <input class="form-check-input" type="checkbox" formControlName="status" id="flexCheckDefault">
+                <form [formGroup]="formTarefas">
+                    <div class="tarefa" *ngFor="let tarefa of tarefas"  >
+                        <input class="form-check-input" type="checkbox" id="flexCheckDefault" (change)="onChangeCheckbox($event, tarefa)" [checked]="tarefa.id_status === 4">
     
-                        <div class="nomeCateg">
-                            <label id="nome">Abastecer o carro</label>
-                            <label id="nomeCateg">Geral</label>
+                        <div class="nomeCateg" (click)="selecionarTarefa(tarefa)" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <div>
+                            <label id="nome" [ngClass]="{'riscado': tarefa.id_status === 4}">{{tarefa.nome}}</label>
+                            <svg *ngIf="tarefa.id_status === 3" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
+                                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5m.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                            </svg>
+                        </div>
+                            <label id="nomeCateg">{{tarefa.nome_categoria}}</label>
                         </div>
                         
                         <div id="statusPrioridade">
-                            <select name="status" id="status" formControlName="status">
-                                <option value="aFazer">A fazer</option>
-                                <option value="emProgresso">Em progresso</option>
-                                <option value="concluida">Concluída</option>
+                            <div>
+                            
+                            <select name="status" class="status" [id]="'S'+tarefa.id_status" (change)="onChangeStatus($event, tarefa)" >
+                                <option *ngFor="let status of statusList" [hidden]="status.id === 3" [value]="status.id" [selected]="status.id === tarefa.id_status" style="background-color: #fff; ">{{ status.nome }}</option>
                             </select>
-                            <label class="prioridade" id="alta">Alta</label>
+                         
                         </div>
-                    </div>
-                    <div class="tarefa">
-                        <input class="form-check-input" type="checkbox" formControlName="status" id="flexCheckDefault">
-    
-                        <div class="nomeCateg">
-                            <label id="nome">Abastecer o carro</label>
-                            <label id="nomeCateg">Geral</label>
-                        </div>
-                        
-                        <div id="statusPrioridade">
-                            <select name="status" id="status" formControlName="status">
-                                <option value="aFazer">A fazer</option>
-                                <option value="emProgresso">Em progresso</option>
-                                <option value="concluida">Concluída</option>
-                            </select>
-                            <label class="prioridade" id="baixa">Baixa</label>
-                        </div>
-                    </div>
-                    <div class="tarefa">
-                        <input class="form-check-input" type="checkbox" formControlName="status" id="flexCheckDefault">
-    
-                        <div class="nomeCateg">
-                            <label id="nome">Abastecer o carro</label>
-                            <label id="nomeCateg">Geral</label>
-                        </div>
-                        
-                        <div id="statusPrioridade">
-                            <select name="status" id="status" formControlName="status">
-                                <option value="aFazer">A fazer</option>
-                                <option value="emProgresso">Em progresso</option>
-                                <option value="concluida">Concluída</option>
-                            </select>
-                            <label class="prioridade" id="media">Media</label>
+                            
+                            <label class="prioridade" [id]="'P'+tarefa.id_prioridade" >{{tarefa.nome_prioridade}}</label>
                         </div>
                     </div>
                 </form>

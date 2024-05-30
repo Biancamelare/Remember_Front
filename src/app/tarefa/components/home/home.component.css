@@ -42,11 +42,16 @@ header .search-container {
     width: 40vw;
 }
 
+.search-container span svg {
+    fill: var(--font-color) !important;
+}
+
 .search-input {
     padding-right: 35px; 
     height: 45px;
     background-color: var(--quaternary-color);
     border-radius: 14px;
+    color: var(--font-color);
 }
 
 #icon {
@@ -58,9 +63,9 @@ header .search-container {
 }
 
 .search-input::placeholder{
-    color: var(--secondary-color);
+    color: var(--font-color);
     font-weight: 600;
-    font-size: 20px;
+    font-size: 18px;
     padding-left: 20px;
 }
 
@@ -266,15 +271,15 @@ h2, h3 {
     padding: 2px;
 }
 
-.prioridade#alta {
+.prioridade#P1 {
     background-color: var(--btnAlta-color);
 }
 
-.prioridade#media {
+.prioridade#P2 {
     background-color: var(--btnMedia-color);
 }
 
-.prioridade#baixa {
+.prioridade#P3 {
     background-color: var(--btnBaixa-color);
 }
 
@@ -296,7 +301,7 @@ h2, h3 {
     font-weight: 500;
 }
 
-#status {
+.status {
     border-radius: 20px;
     border: none;
     padding: 2px;
@@ -328,4 +333,14 @@ h2, h3 {
 
 .tabelaStatus {
     width: 80%
+}
+
+.riscado {
+    text-decoration: line-through var(--primary-color);
+}
+
+.bi-exclamation-triangle-fill {
+    margin-left: 10px;
+    margin-bottom: 3px;
+    color: red; 
 }
