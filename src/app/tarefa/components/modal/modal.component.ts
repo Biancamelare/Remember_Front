@@ -78,7 +78,7 @@ export class ModalComponent implements OnInit,OnChanges {
       id_categoria: [{ value: '', disabled: false }, Validators.required],
       id_status: [{ value: '2', disabled: false }],
       id_prioridade: [{ value: '', disabled: false },Validators.required],
-      data_vencimento: [{ value: '', disabled: false },Validators.required],
+      data_vencimento: [{ value: '', disabled: false }],
       anotacao: [{ value: '', disabled: false }],
       lista_tarefa: this.formBuilder.array([])
     });
@@ -196,7 +196,10 @@ export class ModalComponent implements OnInit,OnChanges {
     this.hora_conclusao = html_horaconclusao.value
    }
    const dataHoraConclusao = `${this.data_conclusao}T${this.hora_conclusao}:00.000Z`;
-   this.formTarefa.controls['data_vencimento'].setValue(dataHoraConclusao);
+   console.log(dataHoraConclusao)
+   if(dataHoraConclusao != 'T00:00:00.000Z'){
+    this.formTarefa.controls['data_vencimento'].setValue(dataHoraConclusao);
+   }
    this.formTarefa.controls['id_status'].setValue(2);
 
     if (this.formTarefa.valid) {
