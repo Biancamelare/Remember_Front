@@ -232,6 +232,7 @@ export class ConfiguracoesComponent implements OnInit {
             this.alertaService.exibirAlerta('success', 'Tema alterado com sucesso!');
             this.coreshabilitado = false;
             this.buscarUsuario()
+            window.location.reload();
           },
           error => {
             this.alertaService.exibirAlerta('danger','Erro ao alterar o tema: ' + error.error.message); 

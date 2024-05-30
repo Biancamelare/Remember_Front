@@ -54,9 +54,6 @@ export class ModalComponent implements OnInit,OnChanges {
 
   itensListaVerificacao: string[] = [];
 
-  isEditing: boolean = true;
-
-
   constructor(
     private tarefaService: TarefaServiceService,
     private alertaService:AlertaService,
@@ -122,8 +119,6 @@ export class ModalComponent implements OnInit,OnChanges {
       }
       const horaFormatada = this.datePipe.transform(this.tarefa.data_vencimento, 'HH:mm','UTC');
       if (horaFormatada) {
-        console.log(this.tarefa.data_vencimento)
-        console.log(horaFormatada)
         this.hora_conclusao = horaFormatada;
       }
       this.inicializarLista();
@@ -246,6 +241,10 @@ export class ModalComponent implements OnInit,OnChanges {
     }
   }
 
+  async editarTarefa(){
+
+  }
+
   /*Modal*/
   openModal() {
     this.formTarefa.enable()
@@ -258,6 +257,7 @@ export class ModalComponent implements OnInit,OnChanges {
       this.formTarefa.reset();
       this.formTarefa.enable();
       this.inicializarLista();
+      this.editar = false;
       const html_dataconclusao = this.document.querySelector('#data_conclusao') as HTMLInputElement
       const html_horaconclusao = this.document.querySelector('#hora_conclusao') as HTMLInputElement
 
