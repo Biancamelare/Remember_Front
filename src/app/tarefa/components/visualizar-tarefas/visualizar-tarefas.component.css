@@ -287,6 +287,14 @@ h2 {
     font-weight: 500;
     background-color: var(--font-color);
 }
+.filtro {
+    padding: 5px;
+    width: 180px;
+    color: var(--secondary-color);
+    font-weight: 500;
+    background-color: var(--font-color);
+    margin-top: 5%;
+}
 
 .nomeCateg #nome{
     font-weight: 700;
@@ -307,6 +315,8 @@ hr{
 .riscado {
     text-decoration: line-through var(--primary-color);
 }
+
+
 
 @media screen and (max-width: 1300px) { 
 /* 
