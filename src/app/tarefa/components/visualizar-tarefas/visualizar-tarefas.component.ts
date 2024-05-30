@@ -181,6 +181,7 @@ export class VisualizarTarefasComponent implements OnInit {
     .subscribe(
       (response) => {
         this.buscarTarefas(); 
+        this.buscarUsuario();
       },
       (error) => {
         console.error('Erro ao editar a tarefa:', error);
