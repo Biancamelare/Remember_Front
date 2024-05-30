@@ -7,7 +7,7 @@
         <img class="icone-remember" src="./assets/icone-remember.svg" alt="Ícone menu">
     </div>
     <ul>
-        <li class="item-menu">
+        <li class="item-menu" title="Home">
             <a href="home">
                 <div class="box-selecao">
                     <span class="icon"><img src="./assets/home.svg" alt="Ícone adicionar tarefas"></span>
@@ -19,7 +19,7 @@
 
         <li class="item-menu">
             <a>
-                <div class="box-selecao">
+                <div class="box-selecao" title="Adicionar Tarefa">
                     <span data-bs-toggle="modal" data-bs-target="#exampleModal" class="icon"><img src="./assets/adicionar.svg" alt="Ícone adicionar tarefas"></span>
                 </div>
                 <span data-bs-toggle="modal" data-bs-target="#exampleModal"  class="txt-link">Adicionar tarefa</span>
@@ -27,7 +27,7 @@
 
         </li>
 
-        <li class="item-menu">
+        <li class="item-menu" title="Lista de Tarefa">
             <a href="visualizar-tarefas">
                 <div class="box-selecao">
                     <span class="icon"><img src="./assets/lista.svg" alt="Ícone lista de tarefas"></span>
@@ -36,7 +36,7 @@
             </a>
         </li>
 
-        <li class="item-menu">
+        <li class="item-menu" title="Hoje">
             <a href="dia">
                 <div class="box-selecao">
                     <span class="icon"><img src="./assets/hoje.svg" alt="Ícone hoje"></span>
@@ -45,7 +45,7 @@
             </a>
         </li>
 
-        <li class="item-menu">
+        <li class="item-menu" title="Calendário">
             <a href="">
                 <div class="box-selecao">
                     <span class="icon"><img src="./assets/calendario.svg" alt="Ícone calendário"></span>
@@ -54,7 +54,7 @@
             </a>
         </li>
 
-        <li class="item-menu">
+        <li class="item-menu" title="Controle Financeiro">
             <a href="">
                 <div class="box-selecao">
                     <span class="icon"><img src="./assets/controle.svg" alt="Ícone controle financeiro"></span>
@@ -63,7 +63,7 @@
             </a>
         </li>
         <div class="box">
-            <li class="item-menu config">
+            <li class="item-menu config" title="Configurações">
                 <a href="configuracoes">
                     <div class="box-selecao" id="configuracoes">
                         <span class="icon"><img src="./assets/configuracoes.svg" alt="Ícone membros"></span>
@@ -72,7 +72,7 @@
                 </a>
             </li>
 
-            <li class="item-menu" id="desconectar">
+            <li class="item-menu" id="desconectar" title="Desconectar">
                 <a href="" (click)="this.logout()">
                     <div class="box-selecao">
                         <span class="icon"><img src="./assets/desconectar.svg" alt="Ícone membros"></span>
