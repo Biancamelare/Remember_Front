@@ -53,7 +53,6 @@ export class VisualizarTarefasComponent implements OnInit {
 
   
   dataInicio: string | undefined = undefined;
-  dataFim: string | undefined = undefined;
   statusFiltro: number | undefined = 0;
   categoriaFiltro: number | undefined = 0;
   prioridadeFiltro: number | undefined = 0;
@@ -206,7 +205,6 @@ export class VisualizarTarefasComponent implements OnInit {
   filtrarTarefas() {
     const params: any = {};
     if (this.dataInicio) params.data_vencimento = this.dataInicio;
-    if (this.dataFim) params.data_vencimento = this.dataFim;
     if (this.statusFiltro) params.id_status = this.statusFiltro;
     if (this.categoriaFiltro) params.id_categoria = this.categoriaFiltro;
     if (this.prioridadeFiltro) params.id_prioridade = this.prioridadeFiltro;
@@ -226,7 +224,6 @@ export class VisualizarTarefasComponent implements OnInit {
 
   limparFiltros() {
     this.dataInicio = undefined;
-    this.dataFim = undefined;
     this.statusFiltro = 0;
     this.categoriaFiltro = 0;
     this.prioridadeFiltro = 0;
@@ -239,9 +236,6 @@ export class VisualizarTarefasComponent implements OnInit {
     switch (filtro) {
       case 'dataInicio':
         this.dataInicio = undefined;
-        break;
-      case 'dataFim':
-        this.dataFim = undefined;
         break;
       case 'statusFiltro':
         this.statusFiltro = 0;
