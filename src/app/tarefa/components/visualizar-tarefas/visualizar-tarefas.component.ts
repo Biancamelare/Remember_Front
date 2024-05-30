@@ -52,8 +52,8 @@ export class VisualizarTarefasComponent implements OnInit {
   tarefaSelecionada: TarefaModel | undefined;
 
   
-  dataInicio: string | undefined;
-  dataFim: string | undefined;
+  dataInicio: string | undefined = undefined;
+  dataFim: string | undefined = undefined;
   statusFiltro: number | undefined = 0;
   categoriaFiltro: number | undefined = 0;
   prioridadeFiltro: number | undefined = 0;
