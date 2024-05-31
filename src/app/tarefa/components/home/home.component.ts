@@ -1,4 +1,4 @@
-import { Component, Inject, ViewChild } from '@angular/core';
+import { Component, Inject, ViewChild, importProvidersFrom } from '@angular/core';
 import { UsuarioModel } from '../../../home/models/usuario.model';
 import { CommonModule, DOCUMENT, DatePipe } from '@angular/common';
 import { AuthServiceService } from '../../../shared/services/auth-service.service';
@@ -17,18 +17,22 @@ import { PrioridadeModel } from '../../models/prioridade.model';
 import { StatusModel } from '../../models/status.model';
 import { CircleProgressOptions, NgCircleProgressModule } from 'ng-circle-progress';
 import { circleProgressOptions } from '../../../shared/models/grafico';
+import { ChartCommonModule, NgxChartsModule, PieChartComponent } from '@swimlane/ngx-charts';
+import { ChartsModule } from '../../../shared/models/charts.module';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ModalComponent,  AlertasComponent, CommonModule, SidenavComponent, ReactiveFormsModule, FormsModule, NgCircleProgressModule],
+  imports: [ModalComponent,  AlertasComponent, CommonModule, SidenavComponent, ReactiveFormsModule, FormsModule, NgCircleProgressModule, ChartsModule ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
-  providers: [DatePipe,  { provide: CircleProgressOptions, useValue: circleProgressOptions }]
+  providers: [DatePipe,  { provide: CircleProgressOptions, useValue: circleProgressOptions } ]
 })
 export class HomeComponent {
   @ViewChild('alertaCadastro', { static: false }) alertaCadastro!: AlertasComponent;
   @ViewChild(ModalComponent) modalComponent!: ModalComponent;
+
+
   currentUser: any;
   currentUserId : any;
   usuarioSelecionado = {} as UsuarioModel;
@@ -70,6 +74,8 @@ export class HomeComponent {
   atrasadas: number = 0;
   concluida: number = 0;
 
+  chartData: any[] = [];
+
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private authService: AuthServiceService,
@@ -96,8 +102,8 @@ export class HomeComponent {
   ngOnInit(): void {
     this.dataHoje = new Date();
     this.buscarUsuario();
-    this.filtrarTarefas();
     this.buscarTarefas();
+    this.filtrarTarefas();
     this.listarStatus()
     this.listarPrioridade();
     this.listarCategoria();
@@ -117,6 +123,7 @@ export class HomeComponent {
       this.tarefaService.getTarefas(this.currentUser).subscribe(
         (tarefas: PageTarefaModel) => {
           this.tarefasAnalise = tarefas.data || [];
+          this.calcularTarefasPorCategoria();
           this.analise();
         },
         (error) => {
@@ -174,6 +181,26 @@ export class HomeComponent {
 
     }
     }
+
+    calcularTarefasPorCategoria(): void {
+      if (this.tarefasAnalise) {
+        const categorias = this.tarefasAnalise.reduce((acc: { [key: string]: number }, tarefa: any) => {
+          const categoria = this.categorias.find(c => c.id === tarefa.id_categoria);
+          if (categoria) {
+            const categoriaNome = categoria.nome;
+            acc[categoriaNome] = (acc[categoriaNome] || 0) + 1;
+          }
+          return acc;
+        }, {});
+    
+        this.chartData = Object.keys(categorias).map(categoriaNome => ({
+          name: categoriaNome,
+          value: categorias[categoriaNome]
+        }));
+        console.log(this.chartData);
+      }
+    }
+    
 
     listarCategoria(){
       this.tarefaService.getCategorias(this.currentUser).subscribe(

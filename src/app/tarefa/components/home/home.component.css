@@ -213,10 +213,21 @@ h2, h3 {
     text-align: center;
 }
 
-.table {
+.thCategoria {
+    background-color: var(--quaternary-color); 
+    color: var(--font-color);
+    border-radius: 18px;
+    padding: 2% 8% 2% 8%;
+    margin-bottom: 2%;
+    text-align: center;
+}
+
+
+.tabela {
     border: solid 2px  var(--quaternary-color);
     border-radius: 20px;
-    padding-bottom: 2%;
+    width: 100%;
+    height: 96%;
 }
 
 .table1 {
@@ -382,3 +393,26 @@ h2, h3 {
     color: var(--font-color);
     font-weight: 700;
   }
+
+  ::ng-deep .ngx-charts text {
+    font-size: 16px; 
+    font-weight: bold; 
+    fill: black !important; 
+  }
+
+  ::ng-deep .chart-legend { 
+    color: var(--font-color) !important; 
+    
+  }
+  
+  ::ng-deep .chart-legend .legend-title-text {
+    text-align: center;
+    margin-right: 20%;
+  }
+
+  ::ng-deep .chart-legend .legend-label-text {
+    color: black !important;
+  }
+  
+  
+

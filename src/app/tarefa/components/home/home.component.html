@@ -89,12 +89,24 @@
             </div>
             
             <div id="grafico">
-                <div class="table">
-                    <div class="th">
-                        <h5>Tarefas por Categoria</h5>
+                <div class="tabela">
+                    <div class="thCategoria">
+                        <h5>Tarefas por Categorias</h5>
                     </div>
-                    <div class="td">
-                       <!-- gráfico-->
+                    <div class="rosca">
+                        <ngx-charts-pie-chart
+                        [results]="chartData"
+                        [view]="[680, 350]"
+                        [doughnut]="true"
+                        [legend]="true"
+                        [legendTitle]="'Categorias'"
+                        [labels]="true"
+                        [explodeSlices]="false"
+                        [arcWidth]="0.3"
+                        [gradient]="true"
+                        [animations]="false"
+                        class="custom-chart">
+                      </ngx-charts-pie-chart>
                     </div>
                 </div>
             </div>
