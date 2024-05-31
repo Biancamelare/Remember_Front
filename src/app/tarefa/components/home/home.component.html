@@ -46,9 +46,15 @@
             <div class="porcentagemTabela">
                 <div class="porcentagem-tarefas">
                     <div id="texto">
-                        <p>Suas tarefas diárias estão quase concluídas!</p>
+                        <p>{{fraseTarefasDiarias}}</p>
                     </div>
-                    <span>{{progresso}}%</span>
+                    <div class="progresso-container">
+                        <circle-progress
+                        [percent]="progresso"
+                        ></circle-progress>
+                        <div class="progress-text">{{progresso}}%</div>
+                      </div>
+          
                 </div>
                 <div class="table1">
                     

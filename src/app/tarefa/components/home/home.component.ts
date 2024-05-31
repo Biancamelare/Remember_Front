@@ -15,14 +15,16 @@ import { TarefaModel } from '../../models/tarefa.model';
 import { CategoriaModel } from '../../models/categoria.model';
 import { PrioridadeModel } from '../../models/prioridade.model';
 import { StatusModel } from '../../models/status.model';
+import { CircleProgressOptions, NgCircleProgressModule } from 'ng-circle-progress';
+import { circleProgressOptions } from '../../../shared/models/grafico';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ModalComponent,  AlertasComponent, CommonModule, SidenavComponent, ReactiveFormsModule, FormsModule],
+  imports: [ModalComponent,  AlertasComponent, CommonModule, SidenavComponent, ReactiveFormsModule, FormsModule, NgCircleProgressModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
-  providers: [DatePipe]
+  providers: [DatePipe,  { provide: CircleProgressOptions, useValue: circleProgressOptions }]
 })
 export class HomeComponent {
   @ViewChild('alertaCadastro', { static: false }) alertaCadastro!: AlertasComponent;
@@ -57,9 +59,11 @@ export class HomeComponent {
   dataHoje: Date = new Date();
   quantTarefasHoje?: number;
   fraseQuantTarefas?: string;
+  fraseTarefasDiarias ?: string;
 
   totalTarefas: number = 0;
   tarefasConcluidas: number = 0;
+  tarefasConcluidasHoje: number = 0;
   progresso: number = 0;
   emProgresso: number = 0;
   aFazer: number = 0;
@@ -134,7 +138,18 @@ export class HomeComponent {
           }
   
         });
+        this.tarefasConcluidasHoje = this.tarefas.filter(tarefa => tarefa.id_status === 4).length;
+        if(this.quantTarefasHoje) this.progresso = Math.round((this.tarefasConcluidasHoje / this.quantTarefasHoje) * 100);
+        if(this.progresso == 100){
+          this.fraseTarefasDiarias = 'Parabéns! Suas tarefas diárias estão concluídas!'
+        } else if(this.progresso >= 50){
+          this.fraseTarefasDiarias = 'Suas tarefas diárias estão quase concluídas!'
+        }else{
+          this.fraseTarefasDiarias = 'Complete suas tarefas diárias!'
+        }
+
       }
+     
     }
     analise(){
       if (this.tarefasAnalise && this.categorias && this.prioridades && this.statusList) {
@@ -156,7 +171,7 @@ export class HomeComponent {
         this.aFazer = this.tarefasAnalise.filter(tarefa => tarefa.id_status === 2).length;
         this.atrasadas = this.tarefasAnalise.filter(tarefa => tarefa.id_status === 3).length;
         this.concluida = this.tarefasAnalise.filter(tarefa => tarefa.id_status === 4).length;
-        this.progresso = (this.tarefasConcluidas / this.totalTarefas) * 100;
+
     }
     }
 
