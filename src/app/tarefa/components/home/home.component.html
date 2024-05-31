@@ -65,19 +65,26 @@
                     <div class="conteudo">
                         <div class="linha">
                             <label class="tabelaStatus" for="">A fazer</label>
-                            <label class="qtde" for="">{{aFazer}}</label>
+                            <label class="quant" for="">{{aFazer}}</label>
                         </div>
                         <div class="linha">
                             <label class="tabelaStatus" for="">Em progresso</label>
-                            <label class="qtde">{{emProgresso}}</label>
+                            <label class="quant">{{emProgresso}}</label>
                         </div>
                         <div class="linha">
                             <label class="tabelaStatus" for="">Atrasadas</label>
-                            <label  class="qtde atrasada" for="">{{atrasadas}}</label>
+                            <label *ngIf="!(atrasadas > 0)" class="quant">{{atrasadas}}</label>
+                            <label *ngIf="atrasadas > 0" class="atrasada">{{atrasadas}}
+                                <svg  xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="alerta" viewBox="0 0 16 16">
+                                    <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5m.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                                </svg>
+                            </label>
+                           
                         </div>
                         <div class="linha">
                             <label class="tabelaStatus" for="">Concluída</label>
-                            <label  class="qtde concluida">{{concluida}}</label>
+                            <label *ngIf="concluida == 0" class="quant">{{concluida}}</label>
+                            <label  *ngIf="concluida > 0" class="quant concluida">{{concluida}}</label>
                         </div>
                     </div>
                 </div>

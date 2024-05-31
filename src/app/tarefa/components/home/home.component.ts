@@ -199,6 +199,7 @@ export class HomeComponent {
     recarregarTarefas(): void {
       this.filtrarTarefas();
       this.atualizarFrase();
+      this.buscarTarefas();
     }
 
     onChangeStatus(event: any, tarefa: TarefaModel): void {
@@ -218,6 +219,7 @@ export class HomeComponent {
         (response) => {
           this.filtrarTarefas(); 
           this.buscarUsuario();
+          this.recarregarTarefas();
         },
         (error) => {
           console.error('Erro ao editar a tarefa:', error);
@@ -276,7 +278,7 @@ export class HomeComponent {
 
     atualizarFrase(){
       if (this.quantTarefasHoje == 0 || this.quantTarefasHoje == null || this.quantTarefasHoje == undefined) {
-        this.fraseQuantTarefas = 'Nenhuma tarefa com vencimento para hoje!';
+        this.fraseQuantTarefas = 'Nenhuma tarefa com data de vencimento para hoje!';
       } else if (this.quantTarefasHoje == 1) {
         this.fraseQuantTarefas = '1 tarefa';
       } else if (this.quantTarefasHoje > 1) {

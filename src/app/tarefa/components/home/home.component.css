@@ -195,6 +195,15 @@ h2, h3 {
     justify-content: space-evenly;
 }
 
+.quant {
+    display: flex;
+    width: 100%;
+    padding-left: 40%;
+    padding-right: 5%;
+    justify-content: space-evenly;
+}
+
+
 .porcentagemTabela {
     display: flex;
     flex-direction: column;
@@ -346,9 +355,22 @@ h2, h3 {
     color: red; 
 }
 
+.alerta{
+    color:red;
+    padding:0;
+    margin: 0;
+}
+
 .atrasada{
     color:red;
     font-weight: 500;
+    display: flex;
+    width: 100%;
+    margin-left: 67%;
+}
+.atrasada svg{
+    margin-left: 10%;
+    
 }
 .concluida{
     color:green;
