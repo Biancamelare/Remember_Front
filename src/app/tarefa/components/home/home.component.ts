@@ -102,11 +102,12 @@ export class HomeComponent {
   ngOnInit(): void {
     this.dataHoje = new Date();
     this.buscarUsuario();
-    this.buscarTarefas();
-    this.filtrarTarefas();
     this.listarStatus()
     this.listarPrioridade();
     this.listarCategoria();
+    this.buscarTarefas();
+    this.filtrarTarefas();
+  
   
    }
 

@@ -88,10 +88,11 @@ export class VisualizarTarefasComponent implements OnInit {
       
   ngOnInit(): void {
     this.buscarUsuario();
-    this.buscarTarefas()
     this.listarStatus()
     this.listarPrioridade();
     this.listarCategoria();
+    this.buscarTarefas()
+    
 
    }
 
