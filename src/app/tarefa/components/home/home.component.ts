@@ -175,8 +175,8 @@ export class HomeComponent {
 
         this.totalTarefas = this.tarefasAnalise.length;
         this.tarefasConcluidas = this.tarefasAnalise.filter(tarefa => tarefa.id_status === 4).length;
-        this.emProgresso = this.tarefasAnalise.filter(tarefa => tarefa.id_status === 1).length;
-        this.aFazer = this.tarefasAnalise.filter(tarefa => tarefa.id_status === 2).length;
+        this.emProgresso = this.tarefasAnalise.filter(tarefa => tarefa.id_status === 2).length;
+        this.aFazer = this.tarefasAnalise.filter(tarefa => tarefa.id_status === 1).length;
         this.atrasadas = this.tarefasAnalise.filter(tarefa => tarefa.id_status === 3).length;
         this.concluida = this.tarefasAnalise.filter(tarefa => tarefa.id_status === 4).length;
 
@@ -198,7 +198,6 @@ export class HomeComponent {
           name: categoriaNome,
           value: categorias[categoriaNome]
         }));
-        console.log(this.chartData);
       }
     }
     
@@ -220,7 +219,6 @@ export class HomeComponent {
 
     selecionarTarefa(tarefa: TarefaModel) { 
       this.tarefaSelecionada = tarefa;
-      console.log(tarefa)
       this.modalComponent.openModal();
     }
   

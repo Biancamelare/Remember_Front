@@ -199,7 +199,7 @@ export class ModalComponent implements OnInit,OnChanges {
    if(dataHoraConclusao != 'T00:00:00.000Z'){
     this.formTarefa.controls['data_vencimento'].setValue(dataHoraConclusao);
    }
-   this.formTarefa.controls['id_status'].setValue(2);
+   this.formTarefa.controls['id_status'].setValue(1);
 
     if (this.formTarefa.valid) {
       this.modalTarget = 'modal'

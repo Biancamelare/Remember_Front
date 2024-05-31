@@ -60,6 +60,9 @@ export class TarefaDiaComponent {
   filtrosAplicados: string = 'Listado por - Sem filtros aplicados.';
   hojeFormatado: string | null = '';
 
+  quantTarefas?: number;
+  fraseQuantTarefas?: string;
+
 
 
   constructor(
@@ -132,6 +135,7 @@ export class TarefaDiaComponent {
     this.tarefaService.filtrarTarefas(params, this.currentUser).subscribe(
       (tarefas: PageTarefaModel) => {
         this.tarefas = tarefas.data || [];
+        this.quantTarefas = tarefas.total;
         this.associarDados();
       },
       (error) => {
@@ -283,5 +287,15 @@ export class TarefaDiaComponent {
     }
 
     this.filtrosAplicados = `Listado por - ${filtros.join('; ')}`;
+  }
+
+  atualizarFrase(){
+    if (this.quantTarefas == 0 || this.quantTarefas == null || this.quantTarefas == undefined) {
+      this.fraseQuantTarefas = 'Nenhuma tarefa com data de vencimento para hoje!';
+    } else if (this.quantTarefas == 1) {
+      this.fraseQuantTarefas = '1 tarefa';
+    } else if (this.quantTarefas > 1) {
+      this.fraseQuantTarefas = `${this.quantTarefas} tarefas`;
+    }
   }
 }
