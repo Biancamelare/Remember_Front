@@ -1,0 +1,629 @@
+body {
+    margin: 0px;
+    display: flex;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.main-visualizar {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+header {
+    padding-top: 1%;
+    padding-bottom: 1%;
+    display: flex;
+    justify-content: space-around;
+    padding-left: 11%;
+}
+
+.userDrop{
+    display: flex;
+}
+
+.xp {
+    background: var(--tertiary-color);
+    border-radius: 20px;
+    padding: 2px 5px;
+    margin-top: 10px;
+    width: 70px;
+    text-align: center;
+    margin-bottom: 3%;
+    margin-left: 10px;
+    font-weight: 500;
+   
+}
+.nome{
+    color: var(--font-color);
+    font-weight: 500;
+    margin-left: 5px;
+}
+
+.xpmenu{
+    margin-bottom: 5px;
+}
+
+header .search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    width: 40vw;
+}
+
+.search-container span svg {
+    fill: var(--font-color) !important;
+}
+
+.search-input {
+    padding-right: 35px; 
+    height: 45px;
+    background-color: var(--quaternary-color);
+    border-radius: 14px;
+    color: var(--font-color);
+}
+
+
+#icon {
+    position: absolute;
+    top: 35px;
+    right: 20px;
+    transform: translateY(-50%);
+    fill: var(--secondary-color); 
+}
+
+.search-input::placeholder{
+    color: var(--font-color);
+    font-weight: 600;
+    font-size: 18px;
+    padding-left: 20px;
+}
+
+.icon-user {
+    margin-left: 30px;
+    padding: 8px 0px 0px 14px;
+    width: 70px;
+    height: 70px;
+    border-radius: 100px;
+    background-color: var(--user-color);
+    box-shadow: 0px 2px 6px var(--shadown-color);
+}
+
+.dropdown {
+    padding: 12px;
+}
+
+.dropbtn {
+    background-color: var(--secondary-color);
+    color: var(--font-color);
+    font-weight: 500;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    padding: 5%;
+    display: none;
+    position: absolute;
+    background-color: var(--quaternary-color);
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px var(--shadown-color);
+    z-index: 1;
+    border-radius: 20px;
+}
+
+.dropdown-content a {
+    color: var(--font-color);
+    padding: 10px 10px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    font-weight: 600;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.resultado {
+    display: flex;
+    margin: auto;
+    width: 44vw;
+    height: 6vh;
+    background-color: var(--quaternary-color);
+    border-radius: 5px;
+    margin-right: 35%;
+    margin-bottom: 1%!important;
+    line-height: 15px;
+}
+
+.resultado label {
+    background: none;
+    box-shadow: none;
+}
+
+.resultado label{
+    color: var(--font-color);
+    font-weight: 600;
+    margin-left: 2rem;
+    margin-top: 1rem;
+}
+
+#info {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    width: 62%;
+    padding-right: 7%;
+}
+
+#tarefas {
+    width: 44vw;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    overflow-y: auto;
+    height: 65vh;
+    overflow-x: hidden;
+    margin-right: 35%;
+}
+
+.tarefa {
+    width: 42vw;
+    background-color: var(--user-color);
+    border-radius: 20px;
+    margin: 2% 0 1% 0;
+    display: flex;
+    align-items: center;
+    padding: 1%;
+}
+
+.prioridade {
+    border-radius: 20px;
+    margin-right: 1rem;
+    width: 122px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    padding: 2px;
+}
+
+.prioridade#P1 {
+    background-color: var(--btnAlta-color);
+}
+.prioridade#P2 {
+    background-color: var(--btnMedia-color);
+}
+.prioridade#P3 {
+    background-color: var(--btnBaixa-color);
+}
+
+.form-check-input{
+    margin: 4% 6%;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+
+#statusPrioridade {
+    margin-left: auto;
+    padding-right: 6%;
+}
+
+.nomeCateg {
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+}
+
+.status {
+    border-radius: 20px;
+    border: none;
+    padding: 2px;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.filtrar {
+    position: fixed;
+    border-radius: 20px;
+    top: 28%;
+    right: 10%;
+    height: auto; 
+    background-color:  var(--user-color); 
+    padding: 1.5% 1%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.filtrar h5 {
+    align-self: flex-start; 
+    padding-bottom: 10%;
+    font-weight: 700;
+    color:var(--font-color)
+}
+
+.filtros,
+input[type="date"] {
+    border-radius: 5px;
+    border: solid 1px var(--shadown-color);
+    padding: 4px;
+    margin-bottom: 10px;
+}
+
+.filtros {
+    width: 260px;
+    text-align: center;
+}
+
+.filtroData{
+    display: flex;
+    align-items: center;
+    width: 260px;
+    height: 20px;
+    justify-content: space-evenly;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.filtroData label{
+    text-align: center;
+    font-weight: 500;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+h2 {
+    padding-left: 3%;
+    color: var(--font-color);
+    font-weight: 700;
+}
+
+#btnAdicionar {
+    margin-right: 17%;
+}
+
+.adicionar svg {
+    color: var(--secondary-color);
+}
+
+.filtro svg, .filtroLimpar svg {
+    margin-right: 10px;
+    margin-bottom: 3px;
+}
+
+
+.adicionar {
+    padding: 0;
+    width: 180px;
+    color: var(--secondary-color);
+    font-weight: 500;
+    background-color: var(--font-color);
+}
+.filtro {
+    padding: 5px;
+    width: 180px;
+    color: var(--secondary-color);
+    font-weight: 500;
+    background-color: var(--font-color);
+    margin-top: 5%;
+}
+
+.filtroLimpar {
+    padding: 5px;
+    width: 180px;
+    margin-top: 5%;
+}
+
+.nomeCateg #nome{
+    font-weight: 700;
+    color: var(--font-color);
+    font-size: 20px;
+}
+
+hr{
+    margin: 0;
+}
+
+.bi-exclamation-triangle-fill {
+    margin-left: 10px;
+    margin-bottom: 3px;
+    color: red; 
+}
+
+.riscado {
+    text-decoration: line-through var(--primary-color);
+}
+
+#limpar{
+    margin-left:8px;
+    margin-bottom: 5px;
+}
+
+.clear-button {
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: none;
+    font-size: 16px;
+}
+
+.filtro-container:hover .clear-button {
+    display: inline;
+}
+
+.limparFiltro{
+    background-color: var(--btnAlta-color);
+    color:black;
+}
+
+.limparFiltro svg{
+    color:rgba(255, 3, 3, 0.7)
+}
+
+#tarefas form {
+    margin-right: 200px;
+}
+
+@media screen and (max-width: 1300px) { 
+        #tarefas {
+            margin-left: 15%;
+            width: 48vw;
+        }
+    
+        .tarefa {
+            width: 46vw;
+        }
+    
+        .resultado {
+            margin-left: 15%;
+            width: 48vw;
+        }
+    
+        #info{
+            margin-left: 15%;
+            width:60%;
+    
+        }
+
+        #btnAdicionar {
+           margin-right: 10%;
+        }
+    
+        h2 {
+            padding: 0;
+        }
+    
+        #statusPrioridade {
+            padding-right: 0;
+        }
+    }
+
+    @media screen and (max-width: 1200px) { 
+        .prioridade {
+            width: 120px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1100px) { 
+        .main-center {
+            display: flex;
+            flex-wrap: wrap ;
+        }
+    
+        #tarefas {
+            margin-left: 15%;
+        }
+    
+        .resultado {
+            margin-left:15%;
+        }
+        .filtros {
+            font-size: 14px;
+            width: 220px;
+        }
+    
+        .filtroData {
+            width: 200px;
+            font-size: 14px;
+        }
+
+        #filtroData {
+            width: 200px;
+           
+        }
+    }
+
+    @media screen and (max-width: 1000px) { 
+        .filtrar {
+            position: absolute;
+            right:6%;
+           
+        }
+    
+        .filtros {
+            width: 200px;
+            font-size: 13px;
+        }
+    
+        .filtroData input{
+            width: 110px;
+            font-size: 13px;
+        }
+
+        .filtroData {
+            width: 180px;
+        } 
+    
+        .filtrar button {
+            width: 140px;
+            height: 35px;
+            font-size: 15px;
+        }
+
+        .btn.filtro svg{
+            width: 18px;
+            height: auto;
+        }
+    
+        #tarefas {
+            width: 50vw;
+        }
+    
+        .tarefa {
+            width: 48vw;
+            height: 75px;
+        }
+    
+        .resultado {
+            width: 52vw;
+        }
+    
+        .status {
+            width: 100px;
+            font-size: 13px;
+        } 
+    
+        .prioridade {
+            width: 100px;
+            font-size: 13px;
+            height: 23px;
+        }
+    
+        .nomeCateg #nome{
+            font-size: 17px;
+            line-height: 20px;
+        }
+    
+        .nomeCateg #nomeCateg{
+            font-size: 15px;
+        }
+    
+        #info{
+            width:63%;
+        }
+    }
+    
+    @media screen and (max-width: 850px) {
+        .filtrar {
+            right:3%;
+        }
+    
+        #info{
+            width:95%;
+        }
+    
+        .nomeCateg #nome {
+            font-size: 15px
+        }
+    
+        .nomeCateg #nomeCateg{
+            font-size: 13px;
+        }
+    
+        #filtroData {
+            font-size: 11px;
+        }
+    
+    }
+
+    @media screen and (max-width: 750px) {
+        .form-control {
+            font-size: 15px;
+        }
+    
+        .main-visualizar {
+            display: flex;
+            flex-direction: column;
+        }
+    
+        #info {
+            margin-top: 35px;
+            margin-bottom: 15px;
+            order: 1;
+        }
+    
+        .box-filtro {
+            display: flex;
+            flex-direction: row;
+        }
+    
+        .filtrar {
+            display: flex;
+            order: 2;
+            position: relative;
+            top:auto;
+            justify-content: center;
+            margin: 0 auto;
+            left: 5%;
+            width: auto; 
+            margin-bottom: 20px;
+            flex-direction: column;
+            align-items: center;
+            flex-wrap: wrap; 
+            padding-left: 30px;
+            padding-right: 30px;
+        } 
+    
+        .filtrar h5 {
+            padding: 0;
+            padding-right: 200px;
+        }
+    
+        .filtros {
+            display: flex;
+            justify-content: space-between;
+            width: 100px;
+            margin:0;
+            margin-left: 10px;
+            order: 2;
+            flex-direction: row;
+            flex-wrap: nowrap;
+        }
+    
+        #filtroData input {
+            margin: 0;
+            order: 1;
+        }
+    
+        .main-center {
+            order: 3;
+        } 
+    
+        #tarefas {
+            display: flex;
+            margin: 0 auto;
+            width: 60vw;
+            position: relative;
+            left: 5%;
+        }
+    
+        .tarefa {
+            margin: 0 auto;
+            margin-top: 10px;
+            width: 56vw;
+            height: 75px;
+            position: relative;
+        }
+    
+        .resultado {
+            display: flex;
+            margin: 0 auto;
+            width: 60vw;
+            position: relative;
+            left: 5%;
+        }
+    }
+    
