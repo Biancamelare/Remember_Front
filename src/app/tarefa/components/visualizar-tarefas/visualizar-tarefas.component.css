@@ -5,7 +5,7 @@ body {
     overflow: hidden;
 }
 
-.main-vizualizar {
+.main-visualizar {
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -143,6 +143,7 @@ header .search-container {
     border-radius: 5px;
     margin-right: 35%;
     margin-bottom: 1%!important;
+    line-height: 15px;
 }
 
 .resultado label {
@@ -237,7 +238,7 @@ header .search-container {
     border-radius: 20px;
     top: 28%;
     right: 10%;
-    height: 38vh; 
+    height: auto; 
     background-color:  var(--user-color); 
     padding: 1.5% 1%;
     display: flex;
@@ -371,57 +372,258 @@ hr{
     color:rgba(255, 3, 3, 0.7)
 }
 
-
+#tarefas form {
+    margin-right: 200px;
+}
 
 @media screen and (max-width: 1300px) { 
-/* 
-    .main-center {
-        display: flex;
-        flex-wrap: wrap ;
-    } */
+        #tarefas {
+            margin-left: 15%;
+            width: 48vw;
+        }
+    
+        .tarefa {
+            width: 46vw;
+        }
+    
+        .resultado {
+            margin-left: 15%;
+            width: 48vw;
+        }
+    
+        #info{
+            margin-left: 15%;
+            width:60%;
+    
+        }
 
-    #tarefas {
-        transition: 0.2s;
-        margin-left: 15%;
-        width: 48vw;
+        #btnAdicionar {
+           margin-right: 10%;
+        }
+    
+        h2 {
+            padding: 0;
+        }
+    
+        #statusPrioridade {
+            padding-right: 0;
+        }
     }
 
-    .tarefa {
-        width: 46vw;
+    @media screen and (max-width: 1200px) { 
+        .prioridade {
+            width: 120px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1100px) { 
+        .main-center {
+            display: flex;
+            flex-wrap: wrap ;
+        }
+    
+        #tarefas {
+            margin-left: 15%;
+        }
+    
+        .resultado {
+            margin-left:15%;
+        }
+        .filtros {
+            font-size: 14px;
+            width: 220px;
+        }
+    
+        .filtroData {
+            width: 200px;
+            font-size: 14px;
+        }
+
+        #filtroData {
+            width: 200px;
+           
+        }
     }
 
-    .resultado {
-        transition: 0.2s;
-        margin-left: 15%;
-        width: 48vw;
+    @media screen and (max-width: 1000px) { 
+        .filtrar {
+            position: absolute;
+            right:6%;
+           
+        }
+    
+        .filtros {
+            width: 200px;
+            font-size: 13px;
+        }
+    
+        .filtroData input{
+            width: 110px;
+            font-size: 13px;
+        }
+
+        .filtroData {
+            width: 180px;
+        } 
+    
+        .filtrar button {
+            width: 140px;
+            height: 35px;
+            font-size: 15px;
+        }
+
+        .btn.filtro svg{
+            width: 18px;
+            height: auto;
+        }
+    
+        #tarefas {
+            width: 50vw;
+        }
+    
+        .tarefa {
+            width: 48vw;
+            height: 75px;
+        }
+    
+        .resultado {
+            width: 52vw;
+        }
+    
+        .status {
+            width: 100px;
+            font-size: 13px;
+        } 
+    
+        .prioridade {
+            width: 100px;
+            font-size: 13px;
+            height: 23px;
+        }
+    
+        .nomeCateg #nome{
+            font-size: 17px;
+            line-height: 20px;
+        }
+    
+        .nomeCateg #nomeCateg{
+            font-size: 15px;
+        }
+    
+        #info{
+            width:63%;
+        }
+    }
+    
+    @media screen and (max-width: 850px) {
+        .filtrar {
+            right:3%;
+        }
+    
+        #info{
+            width:95%;
+        }
+    
+        .nomeCateg #nome {
+            font-size: 15px
+        }
+    
+        .nomeCateg #nomeCateg{
+            font-size: 13px;
+        }
+    
+        #filtroData {
+            font-size: 11px;
+        }
+    
     }
 
-    #info{
-        margin-left: 15%;
-        width:60%;
-
+    @media screen and (max-width: 750px) {
+        .form-control {
+            font-size: 15px;
+        }
+    
+        .main-visualizar {
+            display: flex;
+            flex-direction: column;
+        }
+    
+        #info {
+            margin-top: 35px;
+            margin-bottom: 15px;
+            order: 1;
+        }
+    
+        .box-filtro {
+            display: flex;
+            flex-direction: row;
+        }
+    
+        .filtrar {
+            display: flex;
+            order: 2;
+            position: relative;
+            top:auto;
+            justify-content: center;
+            margin: 0 auto;
+            left: 5%;
+            width: auto; 
+            margin-bottom: 20px;
+            flex-direction: column;
+            align-items: center;
+            flex-wrap: wrap; 
+            padding-left: 30px;
+            padding-right: 30px;
+        } 
+    
+        .filtrar h5 {
+            padding: 0;
+            padding-right: 200px;
+        }
+    
+        .filtros {
+            display: flex;
+            justify-content: space-between;
+            width: 100px;
+            margin:0;
+            margin-left: 10px;
+            order: 2;
+            flex-direction: row;
+            flex-wrap: nowrap;
+        }
+    
+        #filtroData input {
+            margin: 0;
+            order: 1;
+        }
+    
+        .main-center {
+            order: 3;
+        } 
+    
+        #tarefas {
+            display: flex;
+            margin: 0 auto;
+            width: 60vw;
+            position: relative;
+            left: 5%;
+        }
+    
+        .tarefa {
+            margin: 0 auto;
+            margin-top: 10px;
+            width: 56vw;
+            height: 75px;
+            position: relative;
+        }
+    
+        .resultado {
+            display: flex;
+            margin: 0 auto;
+            width: 60vw;
+            position: relative;
+            left: 5%;
+        }
     }
-
-    h2 {
-        padding: 0;
-    }
-
-    /* .btn.adicionar {
-        margin-left: 18%;
-    } */
-}
-
-@media screen and (max-width: 1100px) { 
-    .main-center {
-        display: flex;
-        flex-wrap: wrap ;
-    }
-
-    #tarefas {
-        margin-left: 15%;
-    }
-
-    .resultado {
-        margin-left:15%;
-    }
-}
+    

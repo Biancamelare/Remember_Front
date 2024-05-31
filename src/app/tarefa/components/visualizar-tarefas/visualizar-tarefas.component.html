@@ -1,6 +1,6 @@
 <app-modal (tarefaSalva)="recarregarTarefas()"  [tarefa]="tarefaSelecionada"></app-modal>
 <app-sidenav></app-sidenav>
-<div class="main-vizualizar">
+<div class="main-visualizar">
     <header>
         <div class="search-container">
             <input type="text" class="form-control search-input" placeholder="Pesquisar Tarefa" aria-label="Recipient's username" aria-describedby="button-addon2" [(ngModel)]="tarefaFiltro" (input)="tarefaChange()" >
@@ -85,13 +85,14 @@
     </div>
 
     <aside class="filtrar">
-            <h5>Filtar por...</h5>
+            <h5>Filtrar por...</h5>
 
             <div class="filtroData">
                 <label>Data </label>
                 <input type="date" [(ngModel)]="dataInicio" name="dataInicio">
             </div>
 
+        <div class="box-filtro">
             <div class="filtro-container" >
             <select name="filtoStatus" class="filtros" id="statusfilto" [(ngModel)]="statusFiltro">
                 <option [ngValue]="0" disabled selected>Status</option>
@@ -103,7 +104,7 @@
                 <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/>
             </svg></span>
           </div>
-<div class="filtro-container">
+            <div class="filtro-container">
                 <select name="filtoCategoria"  class="filtros" id="categoria" [(ngModel)]="categoriaFiltro" >
                     <option [ngValue]="0" disabled selected>Categoria</option>
                     <ng-container *ngFor="let categoria of categorias">
@@ -125,6 +126,7 @@
                     <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/>
                 </svg></span>
             </div>
+        </div>
 
               
 
