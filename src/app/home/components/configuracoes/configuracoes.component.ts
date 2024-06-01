@@ -141,7 +141,13 @@ export class ConfiguracoesComponent implements OnInit {
     if (this.formConfiguracoes.valid ) {
       const resposta = await this.confirmacaoService.exibirConfirmacao('Deseja realmente alterar?');
       if(resposta){
-        this.usuarioSerive.editarUsuario(this.formConfiguracoes.getRawValue(), this.currentUserId, this.currentUser).subscribe(
+        const formValue = this.formConfiguracoes.getRawValue();
+
+        if (formValue.email === this.usuarioSelecionado.email) {
+            delete formValue.email; 
+        }
+console.log(formValue)
+        this.usuarioSerive.editarUsuario(formValue, this.currentUserId, this.currentUser).subscribe(
           response => {
             this.alertaService.exibirAlerta('success', 'Usuário editado com sucesso!');
             this.salvarhabilitado = false

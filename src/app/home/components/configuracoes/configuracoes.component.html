@@ -61,27 +61,27 @@
             <div class="mb-4 input-config">
 
                 <label class="form-label">Nome de Usuário</label>
-                <input type="text" class="form-control"  formControlName="nome" pattern="[a-zA-Z].{0,}" [ngClass]="mostrarCSS('nome')">
+                <input type="text" class="form-control"  formControlName="nome" pattern="[a-zA-Z].{0,}" >
 
             </div>
 
             <div class="mb-4 input-config">
         
                 <label class="form-label">Data de nascimento</label>
-                <input type="date" class="form-control"  formControlName="data_nasc"  [ngClass]="mostrarCSS('data_nasc')" >
+                <input type="date" class="form-control"  formControlName="data_nasc">
 
             </div>
             
             <div class="mb-4 input-config">
 
                 <label class="form-label">E-mail</label>
-                <input type="email" class="form-control"  formControlName="email" [ngClass]="mostrarCSS('email')" >
+                <input type="email" class="form-control"  formControlName="email">
 
             </div>
 
             <div class="mb-4 input-config">
                 <label class="form-label">Telefone</label>
-                <input type="text" class="form-control"  formControlName="telefone" (input)="formatarTelefone($event)" pattern=".{9,}" [ngClass]="mostrarCSS('telefone')">
+                <input type="text" class="form-control"  formControlName="telefone" (input)="formatarTelefone($event)" pattern=".{9,}">
             </div>
 
             <input class="btnSalvar" type="submit" value="Salvar" (click)="salvar()" *ngIf="salvarhabilitado">
