@@ -170,6 +170,7 @@ export class VisualizarTarefasComponent implements OnInit {
 
   selecionarTarefa(tarefa: TarefaModel) { 
     this.tarefaSelecionada = tarefa;
+    this.modalComponent.configurarFormularioComDadosDaTarefa();
     this.modalComponent.openModal();
   }
 

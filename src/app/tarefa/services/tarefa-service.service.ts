@@ -97,4 +97,19 @@ export class TarefaServiceService {
     return this.http.put(`http://localhost:3000/tarefas/item-tarefa/${id}`, lista ,{headers });
   }
 
+  excluirItemLista(id:number,token:string){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.delete(`http://localhost:3000/tarefas/item-tarefa/${id}`, {headers });
+  }
+
+  cadastrarItemLista(lista: ListaTarefa, token:string){
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.post(`http://localhost:3000/tarefas/lista`, lista,{headers });
+  }
+
+
 }

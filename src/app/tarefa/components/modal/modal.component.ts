@@ -14,6 +14,7 @@ import { PrioridadeModel } from '../../models/prioridade.model';
 import { ConfirmacaoService } from '../../../shared/components/confirm/service/confirm.service';
 import { ConfirmComponent } from '../../../shared/components/confirm/confirm.component';
 import { ListaTarefa } from '../../models/listaTarefa.model';
+import { PageTarefaModel } from '../../models/pageTarefas.model';
 
 
 @Component({
@@ -106,14 +107,15 @@ export class ModalComponent implements OnInit,OnChanges {
       this.modalTarget = 'modal'
     }
 
-    this.inicializarLista();
+    this.limparLista();
 
  
 }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['tarefa'] && this.tarefa) {
-      this.editar = true;
+      this.configurarFormularioComDadosDaTarefa();
+      /*this.editar = true;
       this.formTarefa.patchValue(this.tarefa);
       const dataFormatada = this.datePipe.transform(this.tarefa.data_vencimento, 'yyyy-MM-dd', 'UTC');
       if (dataFormatada) {
@@ -123,16 +125,33 @@ export class ModalComponent implements OnInit,OnChanges {
       if (horaFormatada) {
         this.hora_conclusao = horaFormatada;
       }
-      this.inicializarLista();
-      if (this.tarefa.lista_tarefa) {
-        this.tarefa.lista_tarefa.forEach(item => {
-          this.adicionarItem(item.descricao, item.status);
-        });
-      }
-    
-      
+      this.inicializarLista(); */  
     }
   }
+
+  configurarFormularioComDadosDaTarefa(): void {
+    if (this.tarefa) {
+      this.editar = true;
+      this.formTarefa.patchValue(this.tarefa);
+  
+      const dataFormatada = this.datePipe.transform(this.tarefa.data_vencimento, 'yyyy-MM-dd', 'UTC');
+      const horaFormatada = this.datePipe.transform(this.tarefa.data_vencimento, 'HH:mm', 'UTC');
+  
+      this.data_conclusao = dataFormatada ?? '';
+      this.hora_conclusao = horaFormatada ?? '00:00';
+  
+      const html_dataconclusao = this.document.querySelector('#data_conclusao') as HTMLInputElement;
+      const html_horaconclusao = this.document.querySelector('#hora_conclusao') as HTMLInputElement;
+      if (html_dataconclusao) {
+        html_dataconclusao.value = this.data_conclusao;
+      }
+      if (html_horaconclusao) {
+        html_horaconclusao.value = this.hora_conclusao;
+      }
+      this.inicializarLista();
+    }
+  }
+
 
   /*VALIDAÇÕES */
   validarCampo(field: string) {
@@ -257,7 +276,6 @@ export class ModalComponent implements OnInit,OnChanges {
     if(dataHoraConclusao != 'T00:00:00.000Z'){
      this.formTarefa.controls['data_vencimento'].setValue(dataHoraConclusao);
     }
-    this.formTarefa.controls['id_status'].setValue(1);
 
     if(this.tarefa){
       if(this.formTarefa.valid){
@@ -268,6 +286,7 @@ export class ModalComponent implements OnInit,OnChanges {
         console.log(dadosTarefa)
         this.tarefaService.editarTarefa(this.tarefa.id, dadosTarefa, this.currentUser).subscribe(
           response => {
+            this.salvarItensListaVerificacao()
             this.alertaService.exibirAlerta('success', 'Tarefa editada com sucesso!');
             this.tarefaSalva.emit();
             this.closeModal()
@@ -294,20 +313,21 @@ export class ModalComponent implements OnInit,OnChanges {
   closeModal() {
       this.formTarefa.reset();
       this.formTarefa.enable();
-      this.inicializarLista();
+      this.limparLista();
       this.editar = false;
       const html_dataconclusao = this.document.querySelector('#data_conclusao') as HTMLInputElement
       const html_horaconclusao = this.document.querySelector('#hora_conclusao') as HTMLInputElement
 
       html_dataconclusao.value = ''
       html_horaconclusao.value = ''
-  }
+      }
 
   //Lista
-  adicionarItem(descricao: string = '', status: boolean = false): void {
+  adicionarItem(descricao: string = '', status: boolean = false, id?: number): void {
     const novoItem = this.formBuilder.group({
       descricao: [descricao, Validators.required],
-      status: [status]
+      status: [status],
+      id: [id]  
     });
     (this.formTarefa.get('lista_tarefa') as FormArray).push(novoItem);
   }
@@ -317,13 +337,84 @@ export class ModalComponent implements OnInit,OnChanges {
 
     inicializarLista(): void {
       (this.formTarefa.get('lista_tarefa') as FormArray).clear();
+
+      if (this.tarefa && this.tarefa.lista_tarefa) {
+        this.tarefa.lista_tarefa.forEach(item => {
+          const novoItem = this.formBuilder.group({
+            id: [item.id],
+            descricao: [item.descricao, Validators.required],
+            status: [item.status]
+          });
+          (this.formTarefa.get('lista_tarefa') as FormArray).push(novoItem)
+        });
+        
+      }
    
     }
 
-    removerItem(index: number): void {
-      (this.formTarefa.get('lista_tarefa') as FormArray).removeAt(index);
+    limparLista(){
+      (this.formTarefa.get('lista_tarefa') as FormArray).clear();
     }
-
+    removerItem(index: number): void {
+      const item = (this.formTarefa.get('lista_tarefa') as FormArray).at(index);
+      const itemId = item.get('id')?.value;
+      
+      if (itemId) {
+        this.tarefaService.excluirItemLista(itemId, this.currentUser).subscribe(
+          response => {
+            (this.formTarefa.get('lista_tarefa') as FormArray).removeAt(index);
+          },
+          error => {
+            this.alertaService.exibirAlerta('danger', 'Erro ao excluir item: ' + error.error.message);
+          }
+        );
+      } else {
+        (this.formTarefa.get('lista_tarefa') as FormArray).removeAt(index);
+      }
+    }
+    salvarItensListaVerificacao(): void {
+      const itensListaVerificacao = this.getItensListaVerificacaoControls();
+      itensListaVerificacao.forEach(control => {
+        const descricao = control.get('descricao')?.value.trim();
+        const status = control.get('status')?.value;
+        const id = control.get('id')?.value;
+    
+        if (id) {
+          this.tarefaService.editarLista(id, { descricao, status }, this.currentUser).subscribe(
+            response => {
+            },
+            error => {
+              this.alertaService.exibirAlerta('danger', 'Erro ao editar item: ' + error.error.message);
+            }
+          );
+        } else if (descricao !== '') {
+          const newItem = { descricao, status, task_id: this.tarefa?.id };
+          this.tarefaService.cadastrarItemLista(newItem, this.currentUser).subscribe(
+            response => {
+            },
+            error => {
+              this.alertaService.exibirAlerta('danger', 'Erro ao adicionar item: ' + error.error.message);
+            }
+          );
+        }
+      });
+    }
+    alterarStatusItem(index: number): void {
+      const item = (this.formTarefa.get('lista_tarefa') as FormArray).at(index);
+      const itemId = item.get('id')?.value;
+      const novoStatus = !item.get('status')?.value;
+      if (itemId) {
+        console.log(itemId,novoStatus)
+        this.tarefaService.editarLista(itemId, { status: novoStatus }, this.currentUser).subscribe(
+          response => {
+            item.get('status')?.setValue(novoStatus);
+          },
+          error => {
+            this.alertaService.exibirAlerta('danger', 'Erro ao alterar status do item: ' + error.error.message);
+          }
+        );
+      }
+    }
 
 
 
