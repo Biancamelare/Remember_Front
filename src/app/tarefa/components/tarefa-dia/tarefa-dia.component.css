@@ -376,6 +376,21 @@ hr{
     margin-right: 200px;
 }
 
+
+#titulo{
+    display: flex;
+    margin: auto;
+    width: 44vw;
+    margin-right: 34%;
+    margin-bottom: 10px!important;
+    line-height: 15px;
+}
+#titulo label {
+    color:#858CA6;
+    font-weight: 600;
+    font-size: 18px;
+}
+
 @media screen and (max-width: 1300px) { 
         #tarefas {
             margin-left: 15%;

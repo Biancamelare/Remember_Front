@@ -136,6 +136,7 @@ export class TarefaDiaComponent {
       (tarefas: PageTarefaModel) => {
         this.tarefas = tarefas.data || [];
         this.quantTarefas = tarefas.total;
+        this.atualizarFrase();
         this.associarDados();
       },
       (error) => {
