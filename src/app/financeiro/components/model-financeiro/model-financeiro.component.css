@@ -1,0 +1,184 @@
+.modal-dialog{
+    max-width: 45%;
+    border: 10rem solid  var(--modal-color);
+}
+
+.modal-content{
+    background: linear-gradient(120deg, var(--gradient1-color) 40%, var(--gradient2-color));
+    border:none;
+    border-radius: 20px;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+h1 {
+    color: var(--secondary-color);
+}
+
+.modal-body {
+    background-color: var(--secondary-color);
+    border-radius: 20px;
+}
+
+form {
+    border-radius: 20px;
+}
+
+.modal {
+    padding: 5% 10%;
+}
+
+.modal-footer {
+    padding: 3%;
+    border-top: none;
+}
+
+.modal-header{
+    border-bottom: none;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+.botaoCadastro{
+    color: var(--secondary-color);
+    background: var(--font-color);
+}
+
+.botaoCadastro:hover{
+    background: rgb(1, 1, 84);
+}
+
+.botao {
+    width: 30%;
+    height: 45px;
+}
+
+.botoes {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 8%;
+}
+
+.descricao {
+    width: 100%;
+    background: var(--tertiary-color);
+    height: 45px;
+    display: flex;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+#descricaoInput {
+    width: 100%;
+    border: none;
+    background: none;
+
+}
+
+#descricaoInput::placeholder{
+    color: var(--base-color);
+}
+
+#descricaoInput:hover {
+    border: none;
+}
+
+#categoria {
+    width: 49%;
+    border: none;
+    background: none;
+    background: var(--tertiary-color);
+    height: 45px;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+#valor {
+    width: 40%;
+    border: none;
+    background: none;
+    background: var(--tertiary-color);
+    height: 45px;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+#data {
+    display: flex;
+    align-items: center;
+    background: var(--tertiary-color);
+    height: 45px;
+    border-radius: 8px;
+    width: 49%;
+    justify-content: space-around;
+}
+
+#categoria input {
+    width: 100%;
+    border: none;
+    background: none;
+}
+
+#valor input {
+    width: 100%;
+    border: none;
+    background: none;
+}
+
+#data input{
+    width: 74%;
+    background: var(--tertiary-color);
+    border: none;
+}
+
+#categoria input::placeholder {
+    color: var(--base-color);
+}
+
+#valor input::placeholder {
+    color: var(--base-color);
+}
+
+.linha, .bloco {
+    width: 100%;
+    display: flex;
+    margin-bottom: 15px;
+    justify-content: space-between;
+}
+
+input:focus {
+    outline: none;
+}
+
+.entrada {
+    background-color: #C3F7C8;
+    color: var(--font-color);
+    font-weight: 600;
+}
+
+.saida {
+    background-color:#ED7786;
+    color: var(--font-color);
+    font-weight: 600;
+}
+
+.btn {
+    width: 49%;
+    font-size: 14px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.entradaSaida {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 59%;
+}
+

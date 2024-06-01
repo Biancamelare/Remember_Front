@@ -11,7 +11,7 @@ import { HomeComponent } from './tarefa/components/home/home.component';
 import { ModalIconComponent } from './shared/components/modal-icon/modal-icon.component';
 import { TarefaDiaComponent } from './tarefa/components/tarefa-dia/tarefa-dia.component';
 import { ListaFinanceiroComponent } from './financeiro/components/lista-financeiro/lista-financeiro.component';
-
+import { ModelFinanceiroComponent } from './financeiro/components/model-financeiro/model-financeiro.component';
 
 export const routes: Routes = [
     {
@@ -64,6 +64,12 @@ export const routes: Routes = [
     {
         path: 'modal-icon',
         component: ModalIconComponent,
+        canActivate: [AuthGuardService]
+        
+    },
+    {
+        path: 'model-financeiro',
+        component: ModelFinanceiroComponent,
         canActivate: [AuthGuardService]
         
     },

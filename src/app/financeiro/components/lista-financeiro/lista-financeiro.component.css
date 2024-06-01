@@ -72,7 +72,7 @@ header .search-container {
 }
 
 .search-input::placeholder{
-    color: var(--secondary-color);
+    color: var(--font-color);
     font-weight: 600;
     font-size: 20px;
     padding-left: 20px;
@@ -207,7 +207,7 @@ input[type="date"] {
     top: 35px;
     right: 20px;
     transform: translateY(-50%);
-    fill: var(--secondary-color); 
+    fill: var(--font-color); 
 }
 
 .search-input2 {
