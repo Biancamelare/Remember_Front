@@ -7,6 +7,7 @@ import { CategoriaModel } from '../models/categoria.model';
 import { StatusModel } from '../models/status.model';
 import { PrioridadeModel } from '../models/prioridade.model';
 import { PageTarefaModel } from '../models/pageTarefas.model';
+import { ListaTarefa } from '../models/listaTarefa.model';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,14 @@ export class TarefaServiceService {
       'Authorization': `Bearer ${token}`
     });
     return this.http.put(`http://localhost:3000/tarefas/${id}`, {id_status: status},{headers });
+  }
+
+  
+  editarTarefa(id:number, tarefa: TarefaModel, token: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.put(`http://localhost:3000/tarefas/${id}`, tarefa, {headers });
   }
 
   getTarefas(token: string){
@@ -79,6 +88,13 @@ export class TarefaServiceService {
       }
     }
     return this.http.get<PageTarefaModel>(`http://localhost:3000/tarefas`, { headers, params: queryParams });
+  }
+
+  editarLista(id:number, lista:ListaTarefa, token:string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.put(`http://localhost:3000/tarefas/item-tarefa/${id}`, lista ,{headers });
   }
 
 }

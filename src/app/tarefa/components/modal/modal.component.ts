@@ -13,6 +13,7 @@ import { UsuarioService } from '../../../home/services/usuario.service';
 import { PrioridadeModel } from '../../models/prioridade.model';
 import { ConfirmacaoService } from '../../../shared/components/confirm/service/confirm.service';
 import { ConfirmComponent } from '../../../shared/components/confirm/confirm.component';
+import { ListaTarefa } from '../../models/listaTarefa.model';
 
 
 @Component({
@@ -113,6 +114,7 @@ export class ModalComponent implements OnInit,OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['tarefa'] && this.tarefa) {
       this.editar = true;
+      this.formTarefa.patchValue(this.tarefa);
       const dataFormatada = this.datePipe.transform(this.tarefa.data_vencimento, 'yyyy-MM-dd', 'UTC');
       if (dataFormatada) {
         this.data_conclusao = dataFormatada;
@@ -127,7 +129,7 @@ export class ModalComponent implements OnInit,OnChanges {
           this.adicionarItem(item.descricao, item.status);
         });
       }
-      this.formTarefa.patchValue(this.tarefa);
+    
       
     }
   }
@@ -244,7 +246,41 @@ export class ModalComponent implements OnInit,OnChanges {
   }
 
   async editarTarefa(){
+    const html_dataconclusao = this.document.querySelector('#data_conclusao') as HTMLInputElement
+    const html_horaconclusao = this.document.querySelector('#hora_conclusao') as HTMLInputElement
 
+    this.data_conclusao = html_dataconclusao.value
+    if(html_horaconclusao.value != ''){
+     this.hora_conclusao = html_horaconclusao.value
+    }
+    const dataHoraConclusao = `${this.data_conclusao}T${this.hora_conclusao}:00.000Z`;
+    if(dataHoraConclusao != 'T00:00:00.000Z'){
+     this.formTarefa.controls['data_vencimento'].setValue(dataHoraConclusao);
+    }
+    this.formTarefa.controls['id_status'].setValue(1);
+
+    if(this.tarefa){
+      if(this.formTarefa.valid){
+        const resposta = await this.confirmacaoService.exibirConfirmacao('Deseja realmente editar a tarefa?');
+      if(resposta){
+        const dadosTarefa = { ...this.formTarefa.getRawValue() };
+        delete dadosTarefa.lista_tarefa;
+        console.log(dadosTarefa)
+        this.tarefaService.editarTarefa(this.tarefa.id, dadosTarefa, this.currentUser).subscribe(
+          response => {
+            this.alertaService.exibirAlerta('success', 'Tarefa editada com sucesso!');
+            this.tarefaSalva.emit();
+            this.closeModal()
+          },
+          error => {
+            this.alertaService.exibirAlerta('danger','Erro ao editar tarefa: ' + error.error.message); 
+          })
+      }
+      }else {
+        this.validarTodosCampos(this.formTarefa);
+        this.alertaService.exibirAlerta('danger', 'Preencha todos os campos corretamente.')
+      }
+    }
   }
 
   /*Modal*/
