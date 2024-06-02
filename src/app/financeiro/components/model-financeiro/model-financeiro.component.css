@@ -100,6 +100,7 @@ body {
     height: 45px;
     border-radius: 8px;
     padding: 10px;
+    margin-right: 1%;
     
 }
 
@@ -116,7 +117,6 @@ body {
     background: var(--tertiary-color);
 }
 #data {
-    margin-left: 2%;
     height: 45px;
     border-radius: 8px;
     background: var(--tertiary-color);
@@ -176,6 +176,14 @@ input:focus {
 .entradaSaida input[type="radio"]:checked + label {
     border: var(--font-color) 2px solid;
   }
+
+#labelData{
+margin-left: 1%;
+display: flex;
+text-align: center;
+color: var(--font-color);
+font-weight: 600;
+}
   
 .btn {
     width: 49%;
