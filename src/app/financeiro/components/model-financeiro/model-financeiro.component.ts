@@ -57,7 +57,7 @@ export class ModelFinanceiroComponent implements OnInit {
     this.formTransacao = this.formBuilder.group({
       descricao: [{ value: '', disabled: false }, Validators.required],
       categoria: [{ value: '', disabled: false }, Validators.required],
-      data: [{ value: '', disabled: false }],
+      vencimento_em: [{ value: '', disabled: false }],
       preco: [{ value: '', disabled: false }, Validators.required],
       tipo: [{ value: '', disabled: false }, Validators.required]
     });
@@ -71,7 +71,7 @@ export class ModelFinanceiroComponent implements OnInit {
     this.formTransacao.get('categoria')?.setValue(this.transacaoSelecionado.categoria);
     this.formTransacao.get('preco')?.setValue(this.transacaoSelecionado.preco);
     this.formTransacao.get('tipo')?.setValue(this.transacaoSelecionado.tipo);
-    this.formTransacao.get('data')?.setValue(this.transacaoSelecionado.data);
+    this.formTransacao.get('vencimento_em')?.setValue(this.transacaoSelecionado.vencimento_em);
 
   }
 

@@ -37,6 +37,11 @@ export class ListaFinanceiroComponent implements OnInit {
   saidas: number = 0;
   saldoAtual: number = 0;
 
+  vencimento_em: string | undefined = undefined;
+  categoriaFiltro: number | undefined = undefined;
+  tipoFiltro: number | undefined = undefined;
+  transacaoFiltro?: string;
+
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
@@ -111,6 +116,65 @@ export class ListaFinanceiroComponent implements OnInit {
     const valorFormatado = valor?.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
     return valorFormatado;
+  }
+
+  filtrarTransacao() {
+    const params: any = {};
+    if (this.vencimento_em) params.vencimento_em = this.vencimento_em;
+    if (this.transacaoFiltro) params.descricao = this.transacaoFiltro;
+    if (this.categoriaFiltro) params.categoria = this.categoriaFiltro;
+    if (this.tipoFiltro) params.tipo = this.tipoFiltro;
+  
+    this.transacaoService.filtrarTransacoes(params, this.currentUser).subscribe(
+      (transacoes: PageTransacaoModel) => {
+        this.transacoes = transacoes.data || [];
+      },
+      (error) => {
+        this.alertaService.exibirAlerta('danger', 'Erro ao filtrar tarefas: ' + error.error.message);
+      }
+    );
+  }
+
+  limparFiltros() {
+    this.vencimento_em = undefined;
+    this.transacaoFiltro = undefined;
+    this.categoriaFiltro = 0;
+    this.tipoFiltro = undefined
+    this.buscarTransacoes();
+  }
+
+  limparFiltro(filtro: string) {
+    switch (filtro) {
+      case 'vencimento_em':
+        this.vencimento_em = undefined;
+        break;
+      case 'transacaoFiltro':
+        this.transacaoFiltro = undefined;
+        break;
+      case 'categoriaFiltro':
+        this.categoriaFiltro = undefined;
+        break;
+      case 'tipoFiltro':
+        this.tipoFiltro = undefined;
+        break;
+    }
+    this.filtrarTransacao();
+  }
+
+  transacaoChange() {
+    if (!this.transacaoFiltro) {
+      this.limparFiltro('transacaoFiltro');
+    }else{
+      this.filtrarTransacao()
+    }
+  }
+
+  categoriaChange() {
+    if (!this.categoriaFiltro) {
+      this.limparFiltro('categoriaFiltro');
+    }else{
+      this.filtrarTransacao()
+    }
   }
   
   openModal() {

@@ -4,6 +4,6 @@ export interface TransacaoModel {
 	descricao?: string,
 	preco?: number,
     categoria ?: string,
-    data?: Date,
+    vencimento_em?: Date,
     tipo ?: string
 }

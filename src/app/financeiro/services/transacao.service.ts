@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { TransacaoModel } from "../models/transacao.model";
 import { Injectable } from "@angular/core";
 import { PageTransacaoModel } from "../models/pageTransacao.model";
@@ -26,9 +26,14 @@ export class TransacaoService {
     return this.http.get<PageTransacaoModel>(`http://localhost:3000/transactions`, {headers });
   }
 
-
-  
-
-
-
+  filtrarTransacoes(params: any, token: string): Observable<PageTransacaoModel> {
+    const headers = { 'Authorization': `Bearer ${token}` };
+    let queryParams = new HttpParams();
+    for (let key in params) {
+      if (params[key]) {
+        queryParams = queryParams.append(key, params[key]);
+      }
+    }
+    return this.http.get<PageTransacaoModel>(`http://localhost:3000/transactions`, { headers, params: queryParams });
+}
 }

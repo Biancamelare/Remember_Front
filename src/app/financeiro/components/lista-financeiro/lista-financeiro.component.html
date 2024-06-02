@@ -3,7 +3,7 @@
 <div class="main-vizualizar">
     <header>
         <div class="search-container">
-            <input type="text" class="form-control search-input" placeholder="Pesquisar transação financeira" aria-label="Recipient's username" aria-describedby="button-addon2" >
+            <input type="text" class="form-control search-input" placeholder="Pesquisar transação financeira" aria-label="Recipient's username" aria-describedby="button-addon2" [(ngModel)]="transacaoFiltro" (input)="transacaoChange()">
                 <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" id="icon">
                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
                 </svg>
@@ -61,7 +61,7 @@
                 </svg>
         </div>
         <div class="pesquisa">
-            <input type="text" class="form-control search-input2" placeholder="Pesquisar por categoria" aria-label="Recipient's username" aria-describedby="button-addon2" >
+            <input type="text" class="form-control search-input2" placeholder="Pesquisar por categoria" aria-label="Recipient's username" aria-describedby="button-addon2" [(ngModel)]="categoriaFiltro" (input)="categoriaChange()" >
                 <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" id="icon2">
                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
                 </svg>
@@ -105,7 +105,7 @@
                 <label id="descricao">{{transacao.descricao}}</label>
                 <label for="" id="valor" [ngClass]="{'positivo': transacao.tipo === 'd', 'negativo': transacao.tipo === 'c'}">{{ formatarValor(transacao.preco, transacao.tipo) }}</label>
                 <label for="" id="categoria">{{transacao.categoria}}</label>
-                <label for="" id="data">{{this.datePipe.transform(transacao.data, 'dd/MM/yyyy')}}</label>
+                <label for="" id="data">{{this.datePipe.transform(transacao.vencimento_em, 'dd/MM/yyyy')}}</label>
             </div>
         </div>
     </div>
