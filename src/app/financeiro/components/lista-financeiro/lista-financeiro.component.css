@@ -374,6 +374,7 @@ h2 {
 .tabela {
     border-radius: 22px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
 
 .ativo {

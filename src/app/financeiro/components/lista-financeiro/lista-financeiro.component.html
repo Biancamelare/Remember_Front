@@ -79,14 +79,14 @@
             </div>
 
             <div class="tabela">
-                <div id="entradas" class="geral positivo" (click)="filtrarPorTipo('d')" [ngClass]="{'ativo': tipoFiltro === 'd'}">
+                <div title="Clique para filtrar as transações financeiras do tipo Entrada" id="entradas" class="geral positivo" (click)="filtrarPorTipo('d')" [ngClass]="{'ativo': tipoFiltro === 'd'}">
                     <h4>Entradas</h4>
                     <label for=""> {{ tirarVirgula(entradas)}}</label>
                 </div>
             </div>
             
             <div class="tabela">
-                <div id="saidas" class="geral negativo" (click)="filtrarPorTipo('c')" [ngClass]="{'ativo': tipoFiltro === 'c'}">
+                <div title="Clique para filtrar as transações financeiras do tipo Saída" id="saidas" class="geral negativo" (click)="filtrarPorTipo('c')" [ngClass]="{'ativo': tipoFiltro === 'c'}">
                     <h4>Saídas</h4>
                     <label for=""> {{tirarVirgula(saidas)}}</label>
                 </div>
