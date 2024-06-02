@@ -1,5 +1,5 @@
 <app-sidenav></app-sidenav>
-<app-model-financeiro (transacaoSalva)="recarregarTransacoes()"></app-model-financeiro>
+<app-model-financeiro (transacaoSalva)="recarregarTransacoes()" [transacao]="transacaoSelecionado"></app-model-financeiro>
 <div class="main-vizualizar">
     <header>
         <div class="search-container">
@@ -96,13 +96,13 @@
         
         <div class="transacoes" id="scroll">
             <div class="transacao titulo">
-                <label id="descricao">Descrição</label>
+                <label id="descricao" >Descrição</label>
                 <label id="valor" >Valor</label>
                 <label id="categoria">Categoria</label>
                 <label id="data">Data</label>
             </div>
             <div class="transacao" *ngFor="let transacao of transacoes" >
-                <label id="descricao">{{transacao.descricao}}</label>
+                <label id="descricao" (click)="selecionarTransacao(transacao)" data-bs-toggle="modal" data-bs-target="#modalTransacao">{{transacao.descricao}}</label>
                 <label for="" id="valor" [ngClass]="{'positivo': transacao.tipo === 'd', 'negativo': transacao.tipo === 'c'}">{{ formatarValor(transacao.preco, transacao.tipo) }}</label>
                 <label for="" id="categoria">{{transacao.categoria}}</label>
                 <label for="" id="data">{{this.datePipe.transform(transacao.vencimento_em, 'dd/MM/yyyy', 'UTC')}}</label>

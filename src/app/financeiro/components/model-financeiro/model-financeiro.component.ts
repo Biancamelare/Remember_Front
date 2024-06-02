@@ -1,6 +1,6 @@
 import { CommonModule, DOCUMENT, DatePipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { Component, EventEmitter, Inject, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { ReactiveFormsModule, FormsModule, Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { AlertasComponent } from '../../../shared/components/alertas/alertas.component';
 import { ConfirmComponent } from '../../../shared/components/confirm/confirm.component';
@@ -21,10 +21,11 @@ import { TransacaoService } from '../../services/transacao.service';
   styleUrl: './model-financeiro.component.css',
   providers: [DatePipe]
 })
-export class ModelFinanceiroComponent implements OnInit {
+export class ModelFinanceiroComponent implements OnInit, OnChanges {
 
   @ViewChild('alertaCadastro', { static: false }) alertaCadastro!: AlertasComponent;
   @Output() transacaoSalva: EventEmitter<any> = new EventEmitter<any>();
+  @Input()transacao: TransacaoModel | undefined;
 
   formTransacao: FormGroup;
   
@@ -35,6 +36,8 @@ export class ModelFinanceiroComponent implements OnInit {
   transacaoSelecionado: TransacaoModel = {} as TransacaoModel;
 
   editar: boolean = false;
+
+  data ?: string
 
   constructor(
     private transacaoService: TransacaoService,
@@ -74,6 +77,11 @@ export class ModelFinanceiroComponent implements OnInit {
     this.formTransacao.get('vencimento_em')?.setValue(this.transacaoSelecionado.vencimento_em);
 
   }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['transacao'] && this.transacao) {
+      this.configurarFormularioComDadosDaTransacao();
+    }
+  }
 
   salvar(): void {
  
@@ -94,6 +102,64 @@ export class ModelFinanceiroComponent implements OnInit {
      }
    
    }
+
+   async editarTransacao(){
+    if(this.transacao){
+      if(this.formTransacao.valid){
+        const resposta = await this.confirmacaoService.exibirConfirmacao('Deseja realmente editar a transação financeira?');
+      if(resposta){
+        this.transacaoService.editarTransacao(this.transacao.id, this.formTransacao.getRawValue(), this.currentUser).subscribe(
+          response => {
+            this.alertaService.exibirAlerta('success', 'Transação financeira editada com sucesso!');
+            this.transacaoSalva.emit();
+            this.closeModal()
+          },
+          error => {
+            this.alertaService.exibirAlerta('danger','Erro ao editar transação financeira: ' + error.error.message); 
+          })
+      }
+      }else {
+        this.validarTodosCampos(this.formTransacao);
+        this.alertaService.exibirAlerta('danger', 'Preencha todos os campos corretamente.')
+      }
+    }
+  }
+
+   configurarFormularioComDadosDaTransacao(): void {
+    console.log(this.transacao)
+    if (this.transacao) {
+      this.editar = true;
+      this.formTransacao.patchValue(this.transacao);
+  
+      const dataFormatada = this.datePipe.transform(this.transacao.vencimento_em, 'yyyy-MM-dd', 'UTC');
+
+      this.data = dataFormatada ?? '';
+  
+      const html_dataconclusao = this.document.querySelector('#data_conclusao') as HTMLInputElement;
+      const html_horaconclusao = this.document.querySelector('#hora_conclusao') as HTMLInputElement;
+      if (html_dataconclusao) {
+        html_dataconclusao.value = this.data;
+      }
+  
+    }
+  }
+
+  async excluir(){
+    if(this.transacao){
+      const resposta = await this.confirmacaoService.exibirConfirmacao('Deseja realmente excluir a transação financeir?');
+      if(resposta){
+        this.transacaoService.excluirTransacao(this.transacao.id, this.currentUser).subscribe(
+          response => {
+            this.alertaService.exibirAlerta('success', 'Transação financeira excluída com sucesso!');
+            this.transacaoSalva.emit();
+            this.closeModal()
+          },
+          error => {
+            this.alertaService.exibirAlerta('danger','Erro ao excluir transação financeira: ' + error.error.message); 
+          })
+      }
+    }
+  }
  
 
 

@@ -1,5 +1,5 @@
 export interface TransacaoModel {
-    id?: number,
+    id: number,
 	id_usuario?: number,
 	descricao?: string,
 	preco?: number,

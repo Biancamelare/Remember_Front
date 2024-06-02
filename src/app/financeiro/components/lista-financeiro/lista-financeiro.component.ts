@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { ModelFinanceiroComponent } from '../model-financeiro/model-financeiro.component';
 import { SidenavComponent } from '../../../shared/components/sidenav/sidenav.component';
 import { CommonModule, DOCUMENT, DatePipe } from '@angular/common';
@@ -22,12 +22,16 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
   providers: [DatePipe]
 })
 export class ListaFinanceiroComponent implements OnInit {
+  @ViewChild(ModelFinanceiroComponent) modalComponent!: ModelFinanceiroComponent;
+  @ViewChild('alertaCadastro', { static: false }) alertaCadastro!: AlertasComponent;
 
   currentUser: any;
   currentUserId : any;
   usuarioSelecionado = {} as UsuarioModel;
   nome?: string;
   xp?: number;
+
+  transacaoSelecionado: TransacaoModel | undefined;
 
   transacaoPage?:PageTransacaoModel
   transacao: TransacaoModel[] = [];
@@ -105,6 +109,12 @@ export class ListaFinanceiroComponent implements OnInit {
 
   recarregarTransacoes(): void {
     this.buscarTransacoes();
+  }
+
+  selecionarTransacao(transacao: TransacaoModel) { 
+    this.transacaoSelecionado = transacao;
+    this.modalComponent.configurarFormularioComDadosDaTransacao();
+    this.modalComponent.openModal();
   }
 
   formatarValor(valor: number | undefined, tipo: string | undefined): string {

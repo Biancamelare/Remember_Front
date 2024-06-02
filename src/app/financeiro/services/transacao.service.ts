@@ -36,4 +36,18 @@ export class TransacaoService {
     }
     return this.http.get<PageTransacaoModel>(`http://localhost:3000/transactions`, { headers, params: queryParams });
 }
+
+  excluirTransacao(id: number, token: string) {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.delete(`http://localhost:3000/transactions/${id}`, {headers });
+  }
+
+  editarTransacao(id:number, transacao: TransacaoModel, token: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.put(`http://localhost:3000/transactions/${id}`, transacao, {headers });
+  }
 }
