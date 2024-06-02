@@ -38,8 +38,8 @@ export class ListaFinanceiroComponent implements OnInit {
   saldoAtual: number = 0;
 
   vencimento_em: string | undefined = undefined;
-  categoriaFiltro: number | undefined = undefined;
-  tipoFiltro: number | undefined = undefined;
+  categoriaFiltro: string | undefined = undefined;
+  tipoFiltro: string | undefined = undefined;
   transacaoFiltro?: string;
 
 
@@ -120,7 +120,10 @@ export class ListaFinanceiroComponent implements OnInit {
 
   filtrarTransacao() {
     const params: any = {};
-    if (this.vencimento_em) params.vencimento_em = this.vencimento_em;
+    
+    if (this.vencimento_em) {
+      const dataAjustada = this.datePipe.transform(this.vencimento_em, 'yyyy-MM-dd', 'UTC');
+      params.vencimento_em = dataAjustada;}
     if (this.transacaoFiltro) params.descricao = this.transacaoFiltro;
     if (this.categoriaFiltro) params.categoria = this.categoriaFiltro;
     if (this.tipoFiltro) params.tipo = this.tipoFiltro;
@@ -138,7 +141,7 @@ export class ListaFinanceiroComponent implements OnInit {
   limparFiltros() {
     this.vencimento_em = undefined;
     this.transacaoFiltro = undefined;
-    this.categoriaFiltro = 0;
+    this.categoriaFiltro = undefined;
     this.tipoFiltro = undefined
     this.buscarTransacoes();
   }
@@ -175,6 +178,23 @@ export class ListaFinanceiroComponent implements OnInit {
     }else{
       this.filtrarTransacao()
     }
+  }
+
+ dataChange() {
+    if (!this.vencimento_em) {
+      this.limparFiltro('vencimento_em');
+    }else{
+      this.filtrarTransacao()
+    }
+  }
+
+  filtrarPorTipo(tipo: string) {
+    if (this.tipoFiltro === tipo) {
+      this.tipoFiltro = undefined; // Limpa o filtro se já estiver aplicado
+    } else {
+      this.tipoFiltro = tipo; // Aplica o filtro
+    }
+    this.filtrarTransacao();
   }
   
   openModal() {

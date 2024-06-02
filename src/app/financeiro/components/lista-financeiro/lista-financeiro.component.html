@@ -55,10 +55,10 @@
                 <path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2M9.5 7h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5m3 0h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5M2 10.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3.5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5"/>
             </svg>
             <label>Data</label>
-            <input type="date">
-            <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" id="icon2">
+            <input type="date" [(ngModel)]="vencimento_em" (input)="dataChange()">
+            <span><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" id="icon2">
                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-                </svg>
+                </svg></span>
         </div>
         <div class="pesquisa">
             <input type="text" class="form-control search-input2" placeholder="Pesquisar por categoria" aria-label="Recipient's username" aria-describedby="button-addon2" [(ngModel)]="categoriaFiltro" (input)="categoriaChange()" >
@@ -79,14 +79,14 @@
             </div>
 
             <div class="tabela">
-                <div id="entradas" class="geral positivo">
+                <div id="entradas" class="geral positivo" (click)="filtrarPorTipo('d')" [ngClass]="{'ativo': tipoFiltro === 'd'}">
                     <h4>Entradas</h4>
                     <label for=""> {{ tirarVirgula(entradas)}}</label>
                 </div>
             </div>
             
             <div class="tabela">
-                <div id="saidas" class="geral negativo">
+                <div id="saidas" class="geral negativo" (click)="filtrarPorTipo('c')" [ngClass]="{'ativo': tipoFiltro === 'c'}">
                     <h4>Saídas</h4>
                     <label for=""> {{tirarVirgula(saidas)}}</label>
                 </div>
@@ -105,7 +105,7 @@
                 <label id="descricao">{{transacao.descricao}}</label>
                 <label for="" id="valor" [ngClass]="{'positivo': transacao.tipo === 'd', 'negativo': transacao.tipo === 'c'}">{{ formatarValor(transacao.preco, transacao.tipo) }}</label>
                 <label for="" id="categoria">{{transacao.categoria}}</label>
-                <label for="" id="data">{{this.datePipe.transform(transacao.vencimento_em, 'dd/MM/yyyy')}}</label>
+                <label for="" id="data">{{this.datePipe.transform(transacao.vencimento_em, 'dd/MM/yyyy', 'UTC')}}</label>
             </div>
         </div>
     </div>
