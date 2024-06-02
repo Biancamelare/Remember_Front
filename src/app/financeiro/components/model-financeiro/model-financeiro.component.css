@@ -169,7 +169,14 @@ input:focus {
     margin-right: 7%;
     font-weight: 700;
 }
+.entradaSaida input[type="radio"] {
+    display: none;
+  }
 
+.entradaSaida input[type="radio"]:checked + label {
+    border: var(--font-color) 2px solid;
+  }
+  
 .btn {
     width: 49%;
     font-size: 14px;
