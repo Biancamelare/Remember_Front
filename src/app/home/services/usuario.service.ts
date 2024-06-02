@@ -15,21 +15,40 @@ export class UsuarioService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
-    return this.http.get<UsuarioModel>(`https://rememberapi.onrender.com/usuario/${id}`, {headers });
+    return this.http.get<UsuarioModel>(`http://localhost:3000/usuario/${id}`, {headers });
   }
 
   cadastrarUsuario(usuario: UsuarioModel): Observable<any> {
-    return this.http.post(`https://rememberapi.onrender.com/usuario`, usuario);
+    return this.http.post(`http://localhost:3000/usuario`, usuario);
   }
+
+  editarUsuario(usuario: UsuarioModel, id:number, token: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.put(`http://localhost:3000/usuario/${id}`, usuario, {headers });
+  }
+
+  editarTema(idTema:number, id:number, token: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.put(`http://localhost:3000/usuario/${id}`, { id_tema: idTema}, {headers });
+  }
+
 
   login(usuario: UsuarioLoginModel) {
 
-    return this.http.post(`https://rememberapi.onrender.com/auth/login`, { email: usuario.email, password: usuario.senha })
+    return this.http.post(`http://localhost:3000/auth/login`, { email: usuario.email, password: usuario.senha })
 
   }
 
   deletar(id: number) {
     return this.http.delete<UsuarioModel>(`http://localhost:3000/${id}`);
+  }
+
+  esquecersenha(email:string){
+    return this.http.post(`http://localhost:3000/usuario/esqueci-a-senha`, {to: email})
   }
 
 }

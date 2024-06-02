@@ -1,68 +1,160 @@
+<app-modal (tarefaSalva)="recarregarTarefas()"  [tarefa]="tarefaSelecionada"></app-modal>
+<app-sidenav></app-sidenav>
 <div class="main-vizualizar">
     <header>
         <div class="search-container">
-                <input type="text" class="form-control search-input" placeholder="Pesquisar" aria-label="Recipient's username" aria-describedby="button-addon2" formControlName="pesquisar">
-                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" id="icon" >
-                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-                </svg>
+            <input type="text" class="form-control search-input" placeholder="Pesquisar Tarefa" aria-label="Recipient's username" aria-describedby="button-addon2" [(ngModel)]="tarefaFiltro" (input)="tarefaChange()" >
+            <span (click)="filtrarTarefas()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" id="icon">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+            </svg></span>
+
         </div>
 
+        <div class="userDrop">
             <div class="icon-user">
                 <img src="assets/Icon-Rogerinho.png" width="40px" height="50px" alt="foto do usuario">
             </div>
 
             <div class="dropdown">
-                <button class="dropbtn">{{this.nome}} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
-                    <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                <button class="dropbtn">{{this.nome}} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
                 </svg></button>
+
                 <div class="dropdown-content">
-                    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
-                    </svg>  Meu Perfil</a>
-                
-                    <a href="login"><svg fill="#0C2377" height="20" width="20" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 511.989 511.989" xml:space="preserve" stroke="#0C2377" stroke-width="13.311714"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <g> <path d="M110.933,221.782c-4.71,0-8.533,3.823-8.533,8.533v51.2c0,4.71,3.823,8.533,8.533,8.533s8.533-3.823,8.533-8.533v-51.2 C119.467,225.605,115.644,221.782,110.933,221.782z"></path> <path d="M111.855,2.304L31.172,34.586C8.448,43,0,54.418,0,76.715v358.477c0,22.298,8.448,33.715,30.959,42.061l81.058,32.427 c4.011,1.519,8.038,2.287,11.981,2.287c17.152,0,29.602-14.336,29.602-34.091V34.049C153.6,9.78,134.246-6.126,111.855,2.304z M136.533,477.876c0,10.18-5.035,17.024-12.535,17.024c-1.869,0-3.883-0.401-5.803-1.118L37.103,461.33 c-16.102-5.965-20.036-11.102-20.036-26.138V76.715c0-15.036,3.934-20.164,20.241-26.206l80.725-32.29 c2.082-0.785,4.087-1.186,5.956-1.186c7.501,0,12.544,6.835,12.544,17.016V477.876z"></path> <path d="M178.133,51.115h120.533c14.114,0,25.6,11.486,25.6,25.6v128c0,4.71,3.814,8.533,8.533,8.533 c4.719,0,8.533-3.823,8.533-8.533v-128c0-23.526-19.14-42.667-42.667-42.667H178.133c-4.71,0-8.533,3.823-8.533,8.533 S173.423,51.115,178.133,51.115z"></path> <path d="M332.8,298.582c-4.719,0-8.533,3.823-8.533,8.533v128c0,14.114-11.486,25.6-25.6,25.6H179.2 c-4.71,0-8.533,3.823-8.533,8.533s3.823,8.533,8.533,8.533h119.467c23.526,0,42.667-19.14,42.667-42.667v-128 C341.333,302.405,337.519,298.582,332.8,298.582z"></path> <path d="M511.343,252.655c-0.435-1.05-1.058-1.988-1.852-2.782l-85.325-85.333c-3.337-3.336-8.73-3.336-12.066,0 c-3.337,3.337-3.337,8.73,0,12.066l70.767,70.775H196.267c-4.71,0-8.533,3.823-8.533,8.533c0,4.71,3.823,8.533,8.533,8.533 h286.601L412.1,335.215c-3.337,3.337-3.337,8.73,0,12.066c1.664,1.664,3.849,2.5,6.033,2.5c2.185,0,4.369-0.836,6.033-2.5 l85.325-85.325c0.794-0.794,1.417-1.732,1.852-2.782C512.205,257.093,512.205,254.738,511.343,252.655z"></path> </g> </g> </g> </g></svg>  Desconectar</a>
+                    <div class="xpmenu">
+                    <span class="nome">{{this.nome}}</span>
+                    <span class="xp">{{this.xp}} XP</span>                       
+                    </div>
+                    
+                    <hr>
+
+                    <a href="configuracoes"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16"><path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/><path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/></svg> Meu Perfil</a>
+                    
+                    <hr>
+                    <a href="login" (click)="this.logout()"><svg fill="#0C2377" height="20" width="20" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 511.989 511.989" xml:space="preserve" stroke="#0C2377" stroke-width="13.311714"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <g> <path d="M110.933,221.782c-4.71,0-8.533,3.823-8.533,8.533v51.2c0,4.71,3.823,8.533,8.533,8.533s8.533-3.823,8.533-8.533v-51.2 C119.467,225.605,115.644,221.782,110.933,221.782z"></path> <path d="M111.855,2.304L31.172,34.586C8.448,43,0,54.418,0,76.715v358.477c0,22.298,8.448,33.715,30.959,42.061l81.058,32.427 c4.011,1.519,8.038,2.287,11.981,2.287c17.152,0,29.602-14.336,29.602-34.091V34.049C153.6,9.78,134.246-6.126,111.855,2.304z M136.533,477.876c0,10.18-5.035,17.024-12.535,17.024c-1.869,0-3.883-0.401-5.803-1.118L37.103,461.33 c-16.102-5.965-20.036-11.102-20.036-26.138V76.715c0-15.036,3.934-20.164,20.241-26.206l80.725-32.29 c2.082-0.785,4.087-1.186,5.956-1.186c7.501,0,12.544,6.835,12.544,17.016V477.876z"></path> <path d="M178.133,51.115h120.533c14.114,0,25.6,11.486,25.6,25.6v128c0,4.71,3.814,8.533,8.533,8.533 c4.719,0,8.533-3.823,8.533-8.533v-128c0-23.526-19.14-42.667-42.667-42.667H178.133c-4.71,0-8.533,3.823-8.533,8.533 S173.423,51.115,178.133,51.115z"></path> <path d="M332.8,298.582c-4.719,0-8.533,3.823-8.533,8.533v128c0,14.114-11.486,25.6-25.6,25.6H179.2 c-4.71,0-8.533,3.823-8.533,8.533s3.823,8.533,8.533,8.533h119.467c23.526,0,42.667-19.14,42.667-42.667v-128 C341.333,302.405,337.519,298.582,332.8,298.582z"></path> <path d="M511.343,252.655c-0.435-1.05-1.058-1.988-1.852-2.782l-85.325-85.333c-3.337-3.336-8.73-3.336-12.066,0 c-3.337,3.337-3.337,8.73,0,12.066l70.767,70.775H196.267c-4.71,0-8.533,3.823-8.533,8.533c0,4.71,3.823,8.533,8.533,8.533 h286.601L412.1,335.215c-3.337,3.337-3.337,8.73,0,12.066c1.664,1.664,3.849,2.5,6.033,2.5c2.185,0,4.369-0.836,6.033-2.5 l85.325-85.325c0.794-0.794,1.417-1.732,1.852-2.782C512.205,257.093,512.205,254.738,511.343,252.655z"></path> </g> </g> </g> </g></svg>  Desconectar</a>
                 </div>
-            </div>  
+            </div>
+        </div>
     </header>
 
     <div class="main-center">
         <div class="boasVindas">
-        <h2>
-                Bem-vindo
-                <input type="text" placeholder="Rogerinho" readonly>
-            </h2>
+            <h2> Bem-vindo <label for=""> {{this.nome}}! </label></h2>
         </div>
 
         <div class="qtde">
+            <div class="porcentagemTabela">
+                <div class="porcentagem-tarefas">
+                    <div id="texto">
+                        <p>{{fraseTarefasDiarias}}</p>
+                    </div>
+                    <div class="progresso-container">
+                        <circle-progress
+                        [percent]="progresso"
+                        ></circle-progress>
+                        <div class="progress-text">{{progresso}}%</div>
+                      </div>
+          
+                </div>
+                <div class="table1">
+                    
+                    <div class="th"> 
+                        <h5>Minhas tarefas</h5>
+                    </div>
 
-        
-            <div class="porcentagem-tarefas"></div>
-
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">Minhas Tarefas</th>
-                    <th scope="col">Qtde</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>Em progresso</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>A fazer</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>Atrasadas</td>
-                    <td>5</td>
-                </tr>
-                </tbody>
-            </table>
+                    <div class="conteudo">
+                        <div class="linha">
+                            <label class="tabelaStatus" for="">A fazer</label>
+                            <label class="qtde" for="">{{aFazer}}</label>
+                        </div>
+                        <div class="linha">
+                            <label class="tabelaStatus" for="">Em progresso</label>
+                            <label class="qtde">{{emProgresso}}</label>
+                        </div>
+                        <div class="linha">
+                            <label class="tabelaStatus" for="">Atrasadas</label>
+                            <label *ngIf="!(atrasadas > 0)" class="qtde">{{atrasadas}}</label>
+                            <label *ngIf="atrasadas > 0" class="qtde atrasada">{{atrasadas}}
+                              
+                            </label>
+                           
+                        </div>
+                        <div class="linha">
+                            <label class="tabelaStatus" for="">Concluída</label>
+                            <label *ngIf="concluida == 0" class="qtde">{{concluida}}</label>
+                            <label  *ngIf="concluida > 0" class="qtde concluida">{{concluida}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="grafico">
+                <div class="tabela">
+                    <div class="thCategoria">
+                        <h5>Tarefas por Categorias</h5>
+                    </div>
+                    <div>
+                        <label *ngIf="totalTarefas == 0">Ainda não há tarefas criadas!</label>
+                        <div *ngIf="totalTarefas == 0" id="btnAdicionar">
+                            <button type="button" class="btn adicionar" data-bs-toggle="modal" (click)="openModal()" data-bs-target="#exampleModal"> <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16"> <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/></svg> Adicionar Tarefa
+                            </button>
+                        </div>
+                    </div>
+                    <div class="rosca">
+                        <ngx-charts-pie-chart
+                        [results]="chartData"
+                        [view]="[680, 350]"
+                        [doughnut]="true"
+                        [legend]="true"
+                        [legendTitle]="'Categorias'"
+                        [labels]="true"
+                        [explodeSlices]="false"
+                        [arcWidth]="0.3"
+                        [gradient]="true"
+                        [animations]="false"
+                        class="custom-chart"
+                        *ngIf="totalTarefas > 0">
+                      </ngx-charts-pie-chart>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <h2>Tarefas do dia</h2>
+        <div class="tarefasDia">
+            <div id="titulo">
+                <h3>Tarefas do dia</h3>
+                <label >{{fraseQuantTarefas}}</label>
+            </div>
+    
+            <div id="tarefas">
+                <form [formGroup]="formTarefas">
+                    <div class="tarefa" *ngFor="let tarefa of tarefas"  >
+                        <input class="form-check-input" type="checkbox" id="flexCheckDefault" (change)="onChangeCheckbox($event, tarefa)" [checked]="tarefa.id_status === 4">
+    
+                        <div class="nomeCateg" (click)="selecionarTarefa(tarefa)" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <div>
+                            <label id="nome" [ngClass]="{'riscado': tarefa.id_status === 4}">{{tarefa.nome}}</label>
+                            <svg *ngIf="tarefa.id_status === 3" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-exclamation-triangle-fill" viewBox="0 0 16 16">
+                                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5m.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                            </svg>
+                        </div>
+                            <label id="nomeCateg">{{tarefa.nome_categoria}}</label>
+                        </div>
+                        
+                        <div id="statusPrioridade">
+                            <div>
+                            
+                            <select name="status" class="status" [id]="'S'+tarefa.id_status" (change)="onChangeStatus($event, tarefa)" >
+                                <option *ngFor="let status of statusList" [hidden]="status.id === 3" [value]="status.id" [selected]="status.id === tarefa.id_status" style="background-color: #fff; ">{{ status.nome }}</option>
+                            </select>
+                         
+                        </div>
+                            
+                            <label class="prioridade" [id]="'P'+tarefa.id_prioridade" >{{tarefa.nome_prioridade}}</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </div>

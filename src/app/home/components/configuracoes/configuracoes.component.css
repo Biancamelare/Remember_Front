@@ -3,13 +3,13 @@ body {
     margin: 0px;
     display: flex;
     min-height: 100vh;
+    overflow-x: hidden; 
 }
 
 header {
-    padding-top: 1%;
-    padding-bottom: 1%;
     display: flex;
-    justify-content: center; 
+    justify-content: space-between;
+    padding: 1% 10% 1% 20%;
 }
 
 header .search-container {
@@ -44,19 +44,23 @@ header .search-container {
 
 div.input-config input{
     padding: 5px;
-    width: 250%;
+    width: 200%;
     color: #000000;
     border: 0;
     border-radius: 0;
     border-bottom: 2px solid rgb(200,200,200);
 }
-
 .conta {
     width: 60%;
     max-height: 100vh;
     max-width: 700px;
-    padding: 25px 120px;
+    padding: 0px 120px;
     font-weight: 600;
+}
+
+#meuperfil {
+    display: flex;
+    align-items: center;
 }
 
 .perfil {
@@ -78,11 +82,11 @@ div.input-config input{
 }
 .center {
     width: 100%;
-    padding: 2% 25%;
+    padding: 1% 20%;
     position: absolute;
 }
 
-.center h2 {
+.perfil h2 {
     font-weight: 700;
     color: var(--font-color);
 }
@@ -102,14 +106,14 @@ aside {
 
 .aside-content {
     flex-direction: column;
-    position: relative;/* Ajuste conforme necessário */
+    position: relative;
     padding: 5px 10px;
     border-radius: 10px;
     border: solid 1px var(--shadown-color);
     box-shadow: 0px 2px 6px var(--shadown-color);
-    width: 300px; /* Largura desejada */
-    height: 250px; /* Altura desejada */
-    align-self: flex-end; /* Alinha o aside à direita */
+    width: 300px;
+    height: 250px;
+    align-self: flex-end; 
     font-size: 14px;
 }
 
@@ -138,7 +142,7 @@ aside {
 }
 
 .dropdown-content {
-    padding:20px 0px 5px 10px;
+    padding: 5%;
     display: none;
     position: absolute;
     background-color: var(--quaternary-color);
@@ -155,7 +159,6 @@ aside {
     display: block;
 }
 
-
 .dropdown-content a:hover {
     font-weight: 600;
 }
@@ -163,6 +166,13 @@ aside {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+.userDrop{
+    display: flex;
+}
+hr{
+    margin: 0;
+}
+
 
 
 .position-user {
@@ -176,26 +186,149 @@ aside {
     text-align: center;
     width: 100px;
     padding: 5px 5px;
-    background-color: var(--quaternary-color);
+    background-color: var(--primary-color);
     border-radius: 20px;
     color: var(--secondary-color);
     border: none;
     box-shadow: 0px 2px 4px var(--shadown-color);
 }
 
+.btnCancelar{
+    margin-left: 5%;
+    margin-top: 5%;
+    margin-bottom: 20%;
+    text-align: center;
+    width: 100px;
+    padding: 5px 5px;
+    border-radius: 20px;
+    color: #fff;
+    border: none;
+    box-shadow: 0px 2px 4px var(--shadown-color);
+}
 
 .editar {
-    padding-left: 30%;
+    display: flex;
+    align-items: center;
+    
 }
 
 #btnEditar {
     text-align: center;
     width: 100px;
     padding: 5px 5px;
-    background-color: var(--quaternary-color);
+    background-color: var(--primary-color);
     border-radius: 20px;
     color: var(--secondary-color);
     border: none;
     box-shadow: 0px 2px 4px var(--shadown-color);
+    margin-left:20%
+
+}
+.input-erro {
+    border: 2px solid #ff000080!important; 
+    box-shadow: 0 0 2px rgba(255, 0, 0, 0.3)!important;
 }
 
+.posicao{
+    display:block;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.espaco{
+    margin-top: 20px;
+}
+
+.divLogo{
+    width: 20%;
+   
+}
+
+#tabelaCores{
+   text-align: center;
+}
+#tabelaCores td{
+    padding: 10px;
+    border: 1px solid var(--light-color);
+    width: 8%;
+}
+
+.btnTema{
+    margin-right:10px;
+    border-radius: 10px;
+    background-color: var(--primary-color);
+    border: 1px var(--primary-color);
+    color:#ffffff;
+    padding:10px;
+}
+
+.posicao{
+    display:block;
+    margin: auto;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.espaco{
+    margin-top: 20px;
+}
+
+.divLogo{
+    width: 20%;
+   
+}
+
+#tabelaCores{
+   text-align: center;
+}
+#tabelaCores td{
+    padding: 10px;
+    border: 1px solid var(--light-color);
+    width: 8%;
+}
+
+.btnTema{
+    margin-right:10px;
+    border-radius: 10px;
+    background-color: var(--primary-color);
+    border: 1px var(--primary-color);
+    color:#ffffff;
+    padding:10px;
+}
+.xp {
+    background: var(--tertiary-color);
+    border-radius: 20px;
+    padding: 3px 10px;
+    margin-top: 10px;
+    width: 70px;
+    text-align: center;
+    margin-bottom: 3%;
+    margin-left: 10px;
+    font-weight: 500;
+}
+
+.xp2 {
+    background: var(--tertiary-color);
+    border-radius: 20px;
+    width: 70px;
+    height: 27px;
+    text-align: center;
+    margin-left: 10px;
+    font-weight: 500;
+    font-size: 18px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.nome{
+    color: var(--font-color);
+    font-weight: 500;
+    margin-left: 5px;
+}
+
+.xpmenu{
+    margin-bottom: 5px;
+}

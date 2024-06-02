@@ -8,7 +8,10 @@ import { VisualizarTarefasComponent } from './tarefa/components/visualizar-taref
 import { ModalComponent } from './tarefa/components/modal/modal.component';
 import { AuthGuardService } from './shared/services/auth-guard.service';
 import { HomeComponent } from './tarefa/components/home/home.component';
-
+import { ModalIconComponent } from './shared/components/modal-icon/modal-icon.component';
+import { TarefaDiaComponent } from './tarefa/components/tarefa-dia/tarefa-dia.component';
+import { ListaFinanceiroComponent } from './financeiro/components/lista-financeiro/lista-financeiro.component';
+import { ModelFinanceiroComponent } from './financeiro/components/model-financeiro/model-financeiro.component';
 
 export const routes: Routes = [
     {
@@ -43,6 +46,11 @@ export const routes: Routes = [
         canActivate: [AuthGuardService]
     },
     {
+        path: 'dia',
+        component: TarefaDiaComponent,
+        canActivate: [AuthGuardService]
+    },
+    {
         path: 'visualizar-tarefas',
         component: VisualizarTarefasComponent,
         canActivate: [AuthGuardService]
@@ -50,6 +58,25 @@ export const routes: Routes = [
     {
         path: 'modal',
         component: ModalComponent,
+        canActivate: [AuthGuardService]
+        
+    },
+    {
+        path: 'modal-icon',
+        component: ModalIconComponent,
+        canActivate: [AuthGuardService]
+        
+    },
+    {
+        path: 'model-financeiro',
+        component: ModelFinanceiroComponent,
+        canActivate: [AuthGuardService]
+        
+    },
+    {
+        path: 'lista-financeiro',
+        component: ListaFinanceiroComponent,
+        canActivate: [AuthGuardService]
         
     }
 ];

@@ -87,6 +87,37 @@ body {
 }
 
 
+.box-voltar {
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 100px;
+    height: 47px;
+    background-color: var(--primary-color);
+    position: absolute;
+    border-radius: 15px;
+    align-content: center;
+    z-index: 2;
+    box-shadow: 0px 2px 4px var(--shadown-color);
+    left: 0;
+    top: 0;
+}
+
+.voltar {
+    font-size: 20px;
+    margin: 0 auto;
+    display: flex;
+    margin-left: 2px;
+    text-decoration: none;
+    color: var(--secondary-color);
+    line-height: 35px;
+}
+
+.voltar-img {
+    width: 36px;
+    height: 36px;
+}
+
+
 @media screen and (max-width: 1400px){
     .left-redefinir img {
         width: 70%; 
@@ -124,6 +155,7 @@ body {
         border-radius: 10px;    
         bottom: 20%;
         position: relative;
+        line-height: 70px;
     }
     
     .form-control {
@@ -134,16 +166,22 @@ body {
         justify-content: center; 
         background-color: var(--input-color);
     }
-    
+
     .right-redefinir img {
         width: 120px;
         height: auto;
         position: static;
-        padding-top: 20px;
-        padding-bottom: 30px;
+        margin-top: 20px;
+        margin-bottom: px;
         align-self: center;
+        display: flex;
+        margin: 0 auto;
     }
     
+    h2 {
+        margin-top: 30px;
+    } 
+
     .form-label {
         margin: auto;
         left: 25%;
@@ -153,10 +191,37 @@ body {
     
     .right-redefinir {
         flex-direction: column;
+        display: flex;
+    }
+
+    .right-redefinir a{
+        display: flex;
+        margin: 0 auto;
+        width: 120px;
+        height: auto;
     }
 
     .redefinir {
         padding-bottom: 20px;
+    }
+
+    .voltar {
+        font-size: 16px;
+        line-height: 35px;
+    }
+    
+    .voltar-img {
+        width: 30px;
+        height: 30px;
+        position: relative;
+        top:2px;
+
+    }
+
+    .box-voltar {
+        width: 85px;
+        height: 40px;
+
     }
 
 }  
@@ -213,14 +278,15 @@ body {
 
     .btnRedefinir{
         width: 100%; 
-        height: 40px;
-        font-size: 18px;
+        height: 50px;
+        font-size: 16px;
         border-radius: 7px;
+        line-height: 50px;
     }
     
     .form-control {
         width: 100%; 
-        height: 40px;
+        height: 50px;
         border-radius: 7px;
         font-size: 15px;
     }
@@ -232,8 +298,23 @@ body {
     }
 
     .right-redefinir img {
-        width: 80px;
-        padding-top: 20px;
-        padding-bottom: 10px;
+        width: 90px;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .right-redefinir a{
+        display: flex;
+        margin: 0 auto;
+        width: 90px;
+        height: auto;
+    }
+
+    .form-control::placeholder {
+        font-size: 14px;
+    }
+
+    .box-voltar {
+        width: 0;
     }
 }    

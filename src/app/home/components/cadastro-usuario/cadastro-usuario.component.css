@@ -1,8 +1,6 @@
 body {
     margin: 0; 
     padding: 0;
-    overflow: hidden;
-
 }
 
 .main-cadastrar {
@@ -14,17 +12,20 @@ body {
 }
 
 .left-cadastrar img {
+    position: absolute;
+    /* top: 120px; */
+    max-width: 950px;
     height: auto;
-    max-width: 100%;
     object-fit: contain;
 }
 
 .left-cadastrar {
     width: 50%;
-    height: 100%; 
     background-color: var(--tertiary-color); 
     height: 100vh;
     display: flex;
+    position: relative;
+    overflow: hidden;
 }
 
 .right-cadastrar {
@@ -43,8 +44,8 @@ body {
 .right-cadastrar img{
     display: flex;
     position: absolute;
-    top: 20px;
-    right: 30px;
+    top: 10px;
+    right: 20px;
     border-radius: 5px;
 }
 
@@ -119,28 +120,22 @@ body {
      box-shadow: 0 0 2px rgba(255, 0, 0, 0.3);
 }
 
-div.alerta.alert.alert-danger {
-    z-index: 2;
-}
+
 
 @media screen and (max-width: 1400px){
     .left-cadastrar img {
-        width: 70%; 
+        max-width: 850px; 
         height: auto; 
         object-fit: cover; 
         transition: 0.2s;
+        /* top: 220px; */
     }
 }
 
  @media screen and (max-width: 1200px){
     .left-cadastrar img {
-        width: 69%;
-    }
-}  
-
-@media screen and (max-width: 1150px){
-    .left-cadastrar img {
-        width: 68%;
+        max-width: 700px; 
+        /* top: 370px; */
     }
 }  
 
@@ -156,26 +151,27 @@ div.alerta.alert.alert-danger {
 
     .btnCadastrar{
         width: 50%; 
-        font-size: 20px;
+        font-size: 18px;
+        line-height: 50px;
         font-weight: 600; 
-        height: 65px;
+        height: 50px;
         padding-top: 0; 
         border-radius: 10px;    
-        bottom: 20%;
+        bottom: 20px;
         position: relative;
     }
     
     .form-control {
         border-radius: 10px;
         width: 50%; 
-        height: 45px;
+        height: 35px;
         margin: auto;
         justify-content: center; 
         background-color: var(--input-color);
     }
     
     .right-cadastrar img {
-        width: 120px;
+        width: 100px;
         height: auto;
         position: static;
         padding-top: 20px;
@@ -193,10 +189,31 @@ div.alerta.alert.alert-danger {
         flex-direction: column;
     }
 
-    .cadastrar {
-        padding-bottom: 20px;
+    .cadastrar{
+        padding: 0;
     }
+
+    .voltar {
+        font-size: 16px;
+        line-height: 35px;
+    }
+    
+    .voltar-img {
+        width: 30px;
+        height: 30px;
+        position: relative;
+        top:2px;
+
+    }
+
+    .box-voltar {
+        width: 85px;
+        height: 40px;
+
+    }
+
 }  
+
 
 @media screen and (max-width: 950px){
 
@@ -230,11 +247,6 @@ div.alerta.alert.alert-danger {
         left: 20%;
         transition: 0.8s;
     }
-
-    .box-voltar {
-        width: 0;
-    }
-
 }    
 
 @media screen and (max-width: 767px){
@@ -264,6 +276,8 @@ div.alerta.alert.alert-danger {
         font-size: 18px;
         border-radius: 7px;
         transition: 0.8s;
+        margin-top: 30px;
+        line-height: 40px;
     }
     
     .form-control {
@@ -291,13 +305,24 @@ div.alerta.alert.alert-danger {
         margin: 0;
     }
 
-    /* .box-voltar {
-        width: 40px;
-        height: 40px;
+    .box-voltar {
+        width: 0;
     }
 
-    .voltar {
-        width: 30px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 355px){
+    
+    .form-control {
         height: 30px;
-    } */
+    }
+
+    input::placeholder {
+        font-size: 14px;
+    }
+
+    input[type="date"] {
+        font-size: 14px;
+    }
+
 }    

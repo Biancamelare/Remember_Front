@@ -76,9 +76,9 @@ mostrarCSS(field: string) {
           const accessToken = response.accesToken ?? ''
           const id = JSON.stringify(response.usuario?.id ?? '')
           this.authService.setToken(accessToken);
-          localStorage.setItem('user_logged.token', accessToken);
-          localStorage.setItem('user_logged.id', id);
-          this.router.navigate(['/visualizar-tarefas']);
+          sessionStorage.setItem('user_logged.token', accessToken);
+          sessionStorage.setItem('user_logged.id', id);
+          this.router.navigate(['/home']);
         },
         error => {
           this.alertaService.exibirAlerta('danger','Erro : ' + error.error.message);

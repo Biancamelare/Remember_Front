@@ -1,0 +1,377 @@
+body {
+    margin: 0;
+    display: flex;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.main-vizualizar {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: calc(100vw - 5%);
+    padding: 0 8% 0 19%;
+    overflow: hidden;
+ }
+
+header {
+    padding-top: 1.5%;
+    padding-bottom: 1%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.userDrop{
+    display: flex;
+}
+
+.xp {
+    background: var(--tertiary-color);
+    border-radius: 20px;
+    padding: 2px 5px;
+    margin-top: 10px;
+    width: 70px;
+    text-align: center;
+    margin-bottom: 3%;
+    margin-left: 10px;
+    font-weight: 500;
+}
+
+.nome {
+    color: var(--font-color);
+    font-weight: 500;
+    margin-left: 5px;
+}
+
+.xpmenu{
+    margin-bottom: 5px;
+}
+
+header .search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    width: 40vw;
+}
+
+.search-input {
+    padding-right: 35px; 
+    height: 45px;
+    background-color: var(--quaternary-color);
+    border-radius: 14px;
+}
+
+#icon2 {
+    position: absolute;
+    top: 27px;
+    right: 20px;
+    transform: translateY(-50%);
+    fill: var(--font-color); 
+}
+
+.search-input::placeholder{
+    color: var(--font-color);
+    font-weight: 600;
+    font-size: 18px;
+    padding-left: 20px;
+}
+
+.icon-user {
+    margin-left: 30px;
+    padding: 8px 0px 0px 14px;
+    width: 70px;
+    height: 70px;
+    border-radius: 100px;
+    background-color: var(--user-color);
+    box-shadow: 0px 2px 6px var(--shadown-color);
+}
+
+.dropdown {
+    padding: 12px;
+}
+
+.dropbtn {
+    background-color: var(--secondary-color);
+    color: var(--font-color);
+    font-weight: 500;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    padding: 5%;
+    display: none;
+    position: absolute;
+    background-color: var(--quaternary-color);
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px var(--shadown-color);
+    z-index: 1;
+    border-radius: 20px;
+}
+
+.dropdown-content a {
+    color: var(--font-color);
+    padding: 10px 10px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    font-weight: 600;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+hr{
+    margin: 0;
+}
+
+.resultado {
+    display: flex;
+    margin: auto;
+    width: 44vw;
+    height: 6vh;
+    background-color: var(--quaternary-color);
+    border-radius: 5px;
+    margin-right: 35%;
+}
+
+.resultado input {
+    background: none;
+    box-shadow: none;
+}
+
+.resultado input::placeholder {
+    color: var(--font-color);
+    font-weight: 500;
+}
+
+#info {
+    padding-top: 3%;
+    padding-bottom: 1%;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.transacoes {
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+}
+
+.positivo {
+    color: green !important;
+  }
+  
+  .negativo {
+    color: red !important;
+  }
+
+.titulo {
+    background-color: #fff !important;
+}
+
+.titulo label{
+    text-align: center;
+    border: 5px solid var(--font-color);
+    background-color: var(--font-color);
+    border-radius: 5px; 
+    color: var(--secondary-color)!important;
+}
+
+#scroll{
+    overflow-y: auto;
+    height: 40vh;
+    overflow-x: hidden;
+}
+
+.busca {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    margin-top: 2%;
+}
+
+.data, .pesquisa{
+    display: flex;
+    width: 40%;
+    height: 50px;
+    background: var(--quaternary-color);
+    align-items: center;
+    border-radius: 10px;
+    position: relative;
+}
+
+input[type="date"] {
+    height: 34px;
+    width: 38%;
+    background: var(--quaternary-color);
+    border: solid 0.5px;
+    color: var(--font-color);
+}
+
+.data svg {
+    color: var(--font-color);
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.data input{
+    margin-left: 3%;
+   
+}
+
+.data label{
+    font-weight: 600;
+}
+
+.data {
+    width: 30% !important;
+}
+
+#icon {
+    position: absolute;
+    top: 35px;
+    right: 20px;
+    transform: translateY(-50%);
+    fill: var(--font-color); 
+}
+
+.search-input2 {
+    background: var(--quaternary-color);
+    border: none;
+    padding-right: 35px; 
+    height: 45px;
+    border-radius: 10px;
+}
+
+.search-input2::placeholder {
+    color: var(--font-color);
+    padding-left: 20px;
+    font-weight: 600;
+}
+
+h2 {
+
+    color: var(--font-color);
+    font-weight: 700;
+}
+
+#btnAdicionar {
+    padding-left: 12%;
+    width: 50%;
+    display: flex;
+    justify-content: end;
+} 
+
+.adicionar svg {
+    color: var(--secondary-color);
+}
+
+.adicionar {
+    padding: 0;
+    width: 180px;
+    color: var(--secondary-color);
+    font-weight: 500;
+    background-color: var(--font-color);
+}
+
+#titulo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 50%;
+}
+
+.resumo {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 4%;
+    margin-bottom: 4%;
+}
+
+.geral h4 {
+    height: 55px;
+    padding: 0px 5%;
+    width: 300px;
+    border-radius: 25px;
+    background: linear-gradient(120deg, var(--gradient1-color) 40%, var(--gradient2-color));
+    color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.geral label {
+    height: 55px;
+    padding: 0px 5%;
+    width: 300px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.transacao {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--user-color);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 10px;
+    margin-right: 2%;
+}
+
+#descricao {
+    width: 40%;
+    margin-left:1%;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-right: 3%;
+   
+}
+
+#valor {
+    width: 20%;
+    margin-right: 3%;
+    text-align: center;
+    font-weight: 650!important;
+}
+
+#categoria {
+    width: 20%;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-right: 3%;
+    text-align: center;
+}
+
+#data {
+    width: 20%;
+    text-align: center;
+}
+
+.transacao label {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--font-color)
+}
+
+.tabela {
+    border-radius: 22px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}

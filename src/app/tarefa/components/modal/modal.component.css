@@ -62,21 +62,25 @@ svg {
     transform: scaleX(-1);
 }
 
+.btn-check:checked + .btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check) + .btn:active{
+    border-color: var(--font-color);
+}
+
 .btn.prioridade {
     border-radius: 20px;
     padding: 0.2% 3%;
     margin-right: 1rem;
 }
 
-.btn.prioridade#alta {
+.btn.prioridade#Alta {
     background-color: var(--btnAlta-color);
 }
 
-.btn.prioridade#media {
+.btn.prioridade#Média {
     background-color: var(--btnMedia-color);
 }
 
-.btn.prioridade#baixa {
+.btn.prioridade#Baixa {
     background-color: var(--btnBaixa-color);
 }
 
@@ -101,7 +105,7 @@ hr {
     margin-right: 2%;
 }
 
-.btn-danger.botao svg {
+.botao svg {
     color: var(--secondary-color);
 }
 
@@ -121,12 +125,57 @@ label#anexo {
 }
 
 .check input#item {
-    border: 0;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    border-bottom: 2px solid var(--tertiary-color);
     border-radius: 0;
     box-shadow: none;
+    margin-left: 2%;
 }
 
 .input-erro {
-    border: 2px solid #ff000080; 
+    border: 2px solid #ff000080!important; 
     box-shadow: 0 0 2px rgba(255, 0, 0, 0.3);
 }
+
+#categoria{
+    margin-left:2%;
+    margin-right:2%;
+}
+
+.readonly-checkbox {
+    pointer-events: none; 
+    opacity: 0.6; 
+}
+
+.item-container {
+    position: relative;
+  }
+  
+  .input-with-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .delete-icon {
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .item-container:hover .delete-icon {
+    display: inline;
+  }
+
+  .adicionar{
+    padding: 5px;
+    width: 150px;
+    color: var(--secondary-color);
+    font-weight: 500;
+    background-color: var(--font-color);
+  }

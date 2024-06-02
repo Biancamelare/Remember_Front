@@ -1,31 +1,43 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ModalComponent } from '../../../tarefa/components/modal/modal.component';
+import { AuthServiceService } from '../../services/auth-service.service';
 
 @Component({
   selector: 'app-sidenav',
   standalone: true,
-  imports: [],
+  imports: [ModalComponent],
   templateUrl: './sidenav.component.html',
   styleUrl: './sidenav.component.css'
 })
 
-export class SidenavComponent {
- /* const menuItem = document.querySelectorAll('.box-selecao')
-  const btnExp = document.querySelector('#btn-exp')
-  const menuSide = document.querySelector('.menu-lateral')
-  
-  selectLink() { 
-    this.menuItem.forEach((item)=> 
-      item.classList.remove('ativo') 
-    )
-    classList.add('ativo') }
-  
-  this.menuItem.forEach((item)=> 
-    item.addEventListener('click', selectLink) 
-  )
-  
+export class SidenavComponent implements OnInit {
 
-  
-  this.btnExp.addEventListener('click', function(){
-     this.menuSide.classList.toggle('expandir') 
-  })*/
+  constructor(private authService: AuthServiceService) { }
+
+  ngOnInit(): void {
+    const menuItem = document.querySelectorAll('.box-selecao');
+    const btnExp = document.querySelector('#btn-exp') as HTMLElement;
+    const menuSide = document.querySelector('.menu-lateral') as HTMLElement;
+
+    menuItem.forEach((item: Element) => {
+      item.addEventListener('click', () => {
+        this.selectLink(item);
+      });
+    });
+
+    btnExp.addEventListener('click', () => {
+      menuSide.classList.toggle('expandir');
+    });
+  }
+
+  selectLink(item: Element) {
+    const menuItem = document.querySelectorAll('.box-selecao');
+    menuItem.forEach((element: Element) => {
+      element.classList.remove('ativo');
+    });
+    item.classList.add('ativo');
+  }
+  logout(){
+    this.authService.logout();
+  }
 }

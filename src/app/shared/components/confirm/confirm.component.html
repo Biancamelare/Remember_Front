@@ -1,0 +1,17 @@
+  <div *ngIf="isConfirmacaoVisible" class="custom-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirmação</h5>
+        <button type="button" class="btn-close" (click)="closeModal()" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <span>{{ confirmacao.mensagem }}</span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="confirmarAcao()">Confirmar</button>
+        <button type="button" class="btn btn-danger" (click)="cancelarAcao()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+  
+   

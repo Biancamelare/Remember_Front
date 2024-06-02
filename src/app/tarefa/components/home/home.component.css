@@ -1,7 +1,9 @@
 body {
     margin: 0px;
     display: flex;
-    min-height: 100vh;
+    flex-direction: column;
+    height: 100vh;
+    overflow-x: hidden; /* Adicionando esta linha */
 }
 
 .main-vizualizar {
@@ -9,16 +11,23 @@ body {
     flex-direction: column;
     flex: 1;
     width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
 }
 
 header {
     padding-top: 1%;
     padding-bottom: 1%;
     display: flex;
-    justify-content: center; 
+    justify-content: space-around;
+    padding-left: 11%;
 }
+
+.userDrop{
+    display: flex;
+}
+
 .main-center {
-    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -30,14 +39,19 @@ header .search-container {
     display: flex;
     align-items: center;
     justify-content: center;  
-    width: 40vw;
+    width: 45vw;
+}
+
+.search-container span svg {
+    fill: var(--font-color) !important;
 }
 
 .search-input {
-    padding-right: 35px; 
+    padding-right: 30px; 
     height: 45px;
     background-color: var(--quaternary-color);
     border-radius: 14px;
+    color: var(--font-color);
 }
 
 #icon {
@@ -49,9 +63,9 @@ header .search-container {
 }
 
 .search-input::placeholder{
-    color: var(--secondary-color);
+    color: var(--font-color);
     font-weight: 600;
-    font-size: 20px;
+    font-size: 18px;
     padding-left: 20px;
 }
 
@@ -80,7 +94,7 @@ header .search-container {
 }
 
 .dropdown-content {
-    padding:20px 0px 5px 10px;
+    padding: 5%;
     display: none;
     position: absolute;
     background-color: var(--quaternary-color);
@@ -104,54 +118,315 @@ header .search-container {
 .dropdown:hover .dropdown-content {
     display: block;
 }
-
-.boasVindas input {
-    border: none;
+.userDrop{
+    display: flex;
+}
+hr{
+    margin: 0;
 }
 
-.boasVindas input::placeholder {
+.xp {
+    background: var(--tertiary-color);
+    border-radius: 20px;
+    padding: 2px 5px;
+    margin-top: 10px;
+    width: 70px;
+    text-align: center;
+    margin-bottom: 3%;
+    margin-left: 10px;
+    font-weight: 500;
+   
+}
+.nome{
     color: var(--font-color);
-    font-weight: 700;
+    font-weight: 500;
+    margin-left: 5px;
 }
+
+.xpmenu{
+    margin-bottom: 5px;
+}
+
 
 .boasVindas {
     flex-direction: column;
     display: flex;
-    margin-top: 4%;
-    width: 50%;
-    
+    margin-top: 2%;
+    margin-bottom: 2%;
+    width: 61%;
 }
 
-.boasVindas h2 {
+h2, h3 {
     color: var(--font-color);
     font-weight: 700;
 }
 
 .porcentagem-tarefas {
-    width: 30%;
-    height:200px; 
+    height: 110px;
     background-color: var(--quaternary-color);
-    margin-top: 2%;
     border-radius: 20px;
+    padding: 4%;
+    display: flex;
+    align-items: center;
 }
 
-th {
-    background-color: var(--quaternary-color); 
-    color: var(--font-color);
+#texto {
+    width: 70%;
+    display: flex;
+    text-align: center;
+    color:var(--font-color);
+    font-weight: 600;
+    font-size: 18px;
+    margin-left: 5%;
 }
 
-table {
-    border: solid 1px  var(--quaternary-color);
-    width: 15%;
-    margin-top: 3%;
+.porcentagem-tarefas label {
+    margin: 3% 10%;
+    color: var(--secondary-color);
+    font-weight: 600;
+    font-size: 20px;
 }
 
 .qtde {
     display: flex;
     width: 100%;
-    padding-left: 7%;
+    padding-left: 14%;
+    padding-right: 5%;
     justify-content: space-evenly;
 }
 
 
+.porcentagemTabela {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    /* margin-top: 1%; */
+    height: 100%;
+}
+
+
+.th {
+    background-color: var(--quaternary-color); 
+    color: var(--font-color);
+    border-radius: 18px;
+    padding: 4%;
+    text-align: center;
+}
+
+.thCategoria {
+    background-color: var(--quaternary-color); 
+    color: var(--font-color);
+    border-radius: 18px;
+    padding: 2% 8% 2% 8%;
+    margin-bottom: 2%;
+    text-align: center;
+}
+
+
+.tabela {
+    border: solid 2px  var(--quaternary-color);
+    border-radius: 20px;
+    width: 100%;
+    height: 96%;
+}
+
+.table1 {
+    border: solid 2px var(--quaternary-color);
+    margin-top: 6%;
+    border-radius: 20px;
+}
+
+#grafico {
+    text-align: center;
+    display: flex;
+    color: var(--font-color);
+    width: 45%;
+    height: 105%;
+}
+
+#titulo {
+    width: 62%;
+    display: flex;
+    flex-direction: column;
+}
+
+#titulo label {
+    color:#858CA6;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.rosca label{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.adicionar {
+    padding: 0;
+    width: 180px;
+    color: var(--secondary-color);
+    font-weight: 500;
+    background-color: var(--font-color);
+    margin-top: 2%;
+} 
+
+.tarefasDia {
+    margin-top: 2%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tarefa {
+    width: 70vw;
+    background-color: var(--user-color);
+    border-radius: 20px;
+    margin: 2% 0 1% 6%;
+    display: flex;
+    align-items: center;
+    padding: 1%;
+}
+
+.prioridade {
+    border-radius: 20px;
+    width: 122px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    padding: 2px;
+}
+
+.prioridade#P1 {
+    background-color: var(--btnAlta-color);
+}
+
+.prioridade#P2 {
+    background-color: var(--btnMedia-color);
+}
+
+.prioridade#P3 {
+    background-color: var(--btnBaixa-color);
+}
+
+.form-check-input{
+    margin: 4% 6%;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+
+#statusPrioridade {
+    margin-left: auto;
+    padding-right: 6%;
+}
+
+.nomeCateg {
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+}
+
+.status {
+    border-radius: 20px;
+    border: none;
+    padding: 2px;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.nomeCateg #nome{
+    font-weight: 700;
+    color: var(--font-color);
+    font-size: 20px;
+}
+
+.conteudo {
+    width: 100%;
+    padding: 2%  4% 2% 4%;
+    font-size: 18px;
+}
+
+.linha {
+    display: flex;
+    flex-direction: row;
+    padding: 2%; 
+}
+
+.linha:not(:last-child) {
+    border-bottom: solid 1px var(--font-color);
+}
+
+.tabelaStatus {
+    width: 80%
+}
+
+.riscado {
+    text-decoration: line-through var(--primary-color);
+}
+
+.bi-exclamation-triangle-fill {
+    margin-left: 10px;
+    margin-bottom: 3px;
+    color: red; 
+}
+
+.alerta{
+    color:red;
+    padding:0;
+    margin: 0;
+}
+
+.atrasada{
+    color:red;
+    font-weight: 500;
+    display: flex;
+    width: 100%;
+}
+.atrasada svg{
+    margin-left: 10%;
+    
+}
+.concluida{
+    color:green;
+    font-weight: 500;
+}
+
+.progresso-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:5%;
+    position: relative;
+  }
+  
+  .progress-text {
+    position: absolute;
+    font-size: 1.2em;
+    color: var(--font-color);
+    font-weight: 700;
+  }
+
+  ::ng-deep .ngx-charts text {
+    font-size: 16px; 
+    font-weight: bold; 
+    fill: black !important; 
+  }
+
+  ::ng-deep .chart-legend { 
+    color: var(--font-color) !important; 
+    
+  }
+  
+  ::ng-deep .chart-legend .legend-title-text {
+    text-align: center;
+    margin-right: 20%;
+  }
+
+  ::ng-deep .chart-legend .legend-label-text {
+    color: black !important;
+  }
+  
+  
 

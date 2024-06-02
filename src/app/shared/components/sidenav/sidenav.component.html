@@ -1,80 +1,85 @@
-    <nav class="menu-lateral">
-        <div class="btn-expandir">
-            <img class="icone-aba" id="btn-exp" src="./assets/menu.svg" alt="Ícone menu">
-            <img class="icone-remember" src="./assets/icone-remember.svg" alt="Ícone menu">
-        </div>
-
-        <ul>
-            <li class="item-menu">
-                <div class="box-selecao ativo">
-                    <a href="home">
-                        <span class="icon"><img src="./assets/home.svg" alt="Ícone adicionar tarefas"></span>
-                        <span class="txt-link">Home</span>
-                    </a>
-                </div>
-            </li>
-
-            <li class="item-menu">
+<app-modal></app-modal>
+<nav class="menu-lateral">
+    <div class="btn-expandir">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill="currentColor" class="bi bi-list icone-aba" id="btn-exp" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+          </svg>
+        <img class="icone-remember" src="./assets/icone-remember.svg" alt="Ícone menu">
+    </div>
+    <ul>
+        <li class="item-menu" title="Home">
+            <a href="home">
                 <div class="box-selecao">
-                    <a href="modal">
-                        <span class="icon"><img src="./assets/adicionar.svg" alt="Ícone adicionar tarefas"></span>
-                        <span class="txt-link">Adicionar tarefa</span>
-                    </a>
+                    <span class="icon"><img src="./assets/home.svg" alt="Ícone adicionar tarefas"></span>
                 </div>
-            </li>
+                <span class="txt-link">Home</span>
+            </a>
 
-            <li class="item-menu">
+        </li>
+
+        <li class="item-menu">
+            <a>
+                <div class="box-selecao" title="Adicionar Tarefa">
+                    <span data-bs-toggle="modal" data-bs-target="#exampleModal" class="icon"><img src="./assets/adicionar.svg" alt="Ícone adicionar tarefas"></span>
+                </div>
+                <span data-bs-toggle="modal" data-bs-target="#exampleModal"  class="txt-link">Adicionar tarefa</span>
+            </a>
+
+        </li>
+
+        <li class="item-menu" title="Lista de Tarefa">
+            <a href="visualizar-tarefas">
                 <div class="box-selecao">
-                    <a href="visualizar-tarefa">
-                        <span class="icon"><img src="./assets/lista.svg" alt="Ícone lista de tarefas"></span>
-                        <span class="txt-link">Lista de tarefas</span>
-                    </a>
+                    <span class="icon"><img src="./assets/lista.svg" alt="Ícone lista de tarefas"></span>
                 </div>
-            </li>
+                <span class="txt-link">Lista de tarefas</span>
+            </a>
+        </li>
 
-            <li class="item-menu">
+        <li class="item-menu" title="Hoje">
+            <a href="dia">
                 <div class="box-selecao">
-                    <a href="#4">
-                        <span class="icon"><img src="./assets/hoje.svg" alt="Ícone hoje"></span>
-                        <span class="txt-link">Hoje</span>
-                    </a>
+                    <span class="icon"><img src="./assets/hoje.svg" alt="Ícone hoje"></span>
                 </div>
-            </li>
+                <span class="txt-link">Hoje</span>
+            </a>
+        </li>
 
-            <li class="item-menu">
+        <li class="item-menu" title="Calendário">
+            <a href="">
                 <div class="box-selecao">
-                    <a href="#5">
-                        <span class="icon"><img src="./assets/calendario.svg" alt="Ícone calendário"></span>
-                        <span class="txt-link">Calendário</span>
-                    </a>
+                    <span class="icon"><img src="./assets/calendario.svg" alt="Ícone calendário"></span>
                 </div>
-            </li>
+                <span class="txt-link">Calendário</span>
+            </a>
+        </li>
 
-            <li class="item-menu">
+        <li class="item-menu" title="Controle Financeiro">
+            <a href="lista-financeiro">
                 <div class="box-selecao">
-                    <a href="#6">
-                        <span class="icon"><img src="./assets/membros.svg" alt="Ícone membros"></span>
-                        <span class="txt-link">Membros</span>
-                    </a>
+                    <span class="icon"><img src="./assets/controle.svg" alt="Ícone controle financeiro"></span>
                 </div>
-            </li>
-
-            <li class="item-menu">
-                <div class="box-selecao" id="configuracoes">
-                    <a href="#7">
+                <span class="txt-link">Controle Financeiro</span>
+            </a>
+        </li>
+        <div class="box">
+            <li class="item-menu config" title="Configurações">
+                <a href="configuracoes">
+                    <div class="box-selecao" id="configuracoes">
                         <span class="icon"><img src="./assets/configuracoes.svg" alt="Ícone membros"></span>
-                        <span class="txt-link">Configurações</span>
-                    </a>
-                </div>
+                    </div>
+                    <span class="txt-link">Configurações</span>
+                </a>
             </li>
 
-            <li class="item-menu" id="desconectar">
-                <div class="box-selecao">
-                    <a href="#8">
+            <li class="item-menu" id="desconectar" title="Desconectar">
+                <a href="" (click)="this.logout()">
+                    <div class="box-selecao">
                         <span class="icon"><img src="./assets/desconectar.svg" alt="Ícone membros"></span>
-                        <span class="txt-link">Desconectar</span>
-                    </a>
-                </div>
+                    </div>
+                    <span class="txt-link">Desconectar</span>
+                </a>
             </li>
-        </ul>
-    </nav>
+        </div>
+    </ul>
+</nav>
