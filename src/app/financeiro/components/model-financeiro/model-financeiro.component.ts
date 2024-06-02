@@ -126,7 +126,6 @@ export class ModelFinanceiroComponent implements OnInit, OnChanges {
   }
 
    configurarFormularioComDadosDaTransacao(): void {
-    console.log(this.transacao)
     if (this.transacao) {
       this.editar = true;
       this.formTransacao.patchValue(this.transacao);
@@ -136,7 +135,6 @@ export class ModelFinanceiroComponent implements OnInit, OnChanges {
       this.data = dataFormatada ?? '';
   
       const html_dataconclusao = this.document.querySelector('#data_conclusao') as HTMLInputElement;
-      const html_horaconclusao = this.document.querySelector('#hora_conclusao') as HTMLInputElement;
       if (html_dataconclusao) {
         html_dataconclusao.value = this.data;
       }
@@ -164,7 +162,7 @@ export class ModelFinanceiroComponent implements OnInit, OnChanges {
 
 
   openModal() {
-    const modalDiv = document.getElementById('exampleModal');
+    const modalDiv = document.getElementById('modalTransacao');
     if(modalDiv!= null) {
       modalDiv.style.display = 'block';
     }
