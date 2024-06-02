@@ -53,6 +53,11 @@ body {
 .botao {
     width: 30%;
     height: 45px;
+    font-weight: 600;
+}
+
+.botao svg{
+    margin-right:3%;
 }
 
 .botoes {
@@ -88,13 +93,14 @@ body {
 }
 
 #categoria {
-    width: 49%;
+    width: 69%;
     border: none;
     background: none;
     background: var(--tertiary-color);
     height: 45px;
     border-radius: 8px;
     padding: 10px;
+    
 }
 
 #valor {
@@ -106,15 +112,14 @@ body {
     border-radius: 8px;
     padding: 10px;
 }
-
-#data {
-    display: flex;
-    align-items: center;
+#data input{
     background: var(--tertiary-color);
+}
+#data {
+    margin-left: 2%;
     height: 45px;
     border-radius: 8px;
-    width: 49%;
-    justify-content: space-around;
+    background: var(--tertiary-color);
 }
 
 #categoria input {
@@ -127,12 +132,6 @@ body {
     width: 100%;
     border: none;
     background: none;
-}
-
-#data input{
-    width: 74%;
-    background: var(--tertiary-color);
-    border: none;
 }
 
 #categoria input::placeholder {
@@ -156,14 +155,19 @@ input:focus {
 
 .entrada {
     background-color: #C3F7C8;
-    color: var(--font-color);
-    font-weight: 600;
+    color: var(--base-color);
+    font-weight: 630;
 }
 
 .saida {
     background-color:#ED7786;
-    color: var(--font-color);
-    font-weight: 600;
+    color: var(--base-color);
+    font-weight: 630;
+}
+
+.entrada svg, .saida svg{
+    margin-right: 7%;
+    font-weight: 700;
 }
 
 .btn {
