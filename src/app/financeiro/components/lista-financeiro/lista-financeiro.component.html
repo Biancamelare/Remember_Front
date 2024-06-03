@@ -105,7 +105,7 @@
                 <label id="descricao" (click)="selecionarTransacao(transacao)" data-bs-toggle="modal" data-bs-target="#modalTransacao">{{transacao.descricao}}</label>
                 <label for="" id="valor" [ngClass]="{'positivo': transacao.tipo === 'd', 'negativo': transacao.tipo === 'c'}">{{ formatarValor(transacao.preco, transacao.tipo) }}</label>
                 <label for="" id="categoria">{{transacao.categoria}}</label>
-                <label for="" id="data">{{this.datePipe.transform(transacao.vencimento_em, 'dd/MM/yyyy', 'UTC')}}</label>
+                <label for="" id="data">{{formatarData(transacao.vencimento_em)}}</label>
             </div>
         </div>
     </div>

@@ -122,6 +122,14 @@ export class ListaFinanceiroComponent implements OnInit {
     return tipo === 'd' ? `+ ${valorFormatado}` : `- ${valorFormatado}`;
   }
 
+  formatarData(data: string | Date | undefined): string {
+    if (!data) {
+      return '-';
+    }
+  
+    const dataString = data instanceof Date ? data.toISOString() : data;
+    return this.datePipe.transform(dataString, 'dd/MM/yyyy', 'UTC') || '-';
+  }
   tirarVirgula(valor: number | undefined){
     const valorFormatado = valor?.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 

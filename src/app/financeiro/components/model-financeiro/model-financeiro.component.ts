@@ -128,7 +128,10 @@ export class ModelFinanceiroComponent implements OnInit, OnChanges {
    configurarFormularioComDadosDaTransacao(): void {
     if (this.transacao) {
       this.editar = true;
-      this.formTransacao.patchValue(this.transacao);
+      this.formTransacao.patchValue({
+        ...this.transacao,
+        preco: this.transacao.preco?.toFixed(2)  
+      });
   
       const dataFormatada = this.datePipe.transform(this.transacao.vencimento_em, 'yyyy-MM-dd', 'UTC');
 
