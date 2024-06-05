@@ -74,9 +74,6 @@ export class ModalIconComponent implements OnInit {
 
   async salvarAvatar(){
     if(this.idAvatarSelecionado){
-      const resposta = await this.confirmacaoService.exibirConfirmacao('Deseja realmente alterar o avatar?');
-      if(resposta){
-        console.log(this.idAvatarSelecionado)
         this.usuarioSerive.editarAvatar(this.idAvatarSelecionado, this.currentUserId, this.currentUser).subscribe(
           response => {
             this.alertaService.exibirAlerta('success', 'Avatar alterado com sucesso!');
@@ -85,9 +82,7 @@ export class ModalIconComponent implements OnInit {
           error => {
             this.alertaService.exibirAlerta('danger','Erro ao alterar o avatar: ' + error.error.message); 
           })
-      }else{
-      }}
-  }
+  }}
 
   
   openModal() {

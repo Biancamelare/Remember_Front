@@ -69,6 +69,10 @@ button {
     padding: 1% 3%;
 }
 
+.botao svg{
+    margin-right: 1%;
+}
+
 
 .select {
     background: none;
