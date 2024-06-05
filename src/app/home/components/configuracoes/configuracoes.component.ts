@@ -14,6 +14,8 @@ import { ConfirmComponent } from '../../../shared/components/confirm/confirm.com
 import { ModalIconComponent } from "../../../shared/components/modal-icon/modal-icon.component";
 import { CoresService } from '../../../shared/services/cores.service';
 import { firstValueFrom } from 'rxjs';
+import { PageAvatarModel } from '../../../shared/models/pageAvatar.model';
+import { AvatarModel } from '../../../shared/models/avatar.model';
 
 @Component({
     selector: 'app-configuracoes',
@@ -33,6 +35,7 @@ export class ConfiguracoesComponent implements OnInit {
   formConfiguracoes: FormGroup;
   formCores: FormGroup;
   usuarioSelecionado = {} as UsuarioModel;
+  avatarSelecionado = {} as AvatarModel;
   nome?: string;
   xp?: number;
   salvarhabilitado: boolean = false;
@@ -52,6 +55,9 @@ export class ConfiguracoesComponent implements OnInit {
   userColor:any
   gradient1Color:any
   gradient2Color:any
+
+  stringBase64: any;
+  id_avatar?:number;
 
   constructor(
   @Inject(DOCUMENT) private document: Document,
@@ -87,6 +93,7 @@ export class ConfiguracoesComponent implements OnInit {
 
   ngOnInit(): void {
    this.buscarUsuario();
+
    
    this.formConfiguracoes.get('email')?.setValue(this.usuarioSelecionado.email);
    this.formConfiguracoes.get('nome')?.setValue(this.usuarioSelecionado.nome);
@@ -101,7 +108,9 @@ export class ConfiguracoesComponent implements OnInit {
         console.log(usuario)
         this.nome = this.funcoesService.formatarNomeCompleto(this.usuarioSelecionado.nome)
         this.xp = this.usuarioSelecionado.xp
+        this.id_avatar = this.usuarioSelecionado.id_avatar
         this.preencherformulario();
+        this.buscarAvatar();
     })
 }
 
@@ -146,7 +155,6 @@ export class ConfiguracoesComponent implements OnInit {
         if (formValue.email === this.usuarioSelecionado.email) {
             delete formValue.email; 
         }
-console.log(formValue)
         this.usuarioSerive.editarUsuario(formValue, this.currentUserId, this.currentUser).subscribe(
           response => {
             this.alertaService.exibirAlerta('success', 'Usuário editado com sucesso!');
@@ -282,5 +290,16 @@ console.log(formValue)
 
      this.preencherformulario();
    }
+  }
+
+  buscarAvatar() {
+    if(this.id_avatar){
+      this.coresService.getByIdTema(this.id_avatar,this.currentUser).subscribe( 
+        (avatar : AvatarModel) => {
+          this.avatarSelecionado = avatar;
+          this.stringBase64 = 'data:image/jpg;base64,' + avatar.url_foto
+      })
+    }
+
   }
 }

@@ -7,6 +7,7 @@ export interface UsuarioModel {
    senha : string,
    xp ?: number,
    id_tema ?: number,
+   id_avatar?: number,
    criado_em ?: Date,
    editado_em ?: Date,
    excluido_em ?: Date
