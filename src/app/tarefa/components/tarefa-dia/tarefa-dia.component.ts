@@ -15,6 +15,8 @@ import { StatusModel } from '../../models/status.model';
 import { TarefaModel } from '../../models/tarefa.model';
 import { TarefaServiceService } from '../../services/tarefa-service.service';
 import { ModalComponent } from '../modal/modal.component';
+import { AvatarModel } from '../../../shared/models/avatar.model';
+import { CoresService } from '../../../shared/services/cores.service';
 
 @Component({
   selector: 'app-tarefa-dia',
@@ -63,6 +65,10 @@ export class TarefaDiaComponent {
   quantTarefas?: number;
   fraseQuantTarefas?: string;
 
+  stringBase64: any;
+  id_avatar?:number;
+  avatarSelecionado = {} as AvatarModel;
+
 
 
   constructor(
@@ -73,7 +79,8 @@ export class TarefaDiaComponent {
     private tarefaService: TarefaServiceService,
     private formBuilder: FormBuilder,
     private alertaService:AlertaService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private coresService: CoresService,
 ) {
   
       const sessionStorage = document.defaultView?.sessionStorage;
@@ -107,6 +114,8 @@ export class TarefaDiaComponent {
             this.usuarioSelecionado = usuario;
             this.xp = this.usuarioSelecionado.xp
             this.nome = this.funcoesService.formatarNomeCompleto(this.usuarioSelecionado.nome)
+            this.id_avatar = this.usuarioSelecionado.id_avatar
+            this.buscarAvatar()
         })
     }
 
@@ -298,5 +307,15 @@ export class TarefaDiaComponent {
     } else if (this.quantTarefas > 1) {
       this.fraseQuantTarefas = `${this.quantTarefas} tarefas`;
     }
+  }
+  buscarAvatar() {
+    if(this.id_avatar){
+      this.coresService.getByIdTema(this.id_avatar,this.currentUser).subscribe( 
+        (avatar : AvatarModel) => {
+          this.avatarSelecionado = avatar;
+          this.stringBase64 = 'data:image/jpg;base64,' + avatar.url_foto
+      })
+    }
+
   }
 }

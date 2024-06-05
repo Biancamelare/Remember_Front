@@ -12,6 +12,8 @@ import { TransacaoModel } from '../../models/transacao.model';
 import { FuncoesService } from '../../../shared/services/funcoes.service';
 import { AlertasComponent } from '../../../shared/components/alertas/alertas.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AvatarModel } from '../../../shared/models/avatar.model';
+import { CoresService } from '../../../shared/services/cores.service';
 
 @Component({
   selector: 'app-lista-financeiro',
@@ -46,6 +48,10 @@ export class ListaFinanceiroComponent implements OnInit {
   tipoFiltro: string | undefined = undefined;
   transacaoFiltro?: string;
 
+  stringBase64: any;
+  id_avatar?:number;
+  avatarSelecionado = {} as AvatarModel;
+
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
@@ -54,6 +60,7 @@ export class ListaFinanceiroComponent implements OnInit {
     private transacaoService: TransacaoService,
     private alertaService:AlertaService,
     public datePipe: DatePipe,
+    private coresService: CoresService,
     private funcoesService: FuncoesService
 ) {
   
@@ -79,6 +86,8 @@ export class ListaFinanceiroComponent implements OnInit {
         this.usuarioSelecionado = usuario;
         this.xp = this.usuarioSelecionado.xp
         this.nome = this.funcoesService.formatarNomeCompleto(this.usuarioSelecionado.nome)
+        this.id_avatar = this.usuarioSelecionado.id_avatar
+        this.buscarAvatar()
     })
 }
 
@@ -222,6 +231,17 @@ export class ListaFinanceiroComponent implements OnInit {
     }
   }
   closeModal() {
+
+  }
+
+  buscarAvatar() {
+    if(this.id_avatar){
+      this.coresService.getByIdTema(this.id_avatar,this.currentUser).subscribe( 
+        (avatar : AvatarModel) => {
+          this.avatarSelecionado = avatar;
+          this.stringBase64 = 'data:image/jpg;base64,' + avatar.url_foto
+      })
+    }
 
   }
 }
