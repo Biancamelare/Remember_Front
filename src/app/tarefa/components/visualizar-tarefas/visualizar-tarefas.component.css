@@ -568,9 +568,9 @@ hr{
             justify-content: center;
             margin: 0 auto;
             left: 5%;
-            width: auto; 
+            width: 55vw; 
             margin-bottom: 20px;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
             flex-wrap: wrap; 
             padding-left: 30px;
@@ -585,7 +585,7 @@ hr{
         .filtros {
             display: flex;
             justify-content: space-between;
-            width: 100px;
+            width: 90px;
             margin:0;
             margin-left: 10px;
             order: 2;
@@ -624,6 +624,34 @@ hr{
             width: 60vw;
             position: relative;
             left: 5%;
+        }
+
+        #info h2, .search-container {
+            margin-left: 20px;
+        }
+
+        .search-container input {
+            width: 90%;
+            height: 60%;
+            padding-left: 2px;
+        }
+
+        .search-container input::placeholder {
+            font-size: 15px;
+        }
+ 
+        #icon {
+            width: 16px;
+            height: auto;
+            right: 30px;
+        }
+
+        header {
+            padding-top: 4%;
+        }
+
+        #statusfilto {
+            width: 100px;
         }
     }
     
