@@ -1,4 +1,4 @@
-import { CommonModule, DOCUMENT, DatePipe } from '@angular/common';
+import { CommonModule, DOCUMENT, DatePipe, DecimalPipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Component, EventEmitter, Inject, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { ReactiveFormsModule, FormsModule, Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
@@ -19,7 +19,7 @@ import { TransacaoService } from '../../services/transacao.service';
   imports: [ReactiveFormsModule, FormsModule, HttpClientModule,CommonModule, AlertasComponent, ConfirmComponent],
   templateUrl: './model-financeiro.component.html',
   styleUrl: './model-financeiro.component.css',
-  providers: [DatePipe]
+  providers: [DatePipe, DecimalPipe]
 })
 export class ModelFinanceiroComponent implements OnInit, OnChanges {
 
@@ -47,7 +47,8 @@ export class ModelFinanceiroComponent implements OnInit, OnChanges {
     private authService: AuthServiceService,
     private usuarioSerive : UsuarioService,
     private datePipe: DatePipe,
-    private confirmacaoService: ConfirmacaoService
+    private confirmacaoService: ConfirmacaoService,
+    private decimalPipe: DecimalPipe
   ) {
 
     const sessionStorage = document.defaultView?.sessionStorage;
@@ -86,7 +87,6 @@ export class ModelFinanceiroComponent implements OnInit, OnChanges {
   salvar(): void {
  
      if (this.formTransacao.valid) {
-      console.log(this.formTransacao.getRawValue())
        this.transacaoService.cadastrarTransacao(this.formTransacao.getRawValue(),this.currentUser).subscribe(
          response => {
            this.alertaService.exibirAlerta('success', 'Transação financeira cadastrado com sucesso!');
@@ -108,7 +108,9 @@ export class ModelFinanceiroComponent implements OnInit, OnChanges {
       if(this.formTransacao.valid){
         const resposta = await this.confirmacaoService.exibirConfirmacao('Deseja realmente editar a transação financeira?');
       if(resposta){
-        this.transacaoService.editarTransacao(this.transacao.id, this.formTransacao.getRawValue(), this.currentUser).subscribe(
+        const formValue = this.formTransacao.getRawValue();
+        formValue.preco = parseFloat(formValue.preco);
+        this.transacaoService.editarTransacao(this.transacao.id, formValue, this.currentUser).subscribe(
           response => {
             this.alertaService.exibirAlerta('success', 'Transação financeira editada com sucesso!');
             this.transacaoSalva.emit();
@@ -128,16 +130,15 @@ export class ModelFinanceiroComponent implements OnInit, OnChanges {
    configurarFormularioComDadosDaTransacao(): void {
     if (this.transacao) {
       this.editar = true;
-      this.formTransacao.patchValue(this.transacao);
-  
+      
       const dataFormatada = this.datePipe.transform(this.transacao.vencimento_em, 'yyyy-MM-dd', 'UTC');
 
       this.data = dataFormatada ?? '';
-  
-      const html_dataconclusao = this.document.querySelector('#data_conclusao') as HTMLInputElement;
-      if (html_dataconclusao) {
-        html_dataconclusao.value = this.data;
-      }
+      this.formTransacao.patchValue({
+        ...this.transacao,
+        preco: this.transacao.preco?.toFixed(2)
+      });
+    
   
     }
   }
