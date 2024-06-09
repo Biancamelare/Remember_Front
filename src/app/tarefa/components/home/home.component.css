@@ -255,11 +255,16 @@ h2, h3 {
 #titulo label {
     color:#858CA6;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .rosca label{
     font-size: 20px;
+    font-weight: 600;
+}
+
+.graficoTexto{
+    font-size: 18px;
     font-weight: 600;
 }
 
@@ -456,6 +461,25 @@ ngx-charts-pie-chart {
     margin: auto;
     width: 570px;
     height: 330px; 
+}
+
+.xp2 {
+    background: var(--tertiary-color);
+    border-radius: 20px;
+    width: 130px;
+    height: 35px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 20px;
+    padding:20px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    color:var(--font-color)
+}
+
+form{
+     margin-bottom: 3%;
 }
 
   

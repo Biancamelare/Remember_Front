@@ -66,6 +66,9 @@ export class VisualizarTarefasComponent implements OnInit {
   id_avatar?:number;
   avatarSelecionado = {} as AvatarModel;
 
+  quantTarefas?:number;
+  fraseQuantTarefas?: string;
+
 
 
   constructor(
@@ -136,7 +139,8 @@ export class VisualizarTarefasComponent implements OnInit {
     this.tarefaService.getTarefas(this.currentUser).subscribe(
       (tarefas: PageTarefaModel) => {
         this.tarefas = tarefas.data || [];
-        console.log(this.tarefas)
+        this.quantTarefas = tarefas.total;
+        this.atualizarFrase();
         this.associarDados();
       },
       (error) => {
@@ -159,6 +163,16 @@ export class VisualizarTarefasComponent implements OnInit {
         }
 
       });
+    }
+  }
+
+  atualizarFrase(){
+    if (this.quantTarefas == 0 || this.quantTarefas == null || this.quantTarefas == undefined) {
+      this.fraseQuantTarefas = 'Não há tarefas cadastradas!';
+    } else if (this.quantTarefas == 1) {
+      this.fraseQuantTarefas = '1 tarefa';
+    } else if (this.quantTarefas > 1) {
+      this.fraseQuantTarefas = `${this.quantTarefas} tarefas`;
     }
   }
 

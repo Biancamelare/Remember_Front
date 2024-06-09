@@ -386,9 +386,13 @@ hr{
     line-height: 15px;
 }
 #titulo label {
-    color:#858CA6;
-    font-weight: 600;
-    font-size: 18px;
+    color:var(--gradient2-color);
+    font-weight: 700;
+    font-size: 20px;
+}
+
+form{
+    margin-bottom: 3%;
 }
 
 @media screen and (max-width: 1300px) { 

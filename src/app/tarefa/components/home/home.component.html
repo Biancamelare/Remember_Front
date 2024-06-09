@@ -40,6 +40,7 @@
     <div class="main-center">
         <div class="boasVindas">
             <h2> Bem-vindo <label for=""> {{this.nome}}! </label></h2>
+            <span class="xp2">{{this.xp}} XP</span>   
         </div>
 
         <div class="qtde">
@@ -94,7 +95,7 @@
                         <h5>Tarefas por Categorias</h5>
                     </div>
                     <div>
-                        <label *ngIf="totalTarefas == 0">Ainda não há tarefas criadas!</label>
+                        <label class="graficoTexto" *ngIf="totalTarefas == 0">Ainda não há tarefas criadas!</label>
                         <div *ngIf="totalTarefas == 0" id="btnAdicionar">
                             <button type="button" class="btn adicionar" data-bs-toggle="modal" (click)="openModal()" data-bs-target="#exampleModal"> <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16"> <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/></svg> Adicionar Tarefa
                             </button>

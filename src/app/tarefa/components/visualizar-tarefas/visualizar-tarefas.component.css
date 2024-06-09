@@ -175,6 +175,7 @@ header .search-container {
     height: 65vh;
     overflow-x: hidden;
     margin-right: 35%;
+    
 }
 
 .tarefa {
@@ -374,6 +375,23 @@ hr{
 
 #tarefas form {
     margin-right: 200px;
+}
+
+#titulo{
+    display: flex;
+    margin: auto;
+    width: 44vw;
+    margin-right: 34%;
+    margin-bottom: 10px!important;
+    line-height: 15px;
+}
+#titulo label {
+    color:var(--gradient2-color);
+    font-weight: 700;
+    font-size: 20px;
+}
+form{
+    margin-bottom: 3%;
 }
 
 @media screen and (max-width: 1300px) { 
