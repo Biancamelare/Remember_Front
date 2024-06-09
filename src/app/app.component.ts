@@ -37,6 +37,7 @@ shadowColor:any
 userColor:any
 gradient1Color:any
 gradient2Color:any
+svgColor:any
 
 isLoggedIn ?: boolean
 
@@ -87,6 +88,7 @@ buscarUsuario(){
      userColor,
      gradient1Color,
      gradient2Color,
+     svgColor,
    } = await firstValueFrom(this.coresService.getById(this.idTema));
     
   this.primaryColor = primaryColor;
@@ -100,9 +102,11 @@ buscarUsuario(){
    this.userColor = userColor;
    this.gradient1Color = gradient1Color;
    this.gradient2Color = gradient2Color;
+   this.svgColor = svgColor;
+   
 
    
-   this.document.documentElement.style.setProperty('--primarycolor', this.primaryColor);
+   this.document.documentElement.style.setProperty('--primary-color', this.primaryColor);
    this.document.documentElement.style.setProperty('--secondary-color', this.secondaryColor);
    this.document.documentElement.style.setProperty('--tertiary-color', this.tertiaryColor);
    this.document.documentElement.style.setProperty('--quaternary-color', this.quaternaryColor);
@@ -112,6 +116,7 @@ buscarUsuario(){
    this.document.documentElement.style.setProperty('--shadown-color', this.shadowColor);
    this.document.documentElement.style.setProperty('--gradient1-color', this.gradient1Color);
    this.document.documentElement.style.setProperty('--gradient2-color', this.gradient2Color);
+   this.document.documentElement.style.setProperty('--svg-color', this.svgColor);
 
  }
 
