@@ -100,22 +100,22 @@
                             </button>
                         </div>
                     </div>
-                    <div class="rosca">
+                    <div class="rosca chart-wrapper">
                         <ngx-charts-pie-chart
-                        [results]="chartData"
-                        [view]="[680, 350]"
-                        [doughnut]="true"
-                        [legend]="true"
-                        [legendTitle]="'Categorias'"
-                        [labels]="true"
-                        [explodeSlices]="false"
-                        [arcWidth]="0.3"
-                        [gradient]="true"
-                        [animations]="false"
-                        class="custom-chart"
-                        *ngIf="totalTarefas > 0">
-                      </ngx-charts-pie-chart>
-                    </div>
+                          [results]="chartData"
+                          [view]="[570, 330]"
+                          [doughnut]="true"
+                          [legend]="true"
+                          [legendTitle]="'Categorias'"
+                          [labels]="true"
+                          [explodeSlices]="false"
+                          [arcWidth]="0.3"
+                          [gradient]="true"
+                          [animations]="false"
+                          class="custom-chart"
+                          *ngIf="totalTarefas > 0">
+                        </ngx-charts-pie-chart>
+                      </div>
                 </div>
             </div>
         </div>

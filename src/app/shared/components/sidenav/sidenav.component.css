@@ -98,6 +98,9 @@ ul li.item-menu img {
     margin-top: 200px;
 }  */
 
+#adicionar{
+    cursor: pointer;
+}
 
 nav.menu-lateral.expandir ul li.item-menu#desconectar:hover img {
     width: 30px;

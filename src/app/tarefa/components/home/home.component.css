@@ -29,7 +29,6 @@ header {
 
 .main-center {
     display: flex;
-    align-items: center;
     justify-content: center;
     flex-direction: column;
 }
@@ -152,8 +151,9 @@ hr{
     flex-direction: column;
     display: flex;
     margin-top: 2%;
-    margin-bottom: 2%;
-    width: 61%;
+    margin-left: 18%;
+    padding-bottom: 2%;
+    width: 100%;
 }
 
 h2, h3 {
@@ -168,6 +168,8 @@ h2, h3 {
     padding: 4%;
     display: flex;
     align-items: center;
+    padding-top: 25px;
+
 }
 
 #texto {
@@ -190,7 +192,7 @@ h2, h3 {
 .qtde {
     display: flex;
     width: 100%;
-    padding-left: 14%;
+    padding-left: 12%;
     padding-right: 5%;
     justify-content: space-evenly;
 }
@@ -260,6 +262,9 @@ h2, h3 {
     font-size: 20px;
     font-weight: 600;
 }
+
+
+  
 
 .adicionar {
     padding: 0;
@@ -415,7 +420,9 @@ h2, h3 {
   }
 
   ::ng-deep .chart-legend { 
-    color: var(--font-color) !important; 
+    color: var(--font-color) !important;
+    display: flex;
+    
     
   }
   
@@ -428,5 +435,181 @@ h2, h3 {
     color: black !important;
   }
   
+  circle-progress {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5%;
+    position: relative;
+}
+
+
+
+.chart-wrapper {
+    display: block;
+    text-align: center;
+    height: 50%; 
+}
+
+ngx-charts-pie-chart {
+    display: inline-block;
+    margin: auto;
+    width: 570px;
+    height: 330px; 
+}
+
   
+/* 
+  @media screen and (max-width: 990px) {
+    #texto {
+        font-size: 15px;
+    }
+     */
+/* 
+  } */
+
+  @media screen and (max-width: 950px) {
+    .qtde {
+        display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: space-between;
+    }
+    .porcentagemTabela {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        height: 80%;
+  }
+
+    #grafico {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        height: 80%;
+        padding-top: 6%;
+  }
+}
+
+@media screen and (max-width: 1510px) {
+    .qtde {
+        display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: space-between;
+    }
+
+    .porcentagemTabela {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: start;
+        width: 80%;
+        height: 60%;
+    }
+
+    .porcentagem-tarefas {
+        width: 48%;
+        height: 50%;
+        padding: 2%;
+    }
+
+    .table1 {
+        width: 48%;
+        height: 100%;
+        margin-top: 0%;
+    }
+
+    #grafico {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        height: 80%;
+        padding-top: 6%;
+    }
+
+    .chart-wrapper {
+        display: block;
+        text-align: center;
+        height: 50%; 
+    }
+  
+    ngx-charts-pie-chart {
+        display: inline-block;
+        margin: auto;
+        width: 570px;
+        height: 330px; 
+    }
+
+    .boasVindas {
+        margin-left: 18%;
+        padding-bottom: 2%;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .qtde {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .porcentagemTabela {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 42%;
+    }
+    .porcentagem-tarefas {
+        width: 80%;
+        height: 25%;
+        padding: 2%;
+        margin-bottom: 4%;
+    }
+    .table1 {
+        width: 80%;
+        height: 70%;
+        margin-top: 0%;
+    }
+
+    #grafico {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        height: 45%;
+        padding-top: 6%;
+    }
+    .boasVindas {
+
+        padding-bottom: 0%;
+    }
+    .chart-wrapper {
+        display: block;
+        text-align: center;
+        height: 50%; 
+    }
+  
+    ngx-charts-pie-chart {
+        margin: auto;
+        width: 570px;
+        height: 330px; 
+    }
+    #titulo {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+    }
+    .tarefa {
+        width: 80vw;
+        margin: 2% 0 1% 2%;
+    }
+}
 
