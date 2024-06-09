@@ -238,8 +238,10 @@ export class VisualizarTarefasComponent implements OnInit {
     this.tarefaService.filtrarTarefas(params, this.currentUser).subscribe(
       (tarefas: PageTarefaModel) => {
         this.tarefas = tarefas.data || [];
+        this.quantTarefas = tarefas.total
         this.associarDados();
         this.atualizarFiltrosAplicados();
+        this.atualizarFrase();
       },
       (error) => {
         this.alertaService.exibirAlerta('danger', 'Erro ao filtrar tarefas: ' + error.error.message);

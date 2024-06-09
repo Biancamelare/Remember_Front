@@ -223,6 +223,7 @@ export class TarefaDiaComponent {
 
   filtrarTarefas() {
     const params: any = {};
+    params.data_vencimento = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
     if (this.statusFiltro) params.id_status = this.statusFiltro;
     if (this.categoriaFiltro) params.id_categoria = this.categoriaFiltro;
     if (this.prioridadeFiltro) params.id_prioridade = this.prioridadeFiltro;
@@ -231,8 +232,10 @@ export class TarefaDiaComponent {
     this.tarefaService.filtrarTarefas(params, this.currentUser).subscribe(
       (tarefas: PageTarefaModel) => {
         this.tarefas = tarefas.data || [];
+        this.quantTarefas = tarefas.total;
         this.associarDados();
         this.atualizarFiltrosAplicados();
+        this.atualizarFrase();
       },
       (error) => {
         this.alertaService.exibirAlerta('danger', 'Erro ao filtrar tarefas: ' + error.error.message);
