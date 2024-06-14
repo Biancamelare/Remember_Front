@@ -119,3 +119,28 @@ button .select .icon {
 .opcao .select {
     margin-left: 10px;
 }
+
+
+@media screen and (max-width: 1200px) {
+
+    .modal-dialog{
+        max-width: 60%;
+        border: 10rem solid  var(--modal-color);
+    }
+}
+
+@media screen and (max-width: 850px) {
+
+    .modal-dialog{
+        max-width: 80%;
+        border: 10rem solid  var(--modal-color);
+    }
+}
+
+@media screen and (max-width: 820px) {
+
+    .modal-dialog{
+        max-width: 100%;
+        border: 10rem solid  var(--modal-color);
+    }
+}

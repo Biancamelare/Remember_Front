@@ -179,3 +179,13 @@ label#anexo {
     font-weight: 500;
     background-color: var(--font-color);
   }
+
+
+  @media screen and (max-width: 738px) {
+
+    .modal-dialog{
+        max-width: 100%;
+        border: 10rem solid  var(--modal-color);
+    }
+    
+}
