@@ -415,7 +415,20 @@ export class ModalComponent implements OnInit,OnChanges {
         );
       }
     }
+    
+  abrirModalComData(data: string) {
+      this.formTarefa.enable();
+      this.formTarefa.reset();
+      this.limparLista();
+      this.editar = false;
+    
+      this.data_conclusao = data;
+      const html_dataconclusao = this.document.querySelector('#data_conclusao') as HTMLInputElement;
+      if (html_dataconclusao) {
+        html_dataconclusao.value = this.data_conclusao;
+      }
 
+    }
 
 
 }

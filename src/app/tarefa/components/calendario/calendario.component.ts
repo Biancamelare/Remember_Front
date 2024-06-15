@@ -1,7 +1,7 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { TarefaServiceService } from '../../services/tarefa-service.service';
-import { CalendarOptions } from '@fullcalendar/core';
+import { CalendarOptions, EventApi } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import ptBrLocale from '@fullcalendar/core/locales/pt-br';
 import { UsuarioModel } from '../../../home/models/usuario.model';
@@ -17,15 +17,19 @@ import { AvatarModel } from '../../../shared/models/avatar.model';
 import { AlertasComponent } from '../../../shared/components/alertas/alertas.component';
 import { ModalComponent } from '../modal/modal.component';
 import { SidenavComponent } from '../../../shared/components/sidenav/sidenav.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import bootstrap from '../../../../main.server';
 
 @Component({
   selector: 'app-calendario',
   standalone: true,
-  imports: [ FullCalendarModule, ModalComponent,  AlertasComponent, CommonModule, SidenavComponent],
+  imports: [ FullCalendarModule, ModalComponent,  AlertasComponent, CommonModule, SidenavComponent, ReactiveFormsModule, FormsModule],
   templateUrl: './calendario.component.html',
   styleUrl: './calendario.component.css',
 })
 export class CalendarioComponent implements OnInit {
+  @ViewChild('modalComponent') modalComponent!: ModalComponent;
+  @ViewChild('alertaCadastro', { static: false }) alertaCadastro!: AlertasComponent;
   
   currentUser: any;
   currentUserId : any;
@@ -40,6 +44,9 @@ export class CalendarioComponent implements OnInit {
   stringBase64: any;
   id_avatar?:number;
   avatarSelecionado = {} as AvatarModel;
+
+  tarefaSelecionada: TarefaModel | undefined;
+
 
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
@@ -60,7 +67,10 @@ export class CalendarioComponent implements OnInit {
     },
     dayHeaderFormat: { 
       weekday: 'long' 
-    }
+    },
+    eventClick: this.clicarTarefa.bind(this),
+    eventsSet: this.abrirData.bind(this),
+    eventDidMount: this.adicionarPropriedade.bind(this) 
   };
 
   constructor(private tarefaService: TarefaServiceService,
@@ -103,6 +113,7 @@ buscarTarefas(): void {
       this.calendarOptions.events = this.tarefas.map(tarefa => ({
         title: tarefa.nome,
         start: tarefa.data_vencimento,
+        id: tarefa.id.toString() 
       }));
     },
     (error) => {
@@ -125,5 +136,50 @@ buscarAvatar() {
 logout(){
   this.authService.logout();
 }
+
+recarregarTarefas(): void {
+  this.buscarTarefas();
+}
+
+clicarTarefa(arg: any) {
+  const tarefaId = arg.event.id;
+  this.tarefaSelecionada = this.tarefas?.find(tarefa => tarefa.id.toString() === tarefaId);
+
+
+
+  if (this.tarefaSelecionada) {
+    this.modalComponent.tarefa = this.tarefaSelecionada;
+    this.modalComponent.configurarFormularioComDadosDaTarefa();
+    this.modalComponent.openModal();
+  }
+}
+
+adicionarPropriedade(arg: any) {
+  const eventElement = arg.el;
+  const dayGridEvents = eventElement.closest('.fc-daygrid-day-events');
+  if (dayGridEvents) {
+    dayGridEvents.setAttribute('data-bs-target', '#exampleModal');
+    dayGridEvents.setAttribute('data-bs-toggle', 'modal');
+  }
+}
+
+abrirData(events: EventApi[]) {
+  const calendarEl = this.document.querySelector('.fc-daygrid-body');
+  if (calendarEl) {
+    const dayCells = calendarEl.querySelectorAll('.fc-daygrid-day');
+    dayCells.forEach(dayCell => {
+      dayCell.setAttribute('data-bs-toggle', 'modal'); 
+      dayCell.setAttribute('data-bs-target', '#exampleModal');
+
+      dayCell.addEventListener('click', (e: any) => {
+        const dateStr = e.currentTarget.getAttribute('data-date');
+        if (dateStr) {
+          this.modalComponent.abrirModalComData(dateStr);
+        }
+      });
+    });
+  }
+}
+
 
 }
