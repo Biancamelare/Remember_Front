@@ -1,6 +1,6 @@
 :host ::ng-deep .fc .fc-daygrid-day {
     border: 1px solid #ddd;
-    background-color: #F1F1F1;
+    background-color: #f7f7f7;
     border-radius: 4px;
     margin: 0;
 }
@@ -21,7 +21,8 @@
 }
 
 :host ::ng-deep .fc .fc-col-header-cell-cushion {
-    color:#fff
+    color:#fff;
+    text-decoration: none;
 }
   
 :host ::ng-deep .fc .fc-toolbar-title {
@@ -33,7 +34,7 @@
 }
   
 :host ::ng-deep .fc .fc-button {
-    background-color: var(--font-color);
+    background-color: var(--primary-color);
     color: #fff;
     border: none;
     padding: 5px 10px;
@@ -51,20 +52,30 @@
     border: none;
     padding: 5px;
     border-radius: 4px;
-    color: #fff;
+    color: var(--font-color) ;
     margin: 2px 0;
-    background-color: var(--font-color);
+    background-color: rgba(67,147,242, 0.6);
 }
   
+:host ::ng-deep .fc-direction-ltr .fc-daygrid-event .fc-event-time {
+   display: none;
+}
 
 /* Estilo dos pontos dos eventos */
 :host ::ng-deep .fc .fc-daygrid-event-dot {
-    border: 2px solid #fff;
+    border: 4px solid var(--secondary-color);
+    margin-right: 10px;
 }
   
 /* Estilo dos dias de hoje */
 :host ::ng-deep .fc .fc-day-today {
-    background-color: #DDDDDD;
+    background-color: var(--secondary-color);
+    border-radius: 4px;
+}
+
+:host ::ng-deep .fc .fc-day-today .fc-event {
+    background-color: var(--font-color);
+    color: var(--secondary-color);
     border-radius: 4px;
 }
   
