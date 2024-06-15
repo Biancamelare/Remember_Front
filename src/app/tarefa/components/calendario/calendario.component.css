@@ -91,32 +91,36 @@
 }
 
 :host ::ng-deep .fc .fc-scrollgrid-liquid {
-    height: 60%;
+    height: 68vh;
 }
+
+:host ::ng-deep .fc .fc-view-harness {
+    height: 70vh !important;
+   
+}
+
+
 
 /* Centralização e ajuste de tamanho */
 .calendar-container {
     width: 100%;
     margin: 0 auto;
-    height: 85vh;
-    background-color: white;
+    height: 83vh;
+    background-color: var(--secondary-color);
     padding: 20px;
     border-radius: 4px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 body {
-    width: 100vw;
     margin: 0px;
     display: flex;
-    min-height: 100vh;
-    overflow-x: hidden; 
 }
 
 header {
     display: flex;
     justify-content: space-between;
-    padding: 1% 10% 1% 20%;
+    padding: 1.5% 6% 0.5% 15.5%;
 }
 .main-visualizar {
     display: flex;
@@ -228,21 +232,15 @@ hr{
     font-weight: 500;
 }
 
-.xp2 {
-    background: var(--tertiary-color);
-    border-radius: 20px;
-    width: 70px;
-    height: 27px;
-    text-align: center;
-    margin-left: 10px;
-    font-weight: 500;
-    font-size: 18px;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-}
+
 .nome{
     color: var(--font-color);
     font-weight: 500;
     margin-left: 5px;
+}
+
+h2{
+    color:var(--font-color);
+    font-weight: 650;
+    
 }
