@@ -1,0 +1,237 @@
+:host ::ng-deep .fc .fc-daygrid-day {
+    border: 1px solid #ddd;
+    background-color: #F1F1F1;
+    border-radius: 4px;
+    margin: 0;
+}
+  
+:host ::ng-deep .fc .fc-daygrid-day-number {
+    color: #000;
+    font-weight: bold;
+}
+  
+/* Estilo dos cabeçalhos */
+:host ::ng-deep .fc .fc-col-header-cell {
+    background-color: var(--font-color);
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 4px 4px 0 0;
+}
+
+:host ::ng-deep .fc .fc-col-header-cell-cushion {
+    color:#fff
+}
+  
+:host ::ng-deep .fc .fc-toolbar-title {
+    font-size: 1.25em;
+    color: var(--font-color);
+    font-weight: 700;
+    text-align: left;
+    padding: 10px;
+}
+  
+:host ::ng-deep .fc .fc-button {
+    background-color: var(--font-color);
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 4px;
+}
+  
+:host ::ng-deep .fc .fc-button:hover {
+    background-color: var(--gradient1-color);
+}
+  
+/* Estilo dos eventos */
+:host ::ng-deep .fc .fc-event {
+    font-size: 0.85em;
+    border: none;
+    padding: 5px;
+    border-radius: 4px;
+    color: #fff;
+    margin: 2px 0;
+    background-color: var(--font-color);
+}
+  
+
+/* Estilo dos pontos dos eventos */
+:host ::ng-deep .fc .fc-daygrid-event-dot {
+    border: 2px solid #fff;
+}
+  
+/* Estilo dos dias de hoje */
+:host ::ng-deep .fc .fc-day-today {
+    background-color: #DDDDDD;
+    border-radius: 4px;
+}
+  
+/* Estilo do container do calendário */
+:host ::ng-deep .fc .fc-view-harness {
+    border-radius: 4px;
+    overflow: hidden;
+}
+  
+:host ::ng-deep .fc {
+    padding: 10px;
+    border-radius: 4px;
+}
+
+:host ::ng-deep .fc .fc-scrollgrid-liquid {
+    height: 60%;
+}
+
+/* Centralização e ajuste de tamanho */
+.calendar-container {
+    width: 100%;
+    margin: 0 auto;
+    height: 85vh;
+    background-color: white;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    width: 100vw;
+    margin: 0px;
+    display: flex;
+    min-height: 100vh;
+    overflow-x: hidden; 
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1% 10% 1% 20%;
+}
+.main-visualizar {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1%;
+}
+
+.main-center{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    width:80%;
+    margin-left: 15% !important;
+    margin-top: 0.5%;
+}
+#icon {
+    position: absolute;
+    top: 35px;
+    right: 20px;
+    transform: translateY(-50%);
+    fill: var(--secondary-color); 
+}
+#meuperfil {
+    display: flex;
+    align-items: center;
+}
+
+.perfil {
+    display: flex;
+    align-items: center;
+}
+
+
+.perfil .icon-user {
+    border: none;
+    padding: 7px;
+    margin-right: 20px;
+}
+.icon-user {
+    margin-left: 30px;
+    padding: 8px 0px 0px 14px;
+    width: 70px;
+    height: 70px;
+    border-radius: 100px;
+    background-color: var(--user-color);
+    box-shadow: 0px 2px 6px var(--shadown-color);
+}
+
+.dropdown {
+    padding: 12px;
+}
+
+.dropbtn {
+    background-color: var(--secondary-color);
+    color: var(--font-color);
+    font-weight: 500;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    padding: 5%;
+    display: none;
+    position: absolute;
+    background-color: var(--quaternary-color);
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px var(--shadown-color);
+    z-index: 1;
+    border-radius: 20px;
+}
+
+.dropdown-content a {
+    color: var(--font-color);
+    padding: 10px 10px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    font-weight: 600;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.userDrop{
+    display: flex;
+}
+hr{
+    margin: 0;
+}
+
+.position-user {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.xp {
+    background: var(--tertiary-color);
+    border-radius: 20px;
+    padding: 3px 10px;
+    margin-top: 10px;
+    width: 70px;
+    text-align: center;
+    margin-bottom: 3%;
+    margin-left: 10px;
+    font-weight: 500;
+}
+
+.xp2 {
+    background: var(--tertiary-color);
+    border-radius: 20px;
+    width: 70px;
+    height: 27px;
+    text-align: center;
+    margin-left: 10px;
+    font-weight: 500;
+    font-size: 18px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.nome{
+    color: var(--font-color);
+    font-weight: 500;
+    margin-left: 5px;
+}
