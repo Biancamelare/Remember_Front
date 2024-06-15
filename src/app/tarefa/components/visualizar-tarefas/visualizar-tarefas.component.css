@@ -783,9 +783,9 @@ hr {
     }
 }
 
-@media screen and (max-width: 520px) {
+@media screen and (max-width: 570px) {
     .search-container input {
-        width: 165px;
+        width: 180px;
         height: 35px;
         padding-right: 10px;
     }
@@ -801,7 +801,7 @@ hr {
     }
 
     .icon-user {
-        margin-left: 10px;
+        margin-left: 0;
         width: 60px;
         height: 60px;
         padding: 10px;
@@ -814,7 +814,12 @@ hr {
 
 }
 
-@media screen and (max-width: 430px) {
+@media screen and (max-width: 500px) {
+    .search-container input {
+        width: 180px;
+        height: 35px;
+        padding-right: 10px;
+    }
 
     #icon {
         right: 15px
@@ -829,4 +834,137 @@ hr {
         padding-right: 0;
     }
 
+}
+
+
+@media screen and (max-width: 450px) {
+
+    .search-container input {
+        width: 160px;
+        height: 35px;
+        padding-right: 10px;
+    }
+
+    #icon {
+        right: 20px;
+    }
+
+    .dropdown {
+        padding-right: 0;
+    }
+
+    .dropbtn {
+        padding-left: 0;
+        padding-right: 0;
+        font-size: 14px;
+    }
+
+    .icon-user {
+        margin-top: 5px;
+        width: 55px;
+        height: 55px;
+        
+        align-items: center;
+    }
+
+    .icon-user img {
+        width: 35px;
+        height: auto;
+        justify-content: center;
+        margin: 0;
+        align-self: center;
+    }
+
+    #info {
+        margin-bottom: 15px;
+    }
+
+    #info h2 {
+        font-size: 18px;
+        margin-bottom: 0;
+        line-height: 30px;
+    }
+
+    .btn.adicionar {
+        font-size: 14px;
+        line-height: 30px;
+    }
+
+    .btn.adicionar svg {
+        width: 25px;
+        height: auto;
+    }
+
+    #statusfiltro {
+        width: 62px;
+        font-size: 11px;
+    }
+
+    #categoria {
+        width: 79px;
+        font-size: 11px;
+    }
+
+    #prioridade {
+        width: 82px;
+        font-size: 11px;
+    }
+
+    #prioridade {
+        
+    }
+
+    .filtroData {
+        width: 83px;
+    }
+
+    .filtroData input {
+        font-size: 10px;
+        width: 83px;
+    }
+
+    .filtrar {
+        width: 350px;
+        padding-left: 35px;
+        padding-right: 35px;
+    }
+
+    .filtrar h5 {
+        font-size: 15px;
+        margin-left: 15px;
+    }
+
+    .filtrar button {
+        width: 125px;
+        height: 30px;
+        font-size: 15px;
+        line-height: 18px;
+    }
+
+    .btn.filtro svg {
+        width: 16px;
+        height: auto;
+        margin-right: 15px;
+        margin-bottom: 5px;
+    }
+
+    .resultado {
+        width: 350px;
+    }
+
+    #titulo {
+        width: 350px;
+    }
+
+    .tarefa {
+        width: 350px;
+    }
+
+    #tarefas {
+        width: 350px;
+    }
+
+    .search-container {
+        margin-left: 10px;
+    }
 }
