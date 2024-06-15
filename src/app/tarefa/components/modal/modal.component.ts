@@ -228,7 +228,6 @@ export class ModalComponent implements OnInit,OnChanges {
         ...this.formTarefa.getRawValue(), 
         lista_tarefa: listaVerificacao 
     };
-    console.log(dadosTarefa)
     
       this.modalTarget = 'modal'
       this.tarefaService.cadastrarTarefa(dadosTarefa,this.currentUser).subscribe(
@@ -283,7 +282,6 @@ export class ModalComponent implements OnInit,OnChanges {
       if(resposta){
         const dadosTarefa = { ...this.formTarefa.getRawValue() };
         delete dadosTarefa.lista_tarefa;
-        console.log(dadosTarefa)
         this.tarefaService.editarTarefa(this.tarefa.id, dadosTarefa, this.currentUser).subscribe(
           response => {
             this.salvarItensListaVerificacao()
@@ -404,7 +402,6 @@ export class ModalComponent implements OnInit,OnChanges {
       const itemId = item.get('id')?.value;
       const novoStatus = !item.get('status')?.value;
       if (itemId) {
-        console.log(itemId,novoStatus)
         this.tarefaService.editarLista(itemId, { status: novoStatus }, this.currentUser).subscribe(
           response => {
             item.get('status')?.setValue(novoStatus);

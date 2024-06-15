@@ -257,7 +257,6 @@ export class HomeComponent {
           this.recarregarTarefas();
         },
         (error) => {
-          console.error('Erro ao editar a tarefa:', error);
           this.alertaService.exibirAlerta('danger', 'Erro ao editar a tarefa: ' + error.error.message);
         }
       );

@@ -105,7 +105,6 @@ export class ConfiguracoesComponent implements OnInit {
     this.usuarioSerive.getById(this.currentUserId,this.currentUser).subscribe( 
       (usuario : UsuarioModel) => {
         this.usuarioSelecionado = usuario;
-        console.log(usuario)
         this.nome = this.funcoesService.formatarNomeCompleto(this.usuarioSelecionado.nome)
         this.xp = this.usuarioSelecionado.xp
         this.id_avatar = this.usuarioSelecionado.id_avatar
@@ -240,7 +239,6 @@ export class ConfiguracoesComponent implements OnInit {
     if(this.idTema){
       const resposta = await this.confirmacaoService.exibirConfirmacao('Deseja realmente alterar o tema?');
       if(resposta){
-        console.log(this.idTema)
         this.usuarioSerive.editarTema(this.idTema, this.currentUserId, this.currentUser).subscribe(
           response => {
             this.alertaService.exibirAlerta('success', 'Tema alterado com sucesso!');

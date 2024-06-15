@@ -220,7 +220,6 @@ export class VisualizarTarefasComponent implements OnInit {
         this.buscarUsuario();
       },
       (error) => {
-        console.error('Erro ao editar a tarefa:', error);
         this.alertaService.exibirAlerta('danger', 'Erro ao editar a tarefa: ' + error.error.message);
       }
     );

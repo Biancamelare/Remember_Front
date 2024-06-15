@@ -145,8 +145,6 @@ clicarTarefa(arg: any) {
   const tarefaId = arg.event.id;
   this.tarefaSelecionada = this.tarefas?.find(tarefa => tarefa.id.toString() === tarefaId);
 
-
-
   if (this.tarefaSelecionada) {
     this.modalComponent.tarefa = this.tarefaSelecionada;
     this.modalComponent.configurarFormularioComDadosDaTarefa();
