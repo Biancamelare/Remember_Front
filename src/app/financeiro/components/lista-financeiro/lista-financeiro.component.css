@@ -117,11 +117,12 @@ header .search-container {
     position: absolute;
     background-color: var(--quaternary-color);
     min-width: 200px;
-    box-shadow: 0px 8px 16px 0px var(--shadown-color);
+    box-shadow: 0px 8px 16px 0px var(--shadow-color);
     z-index: 1;
     border-radius: 20px;
+    left: -50px; 
+    right: auto; 
 }
-
 .dropdown-content a {
     color: var(--font-color);
     padding: 10px 10px;
@@ -162,7 +163,7 @@ hr{
 }
 
 #info {
-    padding-top: 3%;
+    padding-top: 6%;
     padding-bottom: 1%;
     display: flex;
     justify-content: space-between;
@@ -388,7 +389,7 @@ h2 {
     border-radius: 22px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    width: 34%;
+    width: 32%;
 }
 
 
@@ -650,7 +651,12 @@ h2 {
         align-self: center;
     }
 
-    
+    .dropdown-content {
+        font-size: 12px;
+        min-width: 180px;
+        left: -120px; 
+        right: auto; 
+    }
 }
 
 @media screen and (max-width: 470px) {
