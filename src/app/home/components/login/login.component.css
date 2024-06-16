@@ -82,7 +82,7 @@ body {
     width: 400px; 
     font-size: 18px; 
     padding: 10px 30px; 
-    background-color: var(--primary-color);
+    background-color: #5189DD;
     border-radius: 15px;
     color:var(--secondary-color);
     border: none;
@@ -163,7 +163,7 @@ img {
 
 .form-control {
     border-radius: 15px;
-    background-color: var(--input-color);
+    background-color: #E9EFF9;
     padding-left: 0;
     padding-left: 40px;
 }
