@@ -3,7 +3,7 @@
 <div class="main-vizualizar">
     <header>
         <div class="search-container">
-            <input type="text" class="form-control search-input" placeholder="Pesquisar transação financeira" aria-label="Recipient's username" aria-describedby="button-addon2" [(ngModel)]="transacaoFiltro" (input)="transacaoChange()">
+            <input type="text" class="form-control search-input" placeholder="Pesquisar transação" aria-label="Recipient's username" aria-describedby="button-addon2" [(ngModel)]="transacaoFiltro" (input)="transacaoChange()">
                 <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" id="icon">
                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
                 </svg>
@@ -38,10 +38,7 @@
     </header>
 
     <div id="info">
-        <div id="titulo">
             <h2>Controle Financeiro</h2>
-        </div>
-        
         <div id="btnAdicionar">
             <button type="button" class="btn adicionar" data-bs-toggle="modal" (click)="openModal()" data-bs-target="#modalTransacao">
                 <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16"> <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/></svg> Nova Transação
@@ -54,8 +51,11 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-calendar-week-fill" viewBox="0 0 16 16">
                 <path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2M9.5 7h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5m3 0h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5M2 10.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3.5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5"/>
             </svg>
-            <label>Data</label>
-            <input type="date" [(ngModel)]="vencimento_em" (input)="dataChange()">
+            <div class="filtroData">
+                <label>Data</label>
+                <input type="date" [(ngModel)]="vencimento_em" (input)="dataChange()">
+            </div>
+            
             <span><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16" id="icon2">
                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
                 </svg></span>

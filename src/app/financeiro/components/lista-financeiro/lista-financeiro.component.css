@@ -14,6 +14,16 @@ body {
     overflow: hidden;
  }
 
+ .main-center {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    margin-top: 1%;
+}
+
 header {
     padding-top: 1.5%;
     padding-bottom: 1%;
@@ -161,8 +171,8 @@ hr{
 
 .transacoes {
     display: flex;
-    margin: auto;
     flex-direction: column;
+    width: 100%;
 }
 
 .positivo {
@@ -189,6 +199,7 @@ hr{
     overflow-y: auto;
     height: 42vh;
     overflow-x: hidden;
+    width: 70%;
 }
 
 .busca {
@@ -224,7 +235,7 @@ input[type="date"] {
 }
 .data input{
     margin-left: 3%;
-   
+    width: 55%;
 }
 
 .data label{
@@ -232,7 +243,7 @@ input[type="date"] {
 }
 
 .data {
-    width: 30% !important;
+    width: 40% !important;
 }
 
 #icon {
@@ -294,12 +305,13 @@ h2 {
     justify-content: space-around;
     margin-top: 4%;
     margin-bottom: 4%;
+    width: 68%;
 }
 
 .geral h4 {
     height: 55px;
     padding: 0px 5%;
-    width: 300px;
+    width: 100%;
     border-radius: 25px;
     background: linear-gradient(120deg, var(--gradient1-color) 40%, var(--gradient2-color));
     color: var(--secondary-color);
@@ -311,7 +323,7 @@ h2 {
 .geral label {
     height: 55px;
     padding: 0px 5%;
-    width: 300px;
+    width: 100%;
     border-radius: 25px;
     display: flex;
     align-items: center;
@@ -319,6 +331,7 @@ h2 {
     font-size: 26px;
     font-weight: 700;
 }
+
 
 .transacao {
     height: 60px;
@@ -375,8 +388,256 @@ h2 {
     border-radius: 22px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     cursor: pointer;
+    width: 34%;
 }
 
 .ativo {
     background-color: var(--user-color); 
-  }
+}
+
+.filtroData {
+    width: 100%;
+    display: flex;
+    right: 21%;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+@media screen and (max-width: 1100px) {
+    .filtroData {
+        width: 200px;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    #icon2 {
+        width: 16px;
+        height: auto;
+        right: 18px;
+    }
+    .search-input2 {
+        padding-right: 30px; 
+        height: 30px;
+        border-radius: 10px;
+    }
+    
+    .search-input2::placeholder {
+        color: var(--font-color);
+        padding-left: 18px;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    .data svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .filtroData label {
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .filtroData {
+        width: 160px;
+        font-size: 12px;
+    }
+    #valor {
+        width: 22%;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .form-control {
+        font-size: 15px;
+    }
+    #info h2 {
+        font-size: 22px;
+    }
+    .main-vizualizar {
+        padding: 0 2% 0px 12%;
+    }
+
+    .main-center {
+        width: 118vw;
+    }
+}
+
+@media screen and (max-width: 660px) {
+    .busca {
+        height: 106px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 0;
+        margin-top: 2%;
+        align-items: center;
+    }
+    
+    .data {
+        width: 70% !important;
+    }
+    
+    .data, .pesquisa {
+        display: flex;
+        width: 70%;
+        height: 50px;
+    }
+    
+    .filtroData {
+            width: 160px;
+            font-size: 16px;
+    }
+
+    .data input {
+        width: 74%;
+    }
+
+    .pesquisa #icon2 {
+        right: 34px;
+    }
+
+    .transacao label {
+        font-size: 16px;
+    }
+
+    .geral label {
+        font-size: 20px;
+    }
+
+    .tabela h4 {
+        font-size: 22px;
+    }
+
+    #info h2,
+    .search-container {
+        margin-left: 20px;
+    }
+
+    .search-container input {
+        width: 90%;
+        height: 60%;
+        padding-left: 15px;
+    }
+
+    .search-container input::placeholder {
+        font-size: 15px;
+    }
+
+    #icon {
+        width: 16px;
+        height: auto;
+        right: 30px;
+    }
+
+    header {
+        padding-top: 4%;
+    }
+}
+
+@media screen and (max-width: 580px) {
+    .search-container input {
+        width: 180px;
+        height: 35px;
+        padding-right: 10px;
+    }
+
+    .search-container input::placeholder {
+        font-size: 13px;
+        position: relative;
+        right: 20px;
+    }
+
+    #icon {
+        right: 30px;
+    }
+
+    .icon-user {
+        margin-left: 0;
+        width: 60px;
+        height: 60px;
+        padding: 10px;
+    }
+
+    .icon-user img {
+        width: 40px;
+        height: auto;
+    }
+
+    .adicionar {
+        width: 150px;
+        font-weight: 500;
+        font-size: 13px;
+        height: 35px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .resumo[_ngcontent-ng-c3725166285] {
+        flex-wrap: wrap;
+    }
+
+    .tabela {
+        width: 45%;
+        margin-bottom: 2%;
+    }
+}
+
+@media screen and (max-width: 470px) {
+    .search-container input {
+        width: 160px;
+        height: 35px;
+        padding-right: 10px;
+    }
+
+    #icon {
+        right: 20px;
+    }
+
+    .dropdown {
+        padding-right: 0;
+    }
+
+    .dropbtn {
+        padding-left: 0;
+        padding-right: 0;
+        font-size: 14px;
+    }
+
+    .icon-user {
+        margin-top: 5px;
+        width: 55px;
+        height: 55px;
+        
+        align-items: center;
+    }
+
+    .icon-user img {
+        width: 35px;
+        height: auto;
+        justify-content: center;
+        margin: 0;
+        align-self: center;
+    }
+
+    .data {
+        width: 70% !important;
+    }
+    
+    .data, .pesquisa {
+        display: flex;
+        width: 70%;
+        height: 40px;
+    }
+    
+    .filtroData {
+        width: 120px;
+        font-size: 14px;
+    }
+
+    .data input {
+        width: 70%;
+    }
+
+}
