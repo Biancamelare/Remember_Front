@@ -12,6 +12,7 @@ import { ModalIconComponent } from './shared/components/modal-icon/modal-icon.co
 import { TarefaDiaComponent } from './tarefa/components/tarefa-dia/tarefa-dia.component';
 import { ListaFinanceiroComponent } from './financeiro/components/lista-financeiro/lista-financeiro.component';
 import { ModelFinanceiroComponent } from './financeiro/components/model-financeiro/model-financeiro.component';
+import { CalendarioComponent } from './tarefa/components/calendario/calendario.component';
 
 export const routes: Routes = [
     {
@@ -76,6 +77,12 @@ export const routes: Routes = [
     {
         path: 'lista-financeiro',
         component: ListaFinanceiroComponent,
+        canActivate: [AuthGuardService]
+        
+    },
+    {
+        path: 'calendario',
+        component: CalendarioComponent,
         canActivate: [AuthGuardService]
         
     }

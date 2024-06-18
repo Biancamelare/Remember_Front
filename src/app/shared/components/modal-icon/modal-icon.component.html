@@ -19,199 +19,32 @@
       </div>
       <div class="modal-body">
         <form>
-          <!-- [formGroup]="formModal" -->
           <h4>Meus emblemas</h4>
           <p>A cada 100 XP desbloqueie um novo emblema</p>
 
           <div class="icons">
-            <div class="opcao">
-              <button class="select">
+            <div class="opcao" *ngFor="let avatar of avatares">
+              <button type="button" class="select">
                 <div class="icon">
-                  <img src="assets/icon-corgi.png" alt="" />
-                  <div class="xp">100xp</div>
+                  <img [id]="avatar.id" [src]="'data:image/jpg;base64,'+avatar.url_foto" alt="" (click)="selectAvatar(avatar.id)" />
+                  <div class="xp">{{avatar.qtde_xp}} XP</div>
                 </div>
               </button>
-              <div class="bloqueado" hidden>
+            </div>
+
+            <div class="opcao" *ngFor="let n of [].constructor(numDivs); let i = index">
+              <div class="bloqueado">
                 <img src="assets/cadeado.png" alt="" />
               </div>
-            </div>
-
-            <div class="opcao">
-              <button class="select">
-                <div class="icon" >
-                  <img src="assets/icon-mastiff.png" alt="" />
-                  <div class="xp">200xp</div>
-                </div>
-              </button>
-                <div class="bloqueado" hidden>
-                  <img src="assets/cadeado.png" alt="" />
-                </div>
-            </div>
-
-            <div class="opcao">
-                <button class="select">
-                    <div class="icon">
-                  <img src="assets/icon-saluki.png" alt="" />
-                  <div class="xp">300xp</div>
-                </div>
-              </button>
-                <div class="bloqueado" hidden>
-                  <img src="assets/cadeado.png" alt="" />
-                </div>
-            </div>
-
-            <div class="opcao">
-                <button class="select" disabled>
-                    <div class="icon" hidden>
-                  <img src="assets/icon-yorkshire.png" alt="" />
-                  <div class="xp">400xp</div>
-                </div>
-              </button>
-                <div class="bloqueado">
-                  <img src="assets/cadeado.png" alt="" />
-                </div>
-            </div>
-
-            <div class="opcao">
-                <button class="select" disabled>
-                    <div class="icon" hidden>
-                  <img src="assets/icon-malamute.png" alt="" />
-                  <div class="xp">500xp</div>
-                </div>
-              </button>
-                <div class="bloqueado">
-                  <img src="assets/cadeado.png" alt="" />
-                </div>
-            </div>
-
-            <div class="opcao">
-                <button class="select" disabled>
-                    <div class="icon" hidden>
-                  <img src="assets/icon-bergamasco.png" alt="" />
-                  <div class="xp">600xp</div>
-                </div>
-              </button>
-                <div class="bloqueado">
-                  <img src="assets/cadeado.png" alt="" />
-                </div>
-            </div>
-
-            <div class="opcao">
-                <button class="select" disabled>
-                    <div class="icon" hidden>
-                  <img src="assets/icon-doberman.png" alt="" />
-                  <div class="xp">700xp</div>
-                </div>
-              </button>
-                <div class="bloqueado">
-                  <img src="assets/cadeado.png" alt="" />
-                </div>
-            </div>
-
-            <div class="opcao">
-                <button class="select" disabled>
-                    <div class="icon" hidden>
-                  <img src="assets/icon-chow-chow.png" alt="" />
-                  <div class="xp">800xp</div>
-                </div>
-              </button>
-                <div class="bloqueado">
-                  <img src="assets/cadeado.png" alt="" />
-                </div>
-            </div>
-
-            <div class="opcao">
-                <button class="select" disabled>
-                    <div class="icon" hidden>
-                  <img src="assets/icon-dachshund.png" alt="" />
-                  <div class="xp">900xp</div>
-                </div>
-              </button>
-                <div class="bloqueado">
-                  <img src="assets/cadeado.png" alt="" />
-                </div>
-            </div>
-
-            <div class="opcao">
-                <button class="select" disabled>
-                    <div class="icon" hidden>
-                  <img src="assets/icon-dalmata.png" alt="" />
-                  <div class="xp">1000xp</div>
-                </div>
-              </button>
-                <div class="bloqueado">
-                  <img src="assets/cadeado.png" alt="" />
-                </div>
-            </div>
-
-            <div class="opcao">
-                <button class="select" disabled>
-                    <div class="icon" hidden>
-                  <img src="assets/icon-shetland-sheepdog.png" alt="" />
-                  <div class="xp">1100xp</div>
-                </div>
-              </button>
-                <div class="bloqueado">
-                  <img src="assets/cadeado.png" alt="" />
-                </div>
-            </div>
-
-            <div class="opcao">
-                <button class="select" disabled>
-                    <div class="icon" hidden>
-                  <img src="assets/icon-xoloitzcuintle.png" alt="" />
-                  <div class="xp">1200xp</div>
-                </div>
-              </button>
-                <div class="bloqueado">
-                  <img src="assets/cadeado.png" alt="" />
-                </div>
-            </div>
-
-            <div class="opcao">
-                <button class="select" disabled>
-                    <div class="icon" hidden>
-                  <img src="assets/icon-bull.png" alt="" />
-                  <div class="xp">1300xp</div>
-                </div>
-              </button>
-                <div class="bloqueado">
-                  <img src="assets/cadeado.png" alt="" />
-                </div>
-            </div>
-
-            <div class="opcao">
-                <button class="select" disabled>
-                    <div class="icon" hidden>
-                  <img src="assets/icon-poodle.png" alt="" />
-                  <div class="xp">1400xp</div>
-                </div>
-              </button>
-                <div class="bloqueado">
-                  <img src="assets/cadeado.png" alt="" />
-                </div>
-            </div>
-
-            <div class="opcao">
-                <button class="select" disabled>
-                    <div class="icon" hidden>
-                  <img src="assets/icon-collie.png" alt="" />
-                  <div class="xp">1500xp</div>
-                </div>
-              </button>
-                <div class="bloqueado">
-                  <img src="assets/cadeado.png" alt="" />
-                </div>
             </div>
           </div>
         </form>
 
         <hr />
 
-        <button type="button" class="btn btn-success botao"  aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+        <button (click)="salvarAvatar()" type="button" class="btn btn-success botao"  aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
         <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z"/>
-        </svg> Salvar</button>
-        <!-- (click)="salvar()" -->
+        </svg>Usar avatar selecionado</button>
       </div>
       <div class="modal-footer custom-modal-footer"></div>
     </div>

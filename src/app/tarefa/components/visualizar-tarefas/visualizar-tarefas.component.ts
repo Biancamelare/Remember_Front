@@ -15,6 +15,8 @@ import { PrioridadeModel } from '../../models/prioridade.model';
 import { StatusModel } from '../../models/status.model';
 import { SidenavComponent } from '../../../shared/components/sidenav/sidenav.component';
 import { ReactiveFormsModule, FormsModule, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { AvatarModel } from '../../../shared/models/avatar.model';
+import { CoresService } from '../../../shared/services/cores.service';
 
 @Component({
   selector: 'app-visualizar-tarefas',
@@ -60,6 +62,13 @@ export class VisualizarTarefasComponent implements OnInit {
 
   filtrosAplicados: string = 'Listado por - Sem filtros aplicados.';
 
+  stringBase64: any;
+  id_avatar?:number;
+  avatarSelecionado = {} as AvatarModel;
+
+  quantTarefas?:number;
+  fraseQuantTarefas?: string;
+
 
 
   constructor(
@@ -70,6 +79,7 @@ export class VisualizarTarefasComponent implements OnInit {
     private tarefaService: TarefaServiceService,
     private formBuilder: FormBuilder,
     private alertaService:AlertaService,
+    private coresService: CoresService,
     private datePipe: DatePipe
 ) {
   
@@ -103,6 +113,8 @@ export class VisualizarTarefasComponent implements OnInit {
             this.usuarioSelecionado = usuario;
             this.xp = this.usuarioSelecionado.xp
             this.nome = this.funcoesService.formatarNomeCompleto(this.usuarioSelecionado.nome)
+            this.id_avatar = this.usuarioSelecionado.id_avatar
+            this.buscarAvatar()
         })
     }
 
@@ -127,7 +139,8 @@ export class VisualizarTarefasComponent implements OnInit {
     this.tarefaService.getTarefas(this.currentUser).subscribe(
       (tarefas: PageTarefaModel) => {
         this.tarefas = tarefas.data || [];
-        console.log(this.tarefas)
+        this.quantTarefas = tarefas.total;
+        this.atualizarFrase();
         this.associarDados();
       },
       (error) => {
@@ -150,6 +163,16 @@ export class VisualizarTarefasComponent implements OnInit {
         }
 
       });
+    }
+  }
+
+  atualizarFrase(){
+    if (this.quantTarefas == 0 || this.quantTarefas == null || this.quantTarefas == undefined) {
+      this.fraseQuantTarefas = 'Não há tarefas cadastradas!';
+    } else if (this.quantTarefas == 1) {
+      this.fraseQuantTarefas = '1 tarefa';
+    } else if (this.quantTarefas > 1) {
+      this.fraseQuantTarefas = `${this.quantTarefas} tarefas`;
     }
   }
 
@@ -197,7 +220,6 @@ export class VisualizarTarefasComponent implements OnInit {
         this.buscarUsuario();
       },
       (error) => {
-        console.error('Erro ao editar a tarefa:', error);
         this.alertaService.exibirAlerta('danger', 'Erro ao editar a tarefa: ' + error.error.message);
       }
     );
@@ -215,8 +237,10 @@ export class VisualizarTarefasComponent implements OnInit {
     this.tarefaService.filtrarTarefas(params, this.currentUser).subscribe(
       (tarefas: PageTarefaModel) => {
         this.tarefas = tarefas.data || [];
+        this.quantTarefas = tarefas.total
         this.associarDados();
         this.atualizarFiltrosAplicados();
+        this.atualizarFrase();
       },
       (error) => {
         this.alertaService.exibirAlerta('danger', 'Erro ao filtrar tarefas: ' + error.error.message);
@@ -288,5 +312,16 @@ export class VisualizarTarefasComponent implements OnInit {
     }
 
     this.filtrosAplicados = `Listado por - ${filtros.join('; ')}`;
+  }
+
+  buscarAvatar() {
+    if(this.id_avatar){
+      this.coresService.getByIdTema(this.id_avatar,this.currentUser).subscribe( 
+        (avatar : AvatarModel) => {
+          this.avatarSelecionado = avatar;
+          this.stringBase64 = 'data:image/jpg;base64,' + avatar.url_foto
+      })
+    }
+
   }
 }

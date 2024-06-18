@@ -36,6 +36,12 @@ export class UsuarioService {
     return this.http.put(`http://localhost:3000/usuario/${id}`, { id_tema: idTema}, {headers });
   }
 
+  editarAvatar(idAvatar:number, id:number, token: string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.put(`http://localhost:3000/usuario/${id}`, { id_avatar: idAvatar}, {headers });
+  }
 
   login(usuario: UsuarioLoginModel) {
 

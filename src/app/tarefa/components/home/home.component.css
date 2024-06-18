@@ -29,7 +29,6 @@ header {
 
 .main-center {
     display: flex;
-    align-items: center;
     justify-content: center;
     flex-direction: column;
 }
@@ -152,8 +151,9 @@ hr{
     flex-direction: column;
     display: flex;
     margin-top: 2%;
-    margin-bottom: 2%;
-    width: 61%;
+    margin-left: 18%;
+    padding-bottom: 2%;
+    width: 100%;
 }
 
 h2, h3 {
@@ -168,6 +168,8 @@ h2, h3 {
     padding: 4%;
     display: flex;
     align-items: center;
+    padding-top: 25px;
+
 }
 
 #texto {
@@ -190,7 +192,7 @@ h2, h3 {
 .qtde {
     display: flex;
     width: 100%;
-    padding-left: 14%;
+    padding-left: 12%;
     padding-right: 5%;
     justify-content: space-evenly;
 }
@@ -253,13 +255,22 @@ h2, h3 {
 #titulo label {
     color:#858CA6;
     font-weight: 600;
-    font-size: 18px;
+    font-size: 20px;
+    margin-bottom: 3%;
 }
 
 .rosca label{
     font-size: 20px;
     font-weight: 600;
 }
+
+.graficoTexto{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+
+  
 
 .adicionar {
     padding: 0;
@@ -415,7 +426,9 @@ h2, h3 {
   }
 
   ::ng-deep .chart-legend { 
-    color: var(--font-color) !important; 
+    color: var(--font-color) !important;
+    display: flex;
+    
     
   }
   
@@ -428,5 +441,191 @@ h2, h3 {
     color: black !important;
   }
   
+  circle-progress {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5%;
+    position: relative;
+}
+
+
+
+.chart-wrapper {
+    display: block;
+    text-align: center;
+    height: 50%; 
+}
+
+ngx-charts-pie-chart {
+    display: inline-block;
+    margin: auto;
+    width: 570px;
+    height: 330px; 
+}
+
+.xp2 {
+    background: var(--tertiary-color);
+    border-radius: 20px;
+    width: 130px;
+    height: 35px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 20px;
+    padding:20px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    color:var(--font-color)
+}
+
+form{
+     margin-bottom: 3%;
+}
+
   
+/* 
+  @media screen and (max-width: 990px) {
+    #texto {
+        font-size: 15px;
+    }
+     */
+/* 
+  } */
+
+@media screen and (max-width: 1500px) {
+     .qtde {
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       justify-content: space-between;
+    }
+
+    .porcentagemTabela {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: start;
+        width: 80%;
+        height: 60%;
+    } 
+
+    .porcentagem-tarefas {
+        width: 48%;
+        height: 100%;
+        padding: 2%;
+        flex-direction: column;
+    }
+
+    #texto {
+        width: auto;
+        font-size: 22px;
+    }
+ 
+
+    .table1 {
+        width: 48%;
+        height: 100%;
+        margin-top: 0%;
+    }
+
+    #grafico {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        height: 80%;
+        padding-top: 6%;
+    }
+
+    .chart-wrapper {
+        display: block;
+        text-align: center;
+        height: 50%; 
+    }
+  
+    ngx-charts-pie-chart {
+        display: inline-block;
+        margin: auto;
+        width: 570px;
+        height: 330px; 
+    }
+
+    .boasVindas {
+        margin-left: 20.5%;
+        padding-bottom: 2%;
+    }
+} 
+
+@media screen and (max-width: 900px) {
+    .qtde {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: 50px;
+    }
+    .porcentagemTabela {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 42%;
+    }
+    .porcentagem-tarefas {
+        width: 80%;
+        height: 25%;
+        padding: 2%;
+        margin-bottom: 4%;
+        flex-direction: row;
+    }
+    .table1 {
+        width: 80%;
+        height: 70%;
+        margin-top: 0%;
+    }
+
+    #grafico {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        height: 45%;
+        padding-top: 6%;
+    }
+    .boasVindas {
+
+        padding-bottom: 0%;
+    }
+    .chart-wrapper {
+        display: block;
+        text-align: center;
+        height: 50%; 
+    }
+  
+    ngx-charts-pie-chart {
+        margin: auto;
+        width: 570px;
+        height: 330px; 
+    }
+    #titulo {
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+    }
+    .tarefa {
+        width: 80vw;
+        margin: 2% 0 1% 2%;
+    }
+
+    .tarefasDia {
+        margin-left: 50px;
+        margin-bottom: 100px;
+    }
+}
 

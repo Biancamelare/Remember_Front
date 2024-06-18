@@ -9,9 +9,13 @@ body {
     display: flex;
     flex-direction: column;
     flex: 1;
-    width: 100vw;
+    /* width: 100vw;
     height: 100vh;
-    overflow: hidden;
+    overflow: hidden; */
+}
+
+.main-center{
+    margin-top: 1%;
 }
 
 header {
@@ -22,7 +26,7 @@ header {
     padding-left: 11%;
 }
 
-.userDrop{
+.userDrop {
     display: flex;
 }
 
@@ -36,15 +40,16 @@ header {
     margin-bottom: 3%;
     margin-left: 10px;
     font-weight: 500;
-   
+
 }
-.nome{
+
+.nome {
     color: var(--font-color);
     font-weight: 500;
     margin-left: 5px;
 }
 
-.xpmenu{
+.xpmenu {
     margin-bottom: 5px;
 }
 
@@ -52,8 +57,9 @@ header .search-container {
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: center;  
+    justify-content: center;
     width: 40vw;
+   
 }
 
 .search-container span svg {
@@ -61,7 +67,7 @@ header .search-container {
 }
 
 .search-input {
-    padding-right: 35px; 
+    padding-right: 35px;
     height: 45px;
     background-color: var(--quaternary-color);
     border-radius: 14px;
@@ -74,10 +80,10 @@ header .search-container {
     top: 35px;
     right: 20px;
     transform: translateY(-50%);
-    fill: var(--secondary-color); 
+    fill: var(--secondary-color);
 }
 
-.search-input::placeholder{
+.search-input::placeholder {
     color: var(--font-color);
     font-weight: 600;
     font-size: 18px;
@@ -138,11 +144,11 @@ header .search-container {
     display: flex;
     margin: auto;
     width: 44vw;
-    height: 6vh;
+    height: 50px;
     background-color: var(--quaternary-color);
     border-radius: 5px;
     margin-right: 35%;
-    margin-bottom: 1%!important;
+    margin-bottom: 1% !important;
     line-height: 15px;
 }
 
@@ -151,7 +157,7 @@ header .search-container {
     box-shadow: none;
 }
 
-.resultado label{
+.resultado label {
     color: var(--font-color);
     font-weight: 600;
     margin-left: 2rem;
@@ -164,6 +170,7 @@ header .search-container {
     margin: auto;
     width: 62%;
     padding-right: 7%;
+    margin-top: 0.5%;
 }
 
 #tarefas {
@@ -175,6 +182,7 @@ header .search-container {
     height: 65vh;
     overflow-x: hidden;
     margin-right: 35%;
+    margin-bottom: 100px;
 }
 
 .tarefa {
@@ -200,14 +208,16 @@ header .search-container {
 .prioridade#P1 {
     background-color: var(--btnAlta-color);
 }
+
 .prioridade#P2 {
     background-color: var(--btnMedia-color);
 }
+
 .prioridade#P3 {
     background-color: var(--btnBaixa-color);
 }
 
-.form-check-input{
+.form-check-input {
     margin: 4% 6%;
     padding: 10px;
     border-radius: 50%;
@@ -238,8 +248,8 @@ header .search-container {
     border-radius: 20px;
     top: 28%;
     right: 10%;
-    height: auto; 
-    background-color:  var(--user-color); 
+    height: auto;
+    background-color: var(--user-color);
     padding: 1.5% 1%;
     display: flex;
     flex-direction: column;
@@ -247,10 +257,10 @@ header .search-container {
 }
 
 .filtrar h5 {
-    align-self: flex-start; 
+    align-self: flex-start;
     padding-bottom: 10%;
     font-weight: 700;
-    color:var(--font-color)
+    color: var(--font-color)
 }
 
 .filtros,
@@ -266,7 +276,7 @@ input[type="date"] {
     text-align: center;
 }
 
-.filtroData{
+.filtroData {
     display: flex;
     align-items: center;
     width: 260px;
@@ -276,7 +286,7 @@ input[type="date"] {
     border-radius: 5px;
 }
 
-.filtroData label{
+.filtroData label {
     text-align: center;
     font-weight: 500;
     justify-content: center;
@@ -297,7 +307,8 @@ h2 {
     color: var(--secondary-color);
 }
 
-.filtro svg, .filtroLimpar svg {
+.filtro svg,
+.filtroLimpar svg {
     margin-right: 10px;
     margin-bottom: 3px;
 }
@@ -310,6 +321,7 @@ h2 {
     font-weight: 500;
     background-color: var(--font-color);
 }
+
 .filtro {
     padding: 5px;
     width: 180px;
@@ -325,28 +337,28 @@ h2 {
     margin-top: 5%;
 }
 
-.nomeCateg #nome{
+.nomeCateg #nome {
     font-weight: 700;
     color: var(--font-color);
     font-size: 20px;
 }
 
-hr{
+hr {
     margin: 0;
 }
 
 .bi-exclamation-triangle-fill {
     margin-left: 10px;
     margin-bottom: 3px;
-    color: red; 
+    color: red;
 }
 
 .riscado {
     text-decoration: line-through var(--primary-color);
 }
 
-#limpar{
-    margin-left:8px;
+#limpar {
+    margin-left: 8px;
     margin-bottom: 5px;
 }
 
@@ -363,19 +375,18 @@ hr{
     display: inline;
 }
 
-.limparFiltro{
+.limparFiltro {
     background-color: var(--btnAlta-color);
-    color:black;
+    color: black;
 }
 
-.limparFiltro svg{
-    color:rgba(255, 3, 3, 0.7)
+.limparFiltro svg {
+    color: rgba(255, 3, 3, 0.7)
 }
 
 #tarefas form {
     margin-right: 200px;
 }
-
 
 #titulo{
     display: flex;
@@ -386,259 +397,624 @@ hr{
     line-height: 15px;
 }
 #titulo label {
-    color:#858CA6;
-    font-weight: 600;
-    font-size: 18px;
+    color:var(--gradient2-color);
+    font-weight: 700;
+    font-size: 20px;
 }
 
-@media screen and (max-width: 1300px) { 
-        #tarefas {
-            margin-left: 15%;
-            width: 48vw;
-        }
-    
-        .tarefa {
-            width: 46vw;
-        }
-    
-        .resultado {
-            margin-left: 15%;
-            width: 48vw;
-        }
-    
-        #info{
-            margin-left: 15%;
-            width:60%;
-    
-        }
-
-        #btnAdicionar {
-           margin-right: 10%;
-        }
-    
-        h2 {
-            padding: 0;
-        }
-    
-        #statusPrioridade {
-            padding-right: 0;
-        }
+@media screen and (max-width: 1400px) {
+    #info h2 {
+        font-size: 25px;
+        line-height: 50px;
+        margin-bottom: 0;
     }
 
-    @media screen and (max-width: 1200px) { 
-        .prioridade {
-            width: 120px;
-        }
-    }
-    
-    
-    @media screen and (max-width: 1100px) { 
-        .main-center {
-            display: flex;
-            flex-wrap: wrap ;
-        }
-    
-        #tarefas {
-            margin-left: 15%;
-        }
-    
-        .resultado {
-            margin-left:15%;
-        }
-        .filtros {
-            font-size: 14px;
-            width: 220px;
-        }
-    
-        .filtroData {
-            width: 200px;
-            font-size: 14px;
-        }
-
-        #filtroData {
-            width: 200px;
-           
-        }
+    #btnAdicionar {
+        margin-top: 5px;
     }
 
-    @media screen and (max-width: 1000px) { 
-        .filtrar {
-            position: absolute;
-            right:6%;
-           
-        }
-    
-        .filtros {
-            width: 200px;
-            font-size: 13px;
-        }
-    
-        .filtroData input{
-            width: 110px;
-            font-size: 13px;
-        }
+}
 
-        .filtroData {
-            width: 180px;
-        } 
-    
-        .filtrar button {
-            width: 140px;
-            height: 35px;
-            font-size: 15px;
-        }
 
-        .btn.filtro svg{
-            width: 18px;
-            height: auto;
-        }
-    
-        #tarefas {
-            width: 50vw;
-        }
-    
-        .tarefa {
-            width: 48vw;
-            height: 75px;
-        }
-    
-        .resultado {
-            width: 52vw;
-        }
-    
-        .status {
-            width: 100px;
-            font-size: 13px;
-        } 
-    
-        .prioridade {
-            width: 100px;
-            font-size: 13px;
-            height: 23px;
-        }
-    
-        .nomeCateg #nome{
-            font-size: 17px;
-            line-height: 20px;
-        }
-    
-        .nomeCateg #nomeCateg{
-            font-size: 15px;
-        }
-    
-        #info{
-            width:63%;
-        }
-    }
-    
-    @media screen and (max-width: 850px) {
-        .filtrar {
-            right:3%;
-        }
-    
-        #info{
-            width:95%;
-        }
-    
-        .nomeCateg #nome {
-            font-size: 15px
-        }
-    
-        .nomeCateg #nomeCateg{
-            font-size: 13px;
-        }
-    
-        #filtroData {
-            font-size: 11px;
-        }
-    
+@media screen and (max-width: 1300px) {
+    #tarefas {
+        margin-left: 15%;
+        width: 48vw;
     }
 
-    @media screen and (max-width: 750px) {
-        .form-control {
-            font-size: 15px;
-        }
-    
-        .main-visualizar {
-            display: flex;
-            flex-direction: column;
-        }
-    
-        #info {
-            margin-top: 35px;
-            margin-bottom: 15px;
-            order: 1;
-        }
-    
-        .box-filtro {
-            display: flex;
-            flex-direction: row;
-        }
-    
-        .filtrar {
-            display: flex;
-            order: 2;
-            position: relative;
-            top:auto;
-            justify-content: center;
-            margin: 0 auto;
-            left: 5%;
-            width: auto; 
-            margin-bottom: 20px;
-            flex-direction: column;
-            align-items: center;
-            flex-wrap: wrap; 
-            padding-left: 30px;
-            padding-right: 30px;
-        } 
-    
-        .filtrar h5 {
-            padding: 0;
-            padding-right: 200px;
-        }
-    
-        .filtros {
-            display: flex;
-            justify-content: space-between;
-            width: 100px;
-            margin:0;
-            margin-left: 10px;
-            order: 2;
-            flex-direction: row;
-            flex-wrap: nowrap;
-        }
-    
-        #filtroData input {
-            margin: 0;
-            order: 1;
-        }
-    
-        .main-center {
-            order: 3;
-        } 
-    
-        #tarefas {
-            display: flex;
-            margin: 0 auto;
-            width: 60vw;
-            position: relative;
-            left: 5%;
-        }
-    
-        .tarefa {
-            margin: 0 auto;
-            margin-top: 10px;
-            width: 56vw;
-            height: 75px;
-            position: relative;
-        }
-    
-        .resultado {
-            display: flex;
-            margin: 0 auto;
-            width: 60vw;
-            position: relative;
-            left: 5%;
-        }
+    .tarefa {
+        width: 46vw;
+    }
+
+    .resultado {
+        margin-left: 15%;
+        width: 48vw;
+    }
+
+    #info {
+        margin-left: 15%;
+        width: 60%;
+    }
+
+    #btnAdicionar {
+        margin-right: 10%;
+    }
+
+    h2 {
+        padding: 0;
+    }
+
+    #statusPrioridade {
+        padding-right: 0;
+    }
+
+    #titulo {
+        margin-left: 15%;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .prioridade {
+        width: 120px;
+    }
+
+    #info {
+        width: 85%;
+    }
+}
+
+
+@media screen and (max-width: 1100px) {
+    .main-center {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #tarefas {
+        margin-left: 15%;
+    }
+
+    .resultado {
+        margin-left: 15%;
+    }
+
+    .filtros {
+        font-size: 14px;
+        width: 220px;
+    }
+
+    .filtroData {
+        width: 200px;
+        font-size: 14px;
+    }
+
+    #filtroData {
+        width: 200px;
+
+    }
+
+    #info {
+        width: 87%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .filtrar {
+        position: absolute;
+        right: 6%;
+
+    }
+
+    .filtros {
+        width: 200px;
+        font-size: 13px;
+    }
+
+    .filtroData input {
+        width: 110px;
+        font-size: 13px;
+    }
+
+    .filtroData {
+        width: 180px;
+    }
+
+    .filtrar button {
+        width: 140px;
+        height: 35px;
+        font-size: 15px;
+    }
+
+    .btn.filtro svg {
+        width: 18px;
+        height: auto;
+    }
+
+    #tarefas {
+        width: 50vw;
+    }
+
+    .tarefa {
+        width: 48vw;
+        height: 75px;
+    }
+
+    .resultado {
+        width: 52vw;
+    }
+
+    .status {
+        width: 100px;
+        font-size: 13px;
+    }
+
+    .prioridade {
+        width: 100px;
+        font-size: 13px;
+        height: 23px;
+    }
+
+    .nomeCateg #nome {
+        font-size: 17px;
+        line-height: 20px;
+    }
+
+    .nomeCateg #nomeCateg {
+        font-size: 15px;
+    }
+
+    #info {
+        width: 92.5%;
+    }
+
+    #info h2 {
+        font-size: 22px;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .filtrar {
+        right: 3%;
+    }
+
+
+
+    .nomeCateg #nome {
+        font-size: 15px
+    }
+
+    .nomeCateg #nomeCateg {
+        font-size: 13px;
+    }
+
+    #filtroData {
+        font-size: 11px;
+    }
+
+    #titulo label {
+        font-size: 18px;
+    }
+
+    #info {
+        width: 95%;
+    }
+
+}
+
+@media screen and (max-width: 750px) {
+    #btnAdicionar {
+        margin-right: 20px;
     }
     
+    .form-control {
+        font-size: 15px;
+    }
+
+    .main-visualizar {
+        display: flex;
+        flex-direction: column;
+        overflow: auto;
+        overflow-x: hidden;
+    }
+
+    #info {
+        margin-top: 35px;
+        margin-bottom: 15px;
+        order: 1;
+        margin-left: 5%;
+    }
+
+    #info h2 {
+        font-size: 22px;
+    }
+
+    .box-filtro {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .filtrar {
+        display: flex;
+        order: 2;
+        position: relative;
+        top: auto;
+        justify-content: center;
+        margin: 0 auto;
+        left: 0.5%;
+        width: 390px;
+        margin-bottom: 20px;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .container-filtros {
+        display: flex;
+        flex-direction: row;
+
+    }
+
+    .filtrar h5 {
+        padding: 0;
+        right: 130px;
+        display: flex;
+        position: relative;
+        font-size: 16px;
+    }
+
+    .filtros {
+        display: flex;
+        justify-content: space-between;
+        width: 90px;
+        margin: 0;
+        margin-left: 5px;
+        order: 2;
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+
+    .main-center {
+        order: 3;
+        flex-direction: column;
+    }
+
+    #tarefas {
+        display: flex;
+        order: 3;
+        margin: 0 auto;
+        width: 390px;
+        position: relative;
+        margin-bottom: 50px;
+    }
+
+    .tarefa {
+        margin: 0 auto;
+        margin-top: 10px;
+        width: 390px;
+        height: 75px;
+        position: relative;
+    }
+
+    .resultado {
+        display: flex;
+        order: 1;
+        margin: 0 auto;
+        width: 390px;
+        position: relative;
+    }
+
+    #info h2,
+    .search-container {
+        margin-left: 20px;
+    }
+
+    .search-container input {
+        width: 90%;
+        height: 60%;
+        padding-left: 15px;
+    }
+
+    .search-container input::placeholder {
+        font-size: 15px;
+    }
+
+    #icon {
+        width: 16px;
+        height: auto;
+        right: 30px;
+    }
+
+    header {
+        padding-top: 4%;
+    }
+
+    #statusfiltro {
+        width: 67px;
+    }
+
+    #categoria {
+        width: 90px;
+    }
+
+    #prioridade {
+        width: 91px;
+    }
+
+    .btn.adicionar {
+        width: auto;
+        font-size: 15px;
+        padding-right: 10px;
+
+    }
+
+    .btn.adicionar svg {
+        width: 30px;
+        height: auto;
+    }
+
+    .filtroData label {
+        display: none;
+    }
+
+    .filtroData input {
+        margin: 0;
+        margin-top: 9px;
+        height: 29px;
+        font-size: 11px;
+    }
+
+    .filtroData {
+        margin: 0;
+        width: 90px;
+    }
+
+    .btn.filtro {
+        margin-top: 10px
+    }
+
+    .filtro-container:hover .limpar.clear-button {
+        display: flex;
+        position: relative;
+        margin: 0;
+        justify-content: center;
+        top: 15px;
+
+    }
+
+    .filtro-container:hover .btn.filtro,
+    .btn.btn-danger.filtroLimpar {
+        margin: 0;
+    }
+
+
+    .btn.btn-danger.filtroLimpar {
+        margin-top: 10px;
+        margin-left: 5px;
+    }
+
+    #titulo {
+        font-size: 18px;
+        display: flex;
+        margin: 0 auto;
+        /* justify-content: center; */
+        margin-top: 5px;
+        margin-bottom: 5px;
+        order: 2;
+        width: 390px;
+
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    #btnAdicionar {
+        margin-right: 0;
+    }
+
+    #info h2 {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 570px) {
+    .search-container input {
+        width: 180px;
+        height: 35px;
+        padding-right: 10px;
+    }
+
+    .search-container input::placeholder {
+        font-size: 13px;
+        position: relative;
+        right: 20px;
+    }
+
+    #icon {
+        right: 30px;
+    }
+
+    .icon-user {
+        margin-left: 0;
+        width: 60px;
+        height: 60px;
+        padding: 10px;
+    }
+
+    .icon-user img {
+        width: 40px;
+        height: auto;
+    }
+
+    #btnAdicionar {
+        margin-top: 10px;
+    }
+
+    .btn.adicionar {
+        font-size: 14px;
+        line-height: 30px;
+        height: 30px;
+    }
+
+    .btn.adicionar svg {
+        width: 25px;
+        height: auto;
+        margin-bottom: 5px;
+    }
+
+    #info h2 {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .search-container input {
+        width: 180px;
+        height: 35px;
+        padding-right: 10px;
+    }
+
+    #icon {
+        right: 15px
+    }
+
+    .dropdown {
+        padding-right: 0;
+    }
+
+    .dropbtn {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+}
+
+
+@media screen and (max-width: 450px) {
+
+    .search-container input {
+        width: 160px;
+        height: 35px;
+        padding-right: 10px;
+    }
+
+    #icon {
+        right: 20px;
+    }
+
+    .dropdown {
+        padding-right: 0;
+    }
+
+    .dropbtn {
+        padding-left: 0;
+        padding-right: 0;
+        font-size: 14px;
+    }
+
+    .icon-user {
+        margin-top: 5px;
+        width: 55px;
+        height: 55px;
+        
+        align-items: center;
+    }
+
+    .icon-user img {
+        width: 35px;
+        height: auto;
+        justify-content: center;
+        margin: 0;
+        align-self: center;
+    }
+
+    #info {
+        margin-bottom: 15px;
+    }
+
+    #info h2 {
+        font-size: 18px;
+        margin-bottom: 0;
+        line-height: 30px;
+    }
+
+    .btn.adicionar {
+        font-size: 14px;
+        line-height: 30px;
+    }
+
+    .btn.adicionar svg {
+        width: 25px;
+        height: auto;
+    }
+
+    #statusfiltro {
+        width: 62px;
+        font-size: 11px;
+    }
+
+    #categoria {
+        width: 79px;
+        font-size: 11px;
+    }
+
+    #prioridade {
+        width: 82px;
+        font-size: 11px;
+    }
+
+    #prioridade {
+        
+    }
+
+    .filtroData {
+        width: 83px;
+    }
+
+    .filtroData input {
+        font-size: 10px;
+        width: 83px;
+    }
+
+    .filtrar {
+        width: 350px;
+        padding-left: 35px;
+        padding-right: 35px;
+    }
+
+    .filtrar h5 {
+        font-size: 15px;
+        margin-left: 15px;
+    }
+
+    .filtrar button {
+        width: 125px;
+        height: 30px;
+        font-size: 15px;
+        line-height: 18px;
+    }
+
+    .btn.filtro svg {
+        width: 16px;
+        height: auto;
+        margin-right: 15px;
+        margin-bottom: 5px;
+    }
+
+    .resultado {
+        width: 350px;
+    }
+
+    #titulo {
+        width: 350px;
+    }
+
+    .tarefa {
+        width: 350px;
+    }
+
+    #tarefas {
+        width: 350px;
+    }
+}

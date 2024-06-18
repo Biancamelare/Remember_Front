@@ -249,6 +249,7 @@ hr{
 #tabelaCores{
    text-align: center;
 }
+
 #tabelaCores td{
     padding: 10px;
     border: 1px solid var(--light-color);
@@ -331,4 +332,250 @@ hr{
 
 .xpmenu{
     margin-bottom: 5px;
+}
+
+@media screen and (max-width: 1300px){
+    .conta {
+        width: 350px; 
+        padding-left: 0;
+    }
+
+    header {
+        padding-left: 200px;
+    }
+}
+
+@media screen and (max-width: 1120px){
+    .box-resp {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .center {
+        position: relative;
+        display: flex;
+        order: 1;
+        justify-content: center;
+    }
+
+    .box-resp aside {
+        position: relative;
+        display: flex;
+        order: 2;
+        justify-content: center;
+        padding-top: 0;
+        padding-right: 0;
+    }
+
+    .aside-content {
+        width: 460px;
+    }
+
+    header {
+        padding-top: 15px;
+        padding-right: 50px;
+        padding-left: 150px;
+    }
+}
+
+@media screen and (max-width: 1120px){ 
+    #meuperfil h2 {
+        font-size: 22px;
+        margin-bottom: 2px;
+    }
+
+    .icon-user {
+        margin-top: 5px;
+        width: 60px;
+        height: 60px;
+        align-items: center;
+    }
+
+    .bi.bi-pencil {
+        margin-top: 3px;
+    }
+
+    .icon-user img {
+        width: 35px;
+        height: auto;
+        justify-content: center;
+        margin: 0;
+        align-self: center;
+    }
+
+    .xp2 {
+        font-size: 16px;
+    }
+
+    .dropbtn {
+        padding-left: 0;
+    }
+}
+
+@media screen and (max-width: 800px){  
+    header {
+        padding-right: 0;
+        padding-left: 100px;
+    }
+}
+
+@media screen and (max-width: 750px){  
+    .center {
+        margin-left: -50px;
+        margin-top: 20px;
+    }
+
+    .box-resp aside {
+        padding: 0;
+    }
+    
+    header {
+        padding-left: 70px;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .center {
+        margin-top: 40px;
+    }
+
+    .center h3 {
+        font-size: 20px;
+    }
+    
+    .icon-user {
+        margin-left: 0;
+        width: 50px;
+        height: 50px;
+        align-items: center;
+        margin-right: 20px !important;
+    }
+
+    .icon-user img {
+        width: 33px;
+        height: auto;
+        justify-content: center;
+        margin: 0;
+        align-self: center;
+    }
+
+    .userDrop {
+        display: none;
+    }
+     
+    header {
+        justify-content: center;
+        padding-left: 0;
+    }
+
+    #meuperfil {
+        margin-top: 10px;
+    }
+
+    .xp2 {
+        margin-left: 20px;
+    }
+
+    .conta {
+        padding: 0;
+    }
+
+    div.input-config input{
+        width: 350px;
+        font-size: 14px;
+    }
+
+    .editar h3 {
+        margin: 0;
+    }
+
+    #btnEditar {
+        font-size: 14px;
+        width: 100px;
+        height: 28px;
+        line-height: 10px;
+    }
+
+    .form-label {
+        font-size: 15px;
+    }
+
+    .btnTema {
+        font-size: 14px;
+    }
+
+    .bi.bi-pencil {
+        margin-top: 0;
+    }
+
+    .center {
+        padding-left: 0;
+        padding-right: 0;
+        justify-content: center;
+        margin-left: 0;
+    }
+
+    .aside-content {
+        width: 350px;
+        margin-bottom: 50px;
+    }
+
+    .aside-content h3 {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+
+    .aside-content p {
+        margin-bottom: 15px;
+    }
+
+    .perfil {
+        margin-top: 5px;
+    }
+}
+
+@media screen and (max-width: 450px){
+    .icon-user {
+        margin-right: 15px !important;
+    }
+
+    #meuperfil h2 {
+        font-size: 18px;
+    }
+
+    .xp2 {
+        margin-left: 15px;
+    }
+
+    div.input-config input{
+        width: 300px;
+    }
+
+    .conta { 
+        width: 300px;
+    }
+
+    .conta h3 { 
+        font-size:18px;
+    }
+
+    .aside-content {
+        width: 300px;
+        margin-bottom: 50px;
+    }
+
+    .aside-content h3 {
+        font-size: 18px;
+    }
+    
+    .aside-content svg {
+        width: 18px;
+        height: auto;
+        margin-bottom: 5px;
+    }
+
+    .aside-content p {
+        font-size: 13px;
+    }
+
 }

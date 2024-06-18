@@ -19,6 +19,8 @@ import { CircleProgressOptions, NgCircleProgressModule } from 'ng-circle-progres
 import { circleProgressOptions } from '../../../shared/models/grafico';
 import { ChartCommonModule, NgxChartsModule, PieChartComponent } from '@swimlane/ngx-charts';
 import { ChartsModule } from '../../../shared/models/charts.module';
+import { CoresService } from '../../../shared/services/cores.service';
+import { AvatarModel } from '../../../shared/models/avatar.model';
 
 @Component({
   selector: 'app-home',
@@ -76,6 +78,10 @@ export class HomeComponent {
 
   chartData: any[] = [];
 
+  stringBase64: any;
+  id_avatar?:number;
+  avatarSelecionado = {} as AvatarModel;
+
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private authService: AuthServiceService,
@@ -84,6 +90,7 @@ export class HomeComponent {
     private tarefaService: TarefaServiceService,
     private alertaService:AlertaService,
     private formBuilder: FormBuilder,
+    private coresService: CoresService,
     private datePipe: DatePipe) {
   
       const sessionStorage = document.defaultView?.sessionStorage;
@@ -117,6 +124,8 @@ export class HomeComponent {
             this.usuarioSelecionado = usuario;
             this.nome = this.funcoesService.formatarNomeCompleto(this.usuarioSelecionado.nome)
             this.xp = this.usuarioSelecionado.xp
+            this.id_avatar = this.usuarioSelecionado.id_avatar
+            this.buscarAvatar()
             
         })
     }
@@ -248,7 +257,6 @@ export class HomeComponent {
           this.recarregarTarefas();
         },
         (error) => {
-          console.error('Erro ao editar a tarefa:', error);
           this.alertaService.exibirAlerta('danger', 'Erro ao editar a tarefa: ' + error.error.message);
         }
       );
@@ -310,6 +318,17 @@ export class HomeComponent {
       } else if (this.quantTarefasHoje > 1) {
         this.fraseQuantTarefas = `${this.quantTarefasHoje} tarefas`;
       }
+    }
+
+    buscarAvatar() {
+      if(this.id_avatar){
+        this.coresService.getByIdTema(this.id_avatar,this.currentUser).subscribe( 
+          (avatar : AvatarModel) => {
+            this.avatarSelecionado = avatar;
+            this.stringBase64 = 'data:image/jpg;base64,' + avatar.url_foto
+        })
+      }
+  
     }
   
   
