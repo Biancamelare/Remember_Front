@@ -146,7 +146,7 @@ hr{
     display: flex;
     margin: auto;
     width: 44vw;
-    height: 6vh;
+    height: 4vh;
     background-color: var(--quaternary-color);
     border-radius: 5px;
     margin-right: 35%;
@@ -305,7 +305,7 @@ h2 {
     display: flex;
     justify-content: space-around;
     margin-top: 4%;
-    margin-bottom: 4%;
+    margin-bottom: 2%;
     width: 68%;
 }
 
@@ -361,7 +361,6 @@ h2 {
     width: 20%;
     margin-right: 3%;
     text-align: center;
-    font-weight: 650!important;
 }
 
 #categoria {
@@ -384,6 +383,18 @@ h2 {
     font-weight: 600;
     color: var(--font-color)
 }
+
+#frase label {
+    color:var(--gradient2-color);
+    font-weight: 650;
+    font-size: 20px;
+    margin-bottom: 1%;
+}
+
+#frase {
+    margin-left: 2%;
+}
+
 
 .tabela {
     border-radius: 22px;

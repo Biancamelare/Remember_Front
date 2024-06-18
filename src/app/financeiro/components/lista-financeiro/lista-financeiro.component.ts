@@ -52,6 +52,9 @@ export class ListaFinanceiroComponent implements OnInit {
   id_avatar?:number;
   avatarSelecionado = {} as AvatarModel;
 
+  quantTransacao:number = 0;
+  fraseQuantTransacoes?: string;
+
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
@@ -95,6 +98,8 @@ export class ListaFinanceiroComponent implements OnInit {
     this.transacaoService.getTransacoes(this.currentUser).subscribe(
       (transacoes: PageTransacaoModel) => {
         this.transacoes = transacoes.data || [];
+        this.quantTransacao = transacoes.total;
+        this.atualizarFrase();
         this.calcularTotais();
       },
       (error) => {
@@ -115,6 +120,15 @@ export class ListaFinanceiroComponent implements OnInit {
     this.saldoAtual = this.entradas - this.saidas;
   }
 
+  atualizarFrase(){
+    if (this.quantTransacao == 0 || this.quantTransacao == null || this.quantTransacao == undefined) {
+      this.fraseQuantTransacoes = 'Nenhuma transação financeira cadastrada!';
+    } else if (this.quantTransacao == 1) {
+      this.fraseQuantTransacoes = '1 transação financeira';
+    } else if (this.quantTransacao > 1) {
+      this.fraseQuantTransacoes = `${this.quantTransacao} transações financeiras`;
+    }
+  }
 
   recarregarTransacoes(): void {
     this.buscarTransacoes();
@@ -158,6 +172,9 @@ export class ListaFinanceiroComponent implements OnInit {
     this.transacaoService.filtrarTransacoes(params, this.currentUser).subscribe(
       (transacoes: PageTransacaoModel) => {
         this.transacoes = transacoes.data || [];
+        this.quantTransacao = transacoes.total;
+        this.calcularTotais();
+        this.atualizarFrase();
       },
       (error) => {
         this.alertaService.exibirAlerta('danger', 'Erro ao filtrar tarefas: ' + error.error.message);

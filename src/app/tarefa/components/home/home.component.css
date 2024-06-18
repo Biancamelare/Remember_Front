@@ -256,6 +256,7 @@ h2, h3 {
     color:#858CA6;
     font-weight: 600;
     font-size: 20px;
+    margin-bottom: 3%;
 }
 
 .rosca label{
@@ -492,7 +493,7 @@ form{
 /* 
   } */
 
-@media screen and (max-width: 1550px) {
+@media screen and (max-width: 1500px) {
      .qtde {
        display: flex;
        flex-direction: column;
