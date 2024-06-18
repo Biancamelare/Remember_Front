@@ -492,32 +492,9 @@ form{
 /* 
   } */
 
-  @media screen and (max-width: 950px) {
-    .qtde {
-        display: flex;
-       flex-direction: column;
-       align-items: center;
-       justify-content: space-between;
-    }
-    .porcentagemTabela {
-        display: flex;
-        flex-direction: column;
-        width: 80%;
-        height: 80%;
-  }
-
-    #grafico {
-        display: flex;
-        flex-direction: column;
-        width: 80%;
-        height: 80%;
-        padding-top: 6%;
-  }
-}
-
-@media screen and (max-width: 1510px) {
-    .qtde {
-        display: flex;
+@media screen and (max-width: 1550px) {
+     .qtde {
+       display: flex;
        flex-direction: column;
        align-items: center;
        justify-content: space-between;
@@ -530,13 +507,20 @@ form{
         align-items: start;
         width: 80%;
         height: 60%;
-    }
+    } 
 
     .porcentagem-tarefas {
         width: 48%;
-        height: 50%;
+        height: 100%;
         padding: 2%;
+        flex-direction: column;
     }
+
+    #texto {
+        width: auto;
+        font-size: 22px;
+    }
+ 
 
     .table1 {
         width: 48%;
@@ -568,12 +552,12 @@ form{
     }
 
     .boasVindas {
-        margin-left: 18%;
+        margin-left: 20.5%;
         padding-bottom: 2%;
     }
-}
+} 
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 900px) {
     .qtde {
         display: flex;
         flex-direction: column;
@@ -581,6 +565,7 @@ form{
         justify-content: center;
         padding-left: 0;
         padding-right: 0;
+        margin-left: 50px;
     }
     .porcentagemTabela {
         display: flex;
@@ -595,6 +580,7 @@ form{
         height: 25%;
         padding: 2%;
         margin-bottom: 4%;
+        flex-direction: row;
     }
     .table1 {
         width: 80%;
@@ -634,6 +620,11 @@ form{
     .tarefa {
         width: 80vw;
         margin: 2% 0 1% 2%;
+    }
+
+    .tarefasDia {
+        margin-left: 50px;
+        margin-bottom: 100px;
     }
 }
 

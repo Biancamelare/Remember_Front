@@ -279,7 +279,9 @@ nav.menu-lateral.expandir ul li.item-menu img {
         background-image: none;
         box-shadow: none;
         padding-top: 37px;
-        z-index: 0;
+        z-index: 9999;
+        position: absolute;
+        height: 50px;
     }
 
     .icone-remember {
@@ -308,6 +310,8 @@ nav.menu-lateral.expandir ul li.item-menu img {
         background-image: linear-gradient(120deg, var(--gradient1-color) 40%, var(--gradient2-color));
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
         z-index: 9999;
+        position: fixed;
+        height: 100%;
     }
 
     nav.menu-lateral.expandir ul li.item-menu a {

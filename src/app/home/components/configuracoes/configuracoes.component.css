@@ -249,6 +249,7 @@ hr{
 #tabelaCores{
    text-align: center;
 }
+
 #tabelaCores td{
     padding: 10px;
     border: 1px solid var(--light-color);
@@ -481,6 +482,7 @@ hr{
 
     div.input-config input{
         width: 350px;
+        font-size: 14px;
     }
 
     .editar h3 {
@@ -496,10 +498,6 @@ hr{
 
     .form-label {
         font-size: 15px;
-    }
-
-    div.input-config input {
-        font-size: 14px;
     }
 
     .btnTema {
@@ -519,6 +517,7 @@ hr{
 
     .aside-content {
         width: 350px;
+        margin-bottom: 50px;
     }
 
     .aside-content h3 {
@@ -533,4 +532,50 @@ hr{
     .perfil {
         margin-top: 5px;
     }
+}
+
+@media screen and (max-width: 450px){
+    .icon-user {
+        margin-right: 15px !important;
+    }
+
+    #meuperfil h2 {
+        font-size: 18px;
+    }
+
+    .xp2 {
+        margin-left: 15px;
+    }
+
+    div.input-config input{
+        width: 300px;
+    }
+
+    .conta { 
+        width: 300px;
+    }
+
+    .conta h3 { 
+        font-size:18px;
+    }
+
+    .aside-content {
+        width: 300px;
+        margin-bottom: 50px;
+    }
+
+    .aside-content h3 {
+        font-size: 18px;
+    }
+    
+    .aside-content svg {
+        width: 18px;
+        height: auto;
+        margin-bottom: 5px;
+    }
+
+    .aside-content p {
+        font-size: 13px;
+    }
+
 }

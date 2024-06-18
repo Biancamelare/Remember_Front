@@ -1,17 +1,19 @@
 body {
+    width: 100vw;
     margin: 0px;
     display: flex;
     min-height: 100vh;
-    overflow: hidden;
+    overflow-x: hidden; 
 }
 
 .main-visualizar {
     display: flex;
     flex-direction: column;
     flex: 1;
-    width: 100vw;
+    z-index: 0;
+    /* width: 100vw;
     height: 100vh;
-    overflow: hidden;
+    overflow: hidden; */
 }
 
 .main-center{
@@ -24,6 +26,7 @@ header {
     display: flex;
     justify-content: space-around;
     padding-left: 11%;
+    z-index: -1;
 }
 
 .userDrop {
@@ -576,15 +579,24 @@ hr {
 }
 
 @media screen and (max-width: 750px) {
-    .form-control {
-        font-size: 15px;
+    .box-resp {
+        display: flex;
+        flex-direction: column;
     }
 
     .main-visualizar {
         display: flex;
-        flex-direction: column;
         overflow: auto;
         overflow-x: hidden;
+        position: relative;
+    }
+
+    .form-control {
+        font-size: 15px;
+    }
+
+    header {
+        display: flex;
     }
 
     #info {
@@ -662,7 +674,7 @@ hr {
     .tarefa {
         margin: 0 auto;
         margin-top: 10px;
-        width: 390px;
+        width: 370px;
         height: 75px;
         position: relative;
     }
@@ -772,7 +784,6 @@ hr {
         margin-bottom: 5px;
         order: 2;
         width: 390px;
-
     }
 }
 
@@ -953,7 +964,7 @@ hr {
     }
 
     .tarefa {
-        width: 350px;
+        width: 330px;
     }
 
     #tarefas {
