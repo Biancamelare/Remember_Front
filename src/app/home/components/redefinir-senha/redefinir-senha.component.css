@@ -86,6 +86,10 @@ body {
     font-weight:500;
 }
 
+.input-erro {
+    border: 2px solid #ff000080; 
+    box-shadow: 0 0 2px rgba(255, 0, 0, 0.3);
+}
 
 .box-voltar {
     margin-top: 20px;

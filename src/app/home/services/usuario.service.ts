@@ -57,4 +57,8 @@ export class UsuarioService {
     return this.http.post(`http://localhost:3000/usuario/esqueci-a-senha`, {to: email})
   }
 
+  mudarsenha(id:number, senha:string){
+    return this.http.put(`http://localhost:3000/usuario/${id}`, { senha: senha})
+  }
+
 }
