@@ -277,6 +277,7 @@ export class VisualizarTarefasComponent implements OnInit {
         break;
     }
     this.atualizarFiltrosAplicados();
+    this.atualizarFrase();
     this.filtrarTarefas();
   }
 
