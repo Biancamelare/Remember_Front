@@ -10,8 +10,6 @@ body {
     display: flex;
     flex-direction: column;
     flex: 1;
-    width: 100vw;
-    height: 100vh;
     overflow-x: hidden;
 }
 
@@ -556,6 +554,10 @@ form{
         margin-left: 20.5%;
         padding-bottom: 2%;
     }
+
+    .tabela {
+        height: 450px;
+    }
 } 
 
 @media screen and (max-width: 900px) {
@@ -578,10 +580,11 @@ form{
     }
     .porcentagem-tarefas {
         width: 80%;
-        height: 25%;
+        height: 150px;
         padding: 2%;
         margin-bottom: 4%;
         flex-direction: row;
+        justify-content: center;
     }
     .table1 {
         width: 80%;
@@ -599,9 +602,31 @@ form{
         padding-top: 6%;
     }
     .boasVindas {
-
+        margin-left: 15%;
+        margin-bottom: 30px;
         padding-bottom: 0%;
     }
+
+    .boasVindas h2 {
+        font-size: 22px;
+    }
+
+    .tarefa {
+        margin: 2% 0 1% 0%;
+    }
+
+
+    #texto p{
+        margin-bottom: 0;
+    }
+
+    .xp2 {
+        height: 30px;
+        padding: 0;
+        font-size: 18px;
+        width: 110px;
+    }
+
     .chart-wrapper {
         display: block;
         text-align: center;
@@ -628,4 +653,48 @@ form{
         margin-bottom: 100px;
     }
 }
+
+@media screen and (max-width: 750px) {
+    .qtde {
+        margin-left: 0;
+    }
+
+    .tarefasDia {
+        margin-left: 0; 
+    }
+
+    .porcentagem-tarefas {
+        width: 570px;
+    }
+
+    .table1 {
+        width: 570px;
+    }
+
+    .tabela {
+        width: 570px;
+    }
+
+    .tarefa {
+        width: 570px;
+        margin-left: 0;
+    }
+
+    .search-container input{
+        width: 250px;
+        height: 40px;
+        margin-top: 20px;
+    }
+
+    .search-container svg {
+        margin-top: 15px;
+        width: 20px;
+        height: 20px;
+    }
+
+    .userDrop {
+        margin-top: 10px;
+    }
+}
+
 

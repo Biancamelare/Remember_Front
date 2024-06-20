@@ -595,10 +595,6 @@ hr {
         font-size: 15px;
     }
 
-    header {
-        display: flex;
-    }
-
     #info {
         margin-top: 35px;
         margin-bottom: 15px;
@@ -709,7 +705,7 @@ hr {
     }
 
     header {
-        padding-top: 4%;
+        padding-top: 3%;
     }
 
     #statusfiltro {
@@ -821,6 +817,10 @@ hr {
     .icon-user img {
         width: 40px;
         height: auto;
+    }
+
+    header {
+        padding-top: 4%;
     }
 
 }

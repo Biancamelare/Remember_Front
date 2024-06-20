@@ -237,6 +237,8 @@ input[type="date"] {
 .data input{
     margin-left: 3%;
     width: 55%;
+    padding-left: 5px;
+    border-radius: 10px;
 }
 
 .data label{
@@ -354,7 +356,7 @@ h2 {
     text-overflow: ellipsis;
     white-space: nowrap;
     margin-right: 3%;
-   
+    text-align: center;
 }
 
 #valor {
@@ -420,6 +422,11 @@ h2 {
     .dropdown {
         padding: 12px 50px 12px 12px;
     }
+
+    .geral h4 {    
+        height: 45px;
+    }
+
 }
 
 @media screen and (max-width: 1100px) {
@@ -428,6 +435,15 @@ h2 {
         font-size: 14px;
     }
 
+    .dropdown {
+        padding-right: 0;
+    }
+
+    .geral h4 {    
+        height: 40px;
+        font-size: 20px;
+        margin-bottom: 0;
+    }
 }
 
 @media screen and (max-width: 900px) {
@@ -471,9 +487,21 @@ h2 {
     #icon {
         transform: translateY(-10%);
     }
+
+    .geral label {
+        font-size: 20px;
+    }
+
+    #btnAdicionar {
+        padding-left: 0;
+    }
+
+    #info h2 {
+        white-space: nowrap;
+    }
 }
 
-@media screen and (max-width: 760px) {
+@media screen and (max-width: 750px) {
     .form-control {
         font-size: 15px;
     }
@@ -487,12 +515,25 @@ h2 {
     }
 
     .main-vizualizar {
-        padding: 0 2% 0px 12%;
+        padding: 0 2% 0 9%;
     }
 
     .main-center {
         width: 118vw;
     }
+
+    .tabela {
+        margin-right: 20px;
+    }
+
+    .resumo {
+        margin-left: 10px;
+    }
+
+    header {
+        padding-top: 20px;
+    }
+
 }
 
 @media screen and (max-width: 660px) {
@@ -542,7 +583,7 @@ h2 {
     }
 
     .tabela h4 {
-        font-size: 22px;
+        font-size: 18px;
     }
 
     #info h2,
@@ -564,6 +605,7 @@ h2 {
         width: 16px;
         height: auto;
         right: 30px;
+        top: 25px;
     }
 
     header {
@@ -586,6 +628,7 @@ h2 {
 
     #icon {
         right: 30px;
+        top: 35px;
     }
 
     .icon-user {
@@ -609,6 +652,14 @@ h2 {
 
     #icon {
         transform: translateY(-50%);
+    }
+
+    .tabela {
+        margin-right: 10px;
+    }
+
+    .geral h4 {
+        font-size: 16px;
     }
 }
 
@@ -650,7 +701,6 @@ h2 {
         margin-top: 5px;
         width: 55px;
         height: 55px;
-        
         align-items: center;
     }
 
@@ -665,8 +715,13 @@ h2 {
     .dropdown-content {
         font-size: 12px;
         min-width: 180px;
-        left: -120px; 
+        left: -80px; 
+        
         right: auto; 
+    }
+
+    .geral label {
+        font-size: 17px;
     }
 }
 
@@ -732,7 +787,7 @@ h2 {
     }
 
     .search-container input::placeholder {
-        font-size: 10px;
+        font-size: 12px;
         position: relative;
         right: 20px;
     }
@@ -748,12 +803,21 @@ h2 {
     #scroll {
         width: 74%;
     }
-
-    .tabela h4 {
-        font-size: 18px;
+    .geral label {
+        font-size: 16px;
     }
 
-    .geral label {
+    #info h2 {
         font-size: 18px;
+        margin-bottom: 0;
+        line-height: 30px;
+    }
+
+    .btn.adicionar {
+        margin-bottom: 10px;
+    }
+
+    header {
+        padding-top: 15px;
     }
 }
