@@ -56,6 +56,13 @@ export class ModalComponent implements OnInit,OnChanges {
 
   itensListaVerificacao: string[] = [];
 
+  filePreview: string | ArrayBuffer | null = null;
+  fileName: string = '';
+  fileType: string = '';
+  filePreviews: { name: string, type: string, preview: string | ArrayBuffer | null, file: File }[] = [];
+  fileReal: { name: string, type: string, preview: string | ArrayBuffer | null, file: File | null }[] = [];
+
+
   constructor(
     private tarefaService: TarefaServiceService,
     private alertaService:AlertaService,
@@ -149,6 +156,7 @@ export class ModalComponent implements OnInit,OnChanges {
         html_horaconclusao.value = this.hora_conclusao;
       }
       this.inicializarLista();
+      this.configurarAnexos();
     }
   }
 
@@ -285,6 +293,9 @@ export class ModalComponent implements OnInit,OnChanges {
         this.tarefaService.editarTarefa(this.tarefa.id, dadosTarefa, this.currentUser).subscribe(
           response => {
             this.salvarItensListaVerificacao()
+            if (this.filePreviews.length > 0 && this.tarefa?.id) {
+              this.uploadFiles(this.tarefa.id);
+            }
             this.alertaService.exibirAlerta('success', 'Tarefa editada com sucesso!');
             this.tarefaSalva.emit();
             this.closeModal()
@@ -312,6 +323,8 @@ export class ModalComponent implements OnInit,OnChanges {
       this.formTarefa.reset();
       this.formTarefa.enable();
       this.limparLista();
+      this.filePreviews = [];
+      this.fileReal = [];
       this.editar = false;
       const html_dataconclusao = this.document.querySelector('#data_conclusao') as HTMLInputElement
       const html_horaconclusao = this.document.querySelector('#hora_conclusao') as HTMLInputElement
@@ -425,6 +438,55 @@ export class ModalComponent implements OnInit,OnChanges {
         html_dataconclusao.value = this.data_conclusao;
       }
 
+    }
+
+    //anexo
+    onFileChange(event: Event) {
+      const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      Array.from(input.files).forEach(file => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          this.filePreviews.push({
+            name: file.name,
+            type: file.type,
+            preview: reader.result,
+            file:file
+          });
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+    }
+
+    removeFile(index: number) {
+      this.filePreviews.splice(index, 1);
+      const fileInput = this.document.getElementById('arquivo') as HTMLInputElement;
+      if (fileInput) {
+        fileInput.value = '';
+      }
+    }
+
+    async uploadFiles(taskId: number): Promise<void> {
+      for (const filePreview of this.filePreviews) {
+        try {
+          await this.tarefaService.envioAnexos(taskId, filePreview.file, this.currentUser).toPromise();
+          this.alertaService.exibirAlerta('success', `Anexo ${filePreview.name} enviado com sucesso!`);
+        } catch (error) {
+          this.alertaService.exibirAlerta('danger', `Erro ao enviar anexo ${filePreview.name}: ${error}`);
+        }
+      }
+    }
+
+    configurarAnexos(): void {
+      if (this.tarefa && this.tarefa.anexos) {
+        this.fileReal = this.tarefa.anexos.map(anexo => ({
+          name: anexo.nome,
+          type: 'application/pdf', 
+          preview: anexo.url,
+          file: null 
+        }));
+      }
     }
 
 

@@ -111,5 +111,16 @@ export class TarefaServiceService {
     return this.http.post(`http://localhost:3000/tarefas/lista`, lista,{headers });
   }
 
+  envioAnexos(taskId: number, arquivo: File,token:string): Observable<any>{
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    const formData = new FormData();
+    formData.append('file', arquivo, arquivo.name);
+
+    return this.http.post(`http://localhost:3000/tarefas/${taskId}/upload/anexos`, formData,{headers });
+  }
+
 
 }

@@ -180,6 +180,19 @@ label#anexo {
     background-color: var(--font-color);
   }
 
+  .file-preview{
+    display: flex;
+    margin-left: 2%;
+  }
+
+  .file-preview span{
+    margin-left: 2%;
+  }
+
+  .anexos{
+    margin-left: 2%;
+  }
+
 
   @media screen and (max-width: 738px) {
 

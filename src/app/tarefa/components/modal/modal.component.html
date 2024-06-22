@@ -84,7 +84,27 @@
                   <br>
                   <label for="arquivo" class="col-form-label" id="anexo">Adicionar arquivo <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
                   </svg></label>
-                  <input type="file" class="form-control" id="arquivo">
+                  <input type="file" class="form-control" id="arquivo" (change)="onFileChange($event)" multiple>
+                  <div  *ngIf="filePreviews.length > 0" class="anexos">
+                    <h6>Pré-visualização dos anexos:</h6>
+                    <div *ngFor="let file of filePreviews; let i = index" class="file-preview" >
+                      <img *ngIf="file.type.startsWith('image/')" [src]="file.preview" alt="Pré-visualização da imagem" style="max-width: 60%; max-height: 60%;">
+                      <p *ngIf="!file.type.startsWith('image/')">{{ file.name }}</p>
+                    <span (click)="removeFile(i)">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#dc3545" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                        <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5M8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5m3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0"/>
+                      </svg>
+                    </span>
+                  </div>
+                  </div>
+                  <div *ngIf="fileReal.length > 0" class="anexos">
+                    <h6>Anexos</h6>
+                    <ul>
+                      <li *ngFor="let filePreview of fileReal">
+                        <a [href]="filePreview.preview" target="_blank">{{ filePreview.name }}</a>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
 
                 <hr>
