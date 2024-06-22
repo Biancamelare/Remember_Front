@@ -116,11 +116,9 @@ body {
 }
 
 .input-erro {
-     border: 2px solid #ff000080; 
-     box-shadow: 0 0 2px rgba(255, 0, 0, 0.3);
+     border: 2px solid var(--borderInputError-color); 
+     box-shadow: 0 0 2px var(--shadowInputError-color);
 }
-
-
 
 @media screen and (max-width: 1400px){
     .left-cadastrar img {
@@ -128,14 +126,12 @@ body {
         height: auto; 
         object-fit: cover; 
         transition: 0.2s;
-        /* top: 220px; */
     }
 }
 
  @media screen and (max-width: 1200px){
     .left-cadastrar img {
         max-width: 700px; 
-        /* top: 370px; */
     }
 }  
 

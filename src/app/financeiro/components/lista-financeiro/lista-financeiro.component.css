@@ -22,6 +22,7 @@ body {
     height: 100vh;
     overflow: hidden;
     margin-top: 1%;
+    margin-bottom: 50px;
 }
 
 header {
@@ -177,15 +178,15 @@ hr{
 }
 
 .positivo {
-    color: green !important;
+    color: var(--positive-color) !important;
   }
   
   .negativo {
-    color: red !important;
+    color: var(--negative-color) !important;
   }
 
 .titulo {
-    background-color: #fff !important;
+    background-color:  var(--secondary-color) !important;
 }
 
 .titulo label{
@@ -363,6 +364,7 @@ h2 {
     width: 20%;
     margin-right: 3%;
     text-align: center;
+    white-space: nowrap;
 }
 
 #categoria {
@@ -400,7 +402,7 @@ h2 {
 
 .tabela {
     border-radius: 22px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 8px var(--secondShadow-color);
     cursor: pointer;
     width: 32%;
 }

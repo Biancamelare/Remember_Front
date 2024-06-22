@@ -1,27 +1,27 @@
 :host ::ng-deep .fc .fc-daygrid-day {
-    border: 1px solid #ddd;
-    background-color: #f7f7f7;
+    border: 1px solid var(--borderCalendar-color);
+    background-color: var(--backgroundCalendar-color);
     border-radius: 4px;
     margin: 0;
 }
   
 :host ::ng-deep .fc .fc-daygrid-day-number {
-    color: #000;
+    color: var(--base-color);
     font-weight: bold;
 }
   
 /* Estilo dos cabeçalhos */
 :host ::ng-deep .fc .fc-col-header-cell {
     background-color: var(--font-color);
-    color: #fff;
+    color: var(--secondary-color);
     padding: 10px;
     text-align: center;
-    border: 1px solid #ddd;
+    border: 1px solid var(--borderCalendar-color);
     border-radius: 4px 4px 0 0;
 }
 
 :host ::ng-deep .fc .fc-col-header-cell-cushion {
-    color:#fff;
+    color: var(--secondary-color);
     text-decoration: none;
 }
   
@@ -35,7 +35,7 @@
   
 :host ::ng-deep .fc .fc-button {
     background-color: var(--primary-color);
-    color: #fff;
+    color: var(--secondary-color);
     border: none;
     padding: 5px 10px;
     margin: 5px;
@@ -54,7 +54,7 @@
     border-radius: 4px;
     color: var(--font-color) ;
     margin: 2px 0;
-    background-color: rgba(67,147,242, 0.6);
+    background-color: var(--eventCalendar-color);
 }
   
 :host ::ng-deep .fc-direction-ltr .fc-daygrid-event .fc-event-time {
@@ -108,7 +108,7 @@
     background-color: var(--secondary-color);
     padding: 20px;
     border-radius: 4px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px var(--secondShadow-color);
 }
 
 body {
