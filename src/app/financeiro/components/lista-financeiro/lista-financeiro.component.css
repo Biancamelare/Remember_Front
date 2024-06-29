@@ -822,4 +822,12 @@ h2 {
     header {
         padding-top: 15px;
     }
+
+    .filtroData label {
+        margin-right: 5px;
+    }
+    
+    .filtroData input {
+        height: 25px;
+    }
 }
