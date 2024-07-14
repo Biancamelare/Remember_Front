@@ -135,8 +135,8 @@ label#anexo {
 }
 
 .input-erro {
-    border: 2px solid #ff000080!important; 
-    box-shadow: 0 0 2px rgba(255, 0, 0, 0.3);
+    border: 2px solid var(--borderInputError-color) !important; 
+    box-shadow: 0 0 2px var(--shadowInputError-color);
 }
 
 #categoria{
@@ -178,6 +178,19 @@ label#anexo {
     color: var(--secondary-color);
     font-weight: 500;
     background-color: var(--font-color);
+  }
+
+  .file-preview{
+    display: flex;
+    margin-left: 2%;
+  }
+
+  .file-preview span{
+    margin-left: 2%;
+  }
+
+  .anexos{
+    margin-left: 2%;
   }
 
 

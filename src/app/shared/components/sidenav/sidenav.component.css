@@ -18,7 +18,7 @@ nav.menu-lateral {
     position: fixed;
     top: 0;
     left: 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 5px var(--customModal-color);
     overflow: hidden;
     z-index: 9999;
 }
@@ -92,11 +92,6 @@ ul li.item-menu img {
     transition: 0.2s;
     margin-left: 5px;
 }
-
-
-/* ul li.item-menu#configuracoes {
-    margin-top: 200px;
-}  */
 
 #adicionar{
     cursor: pointer;
@@ -289,13 +284,12 @@ nav.menu-lateral.expandir ul li.item-menu img {
     }
 
     .btn-expandir .bi.bi-list.icone-aba:hover {
-        width: 45px;
-        height: 45px;
+        width: 38px;
+        height: 38px;
     }
 
     .bi.bi-list.icone-aba {                     
-        /* fill: var(--secondary-color); */
-        fill: black;
+        fill: var(--base-color);
         width: 40px;
         height: 40px;
         margin-top: 0;
@@ -308,7 +302,7 @@ nav.menu-lateral.expandir ul li.item-menu img {
     nav.menu-lateral.expandir {
         width: 90px;
         background-image: linear-gradient(120deg, var(--gradient1-color) 40%, var(--gradient2-color));
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 2px 5px var(--customModal-color);
         z-index: 9999;
         position: fixed;
         height: 100%;

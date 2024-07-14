@@ -9,6 +9,7 @@
     --font-color: #0C2377;
     --icon-color: #888;
     --shadown-color:rgba(0, 0, 0, 0.3);
+    --secondShadow-color: rgba(0, 0, 0, 0.1);
     --user-color:#E3E8F0;
     --gradient1-color:#4393f2;
     --gradient2-color:#ae5ea7;
@@ -18,4 +19,21 @@
     --btnMedia-color:rgba(228, 193, 10, 0.3);
     --btnBaixa-color:rgba(56, 230, 73, 0.3);
     --base-color: black;
+    --positive-color: green;
+    --negative-color:red;
+    --buttonHover-color: rgb(1, 1, 84);
+    --income-color: #C3F7C8;
+    --expense-color: #ED7786;
+    --borderInputError-color: #ff000080;
+    --shadowInputError-color: rgba(255, 0, 0, 0.3);
+    --customModal-color: rgba(0, 0, 0, 0.5);
+    --shadowModalContent-color: rgba(0, 0, 0, 0.2);
+    --btnPrimary-color: #007bff;
+    --btnDanger-color: #dc3545;
+    --blocked-color: #D9D9D9;
+    --borderCalendar-color: #ddd;
+    --backgroundCalendar-color: #f7f7f7;
+    --eventCalendar-color: rgba(67,147,242, 0.6);
+    --titleLabel-color: #858CA6;
+    --cleanFilter-color: rgba(255, 3, 3, 0.7);
  }

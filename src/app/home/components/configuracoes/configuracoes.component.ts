@@ -154,7 +154,7 @@ export class ConfiguracoesComponent implements OnInit {
         if (formValue.email === this.usuarioSelecionado.email) {
             delete formValue.email; 
         }
-        this.usuarioSerive.editarUsuario(formValue, this.currentUserId, this.currentUser).subscribe(
+        this.usuarioSerive.editarUsuario(formValue, this.currentUserId).subscribe(
           response => {
             this.alertaService.exibirAlerta('success', 'Usuário editado com sucesso!');
             this.salvarhabilitado = false

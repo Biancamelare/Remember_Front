@@ -22,11 +22,8 @@ export class UsuarioService {
     return this.http.post(`http://localhost:3000/usuario`, usuario);
   }
 
-  editarUsuario(usuario: UsuarioModel, id:number, token: string): Observable<any> {
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
-    });
-    return this.http.put(`http://localhost:3000/usuario/${id}`, usuario, {headers });
+  editarUsuario(usuario: UsuarioModel, id:number): Observable<any> {
+    return this.http.put(`http://localhost:3000/usuario/${id}`, usuario);
   }
 
   editarTema(idTema:number, id:number, token: string): Observable<any> {
@@ -55,6 +52,10 @@ export class UsuarioService {
 
   esquecersenha(email:string){
     return this.http.post(`http://localhost:3000/usuario/esqueci-a-senha`, {to: email})
+  }
+
+  mudarsenha(id:number, senha:string){
+    return this.http.put(`http://localhost:3000/usuario/${id}`, { senha: senha})
   }
 
 }

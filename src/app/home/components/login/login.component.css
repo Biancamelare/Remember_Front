@@ -82,7 +82,7 @@ body {
     width: 400px; 
     font-size: 18px; 
     padding: 10px 30px; 
-    background-color: #5189DD;
+    background-color: var(--primary-color);
     border-radius: 15px;
     color:var(--secondary-color);
     border: none;
@@ -163,7 +163,7 @@ img {
 
 .form-control {
     border-radius: 15px;
-    background-color: #E9EFF9;
+    background-color: var(--input-color);
     padding-left: 0;
     padding-left: 40px;
 }
@@ -172,10 +172,6 @@ img {
     right: 22px;
     position: relative;
 }
-
-
-
-
 
 @media screen and (max-width: 1200px){
     .forma img {
@@ -498,29 +494,3 @@ img {
 
 
 }
-
-/* @media screen and (max-height: 600px){
-    .form-login {
-        width: 40%;
-    }
-
-     .forma img {
-        display: none;
-     }
-
-    .btnEntrar {
-        padding-left: 100px;
-        padding-right: 100px;
-    }
-
-    .form-control {
-        width: 250px;
-    }
-
-    .right-login img {
-        width: 20%;
-        height: auto;
-
-    }
-
-} */

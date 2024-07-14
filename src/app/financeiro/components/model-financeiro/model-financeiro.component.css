@@ -48,7 +48,7 @@ body {
 }
 
 .botaoCadastro:hover{
-    background: rgb(1, 1, 84);
+    background: var(--buttonHover-color);
 }
 
 .botao {
@@ -155,13 +155,13 @@ input:focus {
 }
 
 .entrada {
-    background-color: #C3F7C8;
+    background-color: var(--income-color);
     color: var(--base-color);
     font-weight: 630;
 }
 
 .saida {
-    background-color:#ED7786;
+    background-color: var(--expense-color);
     color: var(--base-color);
     font-weight: 630;
 }

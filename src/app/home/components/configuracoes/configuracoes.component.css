@@ -45,10 +45,10 @@ header .search-container {
 div.input-config input{
     padding: 5px;
     width: 200%;
-    color: #000000;
+    color: var(--base-color);
     border: 0;
     border-radius: 0;
-    border-bottom: 2px solid rgb(200,200,200);
+    border-bottom: 2px solid var(--borderbottom-color);
 }
 .conta {
     width: 60%;
@@ -201,7 +201,7 @@ hr{
     width: 100px;
     padding: 5px 5px;
     border-radius: 20px;
-    color: #fff;
+    color: var(--secondary-color);
     border: none;
     box-shadow: 0px 2px 4px var(--shadown-color);
 }
@@ -225,8 +225,8 @@ hr{
 
 }
 .input-erro {
-    border: 2px solid #ff000080!important; 
-    box-shadow: 0 0 2px rgba(255, 0, 0, 0.3)!important;
+    border: 2px solid var(--borderInputError-color) !important; 
+    box-shadow: 0 0 2px var(--shadowInputError-color) !important;
 }
 
 .posicao{
@@ -261,7 +261,7 @@ hr{
     border-radius: 10px;
     background-color: var(--primary-color);
     border: 1px var(--primary-color);
-    color:#ffffff;
+    color: var(--secondary-color);
     padding:10px;
 }
 
@@ -296,7 +296,7 @@ hr{
     border-radius: 10px;
     background-color: var(--primary-color);
     border: 1px var(--primary-color);
-    color:#ffffff;
+    color: var(--secondary-color);
     padding:10px;
 }
 .xp {

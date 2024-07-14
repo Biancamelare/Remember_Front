@@ -11,9 +11,6 @@ body {
     flex-direction: column;
     flex: 1;
     z-index: 0;
-    /* width: 100vw;
-    height: 100vh;
-    overflow: hidden; */
 }
 
 .main-center{
@@ -26,7 +23,6 @@ header {
     display: flex;
     justify-content: space-around;
     padding-left: 11%;
-    z-index: -1;
 }
 
 .userDrop {
@@ -43,7 +39,6 @@ header {
     margin-bottom: 3%;
     margin-left: 10px;
     font-weight: 500;
-
 }
 
 .nome {
@@ -353,7 +348,7 @@ hr {
 .bi-exclamation-triangle-fill {
     margin-left: 10px;
     margin-bottom: 3px;
-    color: red;
+    color: var(--negative-color);
 }
 
 .riscado {
@@ -380,11 +375,11 @@ hr {
 
 .limparFiltro {
     background-color: var(--btnAlta-color);
-    color: black;
+    color: var(--base-color);
 }
 
 .limparFiltro svg {
-    color: rgba(255, 3, 3, 0.7)
+    color: var(--cleanFilter-color);
 }
 
 #tarefas form {
@@ -595,10 +590,6 @@ hr {
         font-size: 15px;
     }
 
-    header {
-        display: flex;
-    }
-
     #info {
         margin-top: 35px;
         margin-bottom: 15px;
@@ -709,7 +700,7 @@ hr {
     }
 
     header {
-        padding-top: 4%;
+        padding-top: 3%;
     }
 
     #statusfiltro {
@@ -821,6 +812,10 @@ hr {
     .icon-user img {
         width: 40px;
         height: auto;
+    }
+
+    header {
+        padding-top: 4%;
     }
 
 }

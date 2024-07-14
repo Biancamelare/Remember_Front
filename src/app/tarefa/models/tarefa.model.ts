@@ -1,3 +1,4 @@
+import { AnexoModel } from "./anexo.model";
 import { ListaTarefa } from "./listaTarefa.model";
 
 export interface TarefaModel {
@@ -16,5 +17,6 @@ export interface TarefaModel {
 	criado_em: Date,
 	editado_em:Date,
 	excluido_em:Date,
-	lista_tarefa?: ListaTarefa[]
+	lista_tarefa?: ListaTarefa[],
+	anexos?: AnexoModel[]
 }

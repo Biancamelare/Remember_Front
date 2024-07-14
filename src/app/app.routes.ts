@@ -34,7 +34,7 @@ export const routes: Routes = [
         component: LoginComponent
     },
     {
-        path: 'redefinir-senha',
+        path: 'redefinir-senha/:id',
         component: RedefinirSenhaComponent
     },
     {
